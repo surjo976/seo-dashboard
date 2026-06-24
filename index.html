@@ -399,50 +399,58 @@
           </div>
           <div class="issues-legend">
             <div class="il-row-item">
-              <span class="il-checkbox bg-red">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
-                  stroke-linejoin="round" class="check-icon">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </span>
-              <span class="il-label">Critical</span>
+              <div class="il-left-group">
+                <span class="il-checkbox bg-red">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round" class="check-icon">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="il-label">Critical</span>
+              </div>
               <strong class="il-val">12</strong>
             </div>
             <div class="il-row-item">
-              <span class="il-checkbox bg-brown">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
-                  stroke-linejoin="round" class="check-icon">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </span>
-              <span class="il-label">Warnings</span>
+              <div class="il-left-group">
+                <span class="il-checkbox bg-brown">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round" class="check-icon">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="il-label">Warnings</span>
+              </div>
               <strong class="il-val">45</strong>
             </div>
             <div class="il-row-item">
-              <span class="il-checkbox bg-orange">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
-                  stroke-linejoin="round" class="check-icon">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </span>
-              <span class="il-label">Notice</span>
+              <div class="il-left-group">
+                <span class="il-checkbox bg-orange">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round" class="check-icon">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="il-label">Notice</span>
+              </div>
               <strong class="il-val">132</strong>
             </div>
             <div class="il-row-item">
-              <span class="il-checkbox bg-green">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
-                  stroke-linejoin="round" class="check-icon">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </span>
-              <span class="il-label">Good</span>
+              <div class="il-left-group">
+                <span class="il-checkbox bg-green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round" class="check-icon">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="il-label">Good</span>
+              </div>
               <strong class="il-val">156</strong>
             </div>
           </div>
         </div>
 
         <div class="card opportunity-card">
-          <div class="card-header">
+          <div class="card-header opportunity-header">
             <h3>OPPORTUNITY VS IMPACT</h3><span class="help-dot">?</span>
           </div>
           <div class="matrix-container">
@@ -452,93 +460,107 @@
               <div class="matrix-cell li"><span class="mc-title">Low Impact</span></div>
               <div class="matrix-cell nw"><span class="mc-title">Needs Work</span></div>
             </div>
-            <div class="venn-circle qw-bubble-1" style="left: 87.1px; top: 118px; width: 84px; height: 85px;">You</div>
-            <div class="venn-circle qw-bubble-2" style="left: 123px; top: 121.7px; width: 90px; height: 90px;">You</div>
-            <div class="venn-circle qw-bubble-3" style="left: 84.7px; top: 153.9px; width: 90px; height: 89px;">You
-            </div>
 
-            <div class="venn-circle bw-bubble-1" style="left: 292.7px; top: 118px; width: 71px; height: 71px;">You</div>
-            <div class="venn-circle bw-bubble-2" style="left: 297.3px; top: 172.9px; width: 51px; height: 51px;">You
-            </div>
-            <div class="venn-circle bw-bubble-3" style="left: 332.8px; top: 162.8px; width: 80px; height: 80px;">You
-            </div>
-            <div class="venn-circle bw-bubble-4" style="left: 351.4px; top: 127.3px; width: 66px; height: 66px;">You
-            </div>
+            <!-- Quick Wins (Green Bubbles) -->
+            <div class="venn-circle qw-bubble" style="left: 100px; top: 122px; width: 80px; height: 80px;"></div>
+            <div class="venn-circle qw-bubble" style="left: 130px; top: 125px; width: 85px; height: 85px;"></div>
+            <div class="venn-circle qw-bubble" style="left: 102px; top: 152px; width: 85px; height: 85px;"></div>
 
-            <div class="venn-circle li-bubble-1" style="left: 87.8px; top: 448.7px; width: 85px; height: 85px;">You
-            </div>
-            <div class="venn-circle li-bubble-2" style="left: 125.6px; top: 451.8px; width: 87px; height: 87px;">You
-            </div>
-            <div class="venn-circle li-bubble-3" style="left: 89.3px; top: 486.6px; width: 86px; height: 86px;">You
-            </div>
+            <!-- Big Wins (Red Bubbles) -->
+            <div class="venn-circle bw-bubble" style="left: 282px; top: 122px; width: 70px; height: 70px;"></div>
+            <div class="venn-circle bw-bubble" style="left: 287px; top: 167px; width: 50px; height: 50px;"></div>
+            <div class="venn-circle bw-bubble" style="left: 317px; top: 157px; width: 80px; height: 80px;"></div>
+            <div class="venn-circle bw-bubble" style="left: 332px; top: 127px; width: 65px; height: 65px;"></div>
 
-            <div class="axis-label axis-low" style="left: 50.7px; top: 486px;">Low</div>
-            <div class="axis-label axis-effort" style="left: 232.7px; top: 486px;">Effort</div>
-            <div class="axis-label axis-high-x" style="left: 424.7px; top: 486px;">High</div>
+            <!-- Low Impact (Blue Bubbles) -->
+            <div class="venn-circle li-bubble" style="left: 100px; top: 309px; width: 80px; height: 80px;"></div>
+            <div class="venn-circle li-bubble" style="left: 130px; top: 314px; width: 82px; height: 82px;"></div>
+            <div class="venn-circle li-bubble" style="left: 102px; top: 339px; width: 82px; height: 82px;"></div>
 
-            <div class="axis-label axis-high-y" style="left: 28.2px; top: 91.5px;">High</div>
-            <div class="axis-label axis-effort-y" style="left: 24.2px; top: 283.5px; transform: rotate(-90deg);">Effort
+            <!-- Needs Work (Orange Bubbles) -->
+            <div class="venn-circle nw-bubble" style="left: 277px; top: 309px; width: 80px; height: 80px;"></div>
+            <div class="venn-circle nw-bubble" style="left: 312px; top: 314px; width: 80px; height: 80px;"></div>
+            <div class="venn-circle nw-bubble" style="left: 287px; top: 339px; width: 80px; height: 80px;"></div>
+
+            <div class="axis-label axis-low" style="left: 80px; top: 465px;">Low</div>
+            <div class="axis-label axis-effort" style="left: 236px; top: 465px;">Effort</div>
+            <div class="axis-label axis-high-x" style="left: 390px; top: 465px;">High</div>
+
+            <div class="axis-label axis-high-y" style="left: 45px; top: 102px;">High</div>
+            <div class="axis-label axis-effort-y" style="left: 40px; top: 263px; transform: rotate(-90deg);">Effort
             </div>
-            <div class="axis-label axis-low-y" style="left: 26.7px; top: 456px;">Low</div>
+            <div class="axis-label axis-low-y" style="left: 45px; top: 432px;">Low</div>
           </div>
         </div>
 
         <div class="card ai-vis-card">
-          <div class="card-header">
+          <div class="card-header ai-vis-header">
             <h3>AI VISIBILITY SNAPSHOT</h3><span class="help-dot">?</span>
           </div>
           <div class="vis-content-layout">
-            <div class="vis-legend-list">
-              <div class="vis-legend-item">
-                <div class="vis-icon" style="background:#1a1a1a"><i data-lucide="message-circle"></i></div><span>ChatGPT
-                  Readiness</span>
+            <div class="vis-left-col">
+              <div class="vis-legend-list">
+                <div class="vis-legend-item">
+                  <div class="vis-icon" style="background:#1a1a1a">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width: 18px; height: 18px; color: #fff;">
+                      <path
+                        d="M21.74 11.57a3.84 3.84 0 0 0-.25-2.28 4.02 4.02 0 0 0-1.74-1.92 8.1 8.1 0 0 0-1-.44 4.03 4.03 0 0 0-1.84-2.8 3.96 3.96 0 0 0-2.5-.54 4.05 4.05 0 0 0-2.3 1.13c-.26-.14-.54-.25-.83-.34a4.02 4.02 0 0 0-3.32.32 4.04 4.04 0 0 0-1.98 2.37 8 8 0 0 0-.41.93 4.03 4.03 0 0 0-2.26 2.5 3.98 3.98 0 0 0 .19 2.55 4.02 4.02 0 0 0 1.54 1.94c.05.03.09.06.14.08a4.02 4.02 0 0 0 1.83 2.8 4 4 0 0 0 2.5.53 4.03 4.03 0 0 0 2.31-1.12c.26.14.54.25.82.33a4 4 0 0 0 3.32-.32 4.04 4.04 0 0 0 1.99-2.37c.14-.3.26-.6.36-.92a4.02 4.02 0 0 0 2.27-2.5c.2-.82.13-1.68-.19-2.45zm-7.6 7.42a2.38 2.38 0 0 1-1.25.35c-.46 0-.91-.13-1.3-.38l.12-.07 3.5-2.02a.79.79 0 0 0 .4-.68v-4.88l1.45.84c.6.35.98.98.98 1.68v4.06a2.4 2.4 0 0 1-1.9 2.1zm-6.68-1.57a2.36 2.36 0 0 1-.65-1.13 2.39 2.39 0 0 1 .15-1.91l.1.06 3.5 2.02c.23.13.5.13.73 0l4.22-2.44v1.68c0 .7-.38 1.34-.98 1.69l-3.52 2.03a2.38 2.38 0 0 1-3.55-.96zm-1.78-6.1a2.39 2.39 0 0 1-.6 1.89c.33-.36.78-.6 1.27-.67l.02.13v4.04c0 .26.14.5.37.64l4.23 2.44-1.45.84a1.95 1.95 0 0 1-1.68 0l-3.52-2.03a2.38 2.38 0 0 1-.84-3.5zm7.33-4.88a2.38 2.38 0 0 1 1.9-.34 2.39 2.39 0 0 1 1.6 1.25l-.12.07-3.5 2.02a.79.79 0 0 0-.4.68v4.88l-1.45-.84a1.95 1.95 0 0 1-.98-1.68v-4.06a2.4 2.4 0 0 1 .95-1.98zm6.67 1.57c.4.32.7.75.87 1.24a2.38 2.38 0 0 1-.16 1.86l-.1-.05-3.5-2.03a.8.8 0 0 0-.73 0l-4.22 2.44V9.82c0-.7.38-1.33.98-1.68l3.52-2.03a2.39 2.39 0 0 1 3.34.89zm1.79 6.1a2.39 2.39 0 0 1-.6 1.9c-.33.36-.78.6-1.27.66l-.02-.13V11.2a.79.79 0 0 0-.37-.64L14.7 8.12l1.45-.84a1.95 1.95 0 0 1 1.68 0l3.52 2.03a2.38 2.38 0 0 1 .84 3.5zM12 13.9a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8z" />
+                    </svg>
+                  </div><span>ChatGPT Readiness</span>
+                </div>
+                <div class="vis-legend-item">
+                  <div class="vis-icon" style="background:#3594ee">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width: 18px; height: 18px; color: #fff;">
+                      <path
+                        d="M12 2c0 5.523 4.477 10 10 10-5.523 0-10 4.477-10 10-0-5.523-4.477-10-10-10 4.477 0 10-4.477 10-10z" />
+                    </svg>
+                  </div><span>Gemini Readiness</span>
+                </div>
+                <div class="vis-legend-item">
+                  <div class="vis-icon" style="background:#6645c7">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                      stroke-linejoin="round" style="width: 16px; height: 16px; color: #fff; fill: none;">
+                      <path
+                        d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9zm0 5a4 4 0 1 1-4 4 4 4 0 0 1 4-4zm0 8a4 4 0 1 1 4-4 4 4 0 0 1-4 4z" />
+                    </svg>
+                  </div><span>Perplexity Readiness</span>
+                </div>
+                <div class="vis-legend-item">
+                  <div class="vis-icon" style="background:#ff9f4e">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" style="width: 16px; height: 16px; color: #fff; fill: none;">
+                      <circle cx="12" cy="12" r="3" />
+                      <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                    </svg>
+                  </div><span>AI Overview Readiness</span>
+                </div>
               </div>
-              <div class="vis-legend-item">
-                <div class="vis-icon" style="background:#3594ee"><i data-lucide="sparkles"></i></div><span>Gemini
-                  Readiness</span>
-              </div>
-              <div class="vis-legend-item">
-                <div class="vis-icon" style="background:#6645c7"><i data-lucide="search"></i></div><span>Perplexity
-                  Readiness</span>
-              </div>
-              <div class="vis-legend-item">
-                <div class="vis-icon" style="background:#ff9f4e"><i data-lucide="compass"></i></div><span>AI Overview
-                  Readiness</span>
+
+              <div class="vis-gain-left">
+                <span class="vis-gain-label">Total Potential Gain</span>
+                <div class="vis-gain-row">
+                  <span class="vis-gain-val">+30%</span>
+                  <span class="vis-arrow-btn"><i data-lucide="chevron-right"></i></span>
+                </div>
               </div>
             </div>
             <div class="vis-bars">
               <div class="vis-bar-group">
-                <div class="vis-bar-tooltip bg-orange">58%</div>
-                <div class="vis-bar-track track-orange">
-                  <div class="vis-bar-fill fill-orange" style="height:58%;"></div>
-                </div>
+                <div class="vis-bar-tooltip bg-orange">55%</div>
+                <div class="vis-bar-column bg-light-orange" style="height: 121px;"></div>
               </div>
               <div class="vis-bar-group">
                 <div class="vis-bar-tooltip bg-purple">71%</div>
-                <div class="vis-bar-track track-purple">
-                  <div class="vis-bar-fill fill-purple" style="height:71%;"></div>
-                </div>
+                <div class="vis-bar-column bg-light-purple" style="height: 156px;"></div>
               </div>
               <div class="vis-bar-group">
                 <div class="vis-bar-tooltip bg-blue">81%</div>
-                <div class="vis-bar-track track-blue">
-                  <div class="vis-bar-fill fill-blue" style="height:81%;"></div>
-                </div>
+                <div class="vis-bar-column bg-light-blue" style="height: 178px;"></div>
               </div>
               <div class="vis-bar-group">
                 <div class="vis-bar-tooltip bg-gray">78%</div>
-                <div class="vis-bar-track track-gray">
-                  <div class="vis-bar-fill fill-gray" style="height:78%;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="vis-footer">
-            <div class="vis-gain-left">
-              <span class="vis-gain-label">Total Potential Gain</span>
-              <div class="vis-gain-row">
-                <span class="vis-gain-val">+30%</span>
-                <span class="vis-arrow-btn"><i data-lucide="chevron-right"></i></span>
+                <div class="vis-bar-column bg-light-gray" style="height: 172px;"></div>
               </div>
             </div>
           </div>

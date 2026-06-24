@@ -141,8 +141,8 @@ body {
 .btn-filter { height: 32px; padding: 0 14px; border-radius: 10px; background: #F4F4F4; color: var(--text2); font-size: 14px; }
 .btn-filter i { width: 14px; height: 14px; }
 
-.btn-outline-full { width: 100%; height: 62px; border-radius: var(--radius-sm); border: 1px solid var(--text2); background: none; color: var(--text2); font-size: 18px; font-weight: 500; opacity: 0.6; }
-.btn-outline-full:hover { opacity: 1; border-color: var(--blue); color: var(--blue); }
+.btn-outline-full { width: 100%; height: 50px; border-radius: 100px; border: 1px solid #e0e0e0; background: none; color: #616161; font-size: 16px; font-weight: 600; transition: all 0.2s; }
+.btn-outline-full:hover { border-color: var(--blue); color: var(--blue); }
 
 .btn-blue-full { width: 100%; height: 62px; border-radius: var(--radius-sm); background: var(--blue); color: #fff; font-size: 18px; font-weight: 500; }
 .btn-blue-full:hover { opacity: 0.9; }
@@ -568,14 +568,31 @@ body {
 .issues-donut-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); display: flex; flex-direction: column; align-items: center; }
 .idc-num { font-size: 32px; font-weight: 700; line-height: 1; }
 .idc-label { font-size: 10px; color: var(--text2); }
-.issues-legend { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding: 0 10px; }
+.issues-legend {
+  align-self: flex-end;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+  margin-right: 16px;
+  margin-bottom: 24px;
+}
+.issues-overview-card .card-header {
+  justify-content: flex-start;
+  gap: 8px;
+}
 .il-row-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
   font-size: 14px;
   color: var(--text);
-  padding: 2px 0;
+}
+.il-left-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .il-checkbox {
   width: 20px;
@@ -619,11 +636,11 @@ body {
 }
 .matrix {
   display: grid;
-  grid-template-columns: 197.5px 197.5px;
-  grid-template-rows: 197.5px 197.5px;
-  gap: 8px;
+  grid-template-columns: 170px 170px;
+  grid-template-rows: 170px 170px;
+  gap: 12px;
   position: absolute;
-  left: 24px;
+  left: 80px;
   top: 97px;
 }
 .matrix-cell {
@@ -642,16 +659,13 @@ body {
 .venn-circle {
   position: absolute;
   border-radius: 50%;
-  background: rgba(43, 179, 255, 0.25); /* #2BB3FF with opacity */
-  border: 3px solid #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 500;
-  color: #ffffff;
   pointer-events: none;
 }
+.qw-bubble { background: rgba(79, 206, 98, 0.35); border: 2px solid #ffffff; }
+.bw-bubble { background: rgba(255, 99, 112, 0.35); border: 2px solid #ffffff; }
+.li-bubble { background: rgba(53, 148, 238, 0.35); border: 2px solid #ffffff; }
+.nw-bubble { background: rgba(255, 159, 78, 0.35); border: 2px solid #ffffff; }
+.opportunity-header { justify-content: flex-start !important; gap: 8px; }
 .axis-label {
   position: absolute;
   font-size: 14px;
@@ -662,20 +676,28 @@ body {
 
 /* ===== AI VISIBILITY SNAPSHOT ===== */
 .ai-vis-card { gap: 16px; }
+.ai-vis-header { justify-content: flex-start !important; gap: 8px; }
 .vis-content-layout {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 20px;
   flex-grow: 1;
 }
-.vis-legend-list { display: flex; flex-direction: column; gap: 12px; flex: 1.2; }
+.vis-left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 310px;
+  flex: 1.2;
+}
+.vis-legend-list { display: flex; flex-direction: column; gap: 12px; }
 .vis-legend-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text2); font-weight: 500; }
 .vis-icon { width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.vis-icon i { width: 16px; height: 16px; color: #fff; }
+.vis-icon svg { display: block; }
 
-.vis-bars { display: flex; align-items: flex-end; height: 200px; gap: 12px; flex: 1; justify-content: flex-end; }
-.vis-bar-group { display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; }
+.vis-bars { display: flex; align-items: flex-end; height: 310px; gap: 16px; flex: 1; justify-content: flex-end; }
+.vis-bar-group { display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; justify-content: flex-end; height: 100%; }
 .vis-bar-tooltip {
   padding: 4px 8px;
   border-radius: 8px;
@@ -684,35 +706,23 @@ body {
   font-weight: 700;
   text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  line-height: 1;
+  min-width: 36px;
 }
 .vis-bar-tooltip.bg-orange { background: #ff9f4e; }
 .vis-bar-tooltip.bg-purple { background: #6645c7; }
 .vis-bar-tooltip.bg-blue { background: #3594ee; }
 .vis-bar-tooltip.bg-gray { background: #2B2B2B; }
 
-.vis-bar-track {
-  width: 28px;
-  height: 140px;
-  border-radius: 8px;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-}
-.vis-bar-track.track-orange { background: rgba(255, 159, 78, 0.12); }
-.vis-bar-track.track-purple { background: rgba(102, 69, 199, 0.12); }
-.vis-bar-track.track-blue { background: rgba(53, 148, 238, 0.12); }
-.vis-bar-track.track-gray { background: rgba(43, 43, 43, 0.12); }
-
-.vis-bar-fill {
-  width: 100%;
-  border-radius: 8px;
+.vis-bar-column {
+  width: 32px;
+  border-radius: 12px;
   transition: height 0.5s ease;
 }
-.vis-bar-fill.fill-orange { background: #ff9f4e; }
-.vis-bar-fill.fill-purple { background: #6645c7; }
-.vis-bar-fill.fill-blue { background: #3594ee; }
-.vis-bar-fill.fill-gray { background: #2B2B2B; }
+.bg-light-orange { background: rgba(255, 159, 78, 0.2); }
+.bg-light-purple { background: rgba(102, 69, 199, 0.2); }
+.bg-light-blue { background: rgba(53, 148, 238, 0.2); }
+.bg-light-gray { background: rgba(43, 43, 43, 0.2); }
 
 .vis-footer { display: flex; flex-direction: column; gap: 4px; padding-top: 12px; border-top: 1px dashed rgba(0,0,0,0.06); }
 .vis-gain-left { display: flex; flex-direction: column; gap: 4px; }

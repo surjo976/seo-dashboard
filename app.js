@@ -184,23 +184,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const radius = 75;
     const lineWidth = 22;
 
-    // Draw the 5 specific segments matching the design
+    // Clear canvas first
+    ctx.clearRect(0, 0, size, size);
+
+    // Shift vector for blue (bisector of -90 to 0 is -45 degrees)
+    const shiftDist = 6;
+    const dx = shiftDist * Math.cos(-Math.PI / 4);
+    const dy = shiftDist * Math.sin(-Math.PI / 4);
+
     const segments = [
-      { start: -90, end: 0, color: "#3594ee" },    // Blue segment
-      { start: 0, end: 120, color: "#2bb755" },    // Green segment
-      { start: 120, end: 210, color: "#ff9f4e" },  // Orange segment
-      { start: 210, end: 255, color: "#a37a4c" },  // Brown segment
-      { start: 255, end: 270, color: "#ff4b55" }   // Red segment
+      { start: -88, end: -2, color: "#3594ee", explode: true },   // Blue (exploded)
+      { start: 2, end: 118, color: "#2bb755", explode: false },   // Green
+      { start: 122, end: 208, color: "#ff9f4e", explode: false }, // Orange
+      { start: 212, end: 253, color: "#a37a4c", explode: false }, // Brown
+      { start: 257, end: 268, color: "#ff4b55", explode: false }  // Red
     ];
 
     segments.forEach(seg => {
       ctx.beginPath();
-      ctx.arc(cx, cy, radius, (seg.start * Math.PI) / 180, (seg.end * Math.PI) / 180);
+      const currentCx = seg.explode ? cx + dx : cx;
+      const currentCy = seg.explode ? cy + dy : cy;
+      ctx.arc(currentCx, currentCy, radius, (seg.start * Math.PI) / 180, (seg.end * Math.PI) / 180);
       ctx.strokeStyle = seg.color;
       ctx.lineWidth = lineWidth;
       ctx.lineCap = "butt";
       ctx.stroke();
     });
+
+    // Draw the inner white circle outline centered at (cx, cy)
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius - lineWidth / 2, 0, Math.PI * 2);
+    ctx.strokeStyle = "#e5e5e5";
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
   }
 
   // ==============================
