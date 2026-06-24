@@ -205,67 +205,183 @@
       <!-- Row 2: Organic Growth + AI Insight -->
       <div class="row row-two">
         <div class="card organic-card">
-          <div class="card-header">
-            <h3>POTENTIAL ORGANIC GROWTH</h3><span class="help-dot">?</span>
+          <div class="organic-header">
+            <i data-lucide="trending-up" class="organic-icon"></i>
+            <h3>POTENTIAL ORGANIC GROWTH</h3>
           </div>
-          <div class="stats-row">
-            <div class="stat"><span class="stat-label">Current Estimated Traffic</span>
-              <div class="stat-val"><span class="stat-num">18,400</span><span class="stat-unit">/month</span></div>
-            </div>
-            <div class="stat"><span class="stat-label">Potential Traffic</span>
-              <div class="stat-val green"><span class="stat-num">24,300</span><span class="stat-unit">/month</span>
+          <div class="organic-layout">
+            <div class="organic-col">
+              <span class="organic-label">Current Estimated Traffic</span>
+              <div class="organic-val">
+                <span class="organic-num">18,400</span><span class="organic-unit">/month</span>
               </div>
+              <div class="organic-bar blue-bar"></div>
             </div>
-            <div class="stat"><span class="stat-label">Growth Opportunity</span>
-              <div class="stat-val green"><span class="stat-num">32%</span></div>
+
+            <div class="organic-arrow-wrap">
+              <svg class="organic-arrow" viewBox="0 0 50 30" fill="none" stroke="#3594ee" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 5,10 Q 25,28 45,12" />
+                <path d="M 37,12 H 45 V 20" />
+              </svg>
             </div>
-          </div>
-          <div class="growth-bar">
-            <div class="growth-bar-fill potential"></div>
-            <div class="growth-bar-fill current"></div>
+
+            <div class="organic-col">
+              <span class="organic-label">Potential Traffic</span>
+              <div class="organic-val green">
+                <span class="organic-num">24,300</span><span class="organic-unit">/month</span>
+              </div>
+              <div class="organic-bar green-bar"></div>
+            </div>
+
+            <div class="organic-arrow-wrap">
+              <svg class="organic-arrow" viewBox="0 0 50 30" fill="none" stroke="#2bb755" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 5,25 Q 25,12 45,5" />
+                <path d="M 37,5 H 45 V 13" />
+              </svg>
+            </div>
+
+            <div class="organic-col">
+              <span class="organic-label">Growth Opportunity</span>
+              <div class="organic-val green">
+                <span class="organic-num">32%</span>
+              </div>
+              <div class="organic-bar-spacer"></div>
+            </div>
           </div>
         </div>
 
         <div class="card ai-insight-card">
-          <div class="insight-badge"><i data-lucide="sparkles"></i> AI INSIGHT</div>
-          <p class="insight-text">Your website has great technical health! Focus on content optimization and internal
-            linking to unlock more traffic.</p>
+          <div class="ai-insight-content">
+            <div class="ai-insight-header">
+              <i data-lucide="sparkles" class="ai-insight-icon"></i>
+              <h2 class="ai-insight-title">AI<br>INSIGHT</h2>
+            </div>
+            <p class="insight-text">Your website has great technical health! Focus on content optimization and internal
+              linking to unlock more traffic.</p>
+          </div>
+          <div class="ai-insight-illustration">
+            <div class="ellipse-1"></div>
+            <div class="ellipse-2"></div>
+            <img src="Image.png" alt="AI Robot Assistant" class="robot-img">
+          </div>
         </div>
       </div>
 
       <!-- AI Priority Board -->
       <section class="priority-section">
         <div class="priority-header">
-          <div class="priority-header-left"><i data-lucide="list-todo" class="accent-icon"></i>
-            <h3>AI PRIORITY BOARD</h3><span class="header-desc">These are the issues that matter most & have the biggest
-              impact.</span>
+          <div class="priority-header-left">
+            <i data-lucide="list-todo" class="accent-icon"></i>
+            <h3>AI PRIORITY BOARD</h3>
+            <span class="header-desc">These are the issues that matter most & have the biggest impact.</span>
           </div>
           <a href="#" class="view-all">View All Priorities <i data-lucide="chevron-right"></i></a>
         </div>
         <div class="priority-grid">
+          <!-- Card 1: Red -->
           <div class="priority-card pc-red">
-            <div class="pc-num red">1</div>
-            <h4>Improve Internal Linking</h4><span class="pc-pages">1 page</span>
-            <div class="pc-gain"><span>Potential Gain</span><span class="gain-val red">+14%</span></div><button
-              class="btn btn-outline-sm">Fix Issue</button>
+            <div class="pc-header">
+              <div class="pc-circle circle-red">1</div>
+              <h4>Improve Internal Linking</h4>
+            </div>
+            <div class="pc-stat-row">
+              <span class="pc-stat-num text-red">148</span>
+              <span class="pc-stat-label">Pages Affected</span>
+            </div>
+            <div class="pc-details">
+              <div class="pc-detail-row">
+                <span class="pc-detail-label">Potential Gain</span>
+                <div class="pc-detail-val-group">
+                  <span class="pc-gain-val text-red">+14%</span>
+                  <span class="pc-badge badge-red">Critical</span>
+                </div>
+              </div>
+              <div class="pc-detail-row">
+                <span class="pc-detail-label">Fix Time</span>
+                <span class="pc-time-val">- 2 Hours</span>
+              </div>
+            </div>
+            <button class="pc-btn btn-red">View Details</button>
           </div>
+
+          <!-- Card 2: Orange -->
           <div class="priority-card pc-orange">
-            <div class="pc-num orange">2</div>
-            <h4>Fix Keyword Cannibalization</h4><span class="pc-pages">2 pages</span>
-            <div class="pc-gain"><span>Potential Gain</span><span class="gain-val orange">+9%</span></div><button
-              class="btn btn-outline-sm">Fix Issue</button>
+            <div class="pc-header">
+              <div class="pc-circle circle-orange">2</div>
+              <h4>Fix Keyword Cannibalization</h4>
+            </div>
+            <div class="pc-stat-row">
+              <span class="pc-stat-num text-orange">7</span>
+              <span class="pc-stat-label">Pages Affected</span>
+            </div>
+            <div class="pc-details">
+              <div class="pc-detail-row">
+                <span class="pc-detail-label">Potential Gain</span>
+                <div class="pc-detail-val-group">
+                  <span class="pc-gain-val text-orange">+9%</span>
+                  <span class="pc-badge badge-orange">High</span>
+                </div>
+              </div>
+              <div class="pc-detail-row">
+                <span class="pc-detail-label">Fix Time</span>
+                <span class="pc-time-val">- 45 Min</span>
+              </div>
+            </div>
+            <button class="pc-btn btn-orange">View Details</button>
           </div>
-          <div class="priority-card pc-yellow">
-            <div class="pc-num yellow">3</div>
-            <h4>Improve Title Tags</h4><span class="pc-pages">3 pages</span>
-            <div class="pc-gain"><span>Potential Gain</span><span class="gain-val yellow">+4%</span></div><button
-              class="btn btn-outline-sm">Fix Issue</button>
+
+          <!-- Card 3: Brown -->
+          <div class="priority-card pc-brown">
+            <div class="pc-header">
+              <div class="pc-circle circle-brown">3</div>
+              <h4>Improve Title Tags</h4>
+            </div>
+            <div class="pc-stat-row">
+              <span class="pc-stat-num text-brown">8</span>
+              <span class="pc-stat-label">Pages Affected</span>
+            </div>
+            <div class="pc-details">
+              <div class="pc-detail-row">
+                <span class="pc-detail-label">Potential Gain</span>
+                <div class="pc-detail-val-group">
+                  <span class="pc-gain-val text-brown">+4%</span>
+                  <span class="pc-badge badge-brown">Medium</span>
+                </div>
+              </div>
+              <div class="pc-detail-row">
+                <span class="pc-detail-label">Fix Time</span>
+                <span class="pc-time-val">- 15 Min</span>
+              </div>
+            </div>
+            <button class="pc-btn btn-brown">View Details</button>
           </div>
+
+          <!-- Card 4: Green -->
           <div class="priority-card pc-green">
-            <div class="pc-num green">4</div>
-            <h4>Expand Thin Content</h4><span class="pc-pages">4 pages</span>
-            <div class="pc-gain"><span>Potential Gain</span><span class="gain-val green">+3%</span></div><button
-              class="btn btn-outline-sm">Fix Issue</button>
+            <div class="pc-header">
+              <div class="pc-circle circle-green">4</div>
+              <h4>Expand Thin Content</h4>
+            </div>
+            <div class="pc-stat-row">
+              <span class="pc-stat-num text-green">13</span>
+              <span class="pc-stat-label">Pages Affected</span>
+            </div>
+            <div class="pc-details">
+              <div class="pc-detail-row">
+                <span class="pc-detail-label">Potential Gain</span>
+                <div class="pc-detail-val-group">
+                  <span class="pc-gain-val text-green">+13%</span>
+                  <span class="pc-badge badge-green">Medium</span>
+                </div>
+              </div>
+              <div class="pc-detail-row">
+                <span class="pc-detail-label">Fix Time</span>
+                <span class="pc-time-val">- 1 Hours</span>
+              </div>
+            </div>
+            <button class="pc-btn btn-green">View Details</button>
           </div>
         </div>
       </section>
@@ -282,11 +398,46 @@
             </div>
           </div>
           <div class="issues-legend">
-            <div class="il-row"><span>Technical SEO</span><strong>98</strong></div>
-            <div class="il-row"><span>Structure</span><strong>67</strong></div>
-            <div class="il-row"><span>Content</span><strong>102</strong></div>
-            <div class="il-row"><span>Link</span><strong>58</strong></div>
-            <div class="il-row"><span>AI Visibility</span><strong>20</strong></div>
+            <div class="il-row-item">
+              <span class="il-checkbox bg-red">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" class="check-icon">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span class="il-label">Critical</span>
+              <strong class="il-val">12</strong>
+            </div>
+            <div class="il-row-item">
+              <span class="il-checkbox bg-brown">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" class="check-icon">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span class="il-label">Warnings</span>
+              <strong class="il-val">45</strong>
+            </div>
+            <div class="il-row-item">
+              <span class="il-checkbox bg-orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" class="check-icon">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span class="il-label">Notice</span>
+              <strong class="il-val">132</strong>
+            </div>
+            <div class="il-row-item">
+              <span class="il-checkbox bg-green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" class="check-icon">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span class="il-label">Good</span>
+              <strong class="il-val">156</strong>
+            </div>
           </div>
         </div>
 
@@ -326,7 +477,8 @@
             <div class="axis-label axis-high-x" style="left: 424.7px; top: 486px;">High</div>
 
             <div class="axis-label axis-high-y" style="left: 28.2px; top: 91.5px;">High</div>
-            <div class="axis-label axis-impact" style="left: 24.2px; top: 283.5px;">Impact</div>
+            <div class="axis-label axis-effort-y" style="left: 24.2px; top: 283.5px; transform: rotate(-90deg);">Effort
+            </div>
             <div class="axis-label axis-low-y" style="left: 26.7px; top: 456px;">Low</div>
           </div>
         </div>
@@ -335,53 +487,60 @@
           <div class="card-header">
             <h3>AI VISIBILITY SNAPSHOT</h3><span class="help-dot">?</span>
           </div>
-          <div class="vis-legend-list">
-            <div class="vis-legend-item">
-              <div class="vis-icon" style="background:#3594EE"><i data-lucide="message-circle"></i></div><span>ChatGPT
-                Readiness</span>
-            </div>
-            <div class="vis-legend-item">
-              <div class="vis-icon" style="background:#3594EE"><i data-lucide="sparkles"></i></div><span>Gemini
-                Readiness</span>
-            </div>
-            <div class="vis-legend-item">
-              <div class="vis-icon" style="background:#6645C7"><i data-lucide="search"></i></div><span>Perplexity
-                Readiness</span>
-            </div>
-            <div class="vis-legend-item">
-              <div class="vis-icon" style="background:#FF9F4E"><i data-lucide="compass"></i></div><span>AI Overview
-                Readiness</span>
-            </div>
-          </div>
-          <div class="vis-bars">
-            <div class="vis-bar-group">
-              <div class="vis-bar-tooltip" style="background:#FF9F4E">55%</div>
-              <div class="vis-bar-track">
-                <div class="vis-bar-fill" style="height:55%;background:rgba(255,159,78,0.3)"></div>
+          <div class="vis-content-layout">
+            <div class="vis-legend-list">
+              <div class="vis-legend-item">
+                <div class="vis-icon" style="background:#1a1a1a"><i data-lucide="message-circle"></i></div><span>ChatGPT
+                  Readiness</span>
+              </div>
+              <div class="vis-legend-item">
+                <div class="vis-icon" style="background:#3594ee"><i data-lucide="sparkles"></i></div><span>Gemini
+                  Readiness</span>
+              </div>
+              <div class="vis-legend-item">
+                <div class="vis-icon" style="background:#6645c7"><i data-lucide="search"></i></div><span>Perplexity
+                  Readiness</span>
+              </div>
+              <div class="vis-legend-item">
+                <div class="vis-icon" style="background:#ff9f4e"><i data-lucide="compass"></i></div><span>AI Overview
+                  Readiness</span>
               </div>
             </div>
-            <div class="vis-bar-group">
-              <div class="vis-bar-tooltip" style="background:#6645C7">71%</div>
-              <div class="vis-bar-track">
-                <div class="vis-bar-fill" style="height:71%;background:rgba(102,69,199,0.3)"></div>
+            <div class="vis-bars">
+              <div class="vis-bar-group">
+                <div class="vis-bar-tooltip bg-orange">58%</div>
+                <div class="vis-bar-track track-orange">
+                  <div class="vis-bar-fill fill-orange" style="height:58%;"></div>
+                </div>
               </div>
-            </div>
-            <div class="vis-bar-group">
-              <div class="vis-bar-tooltip" style="background:#3594EE">81%</div>
-              <div class="vis-bar-track">
-                <div class="vis-bar-fill" style="height:81%;background:rgba(53,148,238,0.3)"></div>
+              <div class="vis-bar-group">
+                <div class="vis-bar-tooltip bg-purple">71%</div>
+                <div class="vis-bar-track track-purple">
+                  <div class="vis-bar-fill fill-purple" style="height:71%;"></div>
+                </div>
               </div>
-            </div>
-            <div class="vis-bar-group">
-              <div class="vis-bar-tooltip" style="background:#2B2B2B">78%</div>
-              <div class="vis-bar-track">
-                <div class="vis-bar-fill" style="height:78%;background:rgba(43,43,43,0.3)"></div>
+              <div class="vis-bar-group">
+                <div class="vis-bar-tooltip bg-blue">81%</div>
+                <div class="vis-bar-track track-blue">
+                  <div class="vis-bar-fill fill-blue" style="height:81%;"></div>
+                </div>
+              </div>
+              <div class="vis-bar-group">
+                <div class="vis-bar-tooltip bg-gray">78%</div>
+                <div class="vis-bar-track track-gray">
+                  <div class="vis-bar-fill fill-gray" style="height:78%;"></div>
+                </div>
               </div>
             </div>
           </div>
           <div class="vis-footer">
-            <div><span class="vis-gain-label">Total Potential Gain</span></div>
-            <div class="vis-gain-row"><span class="vis-gain-val">+30%</span><span class="help-dot sm">?</span></div>
+            <div class="vis-gain-left">
+              <span class="vis-gain-label">Total Potential Gain</span>
+              <div class="vis-gain-row">
+                <span class="vis-gain-val">+30%</span>
+                <span class="vis-arrow-btn"><i data-lucide="chevron-right"></i></span>
+              </div>
+            </div>
           </div>
           <button class="btn btn-outline-full">View Full Plan</button>
         </div>

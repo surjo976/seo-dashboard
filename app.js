@@ -184,26 +184,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const radius = 75;
     const lineWidth = 22;
 
-    const total = 345;
+    // Draw the 5 specific segments matching the design
     const segments = [
-      { value: 98, color: "#2bb3ff" },   // Technical SEO - Blue
-      { value: 67, color: "#59dd5a" },   // Structure - Green
-      { value: 102, color: "#ff622d" },  // Content - Orange
-      { value: 58, color: "#f67cf2" },   // Link - Pink
-      { value: 20, color: "#fdc23c" }    // AI Visibility - Yellow
+      { start: -90, end: 0, color: "#3594ee" },    // Blue segment
+      { start: 0, end: 120, color: "#2bb755" },    // Green segment
+      { start: 120, end: 210, color: "#ff9f4e" },  // Orange segment
+      { start: 210, end: 255, color: "#a37a4c" },  // Brown segment
+      { start: 255, end: 270, color: "#ff4b55" }   // Red segment
     ];
 
-    let startAngle = -Math.PI / 2;
-
     segments.forEach(seg => {
-      const sweepAngle = (seg.value / total) * Math.PI * 2;
       ctx.beginPath();
-      ctx.arc(cx, cy, radius, startAngle, startAngle + sweepAngle);
+      ctx.arc(cx, cy, radius, (seg.start * Math.PI) / 180, (seg.end * Math.PI) / 180);
       ctx.strokeStyle = seg.color;
       ctx.lineWidth = lineWidth;
       ctx.lineCap = "butt";
       ctx.stroke();
-      startAngle += sweepAngle;
     });
   }
 
