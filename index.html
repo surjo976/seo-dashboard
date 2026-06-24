@@ -592,7 +592,6 @@
               <table>
                 <thead>
                   <tr>
-                    <th></th>
                     <th>Issues</th>
                     <th>Affected Pages</th>
                     <th>Impact</th>
@@ -603,91 +602,235 @@
                 </thead>
                 <tbody id="tableBody">
                   <tr data-cat="technical">
-                    <td><span class="row-icon ri-red"></span></td>
-                    <td>5 pages could not be checked due to technical problems.</td>
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-red" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF6370; fill: rgba(255, 99, 112, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>5 pages could not be checked due to technical problems.</span>
+                      </div>
+                    </td>
                     <td>5</td>
-                    <td><span class="badge b-red">High</span></td>
-                    <td class="td-red">High</td>
-                    <td><svg viewBox="0 0 80 30" class="sparkline">
-                        <path d="M0,25 Q20,5 40,15 T80,5" fill="none" stroke="#FF6370" stroke-width="2.5" />
-                      </svg></td>
+                    <td><span class="text-red" style="color: #FF6370; font-weight: 500;">Heigh</span></td>
+                    <td><span class="badge b-red"
+                        style="background: #FFECEE; color: #FF6370; font-weight: 500;">Critical</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF6370" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 99, 112, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
                     <td><button class="btn btn-view">View Page</button></td>
                   </tr>
                   <tr data-cat="link">
-                    <td><span class="row-icon ri-orange"></span></td>
-                    <td>148 pages are internally linked with anchor texts that need improvement.</td>
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-red" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF6370; fill: rgba(255, 99, 112, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>148 pages are internally linked with anchor texts that need improvement.</span>
+                      </div>
+                    </td>
                     <td>148</td>
-                    <td><span class="badge b-red">High</span></td>
-                    <td class="td-red">High</td>
-                    <td><svg viewBox="0 0 80 30" class="sparkline">
-                        <path d="M0,5 Q20,25 40,15 T80,25" fill="none" stroke="#FF6370" stroke-width="2.5" />
-                      </svg></td>
+                    <td><span class="text-red" style="color: #FF6370; font-weight: 500;">Heigh</span></td>
+                    <td><span class="badge b-red"
+                        style="background: #FFECEE; color: #FF6370; font-weight: 500;">Critical</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF6370" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 99, 112, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
                     <td><button class="btn btn-view">View Page</button></td>
                   </tr>
                   <tr data-cat="link">
-                    <td><span class="row-icon ri-brown"></span></td>
-                    <td>155 problems with external links were found.</td>
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-brown" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #C27733; fill: rgba(194, 119, 51, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>155 problems with external links were found.</span>
+                      </div>
+                    </td>
                     <td>155</td>
-                    <td><span class="badge b-orange">High</span></td>
-                    <td class="td-blue">High</td>
-                    <td><svg viewBox="0 0 80 30" class="sparkline">
-                        <path d="M0,15 Q20,5 40,20 T80,10" fill="none" stroke="#C27733" stroke-width="2.5" />
-                      </svg></td>
+                    <td><span class="text-blue" style="color: #3594ee; font-weight: 500;">Heigh</span></td>
+                    <td><span class="badge b-brown"
+                        style="background: #FFF0E4; color: #C27733; font-weight: 500;">Heigh</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#C27733" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(194, 119, 51, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
                     <td><button class="btn btn-view">View Page</button></td>
                   </tr>
                   <tr data-cat="content">
-                    <td><span class="row-icon ri-orange"></span></td>
-                    <td>On 17 pages, keywords from the H1 heading were not found in the page content.</td>
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>On 17 pages, keywords from the H1 heading were not found in the page content.</span>
+                      </div>
+                    </td>
                     <td>17</td>
-                    <td><span class="badge b-orange">Medium</span></td>
-                    <td class="td-orange">Medium</td>
-                    <td><svg viewBox="0 0 80 30" class="sparkline">
-                        <path d="M0,20 Q20,10 40,18 T80,8" fill="none" stroke="#FF9F4E" stroke-width="2.5" />
-                      </svg></td>
+                    <td><span class="text-orange" style="color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td><span class="badge b-orange"
+                        style="background: #FFEADA; color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF9F4E" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 159, 78, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
                     <td><button class="btn btn-view">View Page</button></td>
                   </tr>
                   <tr data-cat="content">
-                    <td><span class="row-icon ri-orange"></span></td>
-                    <td>13 pages contain less than 500 words of text.</td>
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>13 pages contain less than 500 words of text.</span>
+                      </div>
+                    </td>
                     <td>13</td>
-                    <td><span class="badge b-orange">Medium</span></td>
-                    <td class="td-orange">Medium</td>
-                    <td><svg viewBox="0 0 80 30" class="sparkline">
-                        <path d="M0,10 Q20,20 40,12 T80,22" fill="none" stroke="#FF9F4E" stroke-width="2.5" />
-                      </svg></td>
+                    <td><span class="text-orange" style="color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td><span class="badge b-orange"
+                        style="background: #FFEADA; color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF9F4E" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 159, 78, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
                     <td><button class="btn btn-view">View Page</button></td>
                   </tr>
                   <tr data-cat="content">
-                    <td><span class="row-icon ri-orange"></span></td>
-                    <td>7 pages are competing with each other due to their keyword optimization.</td>
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-red" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF6370; fill: rgba(255, 99, 112, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>7 pages are competing with other due to their keyword optimization.</span>
+                      </div>
+                    </td>
                     <td>7</td>
-                    <td><span class="badge b-red-fill">High</span></td>
-                    <td class="td-red">High</td>
-                    <td><svg viewBox="0 0 80 30" class="sparkline">
-                        <path d="M0,25 Q20,5 40,15 T80,2" fill="none" stroke="#FF6370" stroke-width="2.5" />
-                      </svg></td>
+                    <td><span class="text-red" style="color: #FF6370; font-weight: 500;">Heigh</span></td>
+                    <td><span class="badge b-red"
+                        style="background: #FFECEE; color: #FF6370; font-weight: 500;">Heigh</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF6370" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 99, 112, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
                     <td><button class="btn btn-view">View Page</button></td>
                   </tr>
                   <tr data-cat="content">
-                    <td><span class="row-icon ri-orange"></span></td>
-                    <td>4 pages compete with each other due to identical anchor texts.</td>
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>4 pages complete with each other due to identical anchor texts.</span>
+                      </div>
+                    </td>
                     <td>4</td>
-                    <td><span class="badge b-orange">Medium</span></td>
-                    <td class="td-orange">Medium</td>
-                    <td><svg viewBox="0 0 80 30" class="sparkline">
-                        <path d="M0,15 Q20,22 40,10 T80,18" fill="none" stroke="#FF9F4E" stroke-width="2.5" />
-                      </svg></td>
+                    <td><span class="text-orange" style="color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td><span class="badge b-orange"
+                        style="background: #FFEADA; color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF9F4E" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 159, 78, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
                     <td><button class="btn btn-view">View Page</button></td>
                   </tr>
                   <tr data-cat="technical">
-                    <td><span class="row-icon ri-orange"></span></td>
-                    <td>8 pages have a title tag that needs improvement.</td>
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>8 pages have a little tag that needs improvement.</span>
+                      </div>
+                    </td>
                     <td>8</td>
-                    <td><span class="badge b-orange">Medium</span></td>
-                    <td class="td-orange">Medium</td>
-                    <td><svg viewBox="0 0 80 30" class="sparkline">
-                        <path d="M0,8 Q20,18 40,5 T80,20" fill="none" stroke="#FF9F4E" stroke-width="2.5" />
-                      </svg></td>
+                    <td><span class="text-orange" style="color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td><span class="badge b-orange"
+                        style="background: #FFEADA; color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF9F4E" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 159, 78, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
                     <td><button class="btn btn-view">View Page</button></td>
                   </tr>
                 </tbody>
@@ -700,7 +843,8 @@
                 <button class="pg-btn active">1</button>
                 <button class="pg-btn">2</button>
                 <button class="pg-btn">3</button>
-                <button class="pg-btn dots">...</button>
+                <button class="pg-btn dots">**</button>
+                <button class="pg-btn dots">***</button>
                 <button class="pg-btn">43</button>
                 <button class="pg-btn"><i data-lucide="chevron-right"></i></button>
               </div>
@@ -710,10 +854,22 @@
           <!-- Roadmap -->
           <div class="card roadmap-card">
             <div class="roadmap-inner">
-              <i data-lucide="compass" class="roadmap-icon"></i>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round"
+                style="width: 22px; height: 22px; color: #FFD23F; fill: rgba(255, 210, 63, 0.1); flex-shrink: 0;">
+                <path
+                  d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .6 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+                <path d="M9 18h6" />
+                <path d="M10 22h4" />
+              </svg>
               <span>Not sure where to start? Let ASEMFY AI create a custom roadmap for you.</span>
             </div>
-            <button class="btn btn-gen">Generate Roadmap</button>
+            <button class="btn btn-gen">Generate Roadmap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-left: 6px;">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg></button>
           </div>
         </div>
 
@@ -737,7 +893,7 @@
               </div>
               <div class="plan-item">
                 <div class="plan-badge green">3</div>
-                <div class="plan-info"><strong>Improve Title Tags</strong><span>Potential Gain: <span
+                <div class="plan-info"><strong>Improve Tittle Tags</strong><span>Potential Gain: <span
                       class="green-text">+4%</span></span></div>
               </div>
               <div class="plan-item">
@@ -759,13 +915,37 @@
             <h3 class="export-title">EXPORT & SHARE</h3>
             <div class="export-icons">
               <div class="export-item">
-                <div class="exp-icon red"><i data-lucide="file-text"></i></div><span>PDF Report</span>
+                <div class="exp-icon red">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" style="width: 24px; height: 24px;">
+                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <line x1="10" y1="9" x2="8" y2="9"></line>
+                  </svg>
+                </div>
+                <span>PDF Report</span>
               </div>
               <div class="export-item">
-                <div class="exp-icon blue"><i data-lucide="link"></i></div><span>Share Link</span>
+                <div class="exp-icon blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" style="width: 24px; height: 24px;">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                  </svg>
+                </div>
+                <span>Share Link</span>
               </div>
               <div class="export-item">
-                <div class="exp-icon purple"><i data-lucide="mail"></i></div><span>Schedule Email</span>
+                <div class="exp-icon purple">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" style="width: 24px; height: 24px;">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <span>Schedule Email</span>
               </div>
             </div>
           </div>
@@ -778,98 +958,9 @@
               <button class="btn btn-white-sm">Ask Now</button>
             </div>
             <div class="help-avatar-wrap">
-              <svg width="185" height="185" viewBox="0 0 185 185" xmlns="http://www.w3.org/2000/svg">
-                <g transform="translate(0.006046875118045136, -0.00012550497103802627)">
-                  <path
-                    d="M19.506 0.001c-10.716 0-19.506 8.789-19.506 19.535l0 17.579c0 10.746 8.789 19.506 19.506 19.506l19.535 0c24.061-27.303 12.61401-48.91199-1.37199-56.621l-18.16301 0.001z m184.95399 56.62l12.013 0 7.51502 2.677c0 0 5.065-1.97499 7.93499-3.827 7.521-2.717 12.92099-9.943 12.92099-18.357l0-17.578c0-10.746-8.75998-19.535-19.50598-19.535l-19.535 0c-15.09599 6.891-17.52002 44.765-1.34302 56.62z"
-                    fill="#9fd4feff" stroke="none" fill-rule="evenodd"
-                    transform="translate(50.971492187381955, 27.956790544033538)" />
-                  <path
-                    d="M0.00099 13.841c0 10.746 8.78901 19.506 19.50601 19.50599l19.53499 0c4.234-4.789 7.358-9.432 9.57801-13.84099l-29.114 0c-10.716 0-19.506-8.789-19.506-19.506l0.00099 13.841z m205.803 5.665l-10.396 0c1.78101 5.753 4.789 10.717 9.052 13.84099l20.87802 0c10.746 0 19.50598-8.789 19.50598-19.50599l0-13.841c0 10.717-8.75998 19.506-19.50598 19.506l-1.139 0-18.39502 0z"
-                    fill="#85beefff" stroke="none" fill-rule="evenodd"
-                    transform="translate(50.971492187381955, 36.36633644247104)" />
-                  <path
-                    d="M63.07298 10.688c-7.738 2.891-14.571 4.32199-21.375 4.32199-6.833 0-13.66599-1.43099-21.40399-4.32199-7.066-2.628-13.89899-6.278-20.29399-10.688l0 49.496 36.15001 29.814 11.06698 0 16.41001-13.52001 8.76001-7.21299 10.979-9.081 0-49.496c-6.365 4.409-13.19703 8.06-20.29303 10.688z"
-                    fill="#f5a96cff" stroke="none" fill-rule="evenodd"
-                    transform="translate(79.90117968738195, 66.45813331747104)" />
-                  <path
-                    d="M41.69798 15.011c-6.833 0-13.66599-1.43101-21.40399-4.322-7.066-2.628-13.89899-6.278-20.29399-10.68801l0 24.76201c8.585 9.607 41.98999 22.33899 63.53999 11.24199l0 29.23001 19.827-26.66101 0-38.57399c-6.366 4.409-13.19801 8.059-20.29401 10.688-7.738 2.893-14.571 4.323-21.375 4.323z"
-                    fill="#ea9a58ff" stroke="none" fill-rule="evenodd"
-                    transform="translate(79.90117968738195, 66.45740089559604)" />
-                  <path
-                    d="M136.0452 149.77098l18.30899-76.039-68.15299-73.73198c-12.352 4.643-25.492 10.57099-37.697 17.89999-20.469 12.323-38.311 28.675-45.289 49.7-2.044 6.103-3.154 12.615-3.154 19.535l0 53.146c-0.438 7.563 1.372 9.48999 8.789 9.48999l93.411 0 33.784 0z"
-                    fill="#375e7dff" stroke="none" fill-rule="evenodd"
-                    transform="translate(39.19608248889563, 83.47738227987338)" />
-                  <path
-                    d="M154.26501 87.136c0-44.94-47.04199-72.448-86.14099-87.136l-68.12402 73.73201 20.207 76.039 125.26901 0c7.446 0 9.22701-1.92702 8.789-9.49002l0-53.14499z"
-                    fill="#375e7dff" stroke="none" fill-rule="evenodd"
-                    transform="translate(94.96856249988195, 83.47705421590854)" />
-                  <path
-                    d="M61.75801 85.29599l-13.75299-76.039-17.11203-9.25699-17.13998 9.25699-13.75301 76.039 30.89299 0 30.86502 0z"
-                    fill="#eb5468ff" stroke="none" fill-rule="evenodd"
-                    transform="translate(83.80547656238195, 106.77405128622104)" />
-                  <path
-                    d="M19.38899 0l-17.14099 9.25699-2.248 12.52701 20.75002 0c0.72418-0.00008 1.42539 0.2542 1.9812 0.71844 0.55581 0.46424 0.93088 1.10895 1.05978 1.82156l11.04501 60.97199 15.418 0-13.75299-76.039-17.11203-9.25699z"
-                    fill="#e5384fff" stroke="none" fill-rule="evenodd"
-                    transform="translate(87.96270312488195, 106.77405128622104)" />
-                  <path
-                    d="M62.78101 17.521l-9.461-12.72602-21.93003-4.79498-21.26999 3.50699-10.11999 14.01401 14.25 30.36898 34.25201 0 14.279-30.36898z"
-                    fill="#eb5468ff" stroke="none" fill-rule="evenodd"
-                    transform="translate(83.62578906238195, 92.81482277059604)" />
-                  <path
-                    d="M31.38998 0l-21.26999 0-10.11999 17.521 6.89101 14.68798 11.446-6.39499 11.54498-6.43099c0.46088-0.25676 0.97984-0.39127 1.50741-0.39075 0.52758 0.00052 1.04622 0.13606 1.5066 0.39374l13.15301 7.362 9.81098 5.46099 6.92001-14.68798-7.59-13.49799-23.80002-4.02301z"
-                    fill="#e5384fff" stroke="none" transform="translate(83.62578906238195, 92.81482277059604)" />
-                  <path
-                    d="M68.15299 34.37l-41.69799-34.37c-8.94885 2.42023-17.77721 5.26579-26.455 8.52699l24.147 46.726c0.18985 0.36739 0.45152 0.69293 0.7695 0.95734 0.31798 0.26441 0.68579 0.4623 1.08165 0.58194 0.39586 0.11964 0.81172 0.15861 1.22292 0.11459 0.4112-0.04402 0.80937-0.17015 1.17093-0.37088l8.371-4.646 31.38998-17.51999z m68.12402-25.84301c-8.67649-3.26493-17.50504-6.11055-26.45502-8.52699l-41.669 34.37 31.39001 17.52099 8.36899 4.64499c0.36175 0.20068 0.76012 0.32671 1.17148 0.37061 0.41135 0.04389 0.82733 0.00475 1.22329-0.11509 0.39596-0.11983 0.76386-0.31793 1.08185-0.58255 0.31799-0.26462 0.57961-0.59035 0.76938-0.95794l24.11902-46.72402z"
-                    fill="#eff6ffff" stroke="none" fill-rule="evenodd"
-                    transform="translate(70.34263934314367, 80.39597664022494)" />
-                  <path
-                    d="M46.194 8.52699c-8.67649-3.26493-17.50504-6.11055-26.45502-8.52699l-10.979 9.05199-8.75998 7.21301c8.264 2.628 17.25698 5.89899 26.36798 9.84099 2.92 1.256 5.811 2.59901 8.702 3.97101l11.12402-21.55001z"
-                    fill="#d9eeffff" stroke="none" fill-rule="evenodd"
-                    transform="translate(102.89216937244055, 80.39597664022494)" />
-                  <path
-                    d="M97.26599 87.136c0-44.94-47.04199-72.448-86.14099-87.136l-11.125 21.55c39.099 14.688 65.146 42.19498 65.146 87.13599l0 41.086 23.33099 0c7.446 0 9.22701-1.92699 8.789-9.48999l0-53.146z"
-                    fill="#2b4d66ff" stroke="none" fill-rule="evenodd"
-                    transform="translate(115.56328906238195, 83.47705421590854)" />
-                  <path
-                    d="M168.10498 67.04129l0-21.638c-11.651-26.573-134.14598-90.465-168.10498 6.16101l0 15.47699c0 30.165 28.35299 68.009 63.01399 80.85699 7.592 2.83201 14.30799 4.23401 21.053 4.23401 6.716 0 13.43201-1.402 21.05301-4.23401 34.63099-12.84799 62.98498-50.69299 62.98498-80.85699z"
-                    fill="#ffbc85ff" stroke="none" fill-rule="evenodd"
-                    transform="translate(64.59282244861242, 19.908095933437835)" />
-                  <path
-                    d="M168.12469 70.33529c0-61.702-99.33898-92.47899-130.43698-52.095-40.617 3.592-37.63901 57.643-37.63901 64.768l-0.02999 17.492 0 6.161c28.704-21.317 19.185-15.973 39.68299-28.646 31.303-19.331 57.904 22.485 107.544 22.485l20.87802 0 0.00097-30.165z"
-                    fill="#375e7dff" stroke="none" fill-rule="evenodd" transform="translate(64.58570422351477, 0)" />
-                  <path
-                    d="M54.45699 98.72961c16.118-11.155 29.37501-27.215 36.734-43.685 4.03-8.994 6.27799-18.134 6.27799-26.66001l0-21.638c-8.468-7.242-17.69499-10.512-26.83499-0.204l0 21.842c0 24.12-18.104 53.14601-43.099 70.40401-6.249 4.322-12.93601 7.884-19.88501 10.454-2.50581 0.94137-5.0593 1.75048-7.64998 2.42399 4.643 1.226 9.02299 1.81 13.43199 1.81 6.716 0 13.43201-1.40199 21.05301-4.23399 6.948-2.57 13.69399-6.191 19.97199-10.513z"
-                    fill="#f5a96cff" stroke="none" fill-rule="evenodd"
-                    transform="translate(90.11602343738195, 33.87585792684604)" />
-                  <path
-                    d="M72.79599 100.28063c1.956 0.14601 3.942 0.204 5.957 0.204l20.87799 0 0-30.165c0-47.306-58.37098-76.419-99.63098-69.23499 35.858 5.49 72.79599 31.625 72.79599 69.23499l0 29.961z"
-                    fill="#2b4d66ff" stroke="none" fill-rule="evenodd"
-                    transform="translate(89.33477343738195, 0.005618669033538026)" />
-                  <path
-                    d="M25.755 0l460.45801 0c14.16199 0 25.75501 11.59297 25.75501 25.75497l0 100.91901c0 14.162-11.59201 25.75501-25.75501 25.75501l-460.45801 0c-14.162 0-25.755-11.59301-25.755-25.75501l0-100.91901c0.001-14.162 11.593-25.75497 25.755-25.75497z"
-                    fill="#9fd4feff" stroke="none" fill-rule="evenodd" transform="translate(0, 129.92322120809604)" />
-                  <path
-                    d="M64.26999 126.67398l0-100.91901c0-14.162-11.592-25.75497-25.75501-25.75497l-38.51498 0c14.162 0 25.75497 11.59297 25.75497 25.75497l0 100.91901c0 14.162-11.59197 25.75501-25.75497 25.75501l38.51498 0c14.163 0 25.755-11.59301 25.75501-25.75501z"
-                    fill="#85beefff" stroke="none" fill-rule="evenodd"
-                    transform="translate(161.76552905261633, 129.92322120809604)" />
-                  <path
-                    d="M26.78084 70.29199c-9.511 0-18.793-3.98599-24.828-10.66299-1.35448-1.523-2.05227-3.51954-1.94139-5.55469 0.11088-2.03515 1.02146-3.94402 2.53339-5.31085 1.51193-1.36683 3.5027-2.08086 5.53869-1.98654 2.03599 0.09431 3.95223 0.98933 5.33131 2.49008 3.155 3.489 8.151 5.57199 13.365 5.57199 4.783 0 8.255-2.86299 8.727-5.51599 0.629-3.52-4.923-5.85702-6.639-6.49002-5.54253-2.06146-11.02168-4.28947-16.43-6.681-0.36736-0.16472-0.72142-0.35762-1.059-0.577-6.078-3.96-9.206-10.904-8.162-18.125 1.108-7.664 6.705-13.89098 14.607-16.25198 15.393-4.649 28.08 5.8 28.613 6.246 1.56915 1.31773 2.55057 3.20482 2.72836 5.24616 0.17778 2.04133-0.46263 4.06967-1.78036 5.63882-1.31081 1.56154-3.18578 2.54159-5.21616 2.72647-2.03038 0.18489-4.05153-0.44038-5.62284-1.73947-0.204-0.162-7.022-5.517-14.275-3.319-3.049 0.91-3.644 2.86402-3.76 3.66202-0.095 0.654-0.078 1.81901 0.945 2.699 2.028 0.889 8.175 3.54299 14.762 5.97699 14.341 5.285 17.929 15.70899 16.503 23.70099-1.886 10.579-11.955 18.25601-23.94 18.25601z m65.467 0c-5.237 0-10.045-1.38699-14.289-4.12399-8.049-5.106-12.155-12.08602-12.155-20.71402l0-37.728c-0.00013-1.01463 0.19961-2.01934 0.58784-2.95675 0.38822-0.93742 0.95731-1.78917 1.67476-2.50663 0.71745-0.71745 1.56921-1.28655 2.50663-1.67477 0.93742-0.38822 1.94213-0.58796 2.95677-0.58783 1.01463-0.00013 2.01935 0.19961 2.95677 0.58783 0.93742 0.38822 1.78918 0.95732 2.50663 1.67477 0.71745 0.71745 1.28654 1.5692 1.67476 2.50663 0.38822 0.93742 0.58798 1.94213 0.58784 2.95675l0 37.728c0 2.783 0.841 5.04002 5.027 7.69601 1.779 1.147 3.714 1.68899 5.964 1.689 2.094 0 3.913-0.406 5.564-1.241 5.375-2.712 6.099-5.653 6.099-8.173l0-37.69901c0-2.04906 0.81398-4.0142 2.26289-5.4631 1.44891-1.44891 3.41405-2.26288 5.46312-2.26288 2.04906 0 4.0142 0.81397 5.4631 2.26288 1.44891 1.44891 2.2629 3.41404 2.2629 5.4631l0 37.69901c0 6.663-2.53001 15.883-14.58301 21.96499-3.802 1.924-8.021 2.90201-12.531 2.90201z"
-                    fill="#2b4d66ff" stroke="none" transform="translate(9.726287261844845, 144.72034034872104)" />
-                  <g transform="translate(60.14451159656164, 144.71997413778354)">
-                    <path
-                      d="M310.91101 0.20499l-30.28101 0c-1.01461-0.00013-2.01937 0.19964-2.95678 0.58786-0.93741 0.38822-1.78919 0.95729-2.50662 1.67474-0.71744 0.71745-1.28653 1.56923-1.67475 2.50665-0.38821 0.93742-0.58798 1.94213-0.58786 2.95676-0.00012 1.01463 0.19965 2.01934 0.58786 2.95676 0.38822 0.93742 0.95731 1.7892 1.67475 2.50665 0.71743 0.71745 1.56921 1.28652 2.50662 1.67474 0.93741 0.38822 1.94217 0.58796 2.95678 0.58783l7.34101 0 0 47.11301c0 2.04906 0.81396 4.0142 2.26288 5.4631 1.44891 1.44891 3.41403 2.26291 5.4631 2.26291 2.04907 0 4.01419-0.814 5.46311-2.26291 1.44891-1.44891 2.2629-3.41404 2.2629-5.4631l0-47.112 7.487 0c1.01462 0.00013 2.01935-0.19961 2.95676-0.58783 0.93741-0.38822 1.78922-0.95732 2.50665-1.67477 0.71744-0.71745 1.28653-1.5692 1.67475-2.50663 0.38821-0.93742 0.58795-1.94213 0.58783-2.95675 0.00052-1.0147-0.19892-2.01956-0.58692-2.95716-0.388-0.93759-0.95697-1.78954-1.67438-2.50714-0.7174-0.7176-1.56918-1.28677-2.50668-1.67502-0.9375-0.38825-1.94229-0.58797-2.957-0.5877z m-53.828 21.772c0-12.118-10.22501-21.97699-22.79401-21.97699l-14.57001 0c-4.209 0-7.72598 3.51998-7.72598 7.72598l0 54.84003c-0.00014 1.01463 0.19962 2.01933 0.58783 2.95676 0.38822 0.93742 0.95729 1.78917 1.67474 2.50662 0.71746 0.71745 1.56923 1.28655 2.50666 1.67477 0.93742 0.38822 1.94212 0.58796 2.95675 0.58783 1.01464 0.00013 2.01937-0.19961 2.95679-0.58783 0.93742-0.38822 1.78917-0.95732 2.50662-1.67477 0.71746-0.71745 1.28653-1.5692 1.67475-2.50662 0.38821-0.93742 0.58799-1.94213 0.58786-2.95676l0-13.19302 16.113 18.29901c0.72455 0.82501 1.61701 1.48566 2.61765 1.93768 1.00064 0.45203 2.08632 0.68501 3.18433 0.68332 1.87936 0.00205 3.69453-0.68375 5.10302-1.92801 0.76157-0.6704 1.38361-1.48425 1.8306-2.39508 0.44699-0.91084 0.71017-1.9008 0.77454-2.91336 0.06436-1.01256-0.07138-2.02788-0.39948-2.98798-0.32809-0.96009-0.8421-1.84615-1.51266-2.60757l-13.06202-14.83499c8.736-3.079 14.98902-11.17302 14.98902-20.64902z m-22.793-6.52399c3.979 0 7.341 2.98799 7.341 6.52399 0 3.536-3.362 6.52402-7.341 6.52402-1.60001 0-4.20302 0.00899-6.76602 0.01999-0.011-2.488-0.02999-10.44999-0.04099-13.068l6.80701 0z m-148.89201-15.453l-15.27201 0c-4.21 0-7.726 3.51998-7.726 7.72598l0 54.84003c-0.00013 1.01463 0.19962 2.01933 0.58785 2.95676 0.38822 0.93742 0.95731 1.78917 1.67476 2.50662 0.71745 0.71745 1.56921 1.28655 2.50664 1.67477 0.93742 0.38822 1.94212 0.58796 2.95675 0.58783 1.01463 0.00013 2.01935-0.19961 2.95677-0.58783 0.93742-0.38822 1.78918-0.95732 2.50664-1.67477 0.71745-0.71745 1.28654-1.5692 1.67476-2.50662 0.38822-0.93742 0.58798-1.94213 0.58785-2.95676l0-16.138c2.824-0.012 5.772-0.022 7.54499-0.022 12.955 0 23.49399-10.408 23.49399-23.20301 0-12.795-10.53799-23.203-23.49299-23.203z m0 30.95401c-1.761 0-4.675 0.00997-7.48301 0.02197-0.018-2.909-0.03299-5.95398-0.03299-7.77298 0-1.544-0.00601-4.693-0.012-7.75l7.528 0c4.359 0 8.041 3.549 8.041 7.75 0 4.201-3.682 7.75101-8.041 7.75101z m-62.4-30.95401l-15.272 0c-4.21 0-7.726 3.51998-7.726 7.72598l0 54.84003c-0.00013 1.01463 0.19962 2.01933 0.58784 2.95676 0.38822 0.93742 0.95731 1.78917 1.67476 2.50662 0.71745 0.71745 1.5692 1.28655 2.50663 1.67477 0.93742 0.38822 1.94214 0.58796 2.95677 0.58783 1.01463 0.00013 2.01935-0.19961 2.95677-0.58783 0.93742-0.38822 1.78917-0.95732 2.50662-1.67477 0.71745-0.71745 1.28655-1.5692 1.67478-2.50662 0.38822-0.93742 0.58796-1.94213 0.58783-2.95676l0-16.138c2.827-0.012 5.775-0.022 7.54499-0.022 12.955 0 23.494-10.408 23.49401-23.20301 0-12.795-10.53799-23.203-23.493-23.203z m0 30.95401c-1.761 0-4.68 0.00997-7.494 0.02197-0.012-2.91-0.022-5.95398-0.022-7.77298 0-1.544-0.00599-4.693-0.012-7.75l7.528 0c4.359 0 8.041 3.549 8.041 7.75 0 4.201-3.682 7.75101-8.041 7.75101z"
-                      fill="#2b4d66ff" stroke="none" transform="translate(0, 0)" />
-                  </g>
-                  <path
-                    d="M35.14603 70.293c-19.379 0-35.14603-15.767-35.14603-35.146 0-19.38 15.76703-35.147 35.14603-35.147 19.379 0 35.14499 15.767 35.14499 35.147-0.001 19.379-15.76599 35.146-35.14499 35.146z m0-54.84c-10.859 0-19.69302 8.835-19.69303 19.694 0 10.859 8.83402 19.69299 19.69303 19.693 10.858 0 19.69199-8.83399 19.69198-19.693 0-10.859-8.83398-19.694-19.69198-19.694z"
-                    fill="#2b4d66ff" stroke="none" transform="translate(104.45778979480383, 144.71997413778354)" />
-                  <path
-                    d="M112.341 0l0 25.00299c0 18.275-14.86598 33.16101-33.13098 33.16101l-71.48401 0c-2.04882-0.00079-4.01349-0.81504-5.46222-2.26378-1.44873-1.44873-2.263-3.41341-2.26379-5.46223-0.00053-1.01474 0.19895-2.01963 0.58704-2.95723 0.38808-0.9376 0.95715-1.78952 1.67468-2.50705 0.71753-0.71753 1.56945-1.2866 2.50705-1.67468 0.9376-0.38808 1.9425-0.58756 2.95724-0.58704l71.48401 0c9.745 0 17.67798-7.953 17.67798-17.709l0-23.85899 8.87 0c2.24401 0.00267 4.47145-0.38442 6.583-1.144z"
-                    fill="#375e7dff" stroke="none" transform="translate(94.18054522693274, 48.00327263021518)" />
-                </g>
-              </svg>
+              <img src="Frame-4.svg" alt="Support" />
             </div>
+
           </div>
         </div>
 
