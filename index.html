@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Powered SEO Audit Report - ASEMFY</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Outfit Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+  <div class="dashboard-container">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <i data-lucide="sparkles"></i>
+        </div>
+        <span class="logo-text">ASEMFY</span>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="#" class="menu-item active">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i data-lucide="key-round"></i>
+          <span>Keywords</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i data-lucide="link-2"></i>
+          <span>Link</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i data-lucide="file-text"></i>
+          <span>Content</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i data-lucide="eye"></i>
+          <span>AI Visibility</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i data-lucide="bot"></i>
+          <span>AI SEO Assistant</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i data-lucide="bar-chart-3"></i>
+          <span>Reports</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i data-lucide="blocks"></i>
+          <span>Integrations</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i data-lucide="wrench"></i>
+          <span>Tools</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i data-lucide="settings"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="user-profile-summary">
+        <div class="avatar">TA</div>
+        <div class="profile-info">
+          <span class="profile-name">Taleb A.</span>
+          <span class="profile-role">Growth operator</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="top-left">
+          <button class="mobile-toggle" id="mobileToggle">
+            <i data-lucide="menu"></i>
+          </button>
+          <div class="breadcrumb-container">
+            <h2 class="welcome-text">Hello, Admin</h2>
+            <div class="breadcrumb">
+              <i data-lucide="home"></i>
+              <span>Dashboard / Audit suite</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-right">
+          <div class="search-box">
+            <input type="text" placeholder="Search anything...">
+            <i data-lucide="search" class="search-icon"></i>
+          </div>
+          <button class="btn btn-secondary">Ask AI</button>
+          <button class="btn btn-secondary">Start</button>
+          <div class="action-icons">
+            <button class="icon-btn theme-toggle" title="Toggle Theme">
+              <i data-lucide="sun"></i>
+            </button>
+            <button class="icon-btn notification-btn" title="Notifications">
+              <i data-lucide="bell"></i>
+              <span class="badge"></span>
+            </button>
+          </div>
+          <div class="user-avatar-circle">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
+              alt="Admin Avatar">
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Title & Actions -->
+      <section class="title-section">
+        <div class="title-details">
+          <span class="subtitle">Audit suite</span>
+          <h1 class="page-title">AI - Powered SEO Audit Report</h1>
+          <div class="domain-info">
+            <a href="https://www.example.com" target="_blank" class="domain-link">
+              www.example.com
+              <i data-lucide="external-link"></i>
+            </a>
+            <div class="crawl-info">
+              <span class="crawl-label">Crawled on:</span>
+              <span class="crawl-tag"><i data-lucide="calendar"></i> May 10, 2025</span>
+              <span class="crawl-tag"><i data-lucide="clock"></i> 10:30 am.</span>
+              <button class="btn btn-primary btn-sm re-crawled-btn"><i data-lucide="refresh-cw"></i> Re-Crawled</button>
+            </div>
+          </div>
+        </div>
+        <div class="title-actions">
+          <button class="btn btn-secondary"><i data-lucide="file-down"></i> Export PDF</button>
+          <button class="btn btn-secondary"><i data-lucide="share-2"></i> Share Report</button>
+          <button class="btn btn-secondary"><i data-lucide="calendar-range"></i> Schedule Audit</button>
+        </div>
+      </section>
+
+      <!-- Audit Tab Menu -->
+      <nav class="audit-tabs">
+        <button class="tab-item active" data-tab="overview">Overview</button>
+        <button class="tab-item" data-tab="issues">Issues</button>
+        <button class="tab-item" data-tab="crawled">Crawled Pages</button>
+        <button class="tab-item" data-tab="statistics">Statistic</button>
+        <button class="tab-item" data-tab="compare">Compare Audit</button>
+        <button class="tab-item" data-tab="insights">AI Insights</button>
+      </nav>
+
+      <!-- First Row Dashboard Widgets -->
+      <div class="dashboard-grid grid-2">
+        <!-- SEO Summary Card -->
+        <div class="card seo-summary-card">
+          <div class="card-header">
+            <h3>SEO SUMMARY</h3>
+            <div class="header-legend">
+              <div class="legend-item"><span class="dot seo"></span>SEO</div>
+              <div class="legend-item"><span class="dot technical"></span>Technical SEO</div>
+              <div class="legend-item"><span class="dot content"></span>Content Quality</div>
+              <div class="legend-item"><span class="dot visibility"></span>AI Visibility</div>
+            </div>
+          </div>
+          <div class="chart-container">
+            <svg viewBox="0 0 900 300" class="area-chart">
+              <defs>
+                <linearGradient id="area-gradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3594ee" stop-opacity="0.3"></stop>
+                  <stop offset="100%" stop-color="#3594ee" stop-opacity="0.0"></stop>
+                </linearGradient>
+              </defs>
+              <path d="M 0,250 Q 150,150 300,180 T 600,100 T 900,120 L 900,300 L 0,300 Z" fill="url(#area-gradient)">
+              </path>
+              <path d="M 0,250 Q 150,150 300,180 T 600,100 T 900,120" fill="none" stroke="#3594ee" stroke-width="3"
+                stroke-linecap="round"></path>
+              <g class="chart-dots">
+                <circle cx="300" cy="180" r="5" fill="#3594ee"></circle>
+                <circle cx="600" cy="100" r="5" fill="#3594ee"></circle>
+                <circle cx="900" cy="120" r="5" fill="#3594ee"></circle>
+              </g>
+            </svg>
+            <div class="chart-tooltip-tag" style="left: 71%; top: 40%;">
+              <span class="tooltip-label">Content Quality</span>
+              <span class="tooltip-value">71%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pages Crawled Card -->
+        <div class="card donut-card crawled-card">
+          <div class="card-header">
+            <h3>PAGES CRAWLED</h3>
+            <div class="help-circle">?</div>
+          </div>
+          <div class="donut-chart-layout">
+            <div class="donut-stats">
+              <span class="donut-value">2,342</span>
+              <span class="donut-label">of 2,521 Found</span>
+            </div>
+            <div class="donut-visual">
+              <svg viewBox="0 0 200 200">
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#d9d9d9" stroke-width="16"></circle>
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#3594ee" stroke-width="16" stroke-dasharray="502"
+                  stroke-dashoffset="35" stroke-linecap="round" transform="rotate(-90 100 100)"></circle>
+              </svg>
+              <div class="donut-center">93%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Row Dashboard Widgets -->
+      <div class="dashboard-grid grid-2-1">
+        <!-- Organic Growth Card -->
+        <div class="card organic-growth-card">
+          <div class="card-header">
+            <h3>POTENTIAL ORGANIC GROWTH</h3>
+            <div class="help-circle">?</div>
+          </div>
+          <div class="stats-row">
+            <div class="stat-box">
+              <span class="stat-label">Current Estimated Traffic</span>
+              <div class="stat-value-container">
+                <span class="stat-value">18,400</span>
+                <span class="stat-unit">/month</span>
+              </div>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Potential Traffic</span>
+              <div class="stat-value-container color-green">
+                <span class="stat-value">24,300</span>
+                <span class="stat-unit">/month</span>
+              </div>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Growth Opportunity</span>
+              <div class="stat-value-container color-green">
+                <span class="stat-value">32%</span>
+              </div>
+            </div>
+          </div>
+          <div class="growth-bar-chart">
+            <div class="bar-container">
+              <div class="bar current" style="height: 68%;"></div>
+              <div class="bar potential" style="height: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Insight Card -->
+        <div class="card ai-insight-card">
+          <div class="insight-content">
+            <div class="insight-badge">
+              <i data-lucide="sparkles"></i>
+              <span>AI INSIGHT</span>
+            </div>
+            <p class="insight-text">
+              Your website has great technical health! Focus on content optimization and internal linking to unlock more
+              traffic.
+            </p>
+          </div>
+          <div class="insight-image">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80"
+              alt="Futuristic Art Pattern">
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Priority Board -->
+      <section class="priority-board-section">
+        <div class="section-header">
+          <div class="header-left">
+            <i data-lucide="list-todo" class="icon-accent"></i>
+            <h3>AI PRIORITY BOARD</h3>
+            <span class="header-desc">These are the issues that matter most & have the biggest impact.</span>
+          </div>
+          <button class="btn-text">View All Priorities <i data-lucide="chevron-right"></i></button>
+        </div>
+        <div class="priority-grid">
+          <!-- Card 1 -->
+          <div class="priority-card border-red">
+            <div class="card-num color-red">1</div>
+            <h4>Improve Internal Linking</h4>
+            <span class="affected-pages">1 page</span>
+            <div class="gain-metric">
+              <span class="label">Potential Gain</span>
+              <span class="value color-red">+14%</span>
+            </div>
+            <button class="btn btn-secondary btn-sm">Fix Issue</button>
+          </div>
+          <!-- Card 2 -->
+          <div class="priority-card border-orange">
+            <div class="card-num color-orange">2</div>
+            <h4>Fix Keyword Cannibalization</h4>
+            <span class="affected-pages">2 pages</span>
+            <div class="gain-metric">
+              <span class="label">Potential Gain</span>
+              <span class="value color-orange">+9%</span>
+            </div>
+            <button class="btn btn-secondary btn-sm">Fix Issue</button>
+          </div>
+          <!-- Card 3 -->
+          <div class="priority-card border-yellow">
+            <div class="card-num color-yellow">3</div>
+            <h4>Improve Title Tags</h4>
+            <span class="affected-pages">3 pages</span>
+            <div class="gain-metric">
+              <span class="label">Potential Gain</span>
+              <span class="value color-yellow">+4%</span>
+            </div>
+            <button class="btn btn-secondary btn-sm">Fix Issue</button>
+          </div>
+          <!-- Card 4 -->
+          <div class="priority-card border-green">
+            <div class="card-num color-green">4</div>
+            <h4>Expand Thin Content</h4>
+            <span class="affected-pages">4 pages</span>
+            <div class="gain-metric">
+              <span class="label">Potential Gain</span>
+              <span class="value color-green">+3%</span>
+            </div>
+            <button class="btn btn-secondary btn-sm">Fix Issue</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Row with 3 cards: Issues Overview, Opp vs Impact, AI Visibility -->
+      <div class="dashboard-grid grid-3">
+
+        <!-- Issues Overview -->
+        <div class="card issues-overview-card">
+          <div class="card-header">
+            <h3>ISSUES OVERVIEW</h3>
+            <div class="help-circle">?</div>
+          </div>
+          <div class="donut-chart-layout vertical">
+            <div class="donut-visual-container">
+              <svg viewBox="0 0 200 200" class="donut-medium">
+                <!-- Outer Base -->
+                <circle cx="100" cy="100" r="75" fill="none" stroke="#f1f1f1" stroke-width="20"></circle>
+                <!-- Segment 1: Blue -->
+                <circle cx="100" cy="100" r="75" fill="none" stroke="#2bb3ff" stroke-width="20" stroke-dasharray="471"
+                  stroke-dashoffset="350" transform="rotate(-90 100 100)"></circle>
+                <!-- Segment 2: Green -->
+                <circle cx="100" cy="100" r="75" fill="none" stroke="#59dda" stroke-width="20" stroke-dasharray="471"
+                  stroke-dashoffset="400" transform="rotate(30 100 100)"></circle>
+                <!-- Segment 3: Orange -->
+                <circle cx="100" cy="100" r="75" fill="none" stroke="#ff622d" stroke-width="20" stroke-dasharray="471"
+                  stroke-dashoffset="420" transform="rotate(110 100 100)"></circle>
+                <!-- Segment 4: Pink -->
+                <circle cx="100" cy="100" r="75" fill="none" stroke="#f67cf2" stroke-width="20" stroke-dasharray="471"
+                  stroke-dashoffset="440" transform="rotate(190 100 100)"></circle>
+                <!-- Segment 5: Yellow -->
+                <circle cx="100" cy="100" r="75" fill="none" stroke="#fdc23c" stroke-width="20" stroke-dasharray="471"
+                  stroke-dashoffset="450" transform="rotate(270 100 100)"></circle>
+              </svg>
+              <div class="donut-center-text">
+                <span class="large-num">345</span>
+                <span class="label">Total Issues</span>
+              </div>
+            </div>
+            <div class="legend-vertical">
+              <div class="legend-row"><span>Technical SEO</span><strong>98</strong></div>
+              <div class="legend-row"><span>Structure</span><strong>67</strong></div>
+              <div class="legend-row"><span>Content</span><strong>102</strong></div>
+              <div class="legend-row"><span>Link</span><strong>58</strong></div>
+              <div class="legend-row"><span>AI Visibility</span><strong>20</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Opportunity vs Impact -->
+        <div class="card opportunity-card">
+          <div class="card-header">
+            <h3>OPPORTUNITY VS IMPACT</h3>
+            <div class="help-circle">?</div>
+          </div>
+          <div class="matrix-container">
+            <div class="matrix-grid">
+              <div class="matrix-cell quick-wins">
+                <span class="cell-title">Quick Wins</span>
+                <div class="venn-circles">
+                  <div class="venn-circle green"></div>
+                  <div class="venn-circle dark-green"></div>
+                </div>
+              </div>
+              <div class="matrix-cell big-wins">
+                <span class="cell-title">Big Wins</span>
+                <div class="venn-circles">
+                  <div class="venn-circle red"></div>
+                  <div class="venn-circle yellow"></div>
+                </div>
+              </div>
+              <div class="matrix-cell low-impact">
+                <span class="cell-title">Low Impact</span>
+                <div class="venn-circles">
+                  <div class="venn-circle blue"></div>
+                  <div class="venn-circle light-blue"></div>
+                </div>
+              </div>
+              <div class="matrix-cell needs-work">
+                <span class="cell-title">Needs Work</span>
+                <div class="venn-circles">
+                  <div class="venn-circle orange"></div>
+                  <div class="venn-circle light-orange"></div>
+                </div>
+              </div>
+            </div>
+            <div class="axis-labels">
+              <span class="x-axis">Effort &rarr;</span>
+              <span class="y-axis">Impact &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Visibility Snapshot -->
+        <div class="card ai-visibility-card">
+          <div class="card-header">
+            <h3>AI VISIBILITY SNAPSHOT</h3>
+            <div class="help-circle">?</div>
+          </div>
+          <div class="visibility-metrics">
+            <div class="metric-total">
+              <span class="value color-green">+30%</span>
+              <span class="label">Total Potential Gain</span>
+            </div>
+            <div class="bar-chart-vertical">
+              <div class="bar-group">
+                <div class="bar-value">150</div>
+                <div class="bar-fill chatgpt" style="height: 150px;"></div>
+                <span class="bar-label">ChatGPT</span>
+              </div>
+              <div class="bar-group">
+                <div class="bar-value">188</div>
+                <div class="bar-fill gemini" style="height: 188px;"></div>
+                <span class="bar-label">Gemini</span>
+              </div>
+              <div class="bar-group">
+                <div class="bar-value">124</div>
+                <div class="bar-fill perplexity" style="height: 124px;"></div>
+                <span class="bar-label">Perplexity</span>
+              </div>
+              <div class="bar-group">
+                <div class="bar-value">66</div>
+                <div class="bar-fill overview" style="height: 66px;"></div>
+                <span class="bar-label">AI Overview</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-secondary btn-full">View Full Plan</button>
+        </div>
+
+      </div>
+
+      <!-- Third Row Widgets: Issues Table and Weekly Action Plan -->
+      <div class="dashboard-grid grid-2-1">
+        <!-- Issues Table -->
+        <div class="card table-card">
+          <div class="card-header">
+            <div class="table-filters">
+              <button class="filter-btn active" data-filter="all">All Issues (345)</button>
+              <button class="filter-btn" data-filter="technical">Technical (98)</button>
+              <button class="filter-btn" data-filter="structure">Structure (67)</button>
+              <button class="filter-btn" data-filter="content">Content (102)</button>
+              <button class="filter-btn" data-filter="link">Link (58)</button>
+              <button class="filter-btn" data-filter="visibility">AI Visibility (20)</button>
+            </div>
+            <button class="btn btn-secondary btn-sm"><i data-lucide="filter"></i> Filter</button>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Issues</th>
+                  <th>Affected Pages</th>
+                  <th>Impact</th>
+                  <th>Priority</th>
+                  <th>Trend</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="issuesTableBody">
+                <tr data-category="technical">
+                  <td>5 pages could not be checked due to technical problems.</td>
+                  <td>5</td>
+                  <td><span class="badge badge-danger">High</span></td>
+                  <td>Critical</td>
+                  <td>
+                    <svg viewBox="0 0 100 30" class="sparkline">
+                      <path d="M0,15 L20,10 L40,25 L60,5 L80,20 L100,15" fill="none" stroke="#ff6370" stroke-width="2">
+                      </path>
+                    </svg>
+                  </td>
+                  <td><button class="btn btn-secondary btn-sm">View Page</button></td>
+                </tr>
+                <tr data-category="link">
+                  <td>148 pages are internally linked with anchor texts that need improvement.</td>
+                  <td>148</td>
+                  <td><span class="badge badge-danger">High</span></td>
+                  <td>Critical</td>
+                  <td>
+                    <svg viewBox="0 0 100 30" class="sparkline">
+                      <path d="M0,25 L20,20 L40,10 L60,15 L80,5 L100,2" fill="none" stroke="#ff6370" stroke-width="2">
+                      </path>
+                    </svg>
+                  </td>
+                  <td><button class="btn btn-secondary btn-sm">View Page</button></td>
+                </tr>
+                <tr data-category="link">
+                  <td>155 problems with external links wre found.</td>
+                  <td>155</td>
+                  <td><span class="badge badge-info">High</span></td>
+                  <td>Critical</td>
+                  <td>
+                    <svg viewBox="0 0 100 30" class="sparkline">
+                      <path d="M0,5 L20,15 L40,10 L60,25 L80,12 L100,20" fill="none" stroke="#3594ee" stroke-width="2">
+                      </path>
+                    </svg>
+                  </td>
+                  <td><button class="btn btn-secondary btn-sm">View Page</button></td>
+                </tr>
+                <tr data-category="content">
+                  <td>On 17 pages, keywords from the H1 heading were not found in the page content.</td>
+                  <td>17</td>
+                  <td><span class="badge badge-warning">Medium</span></td>
+                  <td>Medium</td>
+                  <td>
+                    <svg viewBox="0 0 100 30" class="sparkline">
+                      <path d="M0,20 L20,22 L40,15 L60,18 L80,10 L100,12" fill="none" stroke="#ff9f4e" stroke-width="2">
+                      </path>
+                    </svg>
+                  </td>
+                  <td><button class="btn btn-secondary btn-sm">View Page</button></td>
+                </tr>
+                <tr data-category="content">
+                  <td>13 pages contain less than 500 words of text.</td>
+                  <td>13</td>
+                  <td><span class="badge badge-warning">Medium</span></td>
+                  <td>Medium</td>
+                  <td>
+                    <svg viewBox="0 0 100 30" class="sparkline">
+                      <path d="M0,10 L20,8 L40,12 L60,6 L80,9 L100,5" fill="none" stroke="#ff9f4e" stroke-width="2">
+                      </path>
+                    </svg>
+                  </td>
+                  <td><button class="btn btn-secondary btn-sm">View Page</button></td>
+                </tr>
+                <tr data-category="content">
+                  <td>7 pages are competing with other due to their keyword optimization.</td>
+                  <td>7</td>
+                  <td><span class="badge badge-danger">High</span></td>
+                  <td>High</td>
+                  <td>
+                    <svg viewBox="0 0 100 30" class="sparkline">
+                      <path d="M0,25 L20,15 L40,20 L60,5 L80,8 L100,2" fill="none" stroke="#ff6370" stroke-width="2">
+                      </path>
+                    </svg>
+                  </td>
+                  <td><button class="btn btn-secondary btn-sm">View Page</button></td>
+                </tr>
+                <tr data-category="content">
+                  <td>4 pages complete with each other due to identical anchor texts.</td>
+                  <td>4</td>
+                  <td><span class="badge badge-warning">Medium</span></td>
+                  <td>Medium</td>
+                  <td>
+                    <svg viewBox="0 0 100 30" class="sparkline">
+                      <path d="M0,15 L20,18 L40,12 L60,15 L80,10 L100,8" fill="none" stroke="#ff9f4e" stroke-width="2">
+                      </path>
+                    </svg>
+                  </td>
+                  <td><button class="btn btn-secondary btn-sm">View Page</button></td>
+                </tr>
+                <tr data-category="technical">
+                  <td>8 pages have a little tag that needs improvement.</td>
+                  <td>8</td>
+                  <td><span class="badge badge-warning">Medium</span></td>
+                  <td>Medium</td>
+                  <td>
+                    <svg viewBox="0 0 100 30" class="sparkline">
+                      <path d="M0,5 L20,10 L40,8 L60,12 L80,9 L100,14" fill="none" stroke="#ff9f4e" stroke-width="2">
+                      </path>
+                    </svg>
+                  </td>
+                  <td><button class="btn btn-secondary btn-sm">View Page</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-footer">
+            <span>Showing 1 to 8 of 345 issues</span>
+            <div class="pagination">
+              <button class="pagination-btn"><i data-lucide="chevron-left"></i></button>
+              <button class="pagination-btn active">1</button>
+              <button class="pagination-btn">2</button>
+              <button class="pagination-btn">3</button>
+              <button class="pagination-btn">...</button>
+              <button class="pagination-btn">43</button>
+              <button class="pagination-btn"><i data-lucide="chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weekly Action Plan -->
+        <div class="card action-plan-card">
+          <div class="card-header">
+            <h3>WEEKLY ACTION PLAN</h3>
+            <span class="badge-total">+30%</span>
+          </div>
+          <div class="plan-sub-header">
+            <span class="plan-gain-label">Total Potential Gain</span>
+          </div>
+
+          <div class="plan-list">
+            <div class="plan-item">
+              <div class="checkbox-container">
+                <input type="checkbox" id="plan1" checked>
+                <label for="plan1">
+                  <strong>Improve Internal Linking</strong>
+                  <span class="gain-val">Potential Gain: +14%</span>
+                </label>
+              </div>
+              <div class="plan-badge red">1</div>
+            </div>
+            <div class="plan-item">
+              <div class="checkbox-container">
+                <input type="checkbox" id="plan2">
+                <label for="plan2">
+                  <strong>Fix Keyword Cannibalization</strong>
+                  <span class="gain-val">Potential Gain: +9%</span>
+                </label>
+              </div>
+              <div class="plan-badge orange">2</div>
+            </div>
+            <div class="plan-item">
+              <div class="checkbox-container">
+                <input type="checkbox" id="plan3">
+                <label for="plan3">
+                  <strong>Improve Title Tags</strong>
+                  <span class="gain-val">Potential Gain: +4%</span>
+                </label>
+              </div>
+              <div class="plan-badge yellow">3</div>
+            </div>
+            <div class="plan-item">
+              <div class="checkbox-container">
+                <input type="checkbox" id="plan4">
+                <label for="plan4">
+                  <strong>Expand Thin Content</strong>
+                  <span class="gain-val">Potential Gain: +3%</span>
+                </label>
+              </div>
+              <div class="plan-badge green">4</div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-full mt-auto">View Full Plan</button>
+        </div>
+      </div>
+
+      <!-- Footer & Action Banners -->
+      <div class="dashboard-grid grid-3">
+        <!-- Export & Share -->
+        <div class="card export-share-card">
+          <h3>EXPORT & SHARE</h3>
+          <div class="export-options">
+            <div class="export-option-item">
+              <div class="export-icon red">
+                <i data-lucide="file-text"></i>
+              </div>
+              <span>PDF Report</span>
+            </div>
+            <div class="export-option-item">
+              <div class="export-icon blue">
+                <i data-lucide="link"></i>
+              </div>
+              <span>Share Link</span>
+            </div>
+            <div class="export-option-item">
+              <div class="export-icon purple">
+                <i data-lucide="mail"></i>
+              </div>
+              <span>Schedule Email</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Need Help -->
+        <div class="card help-banner-card">
+          <div class="help-decorations">
+            <div class="circle circle-large"></div>
+            <div class="circle circle-small"></div>
+          </div>
+          <div class="help-content">
+            <h3>Need Help?</h3>
+            <p>Ask ASEMFY AI Assistant</p>
+            <button class="btn btn-white">Ask Now</button>
+          </div>
+        </div>
+
+        <!-- Custom Roadmap (Span full width or in grid) -->
+        <div class="card roadmap-banner-card">
+          <div class="roadmap-content">
+            <i data-lucide="compass" class="roadmap-icon"></i>
+            <p>Not sure where to start? Let ASEMFY AI create a custom roadmap for you.</p>
+          </div>
+          <button class="btn btn-primary">Generate Roadmap</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
