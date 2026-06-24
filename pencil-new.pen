@@ -12465,17 +12465,17 @@
                 {
                   "type": "rectangle",
                   "id": "j8gld",
-                  "x": 268,
-                  "y": 0,
+                  "x": 9,
+                  "y": 14,
                   "name": "futuristic-robot-using-laptop 1",
-                  "flipX": true,
                   "fill": {
                     "type": "image",
                     "enabled": true,
+                    "url": "Image.png",
                     "mode": "fill"
                   },
-                  "width": 268,
-                  "height": 268
+                  "width": 263,
+                  "height": 237
                 }
               ]
             },

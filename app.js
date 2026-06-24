@@ -4,19 +4,218 @@ document.addEventListener("DOMContentLoaded", () => {
     lucide.createIcons();
   }
 
-  // Sidebar Menu Navigation Active State Toggle
-  const menuItems = document.querySelectorAll(".menu-item");
-  menuItems.forEach(item => {
-    item.addEventListener("click", (e) => {
-      // Don't prevent default as some might link, but for dashboard showcase:
-      e.preventDefault();
-      menuItems.forEach(i => i.classList.remove("active"));
-      item.classList.add("active");
-    });
-  });
+  // ==============================
+  // DRAW SEO SUMMARY AREA CHART
+  // ==============================
+  const seoCanvas = document.getElementById("seoSummaryChart");
+  if (seoCanvas) {
+    const ctx = seoCanvas.getContext("2d");
+    
+    // Set internal resolution to 909x375
+    seoCanvas.width = 909;
+    seoCanvas.height = 375;
 
-  // Audit Tab switching Active State
-  const tabItems = document.querySelectorAll(".tab-item");
+    const lines = [
+      { // Technical SEO (Green)
+        color: "#30b8a4",
+        points: [[-263, 295.9], [-113, 295.9], [59, 325], [183, 284], [433, 330], [653, 107], [808, 255], [1005, 295.9], [1156, 295.9]]
+      },
+      { // SEO Health (Blue)
+        color: "#3594ee",
+        points: [[-263, 242], [-113, 242], [6, 229], [195, 329], [367, 187], [536, 315], [721, 48], [902, 248], [1005, 242], [1156, 242]]
+      },
+      { // AI Visibility (Purple)
+        color: "#6645c7",
+        points: [[-260, 265], [-110, 265], [12, 331], [168, 329], [342, 270], [472, 183], [640, 291], [839, 332], [1008, 265], [1159, 265]]
+      },
+      { // Content Quality (Orange)
+        color: "#ff9f4e",
+        points: [[-260, 265], [-110, 265], [55, 273], [274, 223], [506, 117], [687, 240], [843, 270], [1159, 265]]
+      }
+    ];
+
+    // Helper to convert hex to rgba
+    function hexToRgbA(hex, alpha) {
+      let c;
+      if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+        c= hex.substring(1).split('');
+        if(c.length== 3){
+          c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c= '0x' + c.join('');
+        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+','+alpha+')';
+      }
+      return hex;
+    }
+
+    // Function to draw smooth Catmull-Rom curve
+    function drawCurve(points, color) {
+      // Draw Fill
+      const fillGradient = ctx.createLinearGradient(0, 0, 0, 375);
+      fillGradient.addColorStop(0, hexToRgbA(color, 0.15));
+      fillGradient.addColorStop(1, hexToRgbA(color, 0.01));
+
+      ctx.beginPath();
+      ctx.moveTo(points[0][0], 375);
+      ctx.lineTo(points[0][0], points[0][1]);
+
+      for (let i = 0; i < points.length - 1; i++) {
+        const p0 = points[i - 1] || points[i];
+        const p1 = points[i];
+        const p2 = points[i + 1];
+        const p3 = points[i + 2] || p2;
+
+        const cp1x = p1[0] + (p2[0] - p0[0]) / 6;
+        const cp1y = p1[1] + (p2[1] - p0[1]) / 6;
+
+        const cp2x = p2[0] - (p3[0] - p1[0]) / 6;
+        const cp2y = p2[1] - (p3[1] - p1[1]) / 6;
+
+        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2[0], p2[1]);
+      }
+
+      ctx.lineTo(points[points.length - 1][0], 375);
+      ctx.closePath();
+      ctx.fillStyle = fillGradient;
+      ctx.fill();
+
+      // Draw Stroke
+      ctx.beginPath();
+      ctx.moveTo(points[0][0], points[0][1]);
+
+      for (let i = 0; i < points.length - 1; i++) {
+        const p0 = points[i - 1] || points[i];
+        const p1 = points[i];
+        const p2 = points[i + 1];
+        const p3 = points[i + 2] || p2;
+
+        const cp1x = p1[0] + (p2[0] - p0[0]) / 6;
+        const cp1y = p1[1] + (p2[1] - p0[1]) / 6;
+
+        const cp2x = p2[0] - (p3[0] - p1[0]) / 6;
+        const cp2y = p2[1] - (p3[1] - p1[1]) / 6;
+
+        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2[0], p2[1]);
+      }
+
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 3.5;
+      ctx.stroke();
+
+      // Draw Dots
+      points.forEach(pt => {
+        if (pt[0] >= 0 && pt[0] <= 909) {
+          ctx.beginPath();
+          ctx.arc(pt[0], pt[1], 4.5, 0, Math.PI * 2);
+          ctx.fillStyle = "#ffffff";
+          ctx.fill();
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 3;
+          ctx.stroke();
+        }
+      });
+    }
+
+    // Clear canvas
+    ctx.clearRect(0, 0, 909, 375);
+
+    // Draw curves
+    lines.forEach(line => drawCurve(line.points, line.color));
+  }
+
+  // ==============================
+  // DRAW PAGES CRAWLED DONUT
+  // ==============================
+  const crawledCanvas = document.getElementById("pagesCrawledDonut");
+  if (crawledCanvas) {
+    const ctx = crawledCanvas.getContext("2d");
+    const size = 160;
+    crawledCanvas.width = size;
+    crawledCanvas.height = size;
+    const cx = size / 2;
+    const cy = size / 2;
+    const radius = 56;
+    const lineWidth = 40;
+
+    // Clear canvas first
+    ctx.clearRect(0, 0, size, size);
+
+    // Blue segment: clockwise from 295 degrees to 172 degrees
+    const startBlue = (295 * Math.PI) / 180;
+    const endBlue = (172 * Math.PI) / 180;
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, startBlue, endBlue, false);
+    ctx.strokeStyle = "#3594ee";
+    ctx.lineWidth = lineWidth;
+    ctx.lineCap = "butt";
+    ctx.stroke();
+
+    // Gray segment: clockwise from 188 degrees to 278 degrees
+    const startGray = (188 * Math.PI) / 180;
+    const endGray = (278 * Math.PI) / 180;
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, startGray, endGray, false);
+    ctx.strokeStyle = "#e0e0e0";
+    ctx.lineWidth = lineWidth;
+    ctx.lineCap = "butt";
+    ctx.stroke();
+
+    // Inner white circle and outline
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius - lineWidth / 2, 0, Math.PI * 2);
+    ctx.fillStyle = "#ffffff";
+    ctx.fill();
+    ctx.strokeStyle = "#e5e5e5";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+  }
+
+  // ==============================
+  // DRAW ISSUES OVERVIEW DONUT
+  // ==============================
+  const issuesCanvas = document.getElementById("issuesOverviewDonut");
+  if (issuesCanvas) {
+    const ctx = issuesCanvas.getContext("2d");
+    const size = 200;
+    issuesCanvas.width = size;
+    issuesCanvas.height = size;
+    const cx = size / 2;
+    const cy = size / 2;
+    const radius = 75;
+    const lineWidth = 22;
+
+    const total = 345;
+    const segments = [
+      { value: 98, color: "#2bb3ff" },   // Technical SEO - Blue
+      { value: 67, color: "#59dd5a" },   // Structure - Green
+      { value: 102, color: "#ff622d" },  // Content - Orange
+      { value: 58, color: "#f67cf2" },   // Link - Pink
+      { value: 20, color: "#fdc23c" }    // AI Visibility - Yellow
+    ];
+
+    let startAngle = -Math.PI / 2;
+
+    segments.forEach(seg => {
+      const sweepAngle = (seg.value / total) * Math.PI * 2;
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, startAngle, startAngle + sweepAngle);
+      ctx.strokeStyle = seg.color;
+      ctx.lineWidth = lineWidth;
+      ctx.lineCap = "butt";
+      ctx.stroke();
+      startAngle += sweepAngle;
+    });
+  }
+
+  // ==============================
+  // SIDEBAR INTERACTIONS
+  // ==============================
+  // Don't change active states for the menu items in the sidebar since they're pre-set
+
+  // ==============================
+  // AUDIT TAB SWITCHING
+  // ==============================
+  const tabItems = document.querySelectorAll(".tab");
   tabItems.forEach(tab => {
     tab.addEventListener("click", () => {
       tabItems.forEach(t => t.classList.remove("active"));
@@ -24,9 +223,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Table filtering logic
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const tableRows = document.querySelectorAll("#issuesTableBody tr");
+  // ==============================
+  // TABLE FILTER LOGIC
+  // ==============================
+  const filterButtons = document.querySelectorAll(".ftab");
+  const tableRows = document.querySelectorAll("#tableBody tr");
 
   filterButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -36,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const filterValue = button.getAttribute("data-filter");
 
       tableRows.forEach(row => {
-        const rowCategory = row.getAttribute("data-category");
+        const rowCategory = row.getAttribute("data-cat");
         if (filterValue === "all") {
           row.style.display = "";
         } else if (filterValue === rowCategory) {
@@ -48,22 +249,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Dark/Light Theme Toggle
-  const themeToggleBtn = document.querySelector(".theme-toggle");
+  // ==============================
+  // DARK/LIGHT THEME TOGGLE
+  // ==============================
+  const themeToggleBtn = document.getElementById("themeToggle");
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener("click", () => {
       const currentTheme = document.documentElement.getAttribute("data-theme");
       const nextTheme = currentTheme === "dark" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme", nextTheme);
 
-      // Swap the theme icon
       const icon = themeToggleBtn.querySelector("i");
       if (icon) {
-        if (nextTheme === "dark") {
-          icon.setAttribute("data-lucide", "moon");
-        } else {
-          icon.setAttribute("data-lucide", "sun");
-        }
+        icon.setAttribute("data-lucide", nextTheme === "dark" ? "moon" : "sun");
         if (typeof lucide !== 'undefined') {
           lucide.createIcons();
         }
@@ -71,7 +269,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Mobile Sidebar Toggle
+  // ==============================
+  // MOBILE SIDEBAR TOGGLE
+  // ==============================
   const mobileToggle = document.getElementById("mobileToggle");
   const sidebar = document.getElementById("sidebar");
 
@@ -81,7 +281,6 @@ document.addEventListener("DOMContentLoaded", () => {
       sidebar.classList.toggle("active");
     });
 
-    // Close sidebar on clicking outside
     document.addEventListener("click", (e) => {
       if (sidebar.classList.contains("active") && !sidebar.contains(e.target) && e.target !== mobileToggle) {
         sidebar.classList.remove("active");
@@ -89,7 +288,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Double Check Checkbox interactivity on Action Plan
+  // ==============================
+  // CHECKBOX INTERACTIVITY
+  // ==============================
   const planCheckboxes = document.querySelectorAll(".checkbox-container input[type='checkbox']");
   planCheckboxes.forEach(checkbox => {
     checkbox.addEventListener("change", () => {
