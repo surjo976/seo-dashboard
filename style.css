@@ -815,17 +815,17 @@ tr:hover td { background: rgba(0,0,0,0.01); }
 .help-content p { font-size: 14px; font-weight: 600; color: #3594EE; margin-bottom: 16px; }
 .help-avatar-wrap {
   position: absolute;
-  right: -10px;
-  bottom: -10px;
-  width: 200px;
-  height: 200px;
+  right: 15px;
+  bottom: 10px;
+  width: 145px;
+  height: 145px;
   pointer-events: none;
 }
 .help-avatar-wrap img {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 195px;
+  width: 140px;
   height: auto;
 }
 
