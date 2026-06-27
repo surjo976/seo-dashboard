@@ -56,25 +56,23 @@ export default class ChartModel {
 
     this.pagesCrawledConfig = {
       size: 290,
-      radius: 105,
-      lineWidth: 58,
       segments: [
-        { startDeg: 285, endDeg: 165, color: "#3594ee" },
-        { startDeg: 175, endDeg: 275, color: "#e0e0e0" }
+        { startDeg: 285, endDeg: 165, color: "#3594ee", radius: 108, lineWidth: 62 },
+        { startDeg: 173, endDeg: 277, color: "#e0e0e0", radius: 100, lineWidth: 44 }
       ]
     };
 
     this.issuesOverviewConfig = {
-      size: 200,
-      radius: 75,
-      lineWidth: 22,
-      shiftDist: 6,
+      size: 263,
+      radius: 96,
+      lineWidth: 36,
+      shiftDist: 8,
       segments: [
         { start: -88, end: -2, color: "#3594ee", explode: true },
-        { start: 2, end: 118, color: "#2bb755", explode: false },
+        { start: 2, end: 118, color: "#4fce62", explode: false },
         { start: 122, end: 208, color: "#ff9f4e", explode: false },
         { start: 212, end: 253, color: "#a37a4c", explode: false },
-        { start: 257, end: 268, color: "#ff4b55", explode: false }
+        { start: 257, end: 268, color: "#ff6370", explode: false }
       ]
     };
   }

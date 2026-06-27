@@ -230,7 +230,7 @@
       <div class="row row-two">
         <div class="card organic-card">
           <div class="organic-header">
-            <i data-lucide="trending-up" class="organic-icon"></i>
+            <img src="assets/organic.svg" alt="Organic" class="organic-icon">
             <h3>POTENTIAL ORGANIC GROWTH</h3>
           </div>
           <div class="organic-layout">
@@ -297,8 +297,10 @@
       <section class="priority-section">
         <div class="priority-header">
           <div class="priority-header-left">
-            <i data-lucide="list-todo" class="accent-icon"></i>
-            <h3>AI PRIORITY BOARD</h3>
+            <div class="priority-title-row">
+              <img src="assets/ai1.svg" alt="AI Priority" class="accent-icon">
+              <h3>AI PRIORITY BOARD</h3>
+            </div>
             <span class="header-desc">These are the issues that matter most & have the biggest impact.</span>
           </div>
           <a href="#" class="view-all">View All Priorities <i data-lucide="chevron-right"></i></a>
@@ -416,59 +418,62 @@
           <div class="card-header">
             <h3>ISSUES OVERVIEW</h3><span class="help-dot">?</span>
           </div>
-          <div class="issues-donut-wrap">
-            <canvas id="issuesOverviewDonut" width="170" height="170"></canvas>
-            <div class="issues-donut-center"><span class="idc-num">345</span><span class="idc-label">Total Issues</span>
-            </div>
-          </div>
-          <div class="issues-legend">
-            <div class="il-row-item">
-              <div class="il-left-group">
-                <span class="il-checkbox bg-red">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round" class="check-icon">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </span>
-                <span class="il-label">Critical</span>
+          <div class="issues-body-layout">
+            <div class="issues-donut-wrap">
+              <canvas id="issuesOverviewDonut" width="263" height="263"></canvas>
+              <div class="issues-donut-center"><span class="idc-num">345</span><span class="idc-label">Total
+                  Issues</span>
               </div>
-              <strong class="il-val">12</strong>
             </div>
-            <div class="il-row-item">
-              <div class="il-left-group">
-                <span class="il-checkbox bg-brown">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round" class="check-icon">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </span>
-                <span class="il-label">Warnings</span>
+            <div class="issues-legend">
+              <div class="il-row-item">
+                <div class="il-left-group">
+                  <span class="il-checkbox bg-red">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" class="check-icon">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </span>
+                  <span class="il-label">Critical</span>
+                </div>
+                <strong class="il-val">12</strong>
               </div>
-              <strong class="il-val">45</strong>
-            </div>
-            <div class="il-row-item">
-              <div class="il-left-group">
-                <span class="il-checkbox bg-orange">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round" class="check-icon">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </span>
-                <span class="il-label">Notice</span>
+              <div class="il-row-item">
+                <div class="il-left-group">
+                  <span class="il-checkbox bg-brown">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" class="check-icon">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </span>
+                  <span class="il-label">Warnings</span>
+                </div>
+                <strong class="il-val">45</strong>
               </div>
-              <strong class="il-val">132</strong>
-            </div>
-            <div class="il-row-item">
-              <div class="il-left-group">
-                <span class="il-checkbox bg-green">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round" class="check-icon">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </span>
-                <span class="il-label">Good</span>
+              <div class="il-row-item">
+                <div class="il-left-group">
+                  <span class="il-checkbox bg-orange">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" class="check-icon">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </span>
+                  <span class="il-label">Notice</span>
+                </div>
+                <strong class="il-val">132</strong>
               </div>
-              <strong class="il-val">156</strong>
+              <div class="il-row-item">
+                <div class="il-left-group">
+                  <span class="il-checkbox bg-green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" class="check-icon">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </span>
+                  <span class="il-label">Good</span>
+                </div>
+                <strong class="il-val">156</strong>
+              </div>
             </div>
           </div>
         </div>
@@ -478,42 +483,62 @@
             <h3>OPPORTUNITY VS IMPACT</h3><span class="help-dot">?</span>
           </div>
           <div class="matrix-container">
-            <div class="matrix">
-              <div class="matrix-cell qw"><span class="mc-title">Quick Wins</span></div>
-              <div class="matrix-cell bw"><span class="mc-title">Big Wins</span></div>
-              <div class="matrix-cell li"><span class="mc-title">Low Impact</span></div>
-              <div class="matrix-cell nw"><span class="mc-title">Needs Work</span></div>
+            <div class="matrix-wrapper">
+              <div class="matrix">
+                <!-- Quick Wins (Green Box) -->
+                <div class="matrix-cell qw">
+                  <span class="mc-title">Quick Wins</span>
+                  <div class="bubbles-box">
+                    <div class="venn-circle qw-bubble b1"></div>
+                    <div class="venn-circle qw-bubble b2"></div>
+                    <div class="venn-circle qw-bubble b3"></div>
+                  </div>
+                </div>
+
+                <!-- Big Wins (Red Box) -->
+                <div class="matrix-cell bw">
+                  <span class="mc-title">Big Wins</span>
+                  <div class="bubbles-box">
+                    <div class="venn-circle bw-bubble b1"></div>
+                    <div class="venn-circle bw-bubble b2"></div>
+                    <div class="venn-circle bw-bubble b3"></div>
+                    <div class="venn-circle bw-bubble b4"></div>
+                  </div>
+                </div>
+
+                <!-- Low Impact (Blue Box) -->
+                <div class="matrix-cell li">
+                  <span class="mc-title">Low Impact</span>
+                  <div class="bubbles-box">
+                    <div class="venn-circle li-bubble b1"></div>
+                    <div class="venn-circle li-bubble b2"></div>
+                    <div class="venn-circle li-bubble b3"></div>
+                  </div>
+                </div>
+
+                <!-- Needs Work (Orange Box) -->
+                <div class="matrix-cell nw">
+                  <span class="mc-title">Needs Work</span>
+                  <div class="bubbles-box">
+                    <div class="venn-circle nw-bubble b1"></div>
+                    <div class="venn-circle nw-bubble b2"></div>
+                    <div class="venn-circle nw-bubble b3"></div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- Quick Wins (Green Bubbles) -->
-            <div class="venn-circle qw-bubble" style="left: 100px; top: 122px; width: 80px; height: 80px;"></div>
-            <div class="venn-circle qw-bubble" style="left: 130px; top: 125px; width: 85px; height: 85px;"></div>
-            <div class="venn-circle qw-bubble" style="left: 102px; top: 152px; width: 85px; height: 85px;"></div>
-
-            <!-- Big Wins (Red Bubbles) -->
-            <div class="venn-circle bw-bubble" style="left: 282px; top: 122px; width: 70px; height: 70px;"></div>
-            <div class="venn-circle bw-bubble" style="left: 287px; top: 167px; width: 50px; height: 50px;"></div>
-            <div class="venn-circle bw-bubble" style="left: 317px; top: 157px; width: 80px; height: 80px;"></div>
-            <div class="venn-circle bw-bubble" style="left: 332px; top: 127px; width: 65px; height: 65px;"></div>
-
-            <!-- Low Impact (Blue Bubbles) -->
-            <div class="venn-circle li-bubble" style="left: 100px; top: 309px; width: 80px; height: 80px;"></div>
-            <div class="venn-circle li-bubble" style="left: 130px; top: 314px; width: 82px; height: 82px;"></div>
-            <div class="venn-circle li-bubble" style="left: 102px; top: 339px; width: 82px; height: 82px;"></div>
-
-            <!-- Needs Work (Orange Bubbles) -->
-            <div class="venn-circle nw-bubble" style="left: 277px; top: 309px; width: 80px; height: 80px;"></div>
-            <div class="venn-circle nw-bubble" style="left: 312px; top: 314px; width: 80px; height: 80px;"></div>
-            <div class="venn-circle nw-bubble" style="left: 287px; top: 339px; width: 80px; height: 80px;"></div>
-
-            <div class="axis-label axis-low" style="left: 80px; top: 465px;">Low</div>
-            <div class="axis-label axis-effort" style="left: 236px; top: 465px;">Effort</div>
-            <div class="axis-label axis-high-x" style="left: 390px; top: 465px;">High</div>
-
-            <div class="axis-label axis-high-y" style="left: 45px; top: 102px;">High</div>
-            <div class="axis-label axis-effort-y" style="left: 40px; top: 263px; transform: rotate(-90deg);">Effort
+            <!-- Axis Labels -->
+            <div class="axis-y-group">
+              <span class="axis-label">High</span>
+              <span class="axis-label effort-y">Effort</span>
+              <span class="axis-label">Low</span>
             </div>
-            <div class="axis-label axis-low-y" style="left: 45px; top: 432px;">Low</div>
+            <div class="axis-x-group">
+              <span class="axis-label">Low</span>
+              <span class="axis-label">Effort</span>
+              <span class="axis-label">High</span>
+            </div>
           </div>
         </div>
 

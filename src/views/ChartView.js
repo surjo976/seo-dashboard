@@ -160,7 +160,7 @@ export default class ChartView {
   renderPagesCrawledDonut(config) {
     if (!this.crawledCanvas) return;
     const ctx = this.crawledCanvas.getContext("2d");
-    const { size, radius, lineWidth, segments } = config;
+    const { size, segments } = config;
     this.crawledCanvas.width = size;
     this.crawledCanvas.height = size;
     const cx = size / 2;
@@ -172,19 +172,21 @@ export default class ChartView {
       const startRad = (seg.startDeg * Math.PI) / 180;
       const endRad = (seg.endDeg * Math.PI) / 180;
       ctx.beginPath();
-      ctx.arc(cx, cy, radius, startRad, endRad, false);
+      ctx.arc(cx, cy, seg.radius, startRad, endRad, false);
       ctx.strokeStyle = seg.color;
-      ctx.lineWidth = lineWidth;
+      ctx.lineWidth = seg.lineWidth;
       ctx.lineCap = "butt";
       ctx.stroke();
     });
 
+    // Inner white circle cutout
+    const innerRadius = 77;
     ctx.beginPath();
-    ctx.arc(cx, cy, radius - lineWidth / 2, 0, Math.PI * 2);
+    ctx.arc(cx, cy, innerRadius, 0, Math.PI * 2);
     ctx.fillStyle = "#ffffff";
     ctx.fill();
-    ctx.strokeStyle = "#e5e5e5";
-    ctx.lineWidth = 3;
+    ctx.strokeStyle = "#e0e0e0";
+    ctx.lineWidth = 4;
     ctx.stroke();
   }
 
@@ -215,8 +217,10 @@ export default class ChartView {
 
     ctx.beginPath();
     ctx.arc(cx, cy, radius - lineWidth / 2, 0, Math.PI * 2);
-    ctx.strokeStyle = "#e5e5e5";
-    ctx.lineWidth = 1.5;
+    ctx.fillStyle = "#ffffff";
+    ctx.fill();
+    ctx.strokeStyle = "#e0e0e0";
+    ctx.lineWidth = 3;
     ctx.stroke();
   }
 }
