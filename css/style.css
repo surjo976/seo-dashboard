@@ -324,9 +324,16 @@ body {
 
 .top-left {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 6px;
   flex-shrink: 0;
+}
+
+.top-left-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .header-menu-btn {
@@ -338,7 +345,6 @@ body {
   color: #2B2B2B;
   cursor: pointer;
   padding: 0;
-  margin-top: 2px;
 }
 
 .header-menu-btn i {
@@ -363,27 +369,24 @@ body {
 .breadcrumb {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   font-size: 13px;
   color: #2B2B2B;
-  margin-top: 2px;
   font-weight: 500;
   font-family: var(--font);
+  padding-left: 2px;
 }
 
 .breadcrumb i {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   color: #2B2B2B;
   flex-shrink: 0;
 }
 
-.breadcrumb i svg,
-.breadcrumb i svg path,
-.breadcrumb i svg polygon {
-  fill: #2B2B2B;
-  stroke: #2B2B2B;
-  stroke-width: 1;
+.breadcrumb i svg {
+  fill: #2B2B2B !important;
+  stroke: none !important;
 }
 
 .top-right {
@@ -2602,9 +2605,7 @@ tr:hover td {
 /* Header & Top Bar */
 [data-theme="dark"] .welcome-text { color: #ffffff !important; }
 [data-theme="dark"] .breadcrumb { color: #8b949e !important; }
-[data-theme="dark"] .breadcrumb i svg,
-[data-theme="dark"] .breadcrumb i svg path,
-[data-theme="dark"] .breadcrumb i svg polygon { fill: #8b949e !important; stroke: #8b949e !important; }
+[data-theme="dark"] .breadcrumb i svg { fill: #8b949e !important; stroke: none !important; }
 
 [data-theme="dark"] .page-title { color: #ffffff !important; }
 [data-theme="dark"] .crawl-label { color: #8b949e !important; }
