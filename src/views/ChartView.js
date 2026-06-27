@@ -179,15 +179,19 @@ export default class ChartView {
       ctx.stroke();
     });
 
-    // Inner circle cutout
-    const cardEl = this.crawledCanvas.closest('.card') || document.body;
-    const computedBg = window.getComputedStyle(cardEl).backgroundColor;
+    // Transparent Inner Cutout
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.body.getAttribute('data-theme') === 'dark';
     const innerRadius = 77;
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-out';
     ctx.beginPath();
     ctx.arc(cx, cy, innerRadius, 0, Math.PI * 2);
-    ctx.fillStyle = (computedBg && computedBg !== 'transparent' && computedBg !== 'rgba(0, 0, 0, 0)') ? computedBg : (isDark ? "#161b22" : "#ffffff");
     ctx.fill();
+    ctx.restore();
+
+    // Inner Border Line
+    ctx.beginPath();
+    ctx.arc(cx, cy, innerRadius, 0, Math.PI * 2);
     ctx.strokeStyle = isDark ? "#30363d" : "#e0e0e0";
     ctx.lineWidth = 4;
     ctx.stroke();
@@ -218,13 +222,16 @@ export default class ChartView {
       ctx.stroke();
     });
 
-    const cardEl = this.issuesCanvas.closest('.card') || document.body;
-    const computedBg = window.getComputedStyle(cardEl).backgroundColor;
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.body.getAttribute('data-theme') === 'dark';
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-out';
     ctx.beginPath();
     ctx.arc(cx, cy, radius - lineWidth / 2, 0, Math.PI * 2);
-    ctx.fillStyle = (computedBg && computedBg !== 'transparent' && computedBg !== 'rgba(0, 0, 0, 0)') ? computedBg : (isDark ? "#161b22" : "#ffffff");
     ctx.fill();
+    ctx.restore();
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius - lineWidth / 2, 0, Math.PI * 2);
     ctx.strokeStyle = isDark ? "#30363d" : "#e0e0e0";
     ctx.lineWidth = 3;
     ctx.stroke();
