@@ -3,6 +3,7 @@ export default class SidebarView {
     this.mobileToggle = document.getElementById("mobileToggle");
     this.sidebar = document.getElementById("sidebar");
     this.planCheckboxes = document.querySelectorAll(".checkbox-container input[type='checkbox']");
+    this.menuItems = document.querySelectorAll(".sidebar-menu .menu-item");
   }
 
   toggleSidebar() {
@@ -14,6 +15,19 @@ export default class SidebarView {
   closeSidebar() {
     if (this.sidebar && this.sidebar.classList.contains("active")) {
       this.sidebar.classList.remove("active");
+    }
+  }
+
+  setActiveMenuItem(clickedItem) {
+    this.menuItems.forEach(item => item.classList.remove("active"));
+    if (clickedItem) {
+      clickedItem.classList.add("active");
+    }
+  }
+
+  toggleSubmenu(menuSection) {
+    if (menuSection) {
+      menuSection.classList.toggle("open");
     }
   }
 

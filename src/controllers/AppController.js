@@ -6,6 +6,7 @@ export default class AppController {
   init() {
     this.bindSidebarEvents();
     this.bindCheckboxEvents();
+    this.bindMenuClickEvents();
   }
 
   bindSidebarEvents() {
@@ -21,6 +22,19 @@ export default class AppController {
         }
       });
     }
+  }
+
+  bindMenuClickEvents() {
+    this.sidebarView.menuItems.forEach(item => {
+      item.addEventListener("click", (e) => {
+        const menuSection = item.closest(".menu-section");
+        if (menuSection) {
+          e.preventDefault();
+          this.sidebarView.toggleSubmenu(menuSection);
+        }
+        this.sidebarView.setActiveMenuItem(item);
+      });
+    });
   }
 
   bindCheckboxEvents() {
