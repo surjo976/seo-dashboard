@@ -8,13 +8,17 @@ export default class ChartController {
   }
 
   init() {
-    this.view.renderSeoSummaryChart(this.model.seoSummaryLines);
-    this.view.renderPagesCrawledDonut(this.model.pagesCrawledConfig);
-    this.view.renderIssuesOverviewDonut(this.model.issuesOverviewConfig);
+    this.renderAll();
 
     this.view.bindChartHover(this.model.seoSummaryLines, (info) => {
       this.handleChartHover(info);
     });
+  }
+
+  renderAll() {
+    this.view.renderSeoSummaryChart(this.model.seoSummaryLines);
+    this.view.renderPagesCrawledDonut(this.model.pagesCrawledConfig);
+    this.view.renderIssuesOverviewDonut(this.model.issuesOverviewConfig);
   }
 
   handleChartHover(info) {
