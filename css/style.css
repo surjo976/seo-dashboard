@@ -2641,11 +2641,16 @@ tr:hover td {
 [data-theme="dark"] .donut-sub { color: #8b949e !important; }
 [data-theme="dark"] .donut-center-val { color: #ffffff !important; }
 
-/* Organic Growth */
+/* Organic Growth & AI Insight */
 [data-theme="dark"] .organic-header h3 { color: #ffffff !important; }
 [data-theme="dark"] .organic-label { color: #8b949e !important; }
 [data-theme="dark"] .organic-num { color: #ffffff !important; }
 [data-theme="dark"] .organic-unit { color: #8b949e !important; }
+
+[data-theme="dark"] .ai-insight-card { background: #1c152b !important; border: 1px solid #362954 !important; }
+[data-theme="dark"] .ai-insight-title { color: #a78bfa !important; }
+[data-theme="dark"] .ai-insight-icon { color: #a78bfa !important; }
+[data-theme="dark"] .ai-insight-card .insight-text { color: #e9d5ff !important; }
 
 /* AI Priority Board */
 [data-theme="dark"] .priority-section { background: var(--card) !important; border: 1px solid #30363d !important; }
