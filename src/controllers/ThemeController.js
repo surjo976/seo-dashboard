@@ -1,7 +1,8 @@
 export default class ThemeController {
-  constructor(model, view) {
+  constructor(model, view, chartController = null) {
     this.model = model;
     this.view = view;
+    this.chartController = chartController;
   }
 
   init() {
@@ -9,6 +10,9 @@ export default class ThemeController {
       this.view.themeToggleBtn.addEventListener("click", () => {
         const newTheme = this.model.toggleTheme();
         this.view.applyTheme(newTheme);
+        if (this.chartController) {
+          this.chartController.renderAll();
+        }
       });
     }
   }

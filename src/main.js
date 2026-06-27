@@ -31,12 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Instantiate Controllers
   const chartController = new ChartController(chartModel, chartView);
   const tableController = new TableController(filterModel, tableView);
-  const themeController = new ThemeController(themeModel, themeView);
+  const themeController = new ThemeController(themeModel, themeView, chartController);
   const appController = new AppController(sidebarView);
 
   // Initialize Controllers
+  themeController.init();
+  themeView.applyTheme(themeModel.getTheme());
   chartController.init();
   tableController.init();
-  themeController.init();
   appController.init();
 });
