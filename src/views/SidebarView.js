@@ -7,13 +7,20 @@ export default class SidebarView {
   }
 
   toggleSidebar() {
-    if (this.sidebar) {
-      this.sidebar.classList.toggle("active");
+    const dashboardContainer = document.querySelector(".dashboard-container");
+    if (window.innerWidth <= 768) {
+      if (this.sidebar) {
+        this.sidebar.classList.toggle("active");
+      }
+    } else {
+      if (dashboardContainer) {
+        dashboardContainer.classList.toggle("sidebar-closed");
+      }
     }
   }
 
   closeSidebar() {
-    if (this.sidebar && this.sidebar.classList.contains("active")) {
+    if (window.innerWidth <= 768 && this.sidebar && this.sidebar.classList.contains("active")) {
       this.sidebar.classList.remove("active");
     }
   }

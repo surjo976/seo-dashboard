@@ -111,50 +111,51 @@
       <!-- Top Bar -->
       <header class="top-bar">
         <div class="top-left">
-          <button class="mobile-toggle" id="mobileToggle"><i data-lucide="menu"></i></button>
+          <button class="header-menu-btn" id="mobileToggle"><i data-lucide="menu"></i></button>
           <div>
             <h2 class="welcome-text">Hello, Admin</h2>
-            <div class="breadcrumb"><i data-lucide="home"></i><span>Dashboard / Audit suite</span></div>
+            <div class="breadcrumb"><i data-lucide="home" class="home-icon-filled"></i><span>Dashboard / Audit
+                suite</span></div>
           </div>
         </div>
+        <div class="search-box">
+          <input type="text" placeholder="">
+          <i data-lucide="search" class="search-icon"></i>
+        </div>
         <div class="top-right">
-          <div class="search-box">
-            <input type="text" placeholder="Search anything...">
-            <i data-lucide="search" class="search-icon"></i>
-          </div>
           <button class="btn btn-white-round">Ask AI</button>
           <button class="btn btn-white-round">Start <i data-lucide="chevron-down" class="btn-sm-icon"></i></button>
           <button class="icon-btn" id="themeToggle"><i data-lucide="sun"></i></button>
           <button class="icon-btn notif-btn"><i data-lucide="bell"></i><span class="notif-badge">2</span></button>
           <div class="user-avatar"><img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"
               alt="Admin"></div>
         </div>
       </header>
 
       <!-- Title Section -->
       <section class="title-section">
-        <div class="title-left">
-          <span class="subtitle">Audit suite</span>
+        <span class="subtitle">AUDIT SUITE</span>
+        <div class="title-header-row">
           <h1 class="page-title">AI - Powered SEO Audit Report</h1>
-          <div class="domain-row">
-            <a href="#" class="domain-link">www.example.com <i data-lucide="external-link"></i></a>
-            <span class="crawl-label">Crawled on:</span>
-            <span class="crawl-tag"><i data-lucide="calendar"></i> May 10, 2025</span>
-            <span class="crawl-tag"><i data-lucide="clock"></i> 10:30 am.</span>
-            <button class="btn btn-blue-sm"><i data-lucide="refresh-cw"></i> Re-Crawled</button>
+          <div class="title-right">
+            <button class="btn btn-title-white"><i data-lucide="printer"></i> Export PDF</button>
+            <button class="btn btn-title-white"><i data-lucide="share-2"></i> Share Report</button>
+            <button class="btn btn-title-white"><i data-lucide="share-2"></i> Schedule Audit</button>
           </div>
         </div>
-        <div class="title-right">
-          <button class="btn btn-white-round"><i data-lucide="file-down"></i> Export PDF</button>
-          <button class="btn btn-white-round"><i data-lucide="share-2"></i> Share Report</button>
-          <button class="btn btn-white-round"><i data-lucide="calendar-range"></i> Schedule Audit</button>
+        <div class="domain-row">
+          <a href="#" class="domain-link">www.example.com</a>
+          <span class="crawl-label">Crawled on:</span>
+          <span class="crawl-tag">May 10, 2025</span>
+          <span class="crawl-tag">10:30 am.</span>
+          <button class="btn btn-recrawled"><i data-lucide="refresh-cw"></i> Re-Crawled</button>
         </div>
       </section>
 
       <!-- Tabs -->
       <nav class="audit-tabs">
-        <button class="tab active">Overview</button>
+        <button class="tab active">Over View</button>
         <button class="tab">Issues</button>
         <button class="tab">Crawled Pages</button>
         <button class="tab">Statistic</button>
@@ -179,13 +180,13 @@
             <div class="score-card">
               <div class="score-card-header"><span class="score-title">SEO HEALTH SCORE</span><span
                   class="help-dot">?</span></div>
-              <div class="score-val"><span class="score-num blue">78</span><span class="score-of">/100</span></div>
+              <div class="score-val"><span class="score-num green">78</span><span class="score-of">/100</span></div>
               <span class="score-badge good">Good</span>
             </div>
             <div class="score-card">
               <div class="score-card-header"><span class="score-title">TECHNICAL SEO</span><span
                   class="help-dot">?</span></div>
-              <div class="score-val"><span class="score-num green">91</span><span class="score-of">/100</span></div>
+              <div class="score-val"><span class="score-num blue">91</span><span class="score-of">/100</span></div>
               <span class="score-badge excellent">Excellent</span>
             </div>
             <div class="score-card">
@@ -197,15 +198,14 @@
             <div class="score-card">
               <div class="score-card-header"><span class="score-title">AI VISIBILITY SCORE</span><span
                   class="help-dot">?</span></div>
-              <div class="score-val"><span class="score-num orange">58</span><span class="score-of">/100</span></div>
+              <div class="score-val"><span class="score-num purple">58</span><span class="score-of">/100</span></div>
               <span class="score-badge needs">Needs Improvement</span>
             </div>
           </div>
           <div class="chart-area">
             <canvas id="seoSummaryChart"></canvas>
-            <div class="chart-tooltip"
-              style="left: 55.7%; top: 31.2%; transform: translate(-50%, -100%) translateY(-10px);"><span
-                class="tt-label">Content Quality</span><span class="tt-val">71%</span></div>
+            <div class="chart-tooltip" id="chartTooltip" style="display: none;"><span class="tt-label"
+                id="ttLabel">Content Quality</span><span class="tt-val" id="ttVal">71%</span></div>
           </div>
         </div>
 
@@ -219,7 +219,7 @@
               <span class="donut-sub">of 2,521 Found</span>
             </div>
             <div class="donut-right">
-              <canvas id="pagesCrawledDonut" width="160" height="160"></canvas>
+              <canvas id="pagesCrawledDonut" width="290" height="290"></canvas>
               <span class="donut-center-val">93%</span>
             </div>
           </div>

@@ -1,31 +1,66 @@
 export default class ChartModel {
   constructor() {
     this.seoSummaryLines = [
-      { // Technical SEO (Green)
-        color: "#30b8a4",
-        points: [[-263, 295.9], [-113, 295.9], [59, 325], [183, 284], [433, 330], [653, 107], [808, 255], [1005, 295.9], [1156, 295.9]]
+      {
+        name: "Technical SEO",
+        color: "#4FCE62", // Green
+        points: [
+          { x: -100, y: 320, value: 55 },
+          { x: 59, y: 325, value: 62 },
+          { x: 183, y: 284, value: 70 },
+          { x: 433, y: 330, value: 65 },
+          { x: 653, y: 107, value: 91 },
+          { x: 808, y: 255, value: 76 },
+          { x: 950, y: 310, value: 68 }
+        ]
       },
-      { // SEO Health (Blue)
-        color: "#3594ee",
-        points: [[-263, 242], [-113, 242], [6, 229], [195, 329], [367, 187], [536, 315], [721, 48], [902, 248], [1005, 242], [1156, 242]]
+      {
+        name: "SEO Health Score",
+        color: "#3594ee", // Blue
+        points: [
+          { x: -50, y: 242, value: 68 },
+          { x: 6, y: 229, value: 72 },
+          { x: 195, y: 329, value: 60 },
+          { x: 367, y: 187, value: 82 },
+          { x: 536, y: 315, value: 64 },
+          { x: 721, y: 48, value: 96 },
+          { x: 902, y: 248, value: 78 }
+        ]
       },
-      { // AI Visibility (Purple)
-        color: "#6645c7",
-        points: [[-260, 265], [-110, 265], [12, 331], [168, 329], [342, 270], [472, 183], [640, 291], [839, 332], [1008, 265], [1159, 265]]
+      {
+        name: "AI Visibility Score",
+        color: "#6645c7", // Purple
+        points: [
+          { x: -50, y: 310, value: 45 },
+          { x: 12, y: 331, value: 48 },
+          { x: 168, y: 329, value: 50 },
+          { x: 342, y: 270, value: 58 },
+          { x: 472, y: 183, value: 68 },
+          { x: 640, y: 291, value: 52 },
+          { x: 839, y: 332, value: 46 }
+        ]
       },
-      { // Content Quality (Orange)
-        color: "#ff9f4e",
-        points: [[-260, 265], [-110, 265], [55, 273], [274, 223], [506, 117], [687, 240], [843, 270], [1159, 265]]
+      {
+        name: "Content Quality",
+        color: "#C27733", // Brown/Orange
+        points: [
+          { x: -50, y: 280, value: 50 },
+          { x: 55, y: 273, value: 56 },
+          { x: 274, y: 223, value: 64 },
+          { x: 506, y: 117, value: 71 },
+          { x: 687, y: 240, value: 60 },
+          { x: 843, y: 270, value: 55 }
+        ]
       }
     ];
 
     this.pagesCrawledConfig = {
-      size: 160,
-      radius: 56,
-      lineWidth: 40,
+      size: 290,
+      radius: 105,
+      lineWidth: 58,
       segments: [
-        { startDeg: 295, endDeg: 172, color: "#3594ee" }, // Blue
-        { startDeg: 188, endDeg: 278, color: "#e0e0e0" }  // Gray
+        { startDeg: 285, endDeg: 165, color: "#3594ee" },
+        { startDeg: 175, endDeg: 275, color: "#e0e0e0" }
       ]
     };
 
@@ -35,11 +70,11 @@ export default class ChartModel {
       lineWidth: 22,
       shiftDist: 6,
       segments: [
-        { start: -88, end: -2, color: "#3594ee", explode: true },   // Blue (exploded)
-        { start: 2, end: 118, color: "#2bb755", explode: false },   // Green
-        { start: 122, end: 208, color: "#ff9f4e", explode: false }, // Orange
-        { start: 212, end: 253, color: "#a37a4c", explode: false }, // Brown
-        { start: 257, end: 268, color: "#ff4b55", explode: false }  // Red
+        { start: -88, end: -2, color: "#3594ee", explode: true },
+        { start: 2, end: 118, color: "#2bb755", explode: false },
+        { start: 122, end: 208, color: "#ff9f4e", explode: false },
+        { start: 212, end: 253, color: "#a37a4c", explode: false },
+        { start: 257, end: 268, color: "#ff4b55", explode: false }
       ]
     };
   }
