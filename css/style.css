@@ -2706,8 +2706,13 @@ tr:hover td {
 [data-theme="dark"] .roadmap-card { background: #21262d !important; border: 1px solid #30363d !important; }
 [data-theme="dark"] .roadmap-inner span { color: #8b949e !important; }
 
+[data-theme="dark"] .sidebar { background: #161b22 !important; border: 1px solid #30363d !important; }
+[data-theme="dark"] .menu-item { color: #c9d1d9 !important; }
+[data-theme="dark"] .menu-item:hover { color: #3594EE !important; }
+[data-theme="dark"] .menu-item.active { background: #21262d !important; color: #ffffff !important; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3) !important; }
+[data-theme="dark"] .menu-chevron { color: #8b949e !important; }
 [data-theme="dark"] .user-profile { border-top-color: #30363d !important; }
 [data-theme="dark"] .profile-name { color: #ffffff !important; }
 [data-theme="dark"] .profile-role { color: #8b949e !important; }
-[data-theme="dark"] .avatar { background: #21262d !important; color: #38bdf8 !important; border: 1px solid #30363d !important; }
+[data-theme="dark"] .avatar { background: #D3FBFB !important; color: #2B2B2B !important; border: none !important; }
 [data-theme="dark"] .chart-tooltip { background: #21262d !important; border: 1px solid #30363d !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important; }
