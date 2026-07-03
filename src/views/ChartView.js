@@ -18,13 +18,19 @@ export default class ChartView {
     return hex;
   }
 
-  renderSeoSummaryChart(lines, activePoint = null) {
+  renderSeoSummaryChart(lines, activePoint = null, progress = 1.0) {
     if (!this.seoCanvas) return;
     const ctx = this.seoCanvas.getContext("2d");
     this.seoCanvas.width = 909;
     this.seoCanvas.height = 375;
 
     ctx.clearRect(0, 0, 909, 375);
+
+    // Save context and apply clipping rectangle to animate from left to right
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(0, 0, 909 * progress, 375);
+    ctx.clip();
 
     const drawCurve = (line) => {
       const { points, color } = line;
@@ -85,7 +91,7 @@ export default class ChartView {
       // Draw Dots
       points.forEach(pt => {
         if (pt.x >= 0 && pt.x <= 909) {
-          const isActive = activePoint && activePoint.x === pt.x && activePoint.y === pt.y;
+          const isActive = activePoint && activePoint.x === pt.x && Math.abs(activePoint.y - pt.y) < 0.5;
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, isActive ? 6 : 4.5, 0, Math.PI * 2);
           ctx.fillStyle = "#ffffff";
@@ -106,6 +112,7 @@ export default class ChartView {
     };
 
     lines.forEach(line => drawCurve(line));
+    ctx.restore();
   }
 
   bindChartHover(lines, onHover) {
@@ -157,7 +164,7 @@ export default class ChartView {
     });
   }
 
-  renderPagesCrawledDonut(config) {
+  renderPagesCrawledDonut(config, progressGrey = 1.0, progressBlue = 1.0) {
     if (!this.crawledCanvas) return;
     const ctx = this.crawledCanvas.getContext("2d");
     const { size, segments } = config;
@@ -168,16 +175,36 @@ export default class ChartView {
 
     ctx.clearRect(0, 0, size, size);
 
-    segments.forEach(seg => {
-      const startRad = (seg.startDeg * Math.PI) / 180;
-      const endRad = (seg.endDeg * Math.PI) / 180;
+    const blueSeg = segments[0]; // Blue progress ring (drawn on top)
+    const greySeg = segments[1]; // Grey background ring
+
+    // 1. Draw grey background ring (full circle, animated sweep)
+    if (progressGrey > 0 && greySeg) {
+      const startAngle = -Math.PI / 2; // Start from top (12 o'clock)
+      const sweepAngle = 2 * Math.PI * progressGrey;
+
       ctx.beginPath();
-      ctx.arc(cx, cy, seg.radius, startRad, endRad, false);
-      ctx.strokeStyle = seg.color;
-      ctx.lineWidth = seg.lineWidth;
+      ctx.arc(cx, cy, greySeg.radius, startAngle, startAngle + sweepAngle, false);
+      ctx.strokeStyle = greySeg.color;
+      ctx.lineWidth = greySeg.lineWidth;
       ctx.lineCap = "butt";
       ctx.stroke();
-    });
+    }
+
+    // 2. Draw blue progress ring on top (93% = ~335° of 360°, animated sweep)
+    if (progressBlue > 0 && blueSeg) {
+      const progressDeg = blueSeg.progressDeg || 335;
+      const startAngle = -Math.PI / 2; // Start from top (12 o'clock)
+      const fullSweep = (progressDeg * Math.PI) / 180;
+      const sweepAngle = fullSweep * progressBlue;
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, blueSeg.radius, startAngle, startAngle + sweepAngle, false);
+      ctx.strokeStyle = blueSeg.color;
+      ctx.lineWidth = blueSeg.lineWidth;
+      ctx.lineCap = "butt";
+      ctx.stroke();
+    }
 
     // Transparent Inner Cutout
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.body.getAttribute('data-theme') === 'dark';
