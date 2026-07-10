@@ -2642,7 +2642,8 @@ tr:hover td {
   padding: 24px;
   position: relative;
   overflow: hidden;
-  height: 150px;
+  flex: 1;
+  min-height: 150px;
   box-sizing: border-box;
 }
 
@@ -2792,6 +2793,7 @@ tr:hover td {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  height: 100%;
 }
 
 /* ===== RESPONSIVE ===== */
