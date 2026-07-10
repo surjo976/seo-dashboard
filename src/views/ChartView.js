@@ -224,7 +224,7 @@ export default class ChartView {
     ctx.stroke();
   }
 
-  renderIssuesOverviewDonut(config) {
+  renderIssuesOverviewDonut(config, progress = 1.0, explodeProgress = 0.0) {
     if (!this.issuesCanvas) return;
     const ctx = this.issuesCanvas.getContext("2d");
     const { size, radius, lineWidth, shiftDist, segments } = config;
@@ -232,35 +232,50 @@ export default class ChartView {
     this.issuesCanvas.height = size;
     const cx = size / 2;
     const cy = size / 2;
+    const outerR = radius + lineWidth / 2;
+    const innerR = radius - lineWidth / 2;
 
     ctx.clearRect(0, 0, size, size);
 
-    const dx = shiftDist * Math.cos(-Math.PI / 4);
-    const dy = shiftDist * Math.sin(-Math.PI / 4);
+    // Spring bounce easing for explode: overshoots then settles
+    const springBounce = (t) => {
+      const c4 = (2 * Math.PI) / 3;
+      if (t <= 0) return 0;
+      if (t >= 1) return 1;
+      return Math.pow(2, -10 * t) * Math.sin((t * 10 - 0.75) * c4) + 1;
+    };
+
+    const currentExplode = springBounce(Math.min(explodeProgress, 1));
 
     segments.forEach(seg => {
+      // Use model's start/end directly — model already has clean 4° gaps baked in
+      const startAngle = (seg.start * Math.PI) / 180;
+      const totalEnd   = (seg.end   * Math.PI) / 180;
+      // Animate the sweep growing from startAngle outward
+      const endAngle = startAngle + (totalEnd - startAngle) * progress;
+      if (endAngle <= startAngle) return;
+
+      // Compute explode offset along mid-angle of this slice
+      let segCx = cx;
+      let segCy = cy;
+      if (seg.explode && explodeProgress > 0) {
+        const midAngle = startAngle + (endAngle - startAngle) / 2;
+        const dist = shiftDist * currentExplode;
+        segCx = cx + dist * Math.cos(midAngle);
+        segCy = cy + dist * Math.sin(midAngle);
+      }
+
+      // Draw filled donut ring slice
+      ctx.save();
       ctx.beginPath();
-      const currentCx = seg.explode ? cx + dx : cx;
-      const currentCy = seg.explode ? cy + dy : cy;
-      ctx.arc(currentCx, currentCy, radius, (seg.start * Math.PI) / 180, (seg.end * Math.PI) / 180);
-      ctx.strokeStyle = seg.color;
-      ctx.lineWidth = lineWidth;
-      ctx.lineCap = "butt";
-      ctx.stroke();
+      ctx.moveTo(segCx + outerR * Math.cos(startAngle), segCy + outerR * Math.sin(startAngle));
+      ctx.arc(segCx, segCy, outerR, startAngle, endAngle);
+      ctx.lineTo(segCx + innerR * Math.cos(endAngle), segCy + innerR * Math.sin(endAngle));
+      ctx.arc(segCx, segCy, innerR, endAngle, startAngle, true);
+      ctx.closePath();
+      ctx.fillStyle = seg.color;
+      ctx.fill();
+      ctx.restore();
     });
-
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.body.getAttribute('data-theme') === 'dark';
-    ctx.save();
-    ctx.globalCompositeOperation = 'destination-out';
-    ctx.beginPath();
-    ctx.arc(cx, cy, radius - lineWidth / 2, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-
-    ctx.beginPath();
-    ctx.arc(cx, cy, radius - lineWidth / 2, 0, Math.PI * 2);
-    ctx.strokeStyle = isDark ? "#30363d" : "#e0e0e0";
-    ctx.lineWidth = 3;
-    ctx.stroke();
   }
 }

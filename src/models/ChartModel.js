@@ -63,16 +63,18 @@ export default class ChartModel {
     };
 
     this.issuesOverviewConfig = {
-      size: 263,
-      radius: 96,
-      lineWidth: 36,
-      shiftDist: 8,
+      size: 200,
+      radius: 73,
+      lineWidth: 27,
+      shiftDist: 9,
+      // Segments have 2° gaps between them
+      // Total: 88+119+88+42+13 = 350° segments + 5×2° = 360°
       segments: [
-        { start: -88, end: -2, color: "#3594ee", explode: true },
-        { start: 2, end: 118, color: "#4fce62", explode: false },
-        { start: 122, end: 208, color: "#ff9f4e", explode: false },
-        { start: 212, end: 253, color: "#a37a4c", explode: false },
-        { start: 257, end: 268, color: "#ff6370", explode: false }
+        { start: -90, end:  -2, color: "#3594ee", explode: true  }, // Blue   88°
+        { start:   0, end: 119, color: "#4fce62", explode: false }, // Green 119°
+        { start: 121, end: 209, color: "#ff9f4e", explode: false }, // Orange 88°
+        { start: 211, end: 253, color: "#a37a4c", explode: false }, // Brown  42°
+        { start: 255, end: 268, color: "#ff6370", explode: false }  // Red    13°
       ]
     };
   }

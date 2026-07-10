@@ -26,10 +26,13 @@ export default class ChartController {
     const durationGrey = 600; // 0.6s for grey circle clockwise
     const durationBlue = 900; // 0.9s for blue circle counter-clockwise
     const delayBlue = 500;    // starts 0.5s after animation starts
+    const durationIssues = 1000;   // 1.0s for donut segments sweep in
+    const durationExplode = 700;   // 0.7s for spring-bounce explode
+    const delayExplode = 900;      // explode starts at 0.9s (after most of sweep is done)
 
     // Easing functions
-    const easeInQuad = (t) => t * t; // Acceleration style
-    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3); // Smooth ease out
+    const easeInQuad = (t) => t * t;
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
     const animate = (now) => {
       const elapsed = now - startTime;
@@ -38,19 +41,25 @@ export default class ChartController {
       const tLine = Math.min(elapsed / durationLine, 1);
       const progressLine = easeOutCubic(tLine);
 
-      // 2. Pages Crawled donut progress
+      // 2. Pages Crawled donut
       const tGrey = Math.min(Math.max(elapsed / durationGrey, 0), 1);
       const progressGrey = easeInQuad(tGrey);
-
       const tBlue = Math.min(Math.max((elapsed - delayBlue) / durationBlue, 0), 1);
       const progressBlue = easeOutCubic(tBlue);
+
+      // 3. Issues Overview — two-phase
+      const tIssues = Math.min(elapsed / durationIssues, 1);
+      const progressIssues = easeOutCubic(tIssues);
+      const tExplode = Math.min(Math.max((elapsed - delayExplode) / durationExplode, 0), 1);
+      const progressExplode = tExplode; // raw t — spring easing handled inside ChartView
 
       // Render frame
       this.view.renderSeoSummaryChart(this.model.seoSummaryLines, null, progressLine);
       this.view.renderPagesCrawledDonut(this.model.pagesCrawledConfig, progressGrey, progressBlue);
-      this.view.renderIssuesOverviewDonut(this.model.issuesOverviewConfig);
+      this.view.renderIssuesOverviewDonut(this.model.issuesOverviewConfig, progressIssues, progressExplode);
 
-      if (elapsed < Math.max(durationLine, delayBlue + durationBlue)) {
+      const totalDuration = Math.max(durationLine, delayBlue + durationBlue, delayExplode + durationExplode);
+      if (elapsed < totalDuration) {
         this.animationFrameId = requestAnimationFrame(animate);
       } else {
         this.animationFrameId = null;
@@ -69,7 +78,7 @@ export default class ChartController {
     // Render static state
     this.view.renderSeoSummaryChart(this.model.seoSummaryLines, null, 1.0);
     this.view.renderPagesCrawledDonut(this.model.pagesCrawledConfig, 1.0, 1.0);
-    this.view.renderIssuesOverviewDonut(this.model.issuesOverviewConfig);
+    this.view.renderIssuesOverviewDonut(this.model.issuesOverviewConfig, 1.0, 1.0);
   }
 
   handleChartHover(info) {
