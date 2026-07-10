@@ -17,7 +17,7 @@
   --teal: #30b8a4;
   --yellow: #FDC23C;
   --brown: #C27733;
-  --sidebar-w: 265px;
+  --sidebar-w: 240px;
   --radius: 52px;
   --radius-sm: 24px;
   --font: 'Outfit', sans-serif;
@@ -61,14 +61,15 @@ body {
 /* ===== SIDEBAR ===== */
 /* ===== SIDEBAR ===== */
 .sidebar {
-  position: sticky;
-  top: 15px;
-  height: calc(100vh - 30px);
-  max-height: calc(100vh - 30px);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  max-height: 100vh;
   width: var(--sidebar-w);
   background: var(--card);
-  border-radius: 40px;
-  margin: 15px 0 15px 20px;
+  border-radius: 0 20px 20px 0;
+  margin: 0;
   padding: 0 0 20px;
   display: flex;
   flex-direction: column;
@@ -88,22 +89,20 @@ body {
   border-radius: 4px;
 }
 
-.dashboard-container.sidebar-closed .sidebar {
-  width: 0;
-  margin-left: 0;
-  margin-right: 0;
-  padding: 0;
-  opacity: 0;
-  pointer-events: none;
-}
-
 .dashboard-container {
+  --active-sidebar-w: var(--sidebar-w);
   display: flex;
   min-height: 100vh;
 }
 
-.dashboard-container.sidebar-closed .main-content {
-  max-width: 100%;
+.dashboard-container.sidebar-closed {
+  --active-sidebar-w: 0px;
+}
+
+.dashboard-container.sidebar-closed .sidebar {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .logo-container {
@@ -308,13 +307,48 @@ body {
 /* ===== MAIN ===== */
 .main-content {
   flex-grow: 1;
-  padding: 30px 30px 30px 25px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--active-sidebar-w);
+  width: calc(100% - var(--active-sidebar-w));
+  min-width: 0;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-banner {
+  background: url('../assets/head.png') no-repeat center top;
+  background-size: cover;
+  height: 414px;
+  min-height: 414px;
+  padding: 30px 30px 0 calc(var(--active-sidebar-w) + 25px);
+  margin-left: calc(-1 * var(--active-sidebar-w));
+  width: calc(100% + var(--active-sidebar-w));
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+  z-index: 1;
+  transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+              padding-left 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+              width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-body {
+  padding: 0 30px 30px 25px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: calc(100% - var(--sidebar-w));
-  min-width: 0;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: -210px; /* Pull content up to overlap wave background nicely */
+  position: relative;
+  z-index: 2;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  width: 100%;
 }
 
 /* ===== TOP BAR ===== */
@@ -341,12 +375,12 @@ body {
 }
 
 .header-menu-btn {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   background: none;
   border: none;
-  color: #2B2B2B;
+  color: #ffffff;
   cursor: pointer;
   padding: 0;
 }
@@ -364,7 +398,7 @@ body {
 .welcome-text {
   font-size: 20px;
   font-weight: 700;
-  color: #2B2B2B;
+  color: #ffffff;
   line-height: 24px;
   font-family: var(--font);
   margin: 0;
@@ -375,7 +409,7 @@ body {
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  color: #2B2B2B;
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
   font-family: var(--font);
   padding-left: 2px;
@@ -384,12 +418,12 @@ body {
 .breadcrumb i {
   width: 12px;
   height: 12px;
-  color: #2B2B2B;
+  color: rgba(255, 255, 255, 0.8);
   flex-shrink: 0;
 }
 
 .breadcrumb i svg {
-  fill: #2B2B2B !important;
+  fill: rgba(255, 255, 255, 0.8) !important;
   stroke: none !important;
 }
 
@@ -548,7 +582,7 @@ body {
 .btn-blue-full {
   width: 100%;
   height: 50px;
-  border-radius: 100px;
+  border-radius: 8px;
   background: var(--blue);
   color: #fff;
   font-size: 16px;
@@ -616,6 +650,15 @@ body {
   color: #2B2B2B;
   position: relative;
   transition: all 0.2s;
+}
+
+.top-bar .icon-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.top-bar .icon-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .icon-btn i {
@@ -691,21 +734,43 @@ body {
   line-height: 32px;
 }
 
-.title-right {
+/* ===== TITLE & CARD ===== */
+.card.title-card {
+  background: #E2EDF7;
+  border-radius: 15px;
+  padding: 24px 30px;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.title-card-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin: 0;
+  line-height: 32px;
 }
 
 .btn-title-white {
-  height: 50px;
-  padding: 0 24px;
-  border-radius: 30px;
+  height: 38px;
+  padding: 0 20px;
+  border-radius: 19px;
   background: #ffffff;
-  color: #2B2B2B;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
+  color: #808080;
+  font-size: 14px;
+  font-weight: 500;
   font-family: var(--font);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
   border: none;
@@ -713,13 +778,14 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  transition: all 0.2s;
 }
 
 .btn-title-white i {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   stroke-width: 2;
-  color: #2B2B2B;
+  color: #808080;
 }
 
 .btn-title-white:hover {
@@ -735,14 +801,14 @@ body {
 }
 
 .domain-link {
-  color: #26C6DA;
+  color: #3594EE;
   text-decoration: none;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .crawl-label {
-  color: #757575;
+  color: #808080;
   font-size: 14px;
   font-weight: 400;
 }
@@ -750,15 +816,15 @@ body {
 .crawl-tag {
   height: 24px;
   padding: 0 12px;
-  background: #ffffff;
+  background: #F4F4F4;
   border-radius: 20px;
   font-size: 14px;
   color: #2B2B2B;
-  font-weight: 400;
+  font-weight: 500;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  box-shadow: none;
 }
 
 .btn-recrawled {
@@ -787,50 +853,61 @@ body {
 
 /* ===== TABS ===== */
 .audit-tabs {
-  height: 100px !important;
-  min-height: 100px !important;
-  flex-shrink: 0;
-  background: white;
-  box-shadow: 0px 15px 10px -16px rgba(33, 33, 33, 0.50);
-  border-radius: 24px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 0 30px;
-  overflow-x: auto;
-  box-sizing: border-box;
+  gap: 20px;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: auto !important;
+  min-height: auto !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
 }
 
 .tab {
-  height: 62px;
-  width: 144px;
-  min-width: 144px;
-  border-radius: 16px;
-  border: 1px solid #EAEAEA;
-  background: white;
-  color: #616161;
-  font-family: var(--font);
-  font-size: 16px;
-  font-weight: 500;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 8px 0 !important;
+  width: auto !important;
+  min-width: auto !important;
+  height: auto !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #808080 !important;
+  position: relative;
   cursor: pointer;
+  transition: color 0.2s;
+  box-shadow: none !important;
+  font-family: var(--font);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
   white-space: nowrap;
 }
 
 .tab:hover {
-  border-color: #3594EE;
-  color: #3594EE;
+  color: var(--blue) !important;
 }
 
 .tab.active {
-  background: #3594EE;
-  color: white;
-  border: none;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(53, 148, 238, 0.25);
+  color: var(--blue) !important;
+  background: transparent !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--blue);
 }
 
 /* ===== CARDS ===== */
@@ -2368,12 +2445,14 @@ tr:hover td {
   flex-direction: column;
   gap: 16px;
   margin-top: 8px;
+  width: 100%;
 }
 
 .plan-item {
   display: flex;
   align-items: center;
   gap: 12px;
+  width: 100%;
 }
 
 .plan-badge {
@@ -2395,7 +2474,9 @@ tr:hover td {
 
 .plan-info {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .plan-info strong {
@@ -2644,13 +2725,17 @@ tr:hover td {
 }
 
 @media (max-width: 768px) {
+  .dashboard-container {
+    --active-sidebar-w: 0px !important;
+  }
+
   .sidebar {
     position: fixed;
     left: -290px;
     top: 0;
     bottom: 0;
     margin: 0;
-    border-radius: 0 40px 40px 0;
+    border-radius: 0 20px 20px 0;
     z-index: 1000;
   }
 
@@ -2875,11 +2960,11 @@ tr:hover td {
 }
 
 [data-theme="dark"] .breadcrumb {
-  color: #8b949e !important;
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 [data-theme="dark"] .breadcrumb i svg {
-  fill: #8b949e !important;
+  fill: rgba(255, 255, 255, 0.8) !important;
   stroke: none !important;
 }
 
@@ -2898,23 +2983,23 @@ tr:hover td {
 }
 
 [data-theme="dark"] .header-menu-btn {
-  color: #f0f6fc !important;
+  color: #ffffff !important;
 }
 
 /* Action Buttons */
 [data-theme="dark"] .btn-title-white {
-  background: #21262d !important;
-  color: #f0f6fc !important;
-  box-shadow: none !important;
-  border: 1px solid #30363d !important;
+  background: #ffffff !important;
+  color: #808080 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02) !important;
+  border: none !important;
 }
 
 [data-theme="dark"] .btn-title-white i {
-  color: #f0f6fc !important;
+  color: #808080 !important;
 }
 
 [data-theme="dark"] .btn-title-white:hover {
-  background: #30363d !important;
+  background: #f5f5f5 !important;
 }
 
 [data-theme="dark"] .btn-white-round {
@@ -2949,6 +3034,16 @@ tr:hover td {
   border: 1px solid #30363d !important;
 }
 
+[data-theme="dark"] .top-bar .icon-btn {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+[data-theme="dark"] .top-bar .icon-btn:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+
 /* Audit Tabs */
 [data-theme="dark"] .audit-tabs {
   background: var(--card) !important;
@@ -2973,10 +3068,33 @@ tr:hover td {
   border: none !important;
 }
 
+[data-theme="dark"] .title-card .audit-tabs {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+[data-theme="dark"] .title-card .tab {
+  background: transparent !important;
+  border: none !important;
+  color: #8b949e !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] .title-card .tab.active {
+  color: var(--blue) !important;
+  background: transparent !important;
+}
+
 /* Cards Common & Help Dots */
 [data-theme="dark"] .card {
   background: var(--card) !important;
   border: 1px solid #30363d !important;
+}
+
+[data-theme="dark"] .title-card {
+  background: #1c212a !important;
+  border-radius: 15px !important;
 }
 
 [data-theme="dark"] .help-dot {
@@ -3296,4 +3414,171 @@ tr:hover td {
   background: #21262d !important;
   border: 1px solid #30363d !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ==========================================================================
+   ===== ANIMATIONS & INTERACTIVE MICRO-TRANSITIONS =====
+   ========================================================================== */
+
+/* 1. Page Load Fade In and Slide Up Staggered Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title-card,
+.row-one .card,
+.row-two .card,
+.priority-card,
+.row-three .card,
+.bottom-left-col .card,
+.bottom-right-col .card {
+  opacity: 0;
+  animation: fadeInUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered Delay for Elements */
+.title-card { animation-delay: 0.05s; }
+
+.row-one .card:nth-child(1) { animation-delay: 0.12s; }
+.row-one .card:nth-child(2) { animation-delay: 0.18s; }
+
+.row-two .card:nth-child(1) { animation-delay: 0.24s; }
+.row-two .card:nth-child(2) { animation-delay: 0.3s; }
+
+.priority-card:nth-child(1) { animation-delay: 0.36s; }
+.priority-card:nth-child(2) { animation-delay: 0.42s; }
+.priority-card:nth-child(3) { animation-delay: 0.48s; }
+.priority-card:nth-child(4) { animation-delay: 0.54s; }
+
+.row-three .card:nth-child(1) { animation-delay: 0.6s; }
+.row-three .card:nth-child(2) { animation-delay: 0.66s; }
+.row-three .card:nth-child(3) { animation-delay: 0.72s; }
+
+.bottom-left-col .card:nth-child(1) { animation-delay: 0.78s; }
+.bottom-left-col .card:nth-child(2) { animation-delay: 0.84s; }
+.bottom-left-col .card:nth-child(3) { animation-delay: 0.9s; }
+
+.bottom-right-col .card:nth-child(1) { animation-delay: 0.96s; }
+.bottom-right-col .card:nth-child(2) { animation-delay: 1.02s; }
+
+/* 2. Premium Hover Card Lifting Effects */
+.card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.05);
+}
+
+/* 3. Action Buttons Micro-interactions */
+.btn, .icon-btn {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s ease,
+              color 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.btn:hover, .icon-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn:active, .icon-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.ftab:active, .pg-btn:active, .tab:active {
+  transform: scale(0.95);
+}
+
+/* 4. Submenu Items Slide & Hover Indicator */
+.submenu-item {
+  transition: background-color 0.2s ease, 
+              color 0.2s ease, 
+              padding-left 0.2s ease,
+              transform 0.2s ease;
+}
+
+.submenu-item:hover {
+  background-color: rgba(53, 148, 238, 0.04);
+  padding-left: 20px;
+  transform: translateX(2px);
+}
+
+[data-theme="dark"] .submenu-item:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* 5. Weekly Action Plan Items Hover & Highlight */
+.plan-item {
+  padding: 8px 12px;
+  margin: 0 -12px;
+  border-radius: 8px;
+  transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.plan-item:hover {
+  background-color: var(--bg);
+  transform: translateX(6px);
+}
+
+/* 6. Export/Share Items Interaction */
+.export-item {
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.export-item:hover {
+  transform: translateY(-3px);
+}
+
+.export-item:hover .exp-icon {
+  transform: scale(1.12);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.exp-icon {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 7. Icon Transitions on Button Hover */
+.btn:hover i[data-lucide="refresh-cw"],
+.btn:hover .lucide-refresh-cw {
+  transform: rotate(180deg);
+}
+
+.btn:hover i[data-lucide="chevron-right"],
+.btn:hover .lucide-chevron-right,
+.btn:hover i[data-lucide="arrow-right"],
+.btn:hover .lucide-arrow-right {
+  transform: translateX(4px);
+}
+
+/* 8. Table Row Hover Highlight */
+.issues-table tbody tr {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.issues-table tbody tr:hover {
+  background-color: var(--bg);
+}
+
+/* 9. Sidebar Collapse/Expand Transitions */
+.sidebar {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              left 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
