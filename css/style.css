@@ -2634,7 +2634,8 @@ tr:hover td {
 
 /* ===== HELP CARD ===== */
 .help-card {
-  background: linear-gradient(135deg, #E0EFFF 0%, #CBE0F5 100%);
+  background: rgba(53, 148, 238, 0.10);
+  border-radius: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
