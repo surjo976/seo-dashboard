@@ -2444,7 +2444,7 @@ tr:hover td {
 .pg-btn {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: 6px;
   border: none;
   background: none;
   color: var(--text2);
@@ -2464,8 +2464,8 @@ tr:hover td {
 }
 
 .pg-btn.active {
-  background: rgba(53, 148, 238, 0.15);
-  color: var(--blue);
+  background: #EAF5FF;
+  color: #3594EE;
   font-weight: 700;
 }
 
@@ -2475,6 +2475,10 @@ tr:hover td {
 
 .pg-btn.dots {
   pointer-events: none;
+}
+
+.pg-btn.pg-arrow {
+  color: var(--text2);
 }
 
 /* ===== WEEKLY ACTION PLAN ===== */
@@ -2521,13 +2525,13 @@ tr:hover td {
   flex-grow: 1;
 }
 
-.plan-info strong {
+.plan-name {
   font-size: 15px;
   font-weight: 600;
   color: var(--text);
 }
 
-.plan-info span {
+.plan-gain {
   font-size: 13px;
   color: var(--text2);
 }
@@ -2630,7 +2634,7 @@ tr:hover td {
 
 /* ===== HELP CARD ===== */
 .help-card {
-  background: #D5E4F5;
+  background: linear-gradient(135deg, #E0EFFF 0%, #CBE0F5 100%);
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -2676,32 +2680,93 @@ tr:hover td {
   height: auto;
 }
 
-/* ===== ROADMAP ===== */
+/* ===== ROADMAP STRIP ===== */
 .roadmap-card {
-  background: #F5F5F5;
+  background: #F9FAFB;
   border-radius: var(--radius-sm);
+  border: 1px solid #E5E7EB;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
+  padding: 14px 20px;
+  margin-top: 24px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .roadmap-inner {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .roadmap-inner span {
-  font-size: 16px;
-  color: var(--text2);
+  font-size: 14px;
+  color: #4B5563;
+  font-weight: 500;
 }
 
-.roadmap-icon {
-  width: 18px;
-  height: 18px;
-  color: var(--yellow);
-  flex-shrink: 0;
+.btn-gen {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  color: #3594EE;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.btn-gen:hover {
+  border-color: #3594EE;
+  box-shadow: 0 2px 4px rgba(53, 148, 238, 0.1);
+}
+
+/* ===== TABLE ACTIONS ===== */
+.tbl-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tbl-act-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.tbl-act-btn:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.tbl-act-btn.btn-view {
+  color: #3594EE;
+}
+
+.tbl-act-btn.btn-delete {
+  color: #9E9E9E;
+}
+
+.tbl-act-btn.btn-more {
+  color: #9E9E9E;
+}
+
+.tbl-act-btn svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* ===== BOTTOM COLUMN LAYOUT ===== */
