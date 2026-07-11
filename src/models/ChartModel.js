@@ -63,9 +63,9 @@ export default class ChartModel {
     };
 
     this.issuesOverviewConfig = {
-      size: 200,
-      radius: 73,
-      lineWidth: 27,
+      size: 250,
+      radius: 88,
+      lineWidth: 32,
       shiftDist: 9,
       segments: [
         { start: -90, end:   0, color: "#3594ee", explode: true  }, // Blue   90°

@@ -1737,18 +1737,19 @@ body {
 .issues-body-layout {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   position: relative;
   flex-grow: 1;
   margin-top: 8px;
-  gap: 20px;
+  width: 100%;
 }
 
 .issues-donut-wrap {
   position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto;
+  width: 250px;
+  height: 250px;
+  align-self: flex-end;
+  margin-right: 8px;
   flex-shrink: 0;
 }
 
@@ -1763,7 +1764,7 @@ body {
 }
 
 .idc-num {
-  font-size: 36px;
+  font-size: 42px;
   font-weight: 700;
   color: var(--text);
   line-height: 1;
@@ -1771,20 +1772,21 @@ body {
 }
 
 .idc-label {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text2);
   font-weight: 500;
   letter-spacing: 0.3px;
 }
 
 .issues-legend {
-  align-self: center;
+  align-self: flex-start;
   width: 100%;
-  max-width: 200px;
+  max-width: 220px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-left: 0;
+  margin-left: 12px;
+  margin-top: -20px;
 }
 
 .il-row-item {
@@ -2398,6 +2400,24 @@ td {
   color: var(--text);
   border-bottom: 1px solid #E5E4E4;
   vertical-align: middle;
+}
+
+/* Center columns 2, 3, 4, 5, and 6 to match mockup */
+th:nth-child(2), td:nth-child(2),
+th:nth-child(3), td:nth-child(3),
+th:nth-child(4), td:nth-child(4),
+th:nth-child(5), td:nth-child(5),
+th:nth-child(6), td:nth-child(6) {
+  text-align: center;
+}
+
+/* Center sparklines and action buttons horizontally inside centered cells */
+.sparkline {
+  margin: 0 auto;
+}
+
+.tbl-actions {
+  justify-content: center;
 }
 
 tr:hover td {
