@@ -21,14 +21,14 @@ export default class ChartController {
       cancelAnimationFrame(this.animationFrameId);
     }
 
+    // Render the Chart.js donut chart once so it runs its native entry animation
+    this.view.renderIssuesOverviewDonut(this.model.issuesOverviewConfig);
+
     const startTime = performance.now();
     const durationLine = 1200; // 1.2s for line chart rise
     const durationGrey = 600; // 0.6s for grey circle clockwise
     const durationBlue = 900; // 0.9s for blue circle counter-clockwise
     const delayBlue = 500;    // starts 0.5s after animation starts
-    const durationIssues = 1000;   // 1.0s for donut segments sweep in
-    const durationExplode = 700;   // 0.7s for spring-bounce explode
-    const delayExplode = 900;      // explode starts at 0.9s (after most of sweep is done)
 
     // Easing functions
     const easeInQuad = (t) => t * t;
@@ -47,18 +47,11 @@ export default class ChartController {
       const tBlue = Math.min(Math.max((elapsed - delayBlue) / durationBlue, 0), 1);
       const progressBlue = easeOutCubic(tBlue);
 
-      // 3. Issues Overview — two-phase
-      const tIssues = Math.min(elapsed / durationIssues, 1);
-      const progressIssues = easeOutCubic(tIssues);
-      const tExplode = Math.min(Math.max((elapsed - delayExplode) / durationExplode, 0), 1);
-      const progressExplode = tExplode; // raw t — spring easing handled inside ChartView
-
       // Render frame
       this.view.renderSeoSummaryChart(this.model.seoSummaryLines, null, progressLine);
       this.view.renderPagesCrawledDonut(this.model.pagesCrawledConfig, progressGrey, progressBlue);
-      this.view.renderIssuesOverviewDonut(this.model.issuesOverviewConfig, progressIssues, progressExplode);
 
-      const totalDuration = Math.max(durationLine, delayBlue + durationBlue, delayExplode + durationExplode);
+      const totalDuration = Math.max(durationLine, delayBlue + durationBlue);
       if (elapsed < totalDuration) {
         this.animationFrameId = requestAnimationFrame(animate);
       } else {
@@ -78,7 +71,7 @@ export default class ChartController {
     // Render static state
     this.view.renderSeoSummaryChart(this.model.seoSummaryLines, null, 1.0);
     this.view.renderPagesCrawledDonut(this.model.pagesCrawledConfig, 1.0, 1.0);
-    this.view.renderIssuesOverviewDonut(this.model.issuesOverviewConfig, 1.0, 1.0);
+    this.view.renderIssuesOverviewDonut(this.model.issuesOverviewConfig);
   }
 
   handleChartHover(info) {

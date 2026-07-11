@@ -224,55 +224,49 @@ export default class ChartView {
     ctx.stroke();
   }
 
-  renderIssuesOverviewDonut(config, progress = 1.0, explodeProgress = 0.0) {
+  renderIssuesOverviewDonut(config) {
     if (!this.issuesCanvas) return;
     const ctx = this.issuesCanvas.getContext("2d");
-    const { size, radius, lineWidth, shiftDist, segments } = config;
+    const { size, radius, lineWidth, segments } = config;
+
+    // Set canvas dimensions explicitly to match size
     this.issuesCanvas.width = size;
     this.issuesCanvas.height = size;
     const cx = size / 2;
     const cy = size / 2;
-    const outerR = radius + lineWidth / 2;
-    const innerR = radius - lineWidth / 2;
 
     ctx.clearRect(0, 0, size, size);
 
-    // Spring bounce easing for explode: overshoots then settles
-    const springBounce = (t) => {
-      const c4 = (2 * Math.PI) / 3;
-      if (t <= 0) return 0;
-      if (t >= 1) return 1;
-      return Math.pow(2, -10 * t) * Math.sin((t * 10 - 0.75) * c4) + 1;
-    };
-
-    const currentExplode = springBounce(Math.min(explodeProgress, 1));
-
     segments.forEach(seg => {
-      // Use model's start/end directly — model already has clean 4° gaps baked in
+      // Use model's start/end degrees directly
       const startAngle = (seg.start * Math.PI) / 180;
-      const totalEnd   = (seg.end   * Math.PI) / 180;
-      // Animate the sweep growing from startAngle outward
-      const endAngle = startAngle + (totalEnd - startAngle) * progress;
-      if (endAngle <= startAngle) return;
+      const endAngle   = (seg.end   * Math.PI) / 180;
 
-      // Compute explode offset along mid-angle of this slice
-      let segCx = cx;
-      let segCy = cy;
-      if (seg.explode && explodeProgress > 0) {
-        const midAngle = startAngle + (endAngle - startAngle) / 2;
-        const dist = shiftDist * currentExplode;
-        segCx = cx + dist * Math.cos(midAngle);
-        segCy = cy + dist * Math.sin(midAngle);
+      let currentLineWidth = lineWidth;
+      let currentRadius = radius;
+
+      // Make the Blue segment (#3594ee) 1.5x thicker
+      if (seg.color === "#3594ee") {
+        currentLineWidth = lineWidth * 1.5;
+        // Adjust radius so the inner radius remains exactly aligned with others (radius - lineWidth/2)
+        // Others innerR: 73 - 13.5 = 59.5
+        // Blue innerR: 79.75 - 20.25 = 59.5
+        currentRadius = radius + (lineWidth * 0.25);
       }
 
-      // Draw filled donut ring slice
+      const outerR = currentRadius + currentLineWidth / 2;
+      const innerR = currentRadius - currentLineWidth / 2;
+
       ctx.save();
       ctx.beginPath();
-      ctx.moveTo(segCx + outerR * Math.cos(startAngle), segCy + outerR * Math.sin(startAngle));
-      ctx.arc(segCx, segCy, outerR, startAngle, endAngle);
-      ctx.lineTo(segCx + innerR * Math.cos(endAngle), segCy + innerR * Math.sin(endAngle));
-      ctx.arc(segCx, segCy, innerR, endAngle, startAngle, true);
+      // Draw outer arc
+      ctx.arc(cx, cy, outerR, startAngle, endAngle, false);
+      // Connect to inner arc
+      ctx.lineTo(cx + innerR * Math.cos(endAngle), cy + innerR * Math.sin(endAngle));
+      // Draw inner arc counter-clockwise
+      ctx.arc(cx, cy, innerR, endAngle, startAngle, true);
       ctx.closePath();
+      
       ctx.fillStyle = seg.color;
       ctx.fill();
       ctx.restore();

@@ -1,16 +1,16 @@
-import ChartModel from './models/ChartModel.js';
-import FilterModel from './models/FilterModel.js';
-import ThemeModel from './models/ThemeModel.js';
+import ChartModel from './models/ChartModel.js?v=4.3';
+import FilterModel from './models/FilterModel.js?v=4.3';
+import ThemeModel from './models/ThemeModel.js?v=4.3';
 
-import ChartView from './views/ChartView.js';
-import TableView from './views/TableView.js';
-import ThemeView from './views/ThemeView.js';
-import SidebarView from './views/SidebarView.js';
+import ChartView from './views/ChartView.js?v=4.3';
+import TableView from './views/TableView.js?v=4.3';
+import ThemeView from './views/ThemeView.js?v=4.3';
+import SidebarView from './views/SidebarView.js?v=4.3';
 
-import ChartController from './controllers/ChartController.js';
-import TableController from './controllers/TableController.js';
-import ThemeController from './controllers/ThemeController.js';
-import AppController from './controllers/AppController.js';
+import ChartController from './controllers/ChartController.js?v=4.3';
+import TableController from './controllers/TableController.js?v=4.3';
+import ThemeController from './controllers/ThemeController.js?v=4.3';
+import AppController from './controllers/AppController.js?v=4.3';
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize Lucide Icons

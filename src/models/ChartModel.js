@@ -67,14 +67,12 @@ export default class ChartModel {
       radius: 73,
       lineWidth: 27,
       shiftDist: 9,
-      // Segments have 2° gaps between them
-      // Total: 88+119+88+42+13 = 350° segments + 5×2° = 360°
       segments: [
-        { start: -90, end:  -2, color: "#3594ee", explode: true  }, // Blue   88°
-        { start:   0, end: 119, color: "#4fce62", explode: false }, // Green 119°
-        { start: 121, end: 209, color: "#ff9f4e", explode: false }, // Orange 88°
-        { start: 211, end: 253, color: "#a37a4c", explode: false }, // Brown  42°
-        { start: 255, end: 268, color: "#ff6370", explode: false }  // Red    13°
+        { start: -90, end:   0, color: "#3594ee", explode: true  }, // Blue   90°
+        { start:   0, end: 121, color: "#4fce62", explode: false }, // Green 121°
+        { start: 121, end: 211, color: "#ff9f4e", explode: false }, // Orange 90°
+        { start: 211, end: 255, color: "#a37a4c", explode: false }, // Brown  44°
+        { start: 255, end: 270, color: "#ff6370", explode: false }  // Red    15°
       ]
     };
   }
