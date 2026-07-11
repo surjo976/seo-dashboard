@@ -1619,7 +1619,7 @@ body {
 }
 
 .pc-gain-val {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
 }
 
@@ -1635,7 +1635,7 @@ body {
   border-radius: 12px;
   font-size: 11px;
   font-weight: 700;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .badge-red {
@@ -3314,6 +3314,10 @@ tr:hover td {
 
 [data-theme="dark"] .pc-detail-label {
   color: #8b949e !important;
+}
+
+[data-theme="dark"] .pc-details {
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 [data-theme="dark"] .pc-time-val {
