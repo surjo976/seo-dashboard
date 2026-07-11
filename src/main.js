@@ -1,16 +1,16 @@
-import ChartModel from './models/ChartModel.js?v=5.1';
-import FilterModel from './models/FilterModel.js?v=5.1';
-import ThemeModel from './models/ThemeModel.js?v=5.1';
+import ChartModel from './models/ChartModel.js?v=5.2';
+import FilterModel from './models/FilterModel.js?v=5.2';
+import ThemeModel from './models/ThemeModel.js?v=5.2';
 
-import ChartView from './views/ChartView.js?v=5.1';
-import TableView from './views/TableView.js?v=5.1';
-import ThemeView from './views/ThemeView.js?v=5.1';
-import SidebarView from './views/SidebarView.js?v=5.1';
+import ChartView from './views/ChartView.js?v=5.2';
+import TableView from './views/TableView.js?v=5.2';
+import ThemeView from './views/ThemeView.js?v=5.2';
+import SidebarView from './views/SidebarView.js?v=5.2';
 
-import ChartController from './controllers/ChartController.js?v=5.1';
-import TableController from './controllers/TableController.js?v=5.1';
-import ThemeController from './controllers/ThemeController.js?v=5.1';
-import AppController from './controllers/AppController.js?v=5.1';
+import ChartController from './controllers/ChartController.js?v=5.2';
+import TableController from './controllers/TableController.js?v=5.2';
+import ThemeController from './controllers/ThemeController.js?v=5.2';
+import AppController from './controllers/AppController.js?v=5.2';
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize Lucide Icons
