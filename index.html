@@ -140,6 +140,8 @@
 
         <!-- Action Buttons -->
         <div class="header-actions">
+          <button class="btn btn-title-white btn-back" id="backToOverview" style="display: none;"><i
+              data-lucide="corner-up-left"></i></button>
           <button class="btn btn-title-white"><i data-lucide="printer"></i> Export PDF</button>
           <button class="btn btn-title-white"><i data-lucide="share-2"></i> Share Report</button>
           <button class="btn btn-title-white"><i data-lucide="share-2"></i> Schedule Audit</button>
@@ -148,946 +150,1387 @@
 
       <!-- Content Body -->
       <div class="content-body">
-        <!-- Title Section Card -->
-        <div class="card title-card">
-          <div class="title-card-left">
-            <span class="subtitle">AUDIT SUITE</span>
-            <h1 class="page-title">AI - Powered SEO Audit Report</h1>
-            <div class="domain-row">
-              <a href="#" class="domain-link">www.example.com</a>
-              <span class="crawl-label">Crawled on:</span>
-              <span class="crawl-tag">May 10, 2025</span>
-              <span class="crawl-tag">10:30 am.</span>
-              <button class="btn btn-recrawled"><i data-lucide="refresh-cw"></i> Re-Crawled</button>
+        <div id="overview-view" class="view-container active">
+          <!-- Title Section Card -->
+          <div class="card title-card">
+            <div class="title-card-left">
+              <span class="subtitle">AUDIT SUITE</span>
+              <h1 class="page-title">AI - Powered SEO Audit Report</h1>
+              <div class="domain-row">
+                <a href="#" class="domain-link">www.example.com</a>
+                <span class="crawl-label">Crawled on:</span>
+                <span class="crawl-tag">May 10, 2025</span>
+                <span class="crawl-tag">10:30 am.</span>
+                <button class="btn btn-recrawled"><i data-lucide="refresh-cw"></i> Re-Crawled</button>
+              </div>
+            </div>
+
+            <!-- Tabs -->
+            <nav class="audit-tabs">
+              <button class="tab active">Over View</button>
+              <button class="tab">Issues</button>
+              <button class="tab">Crawled Pages</button>
+              <button class="tab">Statistic</button>
+              <button class="tab">Compare Audit</button>
+              <button class="tab highlight">AI Insights</button>
+            </nav>
+          </div>
+
+          <!-- Row 1: SEO Summary + Pages Crawled -->
+          <div class="row row-one">
+            <div class="card seo-summary-card">
+              <div class="card-header">
+                <h3>SEO SUMMARY</h3>
+                <div class="legend">
+                  <span class="legend-item"><span class="dot" style="background:#3594EE"></span>SEO</span>
+                  <span class="legend-item"><span class="dot" style="background:#30b8a4"></span>Technical SEO</span>
+                  <span class="legend-item"><span class="dot" style="background:#ff9f4e"></span>Content Quality</span>
+                  <span class="legend-item"><span class="dot" style="background:#6645c7"></span>AI Visibility</span>
+                </div>
+              </div>
+              <!-- Score Cards Row -->
+              <div class="score-cards-row">
+                <div class="score-card">
+                  <div class="score-card-header"><span class="score-title">SEO HEALTH SCORE</span><span
+                      class="help-dot">?</span></div>
+                  <div class="score-val"><span class="score-num green">78</span><span class="score-of">/100</span></div>
+                  <span class="score-badge good">Good</span>
+                </div>
+                <div class="score-card">
+                  <div class="score-card-header"><span class="score-title">TECHNICAL SEO</span><span
+                      class="help-dot">?</span></div>
+                  <div class="score-val"><span class="score-num blue">91</span><span class="score-of">/100</span></div>
+                  <span class="score-badge excellent">Excellent</span>
+                </div>
+                <div class="score-card">
+                  <div class="score-card-header"><span class="score-title">CONTENT QUALITY</span><span
+                      class="help-dot">?</span></div>
+                  <div class="score-val"><span class="score-num orange">71</span><span class="score-of">/100</span>
+                  </div>
+                  <span class="score-badge fair">Fair</span>
+                </div>
+                <div class="score-card">
+                  <div class="score-card-header"><span class="score-title">AI VISIBILITY SCORE</span><span
+                      class="help-dot">?</span></div>
+                  <div class="score-val"><span class="score-num purple">58</span><span class="score-of">/100</span>
+                  </div>
+                  <span class="score-badge needs">Needs Improvement</span>
+                </div>
+              </div>
+              <div class="chart-area">
+                <canvas id="seoSummaryChart"></canvas>
+                <div class="chart-tooltip" id="chartTooltip" style="display: none;"><span class="tt-label"
+                    id="ttLabel">Content Quality</span><span class="tt-val" id="ttVal">71%</span></div>
+              </div>
+            </div>
+
+            <div class="card pages-crawled-card">
+              <div class="card-header">
+                <h3>PAGESES CRAWLED</h3><span class="help-dot">?</span>
+              </div>
+              <div class="donut-layout">
+                <div class="donut-left">
+                  <span class="donut-big-num">2,092</span>
+                  <span class="donut-sub">of 2,521 Found</span>
+                </div>
+                <div class="donut-right">
+                  <canvas id="pagesCrawledDonut" width="290" height="290"></canvas>
+                  <span class="donut-center-val">83%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Organic Growth + AI Insight -->
+          <div class="row row-two">
+            <div class="card organic-card">
+              <div class="organic-header">
+                <img src="assets/organic.svg" alt="Organic" class="organic-icon">
+                <h3>POTENTIAL ORGANIC GROWTH</h3>
+              </div>
+              <div class="organic-layout">
+                <div class="organic-col">
+                  <span class="organic-label">Current Estimated Traffic</span>
+                  <div class="organic-val">
+                    <span class="organic-num">18,400</span><span class="organic-unit">/month</span>
+                  </div>
+                  <div class="organic-bar blue-bar"></div>
+                </div>
+
+                <div class="organic-arrow-wrap">
+                  <svg class="organic-arrow" viewBox="0 0 50 30" fill="none" stroke="#3594ee" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 5,10 Q 25,28 45,12" />
+                    <path d="M 37,12 H 45 V 20" />
+                  </svg>
+                </div>
+
+                <div class="organic-col">
+                  <span class="organic-label">Potential Traffic</span>
+                  <div class="organic-val green">
+                    <span class="organic-num">24,300</span><span class="organic-unit">/month</span>
+                  </div>
+                  <div class="organic-bar green-bar"></div>
+                </div>
+
+                <div class="organic-arrow-wrap">
+                  <svg class="organic-arrow" viewBox="0 0 50 30" fill="none" stroke="#2bb755" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 5,25 Q 25,12 45,5" />
+                    <path d="M 37,5 H 45 V 13" />
+                  </svg>
+                </div>
+
+                <div class="organic-col">
+                  <span class="organic-label">Growth Opportunity</span>
+                  <div class="organic-val green">
+                    <span class="organic-num">32%</span>
+                  </div>
+                  <div class="organic-bar-spacer"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card ai-insight-card">
+              <div class="ai-insight-content">
+                <div class="ai-insight-header">
+                  <i data-lucide="sparkles" class="ai-insight-icon"></i>
+                  <h2 class="ai-insight-title">AI INSIGHT</h2>
+                </div>
+                <p class="insight-text">Your website has great technical health! Focus on content optimization and
+                  internal
+                  linking to unlock more traffic.</p>
+              </div>
+              <div class="ai-insight-illustration">
+                <div class="ellipse-1"></div>
+                <div class="ellipse-2"></div>
+                <img src="assets/Image.png" alt="AI Robot Assistant" class="robot-img">
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Priority Board -->
+          <section class="priority-section">
+            <div class="priority-header">
+              <div class="priority-header-left">
+                <div class="priority-title-row">
+                  <img src="assets/ai1.svg" alt="AI Priority" class="accent-icon">
+                  <h3>AI PRIORITY BOARD</h3>
+                </div>
+                <span class="header-desc">These are the issues that matter most & have the biggest impact.</span>
+              </div>
+              <a href="#" class="view-all">View All Priorities <i data-lucide="chevron-right"></i></a>
+            </div>
+            <div class="priority-grid">
+              <!-- Card 1: Red -->
+              <div class="priority-card pc-red">
+                <div class="pc-header">
+                  <div class="pc-circle circle-red">1</div>
+                  <h4>Improve Internal Linking</h4>
+                </div>
+                <div class="pc-stat-row">
+                  <span class="pc-stat-num text-red">148</span>
+                  <span class="pc-stat-label">Pages Affected</span>
+                </div>
+                <div class="pc-details">
+                  <div class="pc-detail-row">
+                    <span class="pc-detail-label">Potential Gain</span>
+                    <span class="pc-detail-label">Priority</span>
+                  </div>
+                  <div class="pc-detail-row">
+                    <span class="pc-gain-val text-red">+14%</span>
+                    <span class="pc-badge badge-red">Critical</span>
+                  </div>
+                  <div class="pc-detail-row">
+                    <span class="pc-detail-label">Fix Time</span>
+                    <span class="pc-time-val">- 2 Hours</span>
+                  </div>
+                </div>
+                <button class="pc-btn btn-red">View Details</button>
+              </div>
+
+              <!-- Card 2: Orange -->
+              <div class="priority-card pc-orange">
+                <div class="pc-header">
+                  <div class="pc-circle circle-orange">2</div>
+                  <h4>Fix Keyword Cannibalization</h4>
+                </div>
+                <div class="pc-stat-row">
+                  <span class="pc-stat-num text-orange">7</span>
+                  <span class="pc-stat-label">Pages Affected</span>
+                </div>
+                <div class="pc-details">
+                  <div class="pc-detail-row">
+                    <span class="pc-detail-label">Potential Gain</span>
+                    <span class="pc-detail-label">Priority</span>
+                  </div>
+                  <div class="pc-detail-row">
+                    <span class="pc-gain-val text-orange">+9%</span>
+                    <span class="pc-badge badge-orange">High</span>
+                  </div>
+                  <div class="pc-detail-row">
+                    <span class="pc-detail-label">Fix Time</span>
+                    <span class="pc-time-val">- 45 Min</span>
+                  </div>
+                </div>
+                <button class="pc-btn btn-orange">View Details</button>
+              </div>
+
+              <!-- Card 3: Brown -->
+              <div class="priority-card pc-brown">
+                <div class="pc-header">
+                  <div class="pc-circle circle-brown">3</div>
+                  <h4>Improve Title Tags</h4>
+                </div>
+                <div class="pc-stat-row">
+                  <span class="pc-stat-num text-brown">8</span>
+                  <span class="pc-stat-label">Pages Affected</span>
+                </div>
+                <div class="pc-details">
+                  <div class="pc-detail-row">
+                    <span class="pc-detail-label">Potential Gain</span>
+                    <span class="pc-detail-label">Priority</span>
+                  </div>
+                  <div class="pc-detail-row">
+                    <span class="pc-gain-val text-brown">+4%</span>
+                    <span class="pc-badge badge-brown">Medium</span>
+                  </div>
+                  <div class="pc-detail-row">
+                    <span class="pc-detail-label">Fix Time</span>
+                    <span class="pc-time-val">- 15 Min</span>
+                  </div>
+                </div>
+                <button class="pc-btn btn-brown">View Details</button>
+              </div>
+
+              <!-- Card 4: Green -->
+              <div class="priority-card pc-green">
+                <div class="pc-header">
+                  <div class="pc-circle circle-green">4</div>
+                  <h4>Expand Thin Content</h4>
+                </div>
+                <div class="pc-stat-row">
+                  <span class="pc-stat-num text-green">13</span>
+                  <span class="pc-stat-label">Pages Affected</span>
+                </div>
+                <div class="pc-details">
+                  <div class="pc-detail-row">
+                    <span class="pc-detail-label">Potential Gain</span>
+                    <span class="pc-detail-label">Priority</span>
+                  </div>
+                  <div class="pc-detail-row">
+                    <span class="pc-gain-val text-green">+13%</span>
+                    <span class="pc-badge badge-green">Medium</span>
+                  </div>
+                  <div class="pc-detail-row">
+                    <span class="pc-detail-label">Fix Time</span>
+                    <span class="pc-time-val">- 1 Hours</span>
+                  </div>
+                </div>
+                <button class="pc-btn btn-green">View Details</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Row 3: Issues Overview + Opportunity + AI Visibility -->
+          <div class="row row-three">
+            <div class="card issues-overview-card">
+              <div class="card-header">
+                <h3>ISSUES OVERVIEW</h3><span class="help-dot">?</span>
+              </div>
+              <div class="issues-body-layout">
+                <div class="issues-donut-wrap">
+                  <canvas id="issuesOverviewDonut" width="250" height="250"></canvas>
+                  <div class="issues-donut-center"><span class="idc-num">345</span><span class="idc-label">Total
+                      Issues</span>
+                  </div>
+                </div>
+                <div class="issues-legend">
+                  <div class="il-row-item">
+                    <div class="il-left-group">
+                      <span class="il-checkbox bg-red">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                          stroke-linejoin="round" class="check-icon">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </span>
+                      <span class="il-label">Critical</span>
+                    </div>
+                    <strong class="il-val">12</strong>
+                  </div>
+                  <div class="il-row-item">
+                    <div class="il-left-group">
+                      <span class="il-checkbox bg-brown">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                          stroke-linejoin="round" class="check-icon">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </span>
+                      <span class="il-label">Warnings</span>
+                    </div>
+                    <strong class="il-val">45</strong>
+                  </div>
+                  <div class="il-row-item">
+                    <div class="il-left-group">
+                      <span class="il-checkbox bg-orange">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                          stroke-linejoin="round" class="check-icon">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </span>
+                      <span class="il-label">Notice</span>
+                    </div>
+                    <strong class="il-val">132</strong>
+                  </div>
+                  <div class="il-row-item">
+                    <div class="il-left-group">
+                      <span class="il-checkbox bg-green">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                          stroke-linejoin="round" class="check-icon">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </span>
+                      <span class="il-label">Good</span>
+                    </div>
+                    <strong class="il-val">156</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card opportunity-card">
+              <div class="card-header opportunity-header">
+                <h3>OPPORTUNITY VS IMPACT</h3><span class="help-dot">?</span>
+              </div>
+              <div class="matrix-container">
+                <div class="matrix-wrapper">
+                  <div class="matrix">
+                    <!-- Quick Wins (Green Box) -->
+                    <div class="matrix-cell qw">
+                      <span class="mc-title">Quick Wins</span>
+                      <div class="bubbles-box">
+                        <div class="venn-circle qw-bubble b1"></div>
+                        <div class="venn-circle qw-bubble b2"></div>
+                        <div class="venn-circle qw-bubble b3"></div>
+                      </div>
+                    </div>
+
+                    <!-- Big Wins (Red Box) -->
+                    <div class="matrix-cell bw">
+                      <span class="mc-title">Big Wins</span>
+                      <div class="bubbles-box">
+                        <div class="venn-circle bw-bubble b1"></div>
+                        <div class="venn-circle bw-bubble b2"></div>
+                        <div class="venn-circle bw-bubble b3"></div>
+                        <div class="venn-circle bw-bubble b4"></div>
+                      </div>
+                    </div>
+
+                    <!-- Low Impact (Blue Box) -->
+                    <div class="matrix-cell li">
+                      <span class="mc-title">Low Impact</span>
+                      <div class="bubbles-box">
+                        <div class="venn-circle li-bubble b1"></div>
+                        <div class="venn-circle li-bubble b2"></div>
+                        <div class="venn-circle li-bubble b3"></div>
+                      </div>
+                    </div>
+
+                    <!-- Needs Work (Orange Box) -->
+                    <div class="matrix-cell nw">
+                      <span class="mc-title">Needs Work</span>
+                      <div class="bubbles-box">
+                        <div class="venn-circle nw-bubble b1"></div>
+                        <div class="venn-circle nw-bubble b2"></div>
+                        <div class="venn-circle nw-bubble b3"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Axis Labels -->
+                <div class="axis-y-group">
+                  <span class="axis-label">High</span>
+                  <span class="axis-label effort-y">Effort</span>
+                  <span class="axis-label">Low</span>
+                </div>
+                <div class="axis-x-group">
+                  <span class="axis-label">Low</span>
+                  <span class="axis-label">Effort</span>
+                  <span class="axis-label">High</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card ai-vis-card">
+              <div class="card-header ai-vis-header">
+                <h3>AI VISIBILITY SNAPSHOT</h3><span class="help-dot">?</span>
+              </div>
+              <div class="vis-content-layout">
+                <div class="vis-left-col">
+                  <div class="vis-legend-list">
+                    <div class="vis-legend-item">
+                      <div class="vis-icon" style="background:#1a1a1a">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 18px; height: 18px; color: #fff;">
+                          <path
+                            d="M21.74 11.57a3.84 3.84 0 0 0-.25-2.28 4.02 4.02 0 0 0-1.74-1.92 8.1 8.1 0 0 0-1-.44 4.03 4.03 0 0 0-1.84-2.8 3.96 3.96 0 0 0-2.5-.54 4.05 4.05 0 0 0-2.3 1.13c-.26-.14-.54-.25-.83-.34a4.02 4.02 0 0 0-3.32.32 4.04 4.04 0 0 0-1.98 2.37 8 8 0 0 0-.41.93 4.03 4.03 0 0 0-2.26 2.5 3.98 3.98 0 0 0 .19 2.55 4.02 4.02 0 0 0 1.54 1.94c.05.03.09.06.14.08a4.02 4.02 0 0 0 1.83 2.8 4 4 0 0 0 2.5.53 4.03 4.03 0 0 0 2.31-1.12c.26.14.54.25.82.33a4 4 0 0 0 3.32-.32 4.04 4.04 0 0 0 1.99-2.37c.14-.3.26-.6.36-.92a4.02 4.02 0 0 0 2.27-2.5c.2-.82.13-1.68-.19-2.45zm-7.6 7.42a2.38 2.38 0 0 1-1.25.35c-.46 0-.91-.13-1.3-.38l.12-.07 3.5-2.02a.79.79 0 0 0 .4-.68v-4.88l1.45.84c.6.35.98.98.98 1.68v4.06a2.4 2.4 0 0 1-1.9 2.1zm-6.68-1.57a2.36 2.36 0 0 1-.65-1.13 2.39 2.39 0 0 1 .15-1.91l.1.06 3.5 2.02c.23.13.5.13.73 0l4.22-2.44v1.68c0 .7-.38 1.34-.98 1.69l-3.52 2.03a2.38 2.38 0 0 1-3.55-.96zm-1.78-6.1a2.39 2.39 0 0 1-.6 1.89c.33-.36.78-.6 1.27-.67l.02.13v4.04c0 .26.14.5.37.64l4.23 2.44-1.45.84a1.95 1.95 0 0 1-1.68 0l-3.52-2.03a2.38 2.38 0 0 1-.84-3.5zm7.33-4.88a2.38 2.38 0 0 1 1.9-.34 2.39 2.39 0 0 1 1.6 1.25l-.12.07-3.5 2.02a.79.79 0 0 0-.4.68v4.88l-1.45-.84a1.95 1.95 0 0 1-.98-1.68v-4.06a2.4 2.4 0 0 1 .95-1.98zm6.67 1.57c.4.32.7.75.87 1.24a2.38 2.38 0 0 1-.16 1.86l-.1-.05-3.5-2.03a.8.8 0 0 0-.73 0l-4.22 2.44V9.82c0-.7.38-1.33.98-1.68l3.52-2.03a2.39 2.39 0 0 1 3.34.89zm1.79 6.1a2.39 2.39 0 0 1-.6 1.9c-.33.36-.78.6-1.27.66l-.02-.13V11.2a.79.79 0 0 0-.37-.64L14.7 8.12l1.45-.84a1.95 1.95 0 0 1 1.68 0l3.52 2.03a2.38 2.38 0 0 1 .84 3.5zM12 13.9a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8z" />
+                        </svg>
+                      </div><span>ChatGPT Readiness</span>
+                    </div>
+                    <div class="vis-legend-item">
+                      <div class="vis-icon" style="background:#3594ee">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 18px; height: 18px; color: #fff;">
+                          <path
+                            d="M12 2c0 5.523 4.477 10 10 10-5.523 0-10 4.477-10 10-0-5.523-4.477-10-10-10 4.477 0 10-4.477 10-10z" />
+                        </svg>
+                      </div><span>Gemini Readiness</span>
+                    </div>
+                    <div class="vis-legend-item">
+                      <div class="vis-icon" style="background:#6645c7">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                          stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 16px; height: 16px; color: #fff; fill: none;">
+                          <path
+                            d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9zm0 5a4 4 0 1 1-4 4 4 4 0 0 1 4-4zm0 8a4 4 0 1 1 4-4 4 4 0 0 1-4 4z" />
+                        </svg>
+                      </div><span>Perplexity Readiness</span>
+                    </div>
+                    <div class="vis-legend-item">
+                      <div class="vis-icon" style="background:#ff9f4e">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 16px; height: 16px; color: #fff; fill: none;">
+                          <circle cx="12" cy="12" r="3" />
+                          <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                        </svg>
+                      </div><span>AI Overview Readiness</span>
+                    </div>
+                  </div>
+
+                  <div class="vis-gain-left">
+                    <span class="vis-gain-label">Total Potential Gain</span>
+                    <div class="vis-gain-row">
+                      <span class="vis-gain-val">+30%</span>
+                      <span class="vis-arrow-btn"><i data-lucide="chevron-right"></i></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="vis-bars">
+                  <div class="vis-bar-group">
+                    <div class="vis-bar-tooltip bg-orange">55%</div>
+                    <div class="vis-bar-column bg-light-orange" style="height: 121px;"></div>
+                  </div>
+                  <div class="vis-bar-group">
+                    <div class="vis-bar-tooltip bg-purple">71%</div>
+                    <div class="vis-bar-column bg-light-purple" style="height: 156px;"></div>
+                  </div>
+                  <div class="vis-bar-group">
+                    <div class="vis-bar-tooltip bg-blue">81%</div>
+                    <div class="vis-bar-column bg-light-blue" style="height: 178px;"></div>
+                  </div>
+                  <div class="vis-bar-group">
+                    <div class="vis-bar-tooltip bg-gray">78%</div>
+                    <div class="vis-bar-column bg-light-gray" style="height: 172px;"></div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-outline-full">View Full Plan</button>
+            </div>
+          </div>
+
+          <!-- Issues Table (Full Width) -->
+          <div class="card table-card" style="margin-bottom: 24px;">
+            <!-- Filter Row -->
+            <div class="table-filter-row">
+              <div class="filter-tabs">
+                <button class="ftab active" data-filter="all">All Issues (345)</button>
+                <button class="ftab" data-filter="technical">Technical (98)</button>
+                <button class="ftab" data-filter="structure">Structure(67)</button>
+                <button class="ftab" data-filter="content">Content (102)</button>
+                <button class="ftab" data-filter="link">Link(58)</button>
+                <button class="ftab" data-filter="visibility">AI Visibility(20)</button>
+              </div>
+              <button class="btn btn-filter"><i data-lucide="filter"></i> Filter</button>
+            </div>
+            <!-- Table -->
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Issues</th>
+                    <th>Affected Pages</th>
+                    <th>Impact</th>
+                    <th>Priority</th>
+                    <th>Trend</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody">
+                  <tr data-cat="technical">
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-red" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF6370; fill: rgba(255, 99, 112, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>5 pages could not be checked due to technical problems.</span>
+                      </div>
+                    </td>
+                    <td>5</td>
+                    <td><span class="text-red" style="color: #FF6370; font-weight: 500;">Heigh</span></td>
+                    <td><span class="badge b-red"
+                        style="background: #FFECEE; color: #FF6370; font-weight: 500;">Critical</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF6370" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 99, 112, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
+                    <td>
+                      <div class="tbl-actions">
+                        <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                        <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                        <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-cat="link">
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-red" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF6370; fill: rgba(255, 99, 112, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>148 pages are internally linked with anchor texts that need improvement.</span>
+                      </div>
+                    </td>
+                    <td>148</td>
+                    <td><span class="text-red" style="color: #FF6370; font-weight: 500;">Heigh</span></td>
+                    <td><span class="badge b-red"
+                        style="background: #FFECEE; color: #FF6370; font-weight: 500;">Critical</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF6370" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 99, 112, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
+                    <td>
+                      <div class="tbl-actions">
+                        <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                        <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                        <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-cat="link">
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-brown" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #C27733; fill: rgba(194, 119, 51, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>155 problemswith external links wre found.</span>
+                      </div>
+                    </td>
+                    <td>155</td>
+                    <td><span class="text-blue" style="color: #3594ee; font-weight: 500;">Heigh</span></td>
+                    <td><span class="badge b-brown"
+                        style="background: #FFF0E4; color: #C27733; font-weight: 500;">Heigh</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#C27733" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(194, 119, 51, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
+                    <td>
+                      <div class="tbl-actions">
+                        <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                        <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                        <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-cat="content">
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>On 17 pages, keywrods from the H1 heading were not found in the page content.</span>
+                      </div>
+                    </td>
+                    <td>17</td>
+                    <td><span class="text-orange" style="color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td><span class="badge b-orange"
+                        style="background: #FFEADA; color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF9F4E" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 159, 78, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
+                    <td>
+                      <div class="tbl-actions">
+                        <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                        <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                        <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-cat="content">
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>13 pages contain less than 500 words of text.</span>
+                      </div>
+                    </td>
+                    <td>13</td>
+                    <td><span class="text-orange" style="color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td><span class="badge b-orange"
+                        style="background: #FFEADA; color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF9F4E" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 159, 78, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
+                    <td>
+                      <div class="tbl-actions">
+                        <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                        <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                        <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-cat="content">
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-red" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF6370; fill: rgba(255, 99, 112, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>7 pages are competing with other due to their keyword optimization.</span>
+                      </div>
+                    </td>
+                    <td>7</td>
+                    <td><span class="text-red" style="color: #FF6370; font-weight: 500;">Heigh</span></td>
+                    <td><span class="badge b-red"
+                        style="background: #FFECEE; color: #FF6370; font-weight: 500;">Heigh</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF6370" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 99, 112, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
+                    <td>
+                      <div class="tbl-actions">
+                        <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                        <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                        <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-cat="content">
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>4 pages complete with each other due to identical anchor texts.</span>
+                      </div>
+                    </td>
+                    <td>4</td>
+                    <td><span class="text-orange" style="color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td><span class="badge b-orange"
+                        style="background: #FFEADA; color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF9F4E" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 159, 78, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
+                    <td>
+                      <div class="tbl-actions">
+                        <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                        <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                        <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-cat="technical">
+                    <td>
+                      <div class="issue-title-cell">
+                        <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>8 pages have a little tag that needs improvement.</span>
+                      </div>
+                    </td>
+                    <td>8</td>
+                    <td><span class="text-orange" style="color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td><span class="badge b-orange"
+                        style="background: #FFEADA; color: #FF9F4E; font-weight: 500;">Medium</span></td>
+                    <td>
+                      <svg viewBox="0 0 80 30" class="sparkline">
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
+                          fill="none" stroke="#FF9F4E" stroke-width="2.5" stroke-linecap="round" />
+                        <path
+                          d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
+                          fill="rgba(255, 159, 78, 0.15)" stroke="none" />
+                      </svg>
+                    </td>
+                    <td>
+                      <div class="tbl-actions">
+                        <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                        <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                        <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-footer">
+              <span>Showing 1 to 8 of 345 issues</span>
+              <div class="pagination">
+                <button class="pg-btn pg-arrow"><i data-lucide="chevron-left"></i></button>
+                <button class="pg-btn active">1</button>
+                <button class="pg-btn">2</button>
+                <button class="pg-btn">3</button>
+                <button class="pg-btn dots">..</button>
+                <button class="pg-btn dots">...</button>
+                <button class="pg-btn">43</button>
+                <button class="pg-btn pg-arrow"><i data-lucide="chevron-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Section: Two-Column Responsive Layout -->
+          <div class="bottom-section-grid">
+
+            <!-- Left Column: Weekly Action Plan -->
+            <div class="bottom-left-col">
+              <!-- Weekly Action Plan -->
+              <div class="card action-plan-card">
+                <div class="card-header" style="margin-bottom: 16px;">
+                  <h3 style="font-size: 13px; font-weight: 600; color: #616161; letter-spacing: 0.5px;">WEEKLY ACTION
+                    PLAN
+                  </h3>
+                </div>
+                <div class="plan-list">
+                  <div class="plan-item">
+                    <div class="plan-badge green">1</div>
+                    <div class="plan-info">
+                      <span class="plan-name">Improve Internal Linking</span>
+                      <span class="plan-gain">Potential Gain: <span class="green-text">+14%</span></span>
+                    </div>
+                  </div>
+                  <div class="plan-item">
+                    <div class="plan-badge green">2</div>
+                    <div class="plan-info">
+                      <span class="plan-name">Fix Keyword Cannibalization</span>
+                      <span class="plan-gain">Potential Gain: <span class="green-text">+9%</span></span>
+                    </div>
+                  </div>
+                  <div class="plan-item">
+                    <div class="plan-badge green">3</div>
+                    <div class="plan-info">
+                      <span class="plan-name">Improve Title Tags</span>
+                      <span class="plan-gain">Potential Gain: <span class="green-text">+4%</span></span>
+                    </div>
+                  </div>
+                  <div class="plan-item">
+                    <div class="plan-badge green">4</div>
+                    <div class="plan-info">
+                      <span class="plan-name">Expand Thin Content</span>
+                      <span class="plan-gain">Potential Gain: <span class="green-text">+3%</span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="plan-divider"></div>
+                <div class="plan-total-row">
+                  <span class="plan-total-label">Total Potential Gain</span>
+                  <span class="plan-total-val">+30%</span>
+                </div>
+                <button class="btn btn-blue-full">View Full Plan</button>
+              </div>
+            </div>
+
+            <!-- Right Column: Export, Help -->
+            <div class="bottom-right-col">
+              <!-- Export -->
+              <div class="card export-card">
+                <h3 class="export-title">EXPORT & SHARE</h3>
+                <div class="export-icons">
+                  <div class="export-item">
+                    <div class="exp-icon red">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 24px; height: 24px;">
+                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <line x1="10" y1="9" x2="8" y2="9"></line>
+                      </svg>
+                    </div>
+                    <span>PDF Report</span>
+                  </div>
+                  <div class="export-item">
+                    <div class="exp-icon blue">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 24px; height: 24px;">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                      </svg>
+                    </div>
+                    <span>Share Link</span>
+                  </div>
+                  <div class="export-item">
+                    <div class="exp-icon purple">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 24px; height: 24px;">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                      </svg>
+                    </div>
+                    <span>Schedule Email</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Need Help -->
+              <div class="card help-card">
+                <div class="help-content">
+                  <h3>Need Help?</h3>
+                  <p>Ask ASEMFY AI Assistant</p>
+                  <button class="btn btn-white-sm">Ask Now</button>
+                </div>
+                <div class="help-avatar-wrap">
+                  <img src="assets/Frame-4.svg" alt="Support" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Roadmap Strip (Full Width) -->
+          <div class="roadmap-card">
+            <div class="roadmap-inner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" style="width: 20px; height: 20px; color: #C27733; flex-shrink: 0;">
+                <path
+                  d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .6 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+                <path d="M9 18h6" />
+                <path d="M10 22h4" />
+              </svg>
+              <span>Not sure where to start? Let ASEMFY AI create a custom roadmap for you.</span>
+            </div>
+            <button class="btn btn-gen">Generate Roadmap
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round"
+                style="width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-left: 4px;">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+
+          </div> <!-- End of .roadmap-card -->
+        </div> <!-- End of #overview-view -->
+
+        <!-- Details View: Improve Internal Linking -->
+        <div id="details-view" class="view-container">
+          <!-- Top Title Card -->
+          <div class="card details-title-card">
+            <div class="dtc-left">
+              <span class="dtc-subtitle">Audit suite</span>
+              <div class="dtc-title-row">
+                <h2>Improve Internal Linking</h2>
+                <span class="dtc-badge">Critical Priority</span>
+              </div>
+              <div class="dtc-meta-row">
+                <span class="dtc-meta-item">148 pages affected</span>
+                <span class="dtc-meta-item">Potential Gain: +14% Traffic</span>
+                <span class="dtc-meta-item">Fix Time: ~2 Hours</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metrics Circles Row -->
+          <div class="details-metrics-row">
+            <div class="metric-circle-card mcc-card-red">
+              <div class="mcc-circle circle-red">
+                <i data-lucide="link"></i>
+              </div>
+              <span class="mcc-num text-red">148</span>
+              <span class="mcc-label">Pages Affected</span>
+            </div>
+
+            <div class="metric-circle-card mcc-card-grey">
+              <div class="mcc-circle circle-green">
+                <i data-lucide="trending-up"></i>
+              </div>
+              <span class="mcc-num text-green">+14%</span>
+              <span class="mcc-label">Potential Traffic Gain</span>
+            </div>
+
+            <div class="metric-circle-card mcc-card-grey">
+              <div class="mcc-circle circle-red-impact">
+                <i data-lucide="bar-chart-2"></i>
+              </div>
+              <span class="mcc-num text-red">High</span>
+              <span class="mcc-label">Impact</span>
+            </div>
+
+            <div class="metric-circle-card mcc-card-grey">
+              <div class="mcc-circle circle-blue-time">
+                <i data-lucide="clock"></i>
+              </div>
+              <span class="mcc-num text-blue">~2 Hours</span>
+              <span class="mcc-label">Estimated Fix Time</span>
+            </div>
+
+            <!-- Why It Matters -->
+            <div class="card why-matters-card">
+              <div class="wmc-content">
+                <div class="wmc-header">
+                  <h4>Why It Matters</h4>
+                  <span class="help-dot">?</span>
+                </div>
+                <p>Internal links help search engines understand your site structure and distribute page authority. Weak
+                  or generic anchor texts can reduce your rankings.</p>
+              </div>
+              <div class="wmc-illustration">
+                <img src="assets/bulb.svg" alt="Lightbulb" width="168" height="168" style="display: block;">
+              </div>
             </div>
           </div>
 
           <!-- Tabs -->
-          <nav class="audit-tabs">
-            <button class="tab active">Over View</button>
-            <button class="tab">Issues</button>
-            <button class="tab">Crawled Pages</button>
-            <button class="tab">Statistic</button>
-            <button class="tab">Compare Audit</button>
-            <button class="tab highlight">AI Insights</button>
-          </nav>
-        </div>
-
-        <!-- Row 1: SEO Summary + Pages Crawled -->
-        <div class="row row-one">
-          <div class="card seo-summary-card">
-            <div class="card-header">
-              <h3>SEO SUMMARY</h3>
-              <div class="legend">
-                <span class="legend-item"><span class="dot" style="background:#3594EE"></span>SEO</span>
-                <span class="legend-item"><span class="dot" style="background:#30b8a4"></span>Technical SEO</span>
-                <span class="legend-item"><span class="dot" style="background:#ff9f4e"></span>Content Quality</span>
-                <span class="legend-item"><span class="dot" style="background:#6645c7"></span>AI Visibility</span>
-              </div>
-            </div>
-            <!-- Score Cards Row -->
-            <div class="score-cards-row">
-              <div class="score-card">
-                <div class="score-card-header"><span class="score-title">SEO HEALTH SCORE</span><span
-                    class="help-dot">?</span></div>
-                <div class="score-val"><span class="score-num green">78</span><span class="score-of">/100</span></div>
-                <span class="score-badge good">Good</span>
-              </div>
-              <div class="score-card">
-                <div class="score-card-header"><span class="score-title">TECHNICAL SEO</span><span
-                    class="help-dot">?</span></div>
-                <div class="score-val"><span class="score-num blue">91</span><span class="score-of">/100</span></div>
-                <span class="score-badge excellent">Excellent</span>
-              </div>
-              <div class="score-card">
-                <div class="score-card-header"><span class="score-title">CONTENT QUALITY</span><span
-                    class="help-dot">?</span></div>
-                <div class="score-val"><span class="score-num orange">71</span><span class="score-of">/100</span></div>
-                <span class="score-badge fair">Fair</span>
-              </div>
-              <div class="score-card">
-                <div class="score-card-header"><span class="score-title">AI VISIBILITY SCORE</span><span
-                    class="help-dot">?</span></div>
-                <div class="score-val"><span class="score-num purple">58</span><span class="score-of">/100</span></div>
-                <span class="score-badge needs">Needs Improvement</span>
-              </div>
-            </div>
-            <div class="chart-area">
-              <canvas id="seoSummaryChart"></canvas>
-              <div class="chart-tooltip" id="chartTooltip" style="display: none;"><span class="tt-label"
-                  id="ttLabel">Content Quality</span><span class="tt-val" id="ttVal">71%</span></div>
-            </div>
+          <div class="details-tabs-row">
+            <nav class="audit-tabs">
+              <button class="tab active">Affected Pages (148)</button>
+              <button class="tab">Issues Breakdown</button>
+              <button class="tab">Anchor Text Analysis</button>
+              <button class="tab">Link Opportunities</button>
+              <button class="tab">How to Fix</button>
+              <button class="tab">History</button>
+            </nav>
           </div>
 
-          <div class="card pages-crawled-card">
-            <div class="card-header">
-              <h3>PAGESES CRAWLED</h3><span class="help-dot">?</span>
-            </div>
-            <div class="donut-layout">
-              <div class="donut-left">
-                <span class="donut-big-num">2,092</span>
-                <span class="donut-sub">of 2,521 Found</span>
+          <!-- Table + Sidebar Split Section -->
+          <div class="details-split-grid">
+
+            <!-- Left: Table Card -->
+            <div class="card table-card details-table-container">
+              <!-- Filter Row -->
+              <div class="table-filter-row">
+                <div class="search-box table-search-box">
+                  <input type="text" placeholder="Search URL ...." id="detailsSearch">
+                  <i data-lucide="search" class="search-icon"></i>
+                </div>
+
+                <div class="filter-controls-right">
+                  <div class="filter-dropdown-wrap">
+                    <select class="filter-select" id="issueTypeFilter">
+                      <option value="all">All Issue Type</option>
+                      <option value="generic">Generic Anchor Text</option>
+                      <option value="missing">Missing Internal Links</option>
+                      <option value="weak">Weak Anchor Text</option>
+                      <option value="orphan">Orphan Page</option>
+                    </select>
+                  </div>
+
+                  <div class="filter-dropdown-wrap">
+                    <select class="filter-select" id="priorityFilter">
+                      <option value="all">All Priority</option>
+                      <option value="high">High</option>
+                      <option value="medium">Medium</option>
+                      <option value="low">Low</option>
+                    </select>
+                  </div>
+
+                  <button class="btn btn-filter btn-advance"><i data-lucide="sliders"></i> Advance Filter</button>
+                  <button class="btn btn-export-csv" title="Export CSV"><i data-lucide="download"></i></button>
+                </div>
               </div>
-              <div class="donut-right">
-                <canvas id="pagesCrawledDonut" width="290" height="290"></canvas>
-                <span class="donut-center-val">83%</span>
+
+              <!-- Table -->
+              <div class="table-wrap">
+                <table class="details-table">
+                  <thead>
+                    <tr>
+                      <th>URL</th>
+                      <th>Issues Type</th>
+                      <th>Example</th>
+                      <th>Impact</th>
+                      <th>Priority</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="detailsTableBody">
+                    <tr class="clickable-row active" data-url="www.example.com/blog/seo-audit-guide"
+                      data-issue-type="generic" data-priority="high">
+                      <td>
+                        <div class="url-cell">
+                          <a href="#" class="url-link">www.example.com/blog/seo-audit-guide</a>
+                          <span class="url-date">Crawled: May 10, 2025</span>
+                        </div>
+                      </td>
+                      <td><span class="issue-type text-orange">Generic Anchor Text</span></td>
+                      <td><a href="#" class="example-link">Read More</a></td>
+                      <td>
+                        <div class="dots-impact">
+                          <span class="dot-fill bg-red"></span>
+                          <span class="dot-fill bg-red"></span>
+                          <span class="dot-fill bg-red"></span>
+                        </div>
+                      </td>
+                      <td><span class="badge b-red">Heigh</span></td>
+                      <td>
+                        <div class="tbl-actions">
+                          <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                          <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                          <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="clickable-row" data-url="www.example.com/blog/keyword-cannibalization"
+                      data-issue-type="missing" data-priority="high">
+                      <td>
+                        <div class="url-cell">
+                          <a href="#" class="url-link">www.example.com/blog/keyword-cannibalization</a>
+                          <span class="url-date">Crawled: May 10, 2025</span>
+                        </div>
+                      </td>
+                      <td><span class="issue-type text-orange">Missing Internal Links</span></td>
+                      <td><span class="example-link text-gray">No links to relevant pages</span></td>
+                      <td>
+                        <div class="dots-impact">
+                          <span class="dot-fill bg-red"></span>
+                          <span class="dot-fill bg-red"></span>
+                          <span class="dot-fill bg-red"></span>
+                        </div>
+                      </td>
+                      <td><span class="badge b-red">Heigh</span></td>
+                      <td>
+                        <div class="tbl-actions">
+                          <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                          <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                          <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="clickable-row" data-url="www.example.com/blog/technical-seo" data-issue-type="generic"
+                      data-priority="medium">
+                      <td>
+                        <div class="url-cell">
+                          <a href="#" class="url-link">www.example.com/blog/technical-seo-guide</a>
+                          <span class="url-date">Crawled: May 10, 2025</span>
+                        </div>
+                      </td>
+                      <td><span class="issue-type text-orange">Generic Anchor Text</span></td>
+                      <td><a href="#" class="example-link">Read More</a></td>
+                      <td>
+                        <div class="dots-impact">
+                          <span class="dot-fill bg-orange"></span>
+                          <span class="dot-fill bg-orange"></span>
+                        </div>
+                      </td>
+                      <td><span class="badge b-orange">Medium</span></td>
+                      <td>
+                        <div class="tbl-actions">
+                          <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                          <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                          <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="clickable-row" data-url="www.example.com/blog/on-page-optimization"
+                      data-issue-type="weak" data-priority="medium">
+                      <td>
+                        <div class="url-cell">
+                          <a href="#" class="url-link">www.example.com/blog/on-page-seo-checklist</a>
+                          <span class="url-date">Crawled: May 10, 2025</span>
+                        </div>
+                      </td>
+                      <td><span class="issue-type text-orange">Weak Anchor Text</span></td>
+                      <td><a href="#" class="example-link">Learn More</a></td>
+                      <td>
+                        <div class="dots-impact">
+                          <span class="dot-fill bg-orange"></span>
+                          <span class="dot-fill bg-orange"></span>
+                        </div>
+                      </td>
+                      <td><span class="badge b-orange">Medium</span></td>
+                      <td>
+                        <div class="tbl-actions">
+                          <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                          <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                          <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="clickable-row" data-url="www.example.com/blog/content-audit" data-issue-type="missing"
+                      data-priority="medium">
+                      <td>
+                        <div class="url-cell">
+                          <a href="#" class="url-link">www.example.com/blog/content-audit-guide</a>
+                          <span class="url-date">Crawled: May 10, 2025</span>
+                        </div>
+                      </td>
+                      <td><span class="issue-type text-orange">Missing Internal Links</span></td>
+                      <td><span class="example-link text-gray">No Links</span></td>
+                      <td>
+                        <div class="dots-impact">
+                          <span class="dot-fill bg-orange"></span>
+                          <span class="dot-fill bg-orange"></span>
+                        </div>
+                      </td>
+                      <td><span class="badge b-orange">Medium</span></td>
+                      <td>
+                        <div class="tbl-actions">
+                          <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                          <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                          <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="clickable-row" data-url="www.example.com/blog/link-building" data-issue-type="weak"
+                      data-priority="low">
+                      <td>
+                        <div class="url-cell">
+                          <a href="#" class="url-link">www.example.com/blog/link-building-strategies</a>
+                          <span class="url-date">Crawled: May 10, 2025</span>
+                        </div>
+                      </td>
+                      <td><span class="issue-type text-orange">Weak Anchor Text</span></td>
+                      <td><a href="#" class="example-link">Click Here</a></td>
+                      <td>
+                        <div class="dots-impact">
+                          <span class="dot-fill bg-brown"></span>
+                          <span class="dot-fill bg-brown"></span>
+                        </div>
+                      </td>
+                      <td><span class="badge b-green">Low</span></td>
+                      <td>
+                        <div class="tbl-actions">
+                          <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                          <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                          <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="clickable-row" data-url="www.example.com/blog/site-structure" data-issue-type="orphan"
+                      data-priority="low">
+                      <td>
+                        <div class="url-cell">
+                          <a href="#" class="url-link">www.example.com/blog/site-structure-best-practices</a>
+                          <span class="url-date">Crawled: May 10, 2025</span>
+                        </div>
+                      </td>
+                      <td><span class="issue-type text-orange">Orphan Page</span></td>
+                      <td><span class="example-link text-gray">No Links</span></td>
+                      <td>
+                        <div class="dots-impact">
+                          <span class="dot-fill bg-brown"></span>
+                          <span class="dot-fill bg-brown"></span>
+                        </div>
+                      </td>
+                      <td><span class="badge b-green">Low</span></td>
+                      <td>
+                        <div class="tbl-actions">
+                          <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                          <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                          <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Table Footer -->
+              <div class="table-footer">
+                <span id="tableProgressText">Showing 1 to 7 of 345 issues</span>
+                <div class="pagination">
+                  <button class="pg-btn pg-arrow"><i data-lucide="chevron-left"></i></button>
+                  <button class="pg-btn active">1</button>
+                  <button class="pg-btn">2</button>
+                  <button class="pg-btn">3</button>
+                  <span class="pg-dots">••</span>
+                  <span class="pg-dots">•••</span>
+                  <button class="pg-btn">43</button>
+                  <button class="pg-btn pg-arrow"><i data-lucide="chevron-right"></i></button>
+                </div>
               </div>
             </div>
+
+            <!-- Right: Details Sidebar Panel -->
+            <div class="card details-sidebar-card" id="detailsSidebar">
+              <!-- Selected URL -->
+              <div class="dsb-section">
+                <span class="dsb-section-title">Selected URL</span>
+                <a href="#" class="dsb-url-link" id="selectedUrlText">www.example.com/blog/seo-audit-guide</a>
+              </div>
+
+              <!-- Issue Details -->
+              <div class="dsb-section border-top">
+                <div class="dsb-section-header">
+                  <span class="dsb-section-title">Issue Details</span>
+                  <span class="badge badge-orange-bg" id="sidebarIssueBadge">Generic Anchor Text</span>
+                </div>
+                <p class="dsb-desc" id="sidebarIssueDesc">This page has 12 internal links using generic anchor texts
+                  like "Click here" or "Read more".</p>
+
+                <div class="dsb-examples-box" id="sidebarExamplesContainer">
+                  <span class="examples-title">Examples on this page</span>
+                  <div class="example-item">
+                    <span class="bullet-dot bg-red"></span>
+                    <span class="ex-anchor">"Click here"</span>
+                    <span class="ex-arrow">→</span>
+                    <span class="ex-dest">www.example.com/seo-tools</span>
+                  </div>
+                  <div class="example-item">
+                    <span class="bullet-dot bg-red"></span>
+                    <span class="ex-anchor">"Read more"</span>
+                    <span class="ex-arrow">→</span>
+                    <span class="ex-dest">www.example.com/seo-checker</span>
+                  </div>
+                  <div class="example-item">
+                    <span class="bullet-dot bg-red"></span>
+                    <span class="ex-anchor">"Learn more"</span>
+                    <span class="ex-arrow">→</span>
+                    <span class="ex-dest">www.example.com/backlink-guide</span>
+                  </div>
+                  <a href="#" class="view-all-links">View all 12 links</a>
+                </div>
+              </div>
+
+              <!-- AI Recommendation -->
+              <div class="dsb-section border-top">
+                <div class="recommendation-header">
+                  <i data-lucide="sparkles" class="rec-spark-icon text-green"></i>
+                  <span class="dsb-section-title text-green">AI Recommendation</span>
+                </div>
+                <div class="recommendation-bubble bg-light-green" id="sidebarAiRec">
+                  <p>Replace generic anchor texts with descriptive, keyword-rich anchors to improve relevance and help
+                    search engines understand context.</p>
+                </div>
+
+                <div class="dsb-suggested-box" id="sidebarSuggestedContainer">
+                  <span class="examples-title">Suggested Anchors</span>
+                  <div class="example-item">
+                    <span class="bullet-dot bg-green"></span>
+                    <span class="ex-anchor">"SEO Audit Tools"</span>
+                    <span class="ex-arrow">→</span>
+                    <span class="ex-dest">www.example.com/seo-tools</span>
+                  </div>
+                  <div class="example-item">
+                    <span class="bullet-dot bg-green"></span>
+                    <span class="ex-anchor">"SEO Checker"</span>
+                    <span class="ex-arrow">→</span>
+                    <span class="ex-dest">www.example.com/seo-checker</span>
+                  </div>
+                  <div class="example-item">
+                    <span class="bullet-dot bg-green"></span>
+                    <span class="ex-anchor">"Learn more"</span>
+                    <span class="ex-arrow">→</span>
+                    <span class="ex-dest">www.example.com/backlink-guide</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Expected Impact -->
+              <div class="dsb-section border-top">
+                <span class="dsb-section-title">Expected Impact</span>
+                <div class="sidebar-impact-row">
+                  <div class="sidebar-impact-circle-card">
+                    <div class="sic-circle circle-green">
+                      <i data-lucide="trending-up"></i>
+                    </div>
+                    <span class="sic-num text-green" id="sidebarImpactGain">+14%</span>
+                    <span class="sic-label">Traffic Gain</span>
+                  </div>
+                  <div class="sidebar-impact-circle-card">
+                    <div class="sic-circle circle-red">
+                      <i data-lucide="bar-chart-2"></i>
+                    </div>
+                    <span class="sic-num text-red" id="sidebarImpactLevel">High</span>
+                    <span class="sic-label">Impact</span>
+                  </div>
+                  <div class="sidebar-impact-circle-card">
+                    <div class="sic-circle circle-blue-time">
+                      <i data-lucide="clock"></i>
+                    </div>
+                    <span class="sic-num text-blue" id="sidebarImpactTime">~20 Min</span>
+                    <span class="sic-label">Fix Time</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
-        </div>
-
-        <!-- Row 2: Organic Growth + AI Insight -->
-        <div class="row row-two">
-          <div class="card organic-card">
-            <div class="organic-header">
-              <img src="assets/organic.svg" alt="Organic" class="organic-icon">
-              <h3>POTENTIAL ORGANIC GROWTH</h3>
-            </div>
-            <div class="organic-layout">
-              <div class="organic-col">
-                <span class="organic-label">Current Estimated Traffic</span>
-                <div class="organic-val">
-                  <span class="organic-num">18,400</span><span class="organic-unit">/month</span>
-                </div>
-                <div class="organic-bar blue-bar"></div>
-              </div>
-
-              <div class="organic-arrow-wrap">
-                <svg class="organic-arrow" viewBox="0 0 50 30" fill="none" stroke="#3594ee" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 5,10 Q 25,28 45,12" />
-                  <path d="M 37,12 H 45 V 20" />
-                </svg>
-              </div>
-
-              <div class="organic-col">
-                <span class="organic-label">Potential Traffic</span>
-                <div class="organic-val green">
-                  <span class="organic-num">24,300</span><span class="organic-unit">/month</span>
-                </div>
-                <div class="organic-bar green-bar"></div>
-              </div>
-
-              <div class="organic-arrow-wrap">
-                <svg class="organic-arrow" viewBox="0 0 50 30" fill="none" stroke="#2bb755" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 5,25 Q 25,12 45,5" />
-                  <path d="M 37,5 H 45 V 13" />
-                </svg>
-              </div>
-
-              <div class="organic-col">
-                <span class="organic-label">Growth Opportunity</span>
-                <div class="organic-val green">
-                  <span class="organic-num">32%</span>
-                </div>
-                <div class="organic-bar-spacer"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card ai-insight-card">
-            <div class="ai-insight-content">
-              <div class="ai-insight-header">
-                <i data-lucide="sparkles" class="ai-insight-icon"></i>
-                <h2 class="ai-insight-title">AI INSIGHT</h2>
-              </div>
-              <p class="insight-text">Your website has great technical health! Focus on content optimization and
-                internal
-                linking to unlock more traffic.</p>
-            </div>
-            <div class="ai-insight-illustration">
-              <div class="ellipse-1"></div>
-              <div class="ellipse-2"></div>
-              <img src="assets/Image.png" alt="AI Robot Assistant" class="robot-img">
-            </div>
-          </div>
-        </div>
-
-        <!-- AI Priority Board -->
-        <section class="priority-section">
-          <div class="priority-header">
-            <div class="priority-header-left">
-              <div class="priority-title-row">
-                <img src="assets/ai1.svg" alt="AI Priority" class="accent-icon">
-                <h3>AI PRIORITY BOARD</h3>
-              </div>
-              <span class="header-desc">These are the issues that matter most & have the biggest impact.</span>
-            </div>
-            <a href="#" class="view-all">View All Priorities <i data-lucide="chevron-right"></i></a>
-          </div>
-          <div class="priority-grid">
-            <!-- Card 1: Red -->
-            <div class="priority-card pc-red">
-              <div class="pc-header">
-                <div class="pc-circle circle-red">1</div>
-                <h4>Improve Internal Linking</h4>
-              </div>
-              <div class="pc-stat-row">
-                <span class="pc-stat-num text-red">148</span>
-                <span class="pc-stat-label">Pages Affected</span>
-              </div>
-              <div class="pc-details">
-                <div class="pc-detail-row">
-                  <span class="pc-detail-label">Potential Gain</span>
-                  <span class="pc-detail-label">Priority</span>
-                </div>
-                <div class="pc-detail-row">
-                  <span class="pc-gain-val text-red">+14%</span>
-                  <span class="pc-badge badge-red">Critical</span>
-                </div>
-                <div class="pc-detail-row">
-                  <span class="pc-detail-label">Fix Time</span>
-                  <span class="pc-time-val">- 2 Hours</span>
-                </div>
-              </div>
-              <button class="pc-btn btn-red">View Details</button>
-            </div>
-
-            <!-- Card 2: Orange -->
-            <div class="priority-card pc-orange">
-              <div class="pc-header">
-                <div class="pc-circle circle-orange">2</div>
-                <h4>Fix Keyword Cannibalization</h4>
-              </div>
-              <div class="pc-stat-row">
-                <span class="pc-stat-num text-orange">7</span>
-                <span class="pc-stat-label">Pages Affected</span>
-              </div>
-              <div class="pc-details">
-                <div class="pc-detail-row">
-                  <span class="pc-detail-label">Potential Gain</span>
-                  <span class="pc-detail-label">Priority</span>
-                </div>
-                <div class="pc-detail-row">
-                  <span class="pc-gain-val text-orange">+9%</span>
-                  <span class="pc-badge badge-orange">High</span>
-                </div>
-                <div class="pc-detail-row">
-                  <span class="pc-detail-label">Fix Time</span>
-                  <span class="pc-time-val">- 45 Min</span>
-                </div>
-              </div>
-              <button class="pc-btn btn-orange">View Details</button>
-            </div>
-
-            <!-- Card 3: Brown -->
-            <div class="priority-card pc-brown">
-              <div class="pc-header">
-                <div class="pc-circle circle-brown">3</div>
-                <h4>Improve Title Tags</h4>
-              </div>
-              <div class="pc-stat-row">
-                <span class="pc-stat-num text-brown">8</span>
-                <span class="pc-stat-label">Pages Affected</span>
-              </div>
-              <div class="pc-details">
-                <div class="pc-detail-row">
-                  <span class="pc-detail-label">Potential Gain</span>
-                  <span class="pc-detail-label">Priority</span>
-                </div>
-                <div class="pc-detail-row">
-                  <span class="pc-gain-val text-brown">+4%</span>
-                  <span class="pc-badge badge-brown">Medium</span>
-                </div>
-                <div class="pc-detail-row">
-                  <span class="pc-detail-label">Fix Time</span>
-                  <span class="pc-time-val">- 15 Min</span>
-                </div>
-              </div>
-              <button class="pc-btn btn-brown">View Details</button>
-            </div>
-
-            <!-- Card 4: Green -->
-            <div class="priority-card pc-green">
-              <div class="pc-header">
-                <div class="pc-circle circle-green">4</div>
-                <h4>Expand Thin Content</h4>
-              </div>
-              <div class="pc-stat-row">
-                <span class="pc-stat-num text-green">13</span>
-                <span class="pc-stat-label">Pages Affected</span>
-              </div>
-              <div class="pc-details">
-                <div class="pc-detail-row">
-                  <span class="pc-detail-label">Potential Gain</span>
-                  <span class="pc-detail-label">Priority</span>
-                </div>
-                <div class="pc-detail-row">
-                  <span class="pc-gain-val text-green">+13%</span>
-                  <span class="pc-badge badge-green">Medium</span>
-                </div>
-                <div class="pc-detail-row">
-                  <span class="pc-detail-label">Fix Time</span>
-                  <span class="pc-time-val">- 1 Hours</span>
-                </div>
-              </div>
-              <button class="pc-btn btn-green">View Details</button>
-            </div>
-          </div>
-        </section>
-
-        <!-- Row 3: Issues Overview + Opportunity + AI Visibility -->
-        <div class="row row-three">
-          <div class="card issues-overview-card">
-            <div class="card-header">
-              <h3>ISSUES OVERVIEW</h3><span class="help-dot">?</span>
-            </div>
-            <div class="issues-body-layout">
-              <div class="issues-donut-wrap">
-                <canvas id="issuesOverviewDonut" width="250" height="250"></canvas>
-                <div class="issues-donut-center"><span class="idc-num">345</span><span class="idc-label">Total
-                    Issues</span>
-                </div>
-              </div>
-              <div class="issues-legend">
-                <div class="il-row-item">
-                  <div class="il-left-group">
-                    <span class="il-checkbox bg-red">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
-                        stroke-linejoin="round" class="check-icon">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    </span>
-                    <span class="il-label">Critical</span>
-                  </div>
-                  <strong class="il-val">12</strong>
-                </div>
-                <div class="il-row-item">
-                  <div class="il-left-group">
-                    <span class="il-checkbox bg-brown">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
-                        stroke-linejoin="round" class="check-icon">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    </span>
-                    <span class="il-label">Warnings</span>
-                  </div>
-                  <strong class="il-val">45</strong>
-                </div>
-                <div class="il-row-item">
-                  <div class="il-left-group">
-                    <span class="il-checkbox bg-orange">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
-                        stroke-linejoin="round" class="check-icon">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    </span>
-                    <span class="il-label">Notice</span>
-                  </div>
-                  <strong class="il-val">132</strong>
-                </div>
-                <div class="il-row-item">
-                  <div class="il-left-group">
-                    <span class="il-checkbox bg-green">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"
-                        stroke-linejoin="round" class="check-icon">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    </span>
-                    <span class="il-label">Good</span>
-                  </div>
-                  <strong class="il-val">156</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card opportunity-card">
-            <div class="card-header opportunity-header">
-              <h3>OPPORTUNITY VS IMPACT</h3><span class="help-dot">?</span>
-            </div>
-            <div class="matrix-container">
-              <div class="matrix-wrapper">
-                <div class="matrix">
-                  <!-- Quick Wins (Green Box) -->
-                  <div class="matrix-cell qw">
-                    <span class="mc-title">Quick Wins</span>
-                    <div class="bubbles-box">
-                      <div class="venn-circle qw-bubble b1"></div>
-                      <div class="venn-circle qw-bubble b2"></div>
-                      <div class="venn-circle qw-bubble b3"></div>
-                    </div>
-                  </div>
-
-                  <!-- Big Wins (Red Box) -->
-                  <div class="matrix-cell bw">
-                    <span class="mc-title">Big Wins</span>
-                    <div class="bubbles-box">
-                      <div class="venn-circle bw-bubble b1"></div>
-                      <div class="venn-circle bw-bubble b2"></div>
-                      <div class="venn-circle bw-bubble b3"></div>
-                      <div class="venn-circle bw-bubble b4"></div>
-                    </div>
-                  </div>
-
-                  <!-- Low Impact (Blue Box) -->
-                  <div class="matrix-cell li">
-                    <span class="mc-title">Low Impact</span>
-                    <div class="bubbles-box">
-                      <div class="venn-circle li-bubble b1"></div>
-                      <div class="venn-circle li-bubble b2"></div>
-                      <div class="venn-circle li-bubble b3"></div>
-                    </div>
-                  </div>
-
-                  <!-- Needs Work (Orange Box) -->
-                  <div class="matrix-cell nw">
-                    <span class="mc-title">Needs Work</span>
-                    <div class="bubbles-box">
-                      <div class="venn-circle nw-bubble b1"></div>
-                      <div class="venn-circle nw-bubble b2"></div>
-                      <div class="venn-circle nw-bubble b3"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Axis Labels -->
-              <div class="axis-y-group">
-                <span class="axis-label">High</span>
-                <span class="axis-label effort-y">Effort</span>
-                <span class="axis-label">Low</span>
-              </div>
-              <div class="axis-x-group">
-                <span class="axis-label">Low</span>
-                <span class="axis-label">Effort</span>
-                <span class="axis-label">High</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="card ai-vis-card">
-            <div class="card-header ai-vis-header">
-              <h3>AI VISIBILITY SNAPSHOT</h3><span class="help-dot">?</span>
-            </div>
-            <div class="vis-content-layout">
-              <div class="vis-left-col">
-                <div class="vis-legend-list">
-                  <div class="vis-legend-item">
-                    <div class="vis-icon" style="background:#1a1a1a">
-                      <svg viewBox="0 0 24 24" fill="currentColor" style="width: 18px; height: 18px; color: #fff;">
-                        <path
-                          d="M21.74 11.57a3.84 3.84 0 0 0-.25-2.28 4.02 4.02 0 0 0-1.74-1.92 8.1 8.1 0 0 0-1-.44 4.03 4.03 0 0 0-1.84-2.8 3.96 3.96 0 0 0-2.5-.54 4.05 4.05 0 0 0-2.3 1.13c-.26-.14-.54-.25-.83-.34a4.02 4.02 0 0 0-3.32.32 4.04 4.04 0 0 0-1.98 2.37 8 8 0 0 0-.41.93 4.03 4.03 0 0 0-2.26 2.5 3.98 3.98 0 0 0 .19 2.55 4.02 4.02 0 0 0 1.54 1.94c.05.03.09.06.14.08a4.02 4.02 0 0 0 1.83 2.8 4 4 0 0 0 2.5.53 4.03 4.03 0 0 0 2.31-1.12c.26.14.54.25.82.33a4 4 0 0 0 3.32-.32 4.04 4.04 0 0 0 1.99-2.37c.14-.3.26-.6.36-.92a4.02 4.02 0 0 0 2.27-2.5c.2-.82.13-1.68-.19-2.45zm-7.6 7.42a2.38 2.38 0 0 1-1.25.35c-.46 0-.91-.13-1.3-.38l.12-.07 3.5-2.02a.79.79 0 0 0 .4-.68v-4.88l1.45.84c.6.35.98.98.98 1.68v4.06a2.4 2.4 0 0 1-1.9 2.1zm-6.68-1.57a2.36 2.36 0 0 1-.65-1.13 2.39 2.39 0 0 1 .15-1.91l.1.06 3.5 2.02c.23.13.5.13.73 0l4.22-2.44v1.68c0 .7-.38 1.34-.98 1.69l-3.52 2.03a2.38 2.38 0 0 1-3.55-.96zm-1.78-6.1a2.39 2.39 0 0 1-.6 1.89c.33-.36.78-.6 1.27-.67l.02.13v4.04c0 .26.14.5.37.64l4.23 2.44-1.45.84a1.95 1.95 0 0 1-1.68 0l-3.52-2.03a2.38 2.38 0 0 1-.84-3.5zm7.33-4.88a2.38 2.38 0 0 1 1.9-.34 2.39 2.39 0 0 1 1.6 1.25l-.12.07-3.5 2.02a.79.79 0 0 0-.4.68v4.88l-1.45-.84a1.95 1.95 0 0 1-.98-1.68v-4.06a2.4 2.4 0 0 1 .95-1.98zm6.67 1.57c.4.32.7.75.87 1.24a2.38 2.38 0 0 1-.16 1.86l-.1-.05-3.5-2.03a.8.8 0 0 0-.73 0l-4.22 2.44V9.82c0-.7.38-1.33.98-1.68l3.52-2.03a2.39 2.39 0 0 1 3.34.89zm1.79 6.1a2.39 2.39 0 0 1-.6 1.9c-.33.36-.78.6-1.27.66l-.02-.13V11.2a.79.79 0 0 0-.37-.64L14.7 8.12l1.45-.84a1.95 1.95 0 0 1 1.68 0l3.52 2.03a2.38 2.38 0 0 1 .84 3.5zM12 13.9a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8z" />
-                      </svg>
-                    </div><span>ChatGPT Readiness</span>
-                  </div>
-                  <div class="vis-legend-item">
-                    <div class="vis-icon" style="background:#3594ee">
-                      <svg viewBox="0 0 24 24" fill="currentColor" style="width: 18px; height: 18px; color: #fff;">
-                        <path
-                          d="M12 2c0 5.523 4.477 10 10 10-5.523 0-10 4.477-10 10-0-5.523-4.477-10-10-10 4.477 0 10-4.477 10-10z" />
-                      </svg>
-                    </div><span>Gemini Readiness</span>
-                  </div>
-                  <div class="vis-legend-item">
-                    <div class="vis-icon" style="background:#6645c7">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round"
-                        style="width: 16px; height: 16px; color: #fff; fill: none;">
-                        <path
-                          d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9zm0 5a4 4 0 1 1-4 4 4 4 0 0 1 4-4zm0 8a4 4 0 1 1 4-4 4 4 0 0 1-4 4z" />
-                      </svg>
-                    </div><span>Perplexity Readiness</span>
-                  </div>
-                  <div class="vis-legend-item">
-                    <div class="vis-icon" style="background:#ff9f4e">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" style="width: 16px; height: 16px; color: #fff; fill: none;">
-                        <circle cx="12" cy="12" r="3" />
-                        <path
-                          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-                      </svg>
-                    </div><span>AI Overview Readiness</span>
-                  </div>
-                </div>
-
-                <div class="vis-gain-left">
-                  <span class="vis-gain-label">Total Potential Gain</span>
-                  <div class="vis-gain-row">
-                    <span class="vis-gain-val">+30%</span>
-                    <span class="vis-arrow-btn"><i data-lucide="chevron-right"></i></span>
-                  </div>
-                </div>
-              </div>
-              <div class="vis-bars">
-                <div class="vis-bar-group">
-                  <div class="vis-bar-tooltip bg-orange">55%</div>
-                  <div class="vis-bar-column bg-light-orange" style="height: 121px;"></div>
-                </div>
-                <div class="vis-bar-group">
-                  <div class="vis-bar-tooltip bg-purple">71%</div>
-                  <div class="vis-bar-column bg-light-purple" style="height: 156px;"></div>
-                </div>
-                <div class="vis-bar-group">
-                  <div class="vis-bar-tooltip bg-blue">81%</div>
-                  <div class="vis-bar-column bg-light-blue" style="height: 178px;"></div>
-                </div>
-                <div class="vis-bar-group">
-                  <div class="vis-bar-tooltip bg-gray">78%</div>
-                  <div class="vis-bar-column bg-light-gray" style="height: 172px;"></div>
-                </div>
-              </div>
-            </div>
-            <button class="btn btn-outline-full">View Full Plan</button>
-          </div>
-        </div>
-
-        <!-- Issues Table (Full Width) -->
-        <div class="card table-card" style="margin-bottom: 24px;">
-          <!-- Filter Row -->
-          <div class="table-filter-row">
-            <div class="filter-tabs">
-              <button class="ftab active" data-filter="all">All Issues (345)</button>
-              <button class="ftab" data-filter="technical">Technical (98)</button>
-              <button class="ftab" data-filter="structure">Structure(67)</button>
-              <button class="ftab" data-filter="content">Content (102)</button>
-              <button class="ftab" data-filter="link">Link(58)</button>
-              <button class="ftab" data-filter="visibility">AI Visibility(20)</button>
-            </div>
-            <button class="btn btn-filter"><i data-lucide="filter"></i> Filter</button>
-          </div>
-          <!-- Table -->
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Issues</th>
-                  <th>Affected Pages</th>
-                  <th>Impact</th>
-                  <th>Priority</th>
-                  <th>Trend</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody id="tableBody">
-                <tr data-cat="technical">
-                  <td>
-                    <div class="issue-title-cell">
-                      <svg class="warning-icon color-red" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        style="width: 18px; height: 18px; color: #FF6370; fill: rgba(255, 99, 112, 0.1); flex-shrink: 0;">
-                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                      </svg>
-                      <span>5 pages could not be checked due to technical problems.</span>
-                    </div>
-                  </td>
-                  <td>5</td>
-                  <td><span class="text-red" style="color: #FF6370; font-weight: 500;">Heigh</span></td>
-                  <td><span class="badge b-red"
-                      style="background: #FFECEE; color: #FF6370; font-weight: 500;">Critical</span></td>
-                  <td>
-                    <svg viewBox="0 0 80 30" class="sparkline">
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
-                        fill="none" stroke="#FF6370" stroke-width="2.5" stroke-linecap="round" />
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
-                        fill="rgba(255, 99, 112, 0.15)" stroke="none" />
-                    </svg>
-                  </td>
-                  <td>
-                    <div class="tbl-actions">
-                      <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
-                      <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
-                      <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr data-cat="link">
-                  <td>
-                    <div class="issue-title-cell">
-                      <svg class="warning-icon color-red" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        style="width: 18px; height: 18px; color: #FF6370; fill: rgba(255, 99, 112, 0.1); flex-shrink: 0;">
-                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                      </svg>
-                      <span>148 pages are internally linked with anchor texts that need improvement.</span>
-                    </div>
-                  </td>
-                  <td>148</td>
-                  <td><span class="text-red" style="color: #FF6370; font-weight: 500;">Heigh</span></td>
-                  <td><span class="badge b-red"
-                      style="background: #FFECEE; color: #FF6370; font-weight: 500;">Critical</span></td>
-                  <td>
-                    <svg viewBox="0 0 80 30" class="sparkline">
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
-                        fill="none" stroke="#FF6370" stroke-width="2.5" stroke-linecap="round" />
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
-                        fill="rgba(255, 99, 112, 0.15)" stroke="none" />
-                    </svg>
-                  </td>
-                  <td>
-                    <div class="tbl-actions">
-                      <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
-                      <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
-                      <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr data-cat="link">
-                  <td>
-                    <div class="issue-title-cell">
-                      <svg class="warning-icon color-brown" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        style="width: 18px; height: 18px; color: #C27733; fill: rgba(194, 119, 51, 0.1); flex-shrink: 0;">
-                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                      </svg>
-                      <span>155 problemswith external links wre found.</span>
-                    </div>
-                  </td>
-                  <td>155</td>
-                  <td><span class="text-blue" style="color: #3594ee; font-weight: 500;">Heigh</span></td>
-                  <td><span class="badge b-brown"
-                      style="background: #FFF0E4; color: #C27733; font-weight: 500;">Heigh</span></td>
-                  <td>
-                    <svg viewBox="0 0 80 30" class="sparkline">
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
-                        fill="none" stroke="#C27733" stroke-width="2.5" stroke-linecap="round" />
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
-                        fill="rgba(194, 119, 51, 0.15)" stroke="none" />
-                    </svg>
-                  </td>
-                  <td>
-                    <div class="tbl-actions">
-                      <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
-                      <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
-                      <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr data-cat="content">
-                  <td>
-                    <div class="issue-title-cell">
-                      <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
-                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                      </svg>
-                      <span>On 17 pages, keywrods from the H1 heading were not found in the page content.</span>
-                    </div>
-                  </td>
-                  <td>17</td>
-                  <td><span class="text-orange" style="color: #FF9F4E; font-weight: 500;">Medium</span></td>
-                  <td><span class="badge b-orange"
-                      style="background: #FFEADA; color: #FF9F4E; font-weight: 500;">Medium</span></td>
-                  <td>
-                    <svg viewBox="0 0 80 30" class="sparkline">
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
-                        fill="none" stroke="#FF9F4E" stroke-width="2.5" stroke-linecap="round" />
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
-                        fill="rgba(255, 159, 78, 0.15)" stroke="none" />
-                    </svg>
-                  </td>
-                  <td>
-                    <div class="tbl-actions">
-                      <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
-                      <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
-                      <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr data-cat="content">
-                  <td>
-                    <div class="issue-title-cell">
-                      <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
-                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                      </svg>
-                      <span>13 pages contain less than 500 words of text.</span>
-                    </div>
-                  </td>
-                  <td>13</td>
-                  <td><span class="text-orange" style="color: #FF9F4E; font-weight: 500;">Medium</span></td>
-                  <td><span class="badge b-orange"
-                      style="background: #FFEADA; color: #FF9F4E; font-weight: 500;">Medium</span></td>
-                  <td>
-                    <svg viewBox="0 0 80 30" class="sparkline">
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
-                        fill="none" stroke="#FF9F4E" stroke-width="2.5" stroke-linecap="round" />
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
-                        fill="rgba(255, 159, 78, 0.15)" stroke="none" />
-                    </svg>
-                  </td>
-                  <td>
-                    <div class="tbl-actions">
-                      <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
-                      <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
-                      <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr data-cat="content">
-                  <td>
-                    <div class="issue-title-cell">
-                      <svg class="warning-icon color-red" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        style="width: 18px; height: 18px; color: #FF6370; fill: rgba(255, 99, 112, 0.1); flex-shrink: 0;">
-                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                      </svg>
-                      <span>7 pages are competing with other due to their keyword optimization.</span>
-                    </div>
-                  </td>
-                  <td>7</td>
-                  <td><span class="text-red" style="color: #FF6370; font-weight: 500;">Heigh</span></td>
-                  <td><span class="badge b-red"
-                      style="background: #FFECEE; color: #FF6370; font-weight: 500;">Heigh</span></td>
-                  <td>
-                    <svg viewBox="0 0 80 30" class="sparkline">
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
-                        fill="none" stroke="#FF6370" stroke-width="2.5" stroke-linecap="round" />
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
-                        fill="rgba(255, 99, 112, 0.15)" stroke="none" />
-                    </svg>
-                  </td>
-                  <td>
-                    <div class="tbl-actions">
-                      <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
-                      <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
-                      <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr data-cat="content">
-                  <td>
-                    <div class="issue-title-cell">
-                      <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
-                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                      </svg>
-                      <span>4 pages complete with each other due to identical anchor texts.</span>
-                    </div>
-                  </td>
-                  <td>4</td>
-                  <td><span class="text-orange" style="color: #FF9F4E; font-weight: 500;">Medium</span></td>
-                  <td><span class="badge b-orange"
-                      style="background: #FFEADA; color: #FF9F4E; font-weight: 500;">Medium</span></td>
-                  <td>
-                    <svg viewBox="0 0 80 30" class="sparkline">
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
-                        fill="none" stroke="#FF9F4E" stroke-width="2.5" stroke-linecap="round" />
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
-                        fill="rgba(255, 159, 78, 0.15)" stroke="none" />
-                    </svg>
-                  </td>
-                  <td>
-                    <div class="tbl-actions">
-                      <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
-                      <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
-                      <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr data-cat="technical">
-                  <td>
-                    <div class="issue-title-cell">
-                      <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
-                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                      </svg>
-                      <span>8 pages have a little tag that needs improvement.</span>
-                    </div>
-                  </td>
-                  <td>8</td>
-                  <td><span class="text-orange" style="color: #FF9F4E; font-weight: 500;">Medium</span></td>
-                  <td><span class="badge b-orange"
-                      style="background: #FFEADA; color: #FF9F4E; font-weight: 500;">Medium</span></td>
-                  <td>
-                    <svg viewBox="0 0 80 30" class="sparkline">
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12"
-                        fill="none" stroke="#FF9F4E" stroke-width="2.5" stroke-linecap="round" />
-                      <path
-                        d="M 2 22 C 10 22, 15 12, 22 17 C 30 22, 35 25, 42 22 C 50 18, 55 8, 62 14 C 70 20, 75 5, 78 12 L 78 30 L 2 30 Z"
-                        fill="rgba(255, 159, 78, 0.15)" stroke="none" />
-                    </svg>
-                  </td>
-                  <td>
-                    <div class="tbl-actions">
-                      <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
-                      <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
-                      <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="table-footer">
-            <span>Showing 1 to 8 of 345 issues</span>
-            <div class="pagination">
-              <button class="pg-btn pg-arrow"><i data-lucide="chevron-left"></i></button>
-              <button class="pg-btn active">1</button>
-              <button class="pg-btn">2</button>
-              <button class="pg-btn">3</button>
-              <button class="pg-btn dots">..</button>
-              <button class="pg-btn dots">...</button>
-              <button class="pg-btn">43</button>
-              <button class="pg-btn pg-arrow"><i data-lucide="chevron-right"></i></button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bottom Section: Two-Column Responsive Layout -->
-        <div class="bottom-section-grid">
-
-          <!-- Left Column: Weekly Action Plan -->
-          <div class="bottom-left-col">
-            <!-- Weekly Action Plan -->
-            <div class="card action-plan-card">
-              <div class="card-header" style="margin-bottom: 16px;">
-                <h3 style="font-size: 13px; font-weight: 600; color: #616161; letter-spacing: 0.5px;">WEEKLY ACTION PLAN
-                </h3>
-              </div>
-              <div class="plan-list">
-                <div class="plan-item">
-                  <div class="plan-badge green">1</div>
-                  <div class="plan-info">
-                    <span class="plan-name">Improve Internal Linking</span>
-                    <span class="plan-gain">Potential Gain: <span class="green-text">+14%</span></span>
-                  </div>
-                </div>
-                <div class="plan-item">
-                  <div class="plan-badge green">2</div>
-                  <div class="plan-info">
-                    <span class="plan-name">Fix Keyword Cannibalization</span>
-                    <span class="plan-gain">Potential Gain: <span class="green-text">+9%</span></span>
-                  </div>
-                </div>
-                <div class="plan-item">
-                  <div class="plan-badge green">3</div>
-                  <div class="plan-info">
-                    <span class="plan-name">Improve Title Tags</span>
-                    <span class="plan-gain">Potential Gain: <span class="green-text">+4%</span></span>
-                  </div>
-                </div>
-                <div class="plan-item">
-                  <div class="plan-badge green">4</div>
-                  <div class="plan-info">
-                    <span class="plan-name">Expand Thin Content</span>
-                    <span class="plan-gain">Potential Gain: <span class="green-text">+3%</span></span>
-                  </div>
-                </div>
-              </div>
-              <div class="plan-divider"></div>
-              <div class="plan-total-row">
-                <span class="plan-total-label">Total Potential Gain</span>
-                <span class="plan-total-val">+30%</span>
-              </div>
-              <button class="btn btn-blue-full">View Full Plan</button>
-            </div>
-          </div>
-
-          <!-- Right Column: Export, Help -->
-          <div class="bottom-right-col">
-            <!-- Export -->
-            <div class="card export-card">
-              <h3 class="export-title">EXPORT & SHARE</h3>
-              <div class="export-icons">
-                <div class="export-item">
-                  <div class="exp-icon red">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" style="width: 24px; height: 24px;">
-                      <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
-                      <polyline points="14 2 14 8 20 8"></polyline>
-                      <line x1="16" y1="13" x2="8" y2="13"></line>
-                      <line x1="16" y1="17" x2="8" y2="17"></line>
-                      <line x1="10" y1="9" x2="8" y2="9"></line>
-                    </svg>
-                  </div>
-                  <span>PDF Report</span>
-                </div>
-                <div class="export-item">
-                  <div class="exp-icon blue">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" style="width: 24px; height: 24px;">
-                      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                    </svg>
-                  </div>
-                  <span>Share Link</span>
-                </div>
-                <div class="export-item">
-                  <div class="exp-icon purple">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" style="width: 24px; height: 24px;">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                      <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                  </div>
-                  <span>Schedule Email</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Need Help -->
-            <div class="card help-card">
-              <div class="help-content">
-                <h3>Need Help?</h3>
-                <p>Ask ASEMFY AI Assistant</p>
-                <button class="btn btn-white-sm">Ask Now</button>
-              </div>
-              <div class="help-avatar-wrap">
-                <img src="assets/Frame-4.svg" alt="Support" />
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Roadmap Strip (Full Width) -->
-        <div class="roadmap-card">
-          <div class="roadmap-inner">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" style="width: 20px; height: 20px; color: #C27733; flex-shrink: 0;">
-              <path
-                d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .6 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
-              <path d="M9 18h6" />
-              <path d="M10 22h4" />
-            </svg>
-            <span>Not sure where to start? Let ASEMFY AI create a custom roadmap for you.</span>
-          </div>
-          <button class="btn btn-gen">Generate Roadmap
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round"
-              style="width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-left: 4px;">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </button>
-
-        </div>
+        </div> <!-- End of #details-view -->
 
     </main>
   </div>
