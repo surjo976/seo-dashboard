@@ -4209,8 +4209,9 @@ tr:hover td {
   margin: 0 !important;
 }
 
-.details-table thead {
-  background: #F5F5F5 !important;
+.details-table thead,
+.details-table thead tr {
+  background: transparent !important;
 }
 
 .details-table th {
@@ -4268,10 +4269,12 @@ tr:hover td {
 /* Corner radius for table header */
 .details-table th:first-child {
   border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
 }
 
 .details-table th:last-child {
   border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
 }
 
 .details-table-container .table-footer {
