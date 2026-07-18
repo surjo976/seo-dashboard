@@ -4045,7 +4045,7 @@ tr:hover td {
 }
 
 .details-table-container {
-  padding: 24px 0 0 0 !important;
+  padding: 24px !important;
   border-radius: 10px !important;
   background: white !important;
   box-shadow: 0px 15px 10px -16px rgba(33, 33, 33, 0.50) !important;
@@ -4060,7 +4060,7 @@ tr:hover td {
   margin-bottom: 20px !important;
   flex-wrap: wrap !important;
   width: 100% !important;
-  padding: 0 28px !important;
+  padding: 0 !important;
 }
 
 .filter-controls-right {
@@ -4257,12 +4257,12 @@ tr:hover td {
 /* First and last column padding alignment */
 .details-table th:first-child,
 .details-table td:first-child {
-  padding-left: 28px !important;
+  padding-left: 16px !important;
 }
 
 .details-table th:last-child,
 .details-table td:last-child {
-  padding-right: 28px !important;
+  padding-right: 16px !important;
 }
 
 /* Corner radius for table header */
@@ -4275,7 +4275,7 @@ tr:hover td {
 }
 
 .details-table-container .table-footer {
-  padding: 16px 28px 24px 28px !important;
+  padding: 16px 0 0 0 !important;
 }
 
 /* Active row left border indicator — uses box-shadow so it doesn't affect cell width */
