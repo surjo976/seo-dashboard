@@ -241,7 +241,7 @@ export default class ChartView {
     segments.forEach(seg => {
       // Use model's start/end degrees directly
       const startAngle = (seg.start * Math.PI) / 180;
-      const endAngle   = (seg.end   * Math.PI) / 180;
+      const endAngle = (seg.end * Math.PI) / 180;
 
       let currentLineWidth = lineWidth;
       let currentRadius = radius;
@@ -267,7 +267,7 @@ export default class ChartView {
       // Draw inner arc counter-clockwise
       ctx.arc(cx, cy, innerR, endAngle, startAngle, true);
       ctx.closePath();
-      
+
       ctx.fillStyle = seg.color;
       ctx.fill();
       ctx.restore();

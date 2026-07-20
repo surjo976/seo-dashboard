@@ -22,48 +22,87 @@
     .table-filter-row {
       display: flex !important;
       justify-content: space-between !important;
-      align-items: center !important; /* Center Filter button vertically */
-      padding: 12px 24px !important; /* Normal padding */
+      align-items: center !important;
+      padding: 12px 24px !important;
       margin-left: -24px !important;
       margin-right: -24px !important;
       border-bottom: none !important;
       margin-bottom: 36px !important; /* Spacing between tabs and table (36px) */
+      position: relative !important;
+    }
+    .table-filter-row::after {
+      content: '' !important;
+      position: absolute !important;
+      left: 24px !important;
+      right: 24px !important;
+      bottom: -18px !important; /* Positioned in the middle of the 36px vertical gap */
+      height: 1px !important;
+      background: rgba(0, 0, 0, 0.04) !important;
+      box-shadow: 0 10px 14px 1px rgba(0, 0, 0, 0.20) !important; /* The precise shadow line from 1st image */
+      pointer-events: none !important;
+      z-index: 10 !important;
     }
     .filter-tabs {
       display: flex !important;
-      align-self: stretch !important; /* Stretch to parent content height */
-      align-items: flex-end !important; /* Push tabs content to bottom */
-      gap: 24px !important;
-      margin-bottom: 0 !important; /* Removed negative offset since border is gone */
+      align-items: center !important;
+      gap: 28px !important;
+      margin-bottom: -14px !important;
     }
     .ftab {
       background: none !important;
       border: none !important;
-      padding: 6px 0 !important; /* Normal padding */
-      margin: 0 !important; /* Reset default margins */
-      line-height: 1 !important; /* Reset default line-height */
-      height: auto !important; /* Reset default height */
+      padding: 0 0 14px 0 !important;
+      margin: 0 !important;
+      line-height: 1 !important;
+      height: auto !important;
       font-family: var(--font) !important;
-      font-size: 18px !important;
-      font-weight: 500 !important;
-      color: var(--text2) !important;
+      font-size: 17px !important;
+      font-weight: 600 !important;
+      color: #777 !important;
       cursor: pointer !important;
       position: relative !important;
       white-space: nowrap !important;
-      z-index: 1 !important; /* Sits above the border */
+      z-index: 1 !important;
+      transition: color 0.3s !important;
+    }
+    .ftab:hover {
+      color: #2f80ed !important;
     }
     .ftab.active {
-      color: var(--blue) !important;
+      color: #2f80ed !important;
     }
     .ftab.active::after {
-      content: '' !important;
+      content: "" !important;
       position: absolute !important;
-      bottom: 0 !important;
       left: 0 !important;
-      right: 0 !important;
+      bottom: 0 !important;
+      width: 100% !important;
       height: 3px !important;
-      background: var(--blue) !important;
-      border-radius: 1.5px !important;
+      background: #2f80ed !important;
+      border-radius: 20px !important;
+    }
+    .btn-filter {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      background: #f3f4f6 !important;
+      border: none !important;
+      padding: 10px 18px !important;
+      border-radius: 12px !important;
+      color: #666 !important;
+      font-size: 15px !important;
+      font-weight: 500 !important;
+      cursor: pointer !important;
+      transition: background 0.3s !important;
+      height: auto !important;
+      box-shadow: none !important;
+    }
+    .btn-filter:hover {
+      background: #e9ecef !important;
+    }
+    .btn-filter svg {
+      width: 15px !important;
+      height: 15px !important;
     }
     .table-wrap {
       width: 100% !important;
@@ -71,7 +110,7 @@
       border: none !important;
       border-radius: 16px !important;
       background: #ffffff !important;
-      box-shadow: 0 -12px 12px -12px rgba(0, 0, 0, 0.12), 0px 15px 10px -16px rgba(33, 33, 33, 0.50) !important;
+      box-shadow: 0px 15px 10px -16px rgba(33, 33, 33, 0.50) !important;
       margin-top: 0 !important;
       margin-bottom: 24px !important;
     }
@@ -135,57 +174,92 @@
       filter: brightness(0.95) !important;
       cursor: pointer !important;
     }
-    /* Help Card Figma Matching */
+    /* Help Card Figma Exact Match from Sample Code */
     .help-card {
-      min-height: 165px !important;
-      padding: 24px 28px !important;
-      background: rgba(53, 148, 238, 0.10) !important;
+      height: 230px !important;
+      background: #d9ebff !important;
+      border-radius: 20px !important;
+      position: relative !important;
+      overflow: hidden !important;
+      padding: 30px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      align-items: flex-start !important;
+    }
+    .help-content {
+      position: relative !important;
+      z-index: 2 !important;
+      max-width: 100% !important;
     }
     .help-content h3 {
-      font-size: 26px !important;
+      color: #1e88ff !important;
+      font-size: 34px !important;
       font-weight: 700 !important;
-      color: #1B63C1 !important;
-      margin-bottom: 4px !important;
+      margin-top: 0 !important;
+      margin-bottom: 12px !important;
+      line-height: 1 !important;
     }
     .help-content p {
-      font-size: 14px !important;
+      color: #2d84e8 !important;
+      font-size: 22px !important;
       font-weight: 500 !important;
-      color: #3594EE !important;
-      margin-bottom: 16px !important;
+      margin-top: 0 !important;
+      margin-bottom: 30px !important;
+      line-height: 1.1 !important;
     }
     .btn-white-sm {
-      height: 38px !important;
-      padding: 0 24px !important;
-      border-radius: 12px !important;
-      background: #fff !important;
-      color: var(--blue) !important;
-      font-size: 14px !important;
-      font-weight: 700 !important;
+      width: 140px !important;
+      height: 48px !important;
       border: none !important;
-      box-shadow: 0 2px 6px rgba(53, 148, 238, 0.15) !important;
+      border-radius: 10px !important;
+      background: #fff !important;
+      color: #1e88ff !important;
+      font-size: 18px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      box-shadow: 0 8px 20px rgba(0,0,0,.08) !important;
+      transition: all 0.3s !important;
+      display: inline-flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 0 !important;
+    }
+    .btn-white-sm:hover {
+      background: #1e88ff !important;
+      color: #fff !important;
+      transform: none !important;
+      box-shadow: 0 8px 20px rgba(30,136,255,.2) !important;
     }
     .help-avatar-wrap {
-      width: 145px !important;
-      height: 145px !important;
-      right: 8px !important;
-      bottom: 0 !important;
       position: absolute !important;
+      right: 10px !important; /* Moved mascot further to the right */
+      bottom: 0 !important;
+      width: 135px !important;
+      height: 135px !important;
+      z-index: 2 !important;
+      pointer-events: none !important;
       overflow: visible !important;
     }
     .help-avatar-wrap::before {
       content: '' !important;
       position: absolute !important;
-      width: 165px !important;
-      height: 165px !important;
+      right: -50px !important; /* aligns to right: -40px of parent card */
+      bottom: -75px !important;
+      width: 210px !important; /* Made the circle larger */
+      height: 210px !important;
+      background: rgba(120, 160, 210, 0.18) !important;
       border-radius: 50% !important;
-      background: #D4E6FA !important;
-      left: 50% !important;
-      top: 50% !important;
-      transform: translate(-50%, -40%) !important;
       z-index: -1 !important;
+      left: auto !important;
+      top: auto !important;
+      transform: none !important;
+    }
+    [data-theme="dark"] .help-card {
+      background: #16222f !important;
     }
     [data-theme="dark"] .help-avatar-wrap::before {
-      background: rgba(53, 148, 238, 0.25) !important;
+      background: rgba(120, 160, 210, 0.1) !important;
     }
   </style>
 </head>
