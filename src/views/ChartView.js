@@ -93,16 +93,16 @@ export default class ChartView {
         if (pt.x >= 0 && pt.x <= 909) {
           const isActive = activePoint && activePoint.x === pt.x && Math.abs(activePoint.y - pt.y) < 0.5;
           ctx.beginPath();
-          ctx.arc(pt.x, pt.y, isActive ? 6 : 4.5, 0, Math.PI * 2);
-          ctx.fillStyle = "#ffffff";
+          ctx.arc(pt.x, pt.y, isActive ? 6.5 : 5, 0, Math.PI * 2);
+          ctx.fillStyle = color;
           ctx.fill();
-          ctx.strokeStyle = color;
-          ctx.lineWidth = isActive ? 4 : 3;
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = isActive ? 2.5 : 2;
           ctx.stroke();
 
           if (isActive) {
             ctx.beginPath();
-            ctx.arc(pt.x, pt.y, 10, 0, Math.PI * 2);
+            ctx.arc(pt.x, pt.y, 11, 0, Math.PI * 2);
             ctx.strokeStyle = this.hexToRgbA(color, 0.4);
             ctx.lineWidth = 2;
             ctx.stroke();
@@ -127,12 +127,13 @@ export default class ChartView {
 
       let closestPt = null;
       let closestLine = null;
-      let minDistance = 35; // max threshold radius
+      let minDistance = 60; // max threshold radius
 
       lines.forEach(line => {
         line.points.forEach(pt => {
           if (pt.x >= 0 && pt.x <= 909) {
-            const dist = Math.hypot(mouseX - pt.x, mouseY - pt.y);
+            // Weighted distance: prioritize X axis distance so it is easy to hover
+            const dist = Math.hypot(mouseX - pt.x, (mouseY - pt.y) * 0.4);
             if (dist < minDistance) {
               minDistance = dist;
               closestPt = pt;
