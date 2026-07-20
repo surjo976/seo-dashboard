@@ -695,15 +695,21 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
 }
 
+.top-bar .icon-btn svg,
 .top-bar .icon-btn i,
 .top-bar .icon-btn i svg {
-  width: 9px !important;
-  height: 9px !important;
+  width: 12px !important;
+  height: 12px !important;
+  min-width: 12px !important;
+  min-height: 12px !important;
+  max-width: 12px !important;
+  max-height: 12px !important;
   color: #808080 !important;
   stroke: #808080 !important;
-  stroke-width: 1.6 !important;
+  stroke-width: 1.8 !important;
   display: block !important;
-  margin: 0 auto !important;
+  margin: auto !important;
+  flex-shrink: 0 !important;
 }
 
 .top-bar .notif-badge {
@@ -3411,6 +3417,13 @@ tr:hover td {
 
 [data-theme="dark"] .top-bar .icon-btn:hover {
   background: rgba(255, 255, 255, 0.25) !important;
+}
+
+[data-theme="dark"] .top-bar .icon-btn svg,
+[data-theme="dark"] .top-bar .icon-btn i,
+[data-theme="dark"] .top-bar .icon-btn i svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
 }
 
 /* Audit Tabs */

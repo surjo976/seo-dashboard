@@ -170,7 +170,7 @@ export default class AppController {
     const detailsView = document.getElementById("details-view");
     const breadcrumbText = document.querySelector(".breadcrumb span");
 
-    if (viewDetailsBtn && backBtn && overviewView && detailsView) {
+    if (viewDetailsBtn && overviewView && detailsView) {
       // Click View Details on first card
       viewDetailsBtn.addEventListener("click", () => {
         this.transitionViews(overviewView, detailsView, true, () => {
@@ -184,14 +184,16 @@ export default class AppController {
         });
       });
 
-      // Click Back Button
-      backBtn.addEventListener("click", () => {
-        this.transitionViews(detailsView, overviewView, false, () => {
-          if (breadcrumbText) {
-            breadcrumbText.textContent = "Dashboard / Audit suite";
-          }
+      // Click Back Button if exists
+      if (backBtn) {
+        backBtn.addEventListener("click", () => {
+          this.transitionViews(detailsView, overviewView, false, () => {
+            if (breadcrumbText) {
+              breadcrumbText.textContent = "Dashboard / Audit suite";
+            }
+          });
         });
-      });
+      }
     }
   }
 
@@ -202,8 +204,8 @@ export default class AppController {
     fromView.style.opacity = 0;
     fromView.style.transform = "translateY(15px)";
 
-    if (!showBackButton && backBtn) {
-      backBtn.style.opacity = 0;
+    if (backBtn) {
+      backBtn.style.opacity = showBackButton ? 1 : 0;
     }
 
     setTimeout(() => {
