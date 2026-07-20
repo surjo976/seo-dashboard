@@ -6,12 +6,188 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI-Powered SEO Audit Report - ASEMFY</title>
   <meta name="description" content="AI-Powered SEO Audit Report Dashboard for comprehensive website analysis.">
-  <link rel="stylesheet" href="css/style.css?v=6.4">
+  <link rel="stylesheet" href="css/style.css?v=6.7">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Absolute overrides to bypass any browser stylesheet caching */
+    .table-card {
+      background: white !important;
+      border-radius: 20px !important;
+      padding: 10px 24px 24px 24px !important;
+    }
+    .table-filter-row {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important; /* Center Filter button vertically */
+      padding: 12px 24px !important; /* Normal padding */
+      margin-left: -24px !important;
+      margin-right: -24px !important;
+      border-bottom: none !important;
+      margin-bottom: 36px !important; /* Spacing between tabs and table (36px) */
+    }
+    .filter-tabs {
+      display: flex !important;
+      align-self: stretch !important; /* Stretch to parent content height */
+      align-items: flex-end !important; /* Push tabs content to bottom */
+      gap: 24px !important;
+      margin-bottom: 0 !important; /* Removed negative offset since border is gone */
+    }
+    .ftab {
+      background: none !important;
+      border: none !important;
+      padding: 6px 0 !important; /* Normal padding */
+      margin: 0 !important; /* Reset default margins */
+      line-height: 1 !important; /* Reset default line-height */
+      height: auto !important; /* Reset default height */
+      font-family: var(--font) !important;
+      font-size: 18px !important;
+      font-weight: 500 !important;
+      color: var(--text2) !important;
+      cursor: pointer !important;
+      position: relative !important;
+      white-space: nowrap !important;
+      z-index: 1 !important; /* Sits above the border */
+    }
+    .ftab.active {
+      color: var(--blue) !important;
+    }
+    .ftab.active::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 3px !important;
+      background: var(--blue) !important;
+      border-radius: 1.5px !important;
+    }
+    .table-wrap {
+      width: 100% !important;
+      overflow: hidden !important; /* Clips header corners */
+      border: none !important;
+      border-radius: 16px !important;
+      background: #ffffff !important;
+      box-shadow: 0 -12px 12px -12px rgba(0, 0, 0, 0.12), 0px 15px 10px -16px rgba(33, 33, 33, 0.50) !important;
+      margin-top: 0 !important;
+      margin-bottom: 24px !important;
+    }
+    thead tr {
+      background: #F5F5F5 !important;
+    }
+    thead tr th:first-child {
+      border-top-left-radius: 16px !important;
+      border-bottom-left-radius: 0 !important;
+    }
+    thead tr th:last-child {
+      border-top-right-radius: 16px !important;
+      border-bottom-right-radius: 0 !important;
+    }
+    tr:last-child td {
+      border-bottom: 1px solid #E5E4E4 !important;
+    }
+    th:first-child, td:first-child {
+      width: 45% !important;
+      padding-left: 24px !important;
+    }
+    th:last-child, td:last-child {
+      width: 10% !important;
+      padding-right: 24px !important;
+    }
+    td:nth-child(2) {
+      font-weight: 500 !important;
+      color: var(--text) !important;
+    }
+    .tbl-act-btn.btn-delete,
+    .tbl-act-btn.btn-more {
+      color: #808080 !important;
+    }
+    .roadmap-card {
+      margin-top: 0 !important; /* Let parent flex gap control vertical spacing */
+    }
+    /* AI Parts Animation Overrides */
+    @keyframes floatRobot {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0); }
+    }
+    .robot-img {
+      animation: floatRobot 4s ease-in-out infinite !important;
+      transition: transform 0.3s ease-in-out !important;
+    }
+    .ai-insight-card:hover .robot-img {
+      transform: translateY(-8px) scale(1.05) !important;
+    }
+    .help-avatar-wrap img {
+      transition: transform 0.3s ease-in-out !important;
+    }
+    .help-card:hover .help-avatar-wrap img {
+      transform: translateY(-6px) scale(1.08) rotate(3deg) !important;
+    }
+    .vis-bar-column {
+      transition: transform 0.2s ease, filter 0.2s ease !important;
+    }
+    .vis-bar-column:hover {
+      transform: scaleY(1.05) !important;
+      filter: brightness(0.95) !important;
+      cursor: pointer !important;
+    }
+    /* Help Card Figma Matching */
+    .help-card {
+      min-height: 165px !important;
+      padding: 24px 28px !important;
+      background: rgba(53, 148, 238, 0.10) !important;
+    }
+    .help-content h3 {
+      font-size: 26px !important;
+      font-weight: 700 !important;
+      color: #1B63C1 !important;
+      margin-bottom: 4px !important;
+    }
+    .help-content p {
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      color: #3594EE !important;
+      margin-bottom: 16px !important;
+    }
+    .btn-white-sm {
+      height: 38px !important;
+      padding: 0 24px !important;
+      border-radius: 12px !important;
+      background: #fff !important;
+      color: var(--blue) !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      border: none !important;
+      box-shadow: 0 2px 6px rgba(53, 148, 238, 0.15) !important;
+    }
+    .help-avatar-wrap {
+      width: 145px !important;
+      height: 145px !important;
+      right: 8px !important;
+      bottom: 0 !important;
+      position: absolute !important;
+      overflow: visible !important;
+    }
+    .help-avatar-wrap::before {
+      content: '' !important;
+      position: absolute !important;
+      width: 165px !important;
+      height: 165px !important;
+      border-radius: 50% !important;
+      background: #D4E6FA !important;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -40%) !important;
+      z-index: -1 !important;
+    }
+    [data-theme="dark"] .help-avatar-wrap::before {
+      background: rgba(53, 148, 238, 0.25) !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -633,7 +809,7 @@
           </div>
 
           <!-- Issues Table (Full Width) -->
-          <div class="card table-card" style="margin-bottom: 24px;">
+          <div class="card table-card">
             <!-- Filter Row -->
             <div class="table-filter-row">
               <div class="filter-tabs">
@@ -663,12 +839,12 @@
                   <tr data-cat="technical">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon color-red" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF6370" stroke="#FF6370"
                           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          style="width: 18px; height: 18px; color: #FF6370; fill: rgba(255, 99, 112, 0.1); flex-shrink: 0;">
+                          style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF6370 !important; stroke: #FF6370 !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                          <line x1="12" y1="9" x2="12" y2="13" />
-                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                          <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" stroke="#ffffff" stroke-width="2.5" />
                         </svg>
                         <span>5 pages could not be checked due to technical problems.</span>
                       </div>
@@ -698,12 +874,12 @@
                   <tr data-cat="link">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon color-red" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF6370" stroke="#FF6370"
                           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          style="width: 18px; height: 18px; color: #FF6370; fill: rgba(255, 99, 112, 0.1); flex-shrink: 0;">
+                          style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF6370 !important; stroke: #FF6370 !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                          <line x1="12" y1="9" x2="12" y2="13" />
-                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                          <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" stroke="#ffffff" stroke-width="2.5" />
                         </svg>
                         <span>148 pages are internally linked with anchor texts that need improvement.</span>
                       </div>
@@ -733,12 +909,12 @@
                   <tr data-cat="link">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon color-brown" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#C27733" stroke="#C27733"
                           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          style="width: 18px; height: 18px; color: #C27733; fill: rgba(194, 119, 51, 0.1); flex-shrink: 0;">
+                          style="width: 18px; height: 18px; flex-shrink: 0; fill: #C27733 !important; stroke: #C27733 !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                          <line x1="12" y1="9" x2="12" y2="13" />
-                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                          <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" stroke="#ffffff" stroke-width="2.5" />
                         </svg>
                         <span>155 problemswith external links wre found.</span>
                       </div>
@@ -768,12 +944,12 @@
                   <tr data-cat="content">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF9F4E" stroke="#FF9F4E"
                           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
+                          style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF9F4E !important; stroke: #FF9F4E !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                          <line x1="12" y1="9" x2="12" y2="13" />
-                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                          <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" stroke="#ffffff" stroke-width="2.5" />
                         </svg>
                         <span>On 17 pages, keywrods from the H1 heading were not found in the page content.</span>
                       </div>
@@ -803,12 +979,12 @@
                   <tr data-cat="content">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF9F4E" stroke="#FF9F4E"
                           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
+                          style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF9F4E !important; stroke: #FF9F4E !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                          <line x1="12" y1="9" x2="12" y2="13" />
-                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                          <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" stroke="#ffffff" stroke-width="2.5" />
                         </svg>
                         <span>13 pages contain less than 500 words of text.</span>
                       </div>
@@ -838,12 +1014,12 @@
                   <tr data-cat="content">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon color-red" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF6370" stroke="#FF6370"
                           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          style="width: 18px; height: 18px; color: #FF6370; fill: rgba(255, 99, 112, 0.1); flex-shrink: 0;">
+                          style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF6370 !important; stroke: #FF6370 !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                          <line x1="12" y1="9" x2="12" y2="13" />
-                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                          <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" stroke="#ffffff" stroke-width="2.5" />
                         </svg>
                         <span>7 pages are competing with other due to their keyword optimization.</span>
                       </div>
@@ -873,12 +1049,12 @@
                   <tr data-cat="content">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF9F4E" stroke="#FF9F4E"
                           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
+                          style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF9F4E !important; stroke: #FF9F4E !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                          <line x1="12" y1="9" x2="12" y2="13" />
-                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                          <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" stroke="#ffffff" stroke-width="2.5" />
                         </svg>
                         <span>4 pages complete with each other due to identical anchor texts.</span>
                       </div>
@@ -908,12 +1084,12 @@
                   <tr data-cat="technical">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon color-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF9F4E" stroke="#FF9F4E"
                           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          style="width: 18px; height: 18px; color: #FF9F4E; fill: rgba(255, 159, 78, 0.1); flex-shrink: 0;">
+                          style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF9F4E !important; stroke: #FF9F4E !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                          <line x1="12" y1="9" x2="12" y2="13" />
-                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                          <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" stroke="#ffffff" stroke-width="2.5" />
                         </svg>
                         <span>8 pages have a little tag that needs improvement.</span>
                       </div>
