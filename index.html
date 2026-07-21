@@ -19,6 +19,7 @@
       border-radius: 20px !important;
       padding: 10px 24px 24px 24px !important;
     }
+
     .table-filter-row {
       display: flex !important;
       justify-content: space-between !important;
@@ -27,27 +28,33 @@
       margin-left: -24px !important;
       margin-right: -24px !important;
       border-bottom: none !important;
-      margin-bottom: 36px !important; /* Spacing between tabs and table (36px) */
+      margin-bottom: 36px !important;
+      /* Spacing between tabs and table (36px) */
       position: relative !important;
     }
+
     .table-filter-row::after {
       content: '' !important;
       position: absolute !important;
       left: 24px !important;
       right: 24px !important;
-      bottom: -18px !important; /* Positioned in the middle of the 36px vertical gap */
+      bottom: -18px !important;
+      /* Positioned in the middle of the 36px vertical gap */
       height: 1px !important;
       background: rgba(0, 0, 0, 0.04) !important;
-      box-shadow: 0 10px 14px 1px rgba(0, 0, 0, 0.20) !important; /* The precise shadow line from 1st image */
+      box-shadow: 0 10px 14px 1px rgba(0, 0, 0, 0.20) !important;
+      /* The precise shadow line from 1st image */
       pointer-events: none !important;
       z-index: 10 !important;
     }
+
     .filter-tabs {
       display: flex !important;
       align-items: center !important;
       gap: 28px !important;
       margin-bottom: -14px !important;
     }
+
     .ftab {
       background: none !important;
       border: none !important;
@@ -65,12 +72,15 @@
       z-index: 1 !important;
       transition: color 0.3s !important;
     }
+
     .ftab:hover {
       color: #2f80ed !important;
     }
+
     .ftab.active {
       color: #2f80ed !important;
     }
+
     .ftab.active::after {
       content: "" !important;
       position: absolute !important;
@@ -81,6 +91,7 @@
       background: #2f80ed !important;
       border-radius: 20px !important;
     }
+
     .btn-filter {
       display: flex !important;
       align-items: center !important;
@@ -97,16 +108,20 @@
       height: auto !important;
       box-shadow: none !important;
     }
+
     .btn-filter:hover {
       background: #e9ecef !important;
     }
+
     .btn-filter svg {
       width: 15px !important;
       height: 15px !important;
     }
+
     .table-wrap {
       width: 100% !important;
-      overflow: hidden !important; /* Clips header corners */
+      overflow: hidden !important;
+      /* Clips header corners */
       border: none !important;
       border-radius: 16px !important;
       background: #ffffff !important;
@@ -114,66 +129,94 @@
       margin-top: 0 !important;
       margin-bottom: 24px !important;
     }
+
     thead tr {
       background: #F5F5F5 !important;
     }
+
     thead tr th:first-child {
       border-top-left-radius: 16px !important;
       border-bottom-left-radius: 0 !important;
     }
+
     thead tr th:last-child {
       border-top-right-radius: 16px !important;
       border-bottom-right-radius: 0 !important;
     }
+
     tr:last-child td {
       border-bottom: 1px solid #E5E4E4 !important;
     }
-    th:first-child, td:first-child {
+
+    th:first-child,
+    td:first-child {
       width: 45% !important;
       padding-left: 24px !important;
     }
-    th:last-child, td:last-child {
+
+    th:last-child,
+    td:last-child {
       width: 10% !important;
       padding-right: 24px !important;
     }
+
     td:nth-child(2) {
       font-weight: 500 !important;
       color: var(--text) !important;
     }
+
     .tbl-act-btn.btn-delete,
     .tbl-act-btn.btn-more {
       color: #808080 !important;
     }
+
     .roadmap-card {
-      margin-top: 0 !important; /* Let parent flex gap control vertical spacing */
+      margin-top: 0 !important;
+      /* Let parent flex gap control vertical spacing */
     }
+
     /* AI Parts Animation Overrides */
     @keyframes floatRobot {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-      100% { transform: translateY(0); }
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
     }
+
     .robot-img {
       animation: floatRobot 4s ease-in-out infinite !important;
       transition: transform 0.3s ease-in-out !important;
     }
+
     .ai-insight-card:hover .robot-img {
       transform: translateY(-8px) scale(1.05) !important;
     }
+
     .help-avatar-wrap img {
       transition: transform 0.3s ease-in-out !important;
     }
+
     .help-card:hover .help-avatar-wrap img {
       transform: translateY(-6px) scale(1.08) rotate(3deg) !important;
     }
+
     .vis-bar-column {
       transition: transform 0.2s ease, filter 0.2s ease !important;
     }
+
     .vis-bar-column:hover {
       transform: scaleY(1.05) !important;
       filter: brightness(0.95) !important;
       cursor: pointer !important;
     }
+
     /* Help Card Figma Exact Match */
     .help-card {
       height: 200px !important;
@@ -187,6 +230,7 @@
       justify-content: space-between !important;
       align-items: flex-start !important;
     }
+
     .help-content {
       position: relative !important;
       z-index: 2 !important;
@@ -194,6 +238,7 @@
       display: flex !important;
       flex-direction: column !important;
     }
+
     .help-content h3 {
       color: #3594EE !important;
       font-size: 24px !important;
@@ -202,6 +247,7 @@
       margin-bottom: 6px !important;
       line-height: 28px !important;
     }
+
     .help-content p {
       color: #3594EE !important;
       font-size: 15px !important;
@@ -210,6 +256,7 @@
       margin-bottom: 20px !important;
       line-height: 22px !important;
     }
+
     .btn-white-sm {
       width: 110px !important;
       height: 40px !important;
@@ -220,19 +267,21 @@
       font-size: 14px !important;
       font-weight: 600 !important;
       cursor: pointer !important;
-      box-shadow: 0 4px 12px rgba(0,0,0,.04) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .04) !important;
       transition: all 0.3s !important;
       display: inline-flex !important;
       justify-content: center !important;
       align-items: center !important;
       padding: 0 !important;
     }
+
     .btn-white-sm:hover {
       background: #3594EE !important;
       color: #fff !important;
       transform: none !important;
-      box-shadow: 0 6px 16px rgba(53,148,238,.25) !important;
+      box-shadow: 0 6px 16px rgba(53, 148, 238, .25) !important;
     }
+
     .help-avatar-wrap {
       position: absolute !important;
       right: 12px !important;
@@ -243,11 +292,13 @@
       pointer-events: none !important;
       overflow: visible !important;
     }
+
     .help-avatar-wrap img {
       width: 100% !important;
       height: 100% !important;
       object-fit: contain !important;
     }
+
     .help-avatar-wrap::before {
       content: '' !important;
       position: absolute !important;
@@ -262,9 +313,11 @@
       top: auto !important;
       transform: none !important;
     }
+
     [data-theme="dark"] .help-card {
       background: #16222f !important;
     }
+
     [data-theme="dark"] .help-avatar-wrap::before {
       background: rgba(120, 160, 210, 0.1) !important;
     }
@@ -386,7 +439,8 @@
               <i data-lucide="search" class="search-icon"></i>
             </div>
             <button class="btn btn-white-round btn-ask-ai">Ask AI</button>
-            <button class="btn btn-white-round btn-start">Start <i data-lucide="chevron-down" class="btn-sm-icon"></i></button>
+            <button class="btn btn-white-round btn-start">Start <i data-lucide="chevron-down"
+                class="btn-sm-icon"></i></button>
             <button class="icon-btn" id="themeToggle"><i data-lucide="sun"></i></button>
             <button class="icon-btn notif-btn"><i data-lucide="bell"></i><span class="notif-badge">2</span></button>
             <div class="user-avatar"><img
@@ -918,8 +972,8 @@
                   <tr data-cat="technical">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF6370" stroke="#FF6370"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF6370" stroke="#FF6370" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"
                           style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF6370 !important; stroke: #FF6370 !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
                           <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
@@ -953,8 +1007,8 @@
                   <tr data-cat="link">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF6370" stroke="#FF6370"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF6370" stroke="#FF6370" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"
                           style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF6370 !important; stroke: #FF6370 !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
                           <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
@@ -988,8 +1042,8 @@
                   <tr data-cat="link">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#C27733" stroke="#C27733"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#C27733" stroke="#C27733" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"
                           style="width: 18px; height: 18px; flex-shrink: 0; fill: #C27733 !important; stroke: #C27733 !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
                           <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
@@ -1023,8 +1077,8 @@
                   <tr data-cat="content">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF9F4E" stroke="#FF9F4E"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF9F4E" stroke="#FF9F4E" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"
                           style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF9F4E !important; stroke: #FF9F4E !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
                           <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
@@ -1058,8 +1112,8 @@
                   <tr data-cat="content">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF9F4E" stroke="#FF9F4E"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF9F4E" stroke="#FF9F4E" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"
                           style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF9F4E !important; stroke: #FF9F4E !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
                           <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
@@ -1093,8 +1147,8 @@
                   <tr data-cat="content">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF6370" stroke="#FF6370"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF6370" stroke="#FF6370" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"
                           style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF6370 !important; stroke: #FF6370 !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
                           <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
@@ -1128,8 +1182,8 @@
                   <tr data-cat="content">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF9F4E" stroke="#FF9F4E"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF9F4E" stroke="#FF9F4E" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"
                           style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF9F4E !important; stroke: #FF9F4E !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
                           <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
@@ -1163,8 +1217,8 @@
                   <tr data-cat="technical">
                     <td>
                       <div class="issue-title-cell">
-                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF9F4E" stroke="#FF9F4E"
-                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        <svg class="warning-icon" viewBox="0 0 24 24" fill="#FF9F4E" stroke="#FF9F4E" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"
                           style="width: 18px; height: 18px; flex-shrink: 0; fill: #FF9F4E !important; stroke: #FF9F4E !important;">
                           <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
                           <line x1="12" y1="9" x2="12" y2="13" stroke="#ffffff" stroke-width="2.5" />
