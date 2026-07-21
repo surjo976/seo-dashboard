@@ -1,9 +1,3 @@
-/* ============================================
-   ASEMFY SEO Dashboard – Exact Design Match
-   Background: #E5E5E5 | Cards: 52px radius
-   Font: Outfit | Colors from Pencil design
-   ============================================ */
-
 :root {
   --bg: #E2EDF7;
   --card: #ffffff;
@@ -66,7 +60,7 @@ a:link {
 }
 
 /* ===== SIDEBAR ===== */
-/* ===== SIDEBAR ===== */
+
 .sidebar {
   position: fixed;
   left: 0;
@@ -2434,7 +2428,6 @@ a:link {
 }
 
 /* ===== AI VISIBILITY SNAPSHOT ===== */
-/* ===== AI VISIBILITY SNAPSHOT ===== */
 .ai-vis-card {
   flex: 1 1 auto;
   min-width: 0;
@@ -2734,48 +2727,53 @@ a:link {
 
 /* ===== TABLE ===== */
 .table-card {
-  background: white;
+  background: #ffffff;
   border-radius: 20px;
-  padding: 10px 24px 24px 24px;
-  gap: 0;
+  padding: 10px 24px 24px 24px !important;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-.table-filter-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 24px;
-  margin-left: -24px;
-  margin-right: -24px;
-  border-bottom: 1px solid #E5E4E4;
-  margin-bottom: 24px;
-  /* Spacing between tabs and table (24px) */
+.table-card .table-filter-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 28px 40px !important;
+  background: #ffffff !important;
+  box-shadow: 0px 15px 10px -16px rgba(33, 33, 33, 0.50) !important;
+  border-radius: 16px !important;
+  margin-bottom: 24px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .filter-tabs {
   display: flex;
   gap: 24px;
-  margin-bottom: -13px;
-  /* Pull tabs down to overlap table-filter-row border-bottom */
+  align-items: center;
 }
 
 .ftab {
   background: none;
   border: none;
   padding: 6px 0;
-  font-family: var(--font);
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  color: #808080;
   font-size: 18px;
+  font-family: 'Outfit', sans-serif;
   font-weight: 500;
-  color: var(--text2);
+  line-height: 24px;
+  word-wrap: break-word;
   cursor: pointer;
   position: relative;
   white-space: nowrap;
-  z-index: 1;
-  /* Sits above the border */
 }
 
 .ftab.active {
-  color: var(--blue);
+  color: #3594EE;
 }
 
 .ftab.active::after {
@@ -2785,19 +2783,46 @@ a:link {
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--blue);
+  background: #3594EE;
   border-radius: 1.5px;
+}
+
+.btn-filter {
+  background: #F4F4F4;
+  border-radius: 10px;
+  border: none;
+  padding: 8px 16px;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  color: #808080;
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  line-height: 16px;
+  word-wrap: break-word;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-filter:hover {
+  background: #e8e8e8;
+}
+
+.btn-filter i {
+  width: 14px;
+  height: 14px;
+  color: #808080;
 }
 
 .table-wrap {
   width: 100%;
   overflow: hidden;
-  /* Clips header corners */
   border: none;
   border-radius: 16px;
   background: #ffffff;
-  box-shadow: 0px 15px 10px -16px rgba(33, 33, 33, 0.50);
-  margin-top: 0;
   margin-bottom: 24px;
 }
 
@@ -2812,26 +2837,35 @@ thead tr {
 
 thead tr th:first-child {
   border-top-left-radius: 16px;
-  border-bottom-left-radius: 0;
 }
 
 thead tr th:last-child {
   border-top-right-radius: 16px;
-  border-bottom-right-radius: 0;
 }
 
 th {
-  padding: 18px 16px;
+  padding: 16px 16px;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  color: #808080;
   font-size: 14px;
-  color: var(--text2);
+  font-family: 'Outfit', sans-serif;
   font-weight: 400;
+  line-height: 16px;
+  word-wrap: break-word;
   text-align: left;
 }
 
 td {
-  padding: 22px 16px;
+  padding: 18px 16px;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  color: #2B2B2B;
   font-size: 14px;
-  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  line-height: 16px;
+  word-wrap: break-word;
   border-bottom: 1px solid #E5E4E4;
   vertical-align: middle;
 }
@@ -2849,11 +2883,7 @@ td:first-child {
 th:nth-child(2),
 td:nth-child(2) {
   width: 12%;
-}
-
-td:nth-child(2) {
-  font-weight: 500;
-  color: var(--text);
+  color: #808080;
 }
 
 th:nth-child(3),
@@ -2864,6 +2894,11 @@ td:nth-child(3) {
 th:nth-child(4),
 td:nth-child(4) {
   width: 11%;
+  text-align: center;
+}
+
+td:nth-child(4) .badge {
+  margin: 0 auto;
 }
 
 th:nth-child(5),
@@ -2877,7 +2912,6 @@ td:nth-child(6) {
   padding-right: 24px;
 }
 
-/* Center columns 2, 3, 4, 5, and 6 to match mockup */
 th:nth-child(2),
 td:nth-child(2),
 th:nth-child(3),
@@ -2891,7 +2925,6 @@ td:nth-child(6) {
   text-align: center;
 }
 
-/* Center sparklines and action buttons horizontally inside centered cells */
 .sparkline {
   margin: 0 auto;
 }
@@ -2910,7 +2943,17 @@ tr:hover td {
   gap: 10px;
 }
 
-/* Style warning icon to be solid filled with white exclamation point */
+.issue-title-cell span {
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  color: #2B2B2B;
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  line-height: 16px;
+  word-wrap: break-word;
+}
+
 .warning-icon {
   fill: currentColor !important;
 }
@@ -2921,22 +2964,30 @@ tr:hover td {
 }
 
 .badge {
-  padding: 4px 12px;
-  border-radius: 100px;
-  font-size: 13px;
-  font-weight: 600;
-  display: inline-block;
-  text-align: center;
+  width: 75px !important;
+  height: 32px !important;
+  border-radius: 12px !important;
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  line-height: 16px;
+  word-wrap: break-word;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  text-align: center !important;
 }
 
 .b-red {
-  background: #FFECEE;
-  color: #FF6370;
+  background: #FFECEE !important;
+  color: #FF6370 !important;
 }
 
 .b-orange {
-  background: #FFEADA;
-  color: #FF9F4E;
+  background: #FFE0C5 !important;
+  color: #FF9F4E !important;
 }
 
 .b-brown {
@@ -2954,25 +3005,36 @@ tr:hover td {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  color: #808080;
   font-size: 14px;
-  color: var(--text2);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  line-height: 16px;
+  word-wrap: break-word;
 }
 
 .pagination {
   display: flex;
-  gap: 4px;
+  gap: 6px;
+  align-items: center;
 }
 
 .pg-btn {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
-  border: 1px solid #E5E4E4;
+  border-radius: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.3);
   background: #ffffff;
-  color: var(--text2);
-  font-family: var(--font);
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  color: #808080;
   font-size: 14px;
-  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  line-height: 16px;
+  word-wrap: break-word;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2983,18 +3045,18 @@ tr:hover td {
 .pg-btn i {
   width: 14px;
   height: 14px;
+  color: #808080;
 }
 
 .pg-btn.active {
-  background: #EAF5FF;
-  color: #3594EE;
-  font-weight: 700;
-  border: none;
+  background: rgba(53, 148, 238, 0.20);
+  border: 1px solid #0562BA;
+  color: #808080;
 }
 
 .pg-btn:hover:not(.active) {
-  border-color: var(--blue);
-  color: var(--blue);
+  border-color: #3594EE;
+  color: #3594EE;
 }
 
 .pg-btn.dots,
@@ -3003,7 +3065,7 @@ tr:hover td {
   background: none;
   cursor: default;
   pointer-events: none;
-  color: var(--text2);
+  color: #808080;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3270,20 +3332,22 @@ tr:hover td {
 
 /* ===== TABLE ACTIONS ===== */
 .tbl-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
 }
 
 .tbl-act-btn {
-  width: 32px;
-  height: 32px;
+  width: 24px !important;
+  height: 24px !important;
+  padding: 0 !important;
   border: none;
   background: transparent;
   border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -4087,9 +4151,6 @@ tr:hover td {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* ==========================================================================
-   ===== ANIMATIONS & INTERACTIVE MICRO-TRANSITIONS =====
-   ========================================================================== */
 
 /* 1. Page Load Fade In and Slide Up Staggered Animations */
 @keyframes fadeInUp {
@@ -4311,9 +4372,6 @@ tr:hover td {
   display: none !important;
 }
 
-/* ==========================================================================
-   SITE AUDIT DETAILS VIEW STYLING
-   ========================================================================== */
 
 /* 1. View Switching & Smooth Transitions */
 .view-container {
@@ -4609,7 +4667,7 @@ tr:hover td {
   overflow: hidden !important;
 }
 
-.table-filter-row {
+.details-table-container .table-filter-row {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
@@ -4918,7 +4976,8 @@ tr:hover td {
   background-color: #4FCE62 !important;
 }
 
-.badge {
+.details-table-container .badge,
+.details-sidebar-card .badge {
   padding: 4px 14px;
   border-radius: 20px;
   font-size: 12px;
@@ -4928,19 +4987,22 @@ tr:hover td {
   white-space: nowrap;
 }
 
-.b-red {
+.details-table-container .b-red,
+.details-sidebar-card .b-red {
   background: rgba(255, 99, 112, 0.12);
   color: #FF6370;
   border: 1px solid rgba(255, 99, 112, 0.2);
 }
 
-.b-orange {
+.details-table-container .b-orange,
+.details-sidebar-card .b-orange {
   background: rgba(255, 159, 78, 0.12);
   color: #FF9F4E;
   border: 1px solid rgba(255, 159, 78, 0.2);
 }
 
-.b-green {
+.details-table-container .b-green,
+.details-sidebar-card .b-green {
   background: rgba(79, 206, 98, 0.12);
   color: #4FCE62;
   border: 1px solid rgba(79, 206, 98, 0.2);
