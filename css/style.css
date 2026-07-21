@@ -4216,6 +4216,33 @@ tr:hover td {
   background: #30363d !important;
 }
 
+[data-theme="dark"] .action-plan-card {
+  background: #161b22 !important;
+  border: 1px solid #30363d !important;
+}
+
+[data-theme="dark"] .action-plan-title {
+  color: #8b949e !important;
+}
+
+[data-theme="dark"] .plan-name {
+  color: #e6edf3 !important;
+}
+
+[data-theme="dark"] .plan-gain {
+  color: #8b949e !important;
+}
+
+[data-theme="dark"] .plan-total-val {
+  color: #4FCE62 !important;
+}
+
+[data-theme="dark"] .action-plan-card .btn-blue-full {
+  background: #3594EE !important;
+  color: #ffffff !important;
+}
+
+
 [data-theme="dark"] .export-title {
   color: #8b949e !important;
 }
