@@ -14,6 +14,10 @@ export default class ChartController {
     this.view.bindChartHover(this.model.seoSummaryLines, (info) => {
       this.handleChartHover(info);
     });
+
+    window.addEventListener("resize", () => {
+      this.renderAll();
+    });
   }
 
   startEntranceAnimation() {
@@ -29,6 +33,7 @@ export default class ChartController {
     const durationGrey = 600; // 0.6s for grey circle clockwise
     const durationBlue = 900; // 0.9s for blue circle counter-clockwise
     const delayBlue = 500;    // starts 0.5s after animation starts
+    const durationIssues = 900; // 0.9s for issues donut sweep
 
     // Easing functions
     const easeInQuad = (t) => t * t;
@@ -47,11 +52,16 @@ export default class ChartController {
       const tBlue = Math.min(Math.max((elapsed - delayBlue) / durationBlue, 0), 1);
       const progressBlue = easeOutCubic(tBlue);
 
+      // 3. Issues Overview donut
+      const tIssues = Math.min(Math.max(elapsed / durationIssues, 0), 1);
+      const progressIssues = easeOutCubic(tIssues);
+
       // Render frame
       this.view.renderSeoSummaryChart(this.model.seoSummaryLines, null, progressLine);
       this.view.renderPagesCrawledDonut(this.model.pagesCrawledConfig, progressGrey, progressBlue);
+      this.view.renderIssuesOverviewDonut(this.model.issuesOverviewConfig, progressIssues);
 
-      const totalDuration = Math.max(durationLine, delayBlue + durationBlue);
+      const totalDuration = Math.max(durationLine, delayBlue + durationBlue, durationIssues);
       if (elapsed < totalDuration) {
         this.animationFrameId = requestAnimationFrame(animate);
       } else {

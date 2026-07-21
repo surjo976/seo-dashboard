@@ -21,35 +21,50 @@ export default class ChartView {
   renderSeoSummaryChart(lines, activePoint = null, progress = 1.0) {
     if (!this.seoCanvas) return;
     const ctx = this.seoCanvas.getContext("2d");
-    this.seoCanvas.width = 909;
-    this.seoCanvas.height = 375;
 
-    ctx.clearRect(0, 0, 909, 375);
+    const container = this.seoCanvas.parentElement;
+    const width = container ? container.clientWidth || 909 : 909;
+    const height = container ? (container.clientHeight || 280) : 280;
+
+    this.seoCanvas.width = width;
+    this.seoCanvas.height = height;
+
+    ctx.clearRect(0, 0, width, height);
+
+    const scaleX = width / 909;
+    const scaleY = height / 375;
 
     // Save context and apply clipping rectangle to animate from left to right
     ctx.save();
     ctx.beginPath();
-    ctx.rect(0, 0, 909 * progress, 375);
+    ctx.rect(0, 0, width * progress, height);
     ctx.clip();
 
     const drawCurve = (line) => {
       const { points, color } = line;
       if (!points || points.length < 2) return;
 
+      const scaledPoints = points.map(pt => ({
+        x: pt.x * scaleX,
+        y: pt.y * scaleY,
+        value: pt.value,
+        origX: pt.x
+      }));
+
       // Draw Fill
-      const fillGradient = ctx.createLinearGradient(0, 0, 0, 375);
+      const fillGradient = ctx.createLinearGradient(0, 0, 0, height);
       fillGradient.addColorStop(0, this.hexToRgbA(color, 0.22));
       fillGradient.addColorStop(1, this.hexToRgbA(color, 0.01));
 
       ctx.beginPath();
-      ctx.moveTo(points[0].x, 375);
-      ctx.lineTo(points[0].x, points[0].y);
+      ctx.moveTo(scaledPoints[0].x, height);
+      ctx.lineTo(scaledPoints[0].x, scaledPoints[0].y);
 
-      for (let i = 0; i < points.length - 1; i++) {
-        const p0 = points[i - 1] || points[i];
-        const p1 = points[i];
-        const p2 = points[i + 1];
-        const p3 = points[i + 2] || p2;
+      for (let i = 0; i < scaledPoints.length - 1; i++) {
+        const p0 = scaledPoints[i - 1] || scaledPoints[i];
+        const p1 = scaledPoints[i];
+        const p2 = scaledPoints[i + 1];
+        const p3 = scaledPoints[i + 2] || p2;
 
         const cp1x = p1.x + (p2.x - p0.x) / 6;
         const cp1y = p1.y + (p2.y - p0.y) / 6;
@@ -60,20 +75,20 @@ export default class ChartView {
         ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2.x, p2.y);
       }
 
-      ctx.lineTo(points[points.length - 1].x, 375);
+      ctx.lineTo(scaledPoints[scaledPoints.length - 1].x, height);
       ctx.closePath();
       ctx.fillStyle = fillGradient;
       ctx.fill();
 
       // Draw Stroke
       ctx.beginPath();
-      ctx.moveTo(points[0].x, points[0].y);
+      ctx.moveTo(scaledPoints[0].x, scaledPoints[0].y);
 
-      for (let i = 0; i < points.length - 1; i++) {
-        const p0 = points[i - 1] || points[i];
-        const p1 = points[i];
-        const p2 = points[i + 1];
-        const p3 = points[i + 2] || p2;
+      for (let i = 0; i < scaledPoints.length - 1; i++) {
+        const p0 = scaledPoints[i - 1] || scaledPoints[i];
+        const p1 = scaledPoints[i];
+        const p2 = scaledPoints[i + 1];
+        const p3 = scaledPoints[i + 2] || p2;
 
         const cp1x = p1.x + (p2.x - p0.x) / 6;
         const cp1y = p1.y + (p2.y - p0.y) / 6;
@@ -89,9 +104,9 @@ export default class ChartView {
       ctx.stroke();
 
       // Draw Dots
-      points.forEach(pt => {
-        if (pt.x >= 0 && pt.x <= 909) {
-          const isActive = activePoint && activePoint.x === pt.x && Math.abs(activePoint.y - pt.y) < 0.5;
+      scaledPoints.forEach(pt => {
+        if (pt.origX >= 0 && pt.origX <= 909) {
+          const isActive = activePoint && activePoint.x === pt.origX && Math.abs(activePoint.y - (pt.y / scaleY)) < 0.5;
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, isActive ? 6.5 : 5, 0, Math.PI * 2);
           ctx.fillStyle = color;
@@ -120,10 +135,8 @@ export default class ChartView {
 
     this.seoCanvas.addEventListener("mousemove", (e) => {
       const rect = this.seoCanvas.getBoundingClientRect();
-      const scaleX = this.seoCanvas.width / rect.width;
-      const scaleY = this.seoCanvas.height / rect.height;
-      const mouseX = (e.clientX - rect.left) * scaleX;
-      const mouseY = (e.clientY - rect.top) * scaleY;
+      const mouseX = (e.clientX - rect.left) * (909 / rect.width);
+      const mouseY = (e.clientY - rect.top) * (375 / rect.height);
 
       let closestPt = null;
       let closestLine = null;
@@ -225,12 +238,11 @@ export default class ChartView {
     ctx.stroke();
   }
 
-  renderIssuesOverviewDonut(config) {
+  renderIssuesOverviewDonut(config, progress = 1.0) {
     if (!this.issuesCanvas) return;
     const ctx = this.issuesCanvas.getContext("2d");
-    const { size, radius, lineWidth, segments } = config;
+    const { size, segments } = config;
 
-    // Set canvas dimensions explicitly to match size
     this.issuesCanvas.width = size;
     this.issuesCanvas.height = size;
     const cx = size / 2;
@@ -238,39 +250,46 @@ export default class ChartView {
 
     ctx.clearRect(0, 0, size, size);
 
+    const baseRadius = 64;
+    const baseLineWidth = 28;
+
+    // Total sweep angle available at this progress step (starts from -90 deg)
+    const maxDeg = -90 + (360 * progress);
+
     segments.forEach(seg => {
-      // Use model's start/end degrees directly
+      if (seg.start >= maxDeg) return;
+
       const startAngle = (seg.start * Math.PI) / 180;
-      const endAngle = (seg.end * Math.PI) / 180;
+      const endDeg = Math.min(seg.end, maxDeg);
+      const endAngle = (endDeg * Math.PI) / 180;
 
-      let currentLineWidth = lineWidth;
-      let currentRadius = radius;
+      let r = baseRadius;
+      let lw = baseLineWidth;
 
-      // Make the Blue segment (#3594ee) 1.5x thicker
-      if (seg.color === "#3594ee") {
-        currentLineWidth = lineWidth * 1.5;
-        // Adjust radius so the inner radius remains exactly aligned with others (radius - lineWidth/2)
-        // Others innerR: 73 - 13.5 = 59.5
-        // Blue innerR: 79.75 - 20.25 = 59.5
-        currentRadius = radius + (lineWidth * 0.25);
+      // Blue segment (#3594EE) pops out thicker and slightly outer
+      const isBlue = seg.color.toUpperCase() === "#3594EE";
+      if (isBlue) {
+        lw = baseLineWidth + 10;
+        r = baseRadius + 4;
       }
-
-      const outerR = currentRadius + currentLineWidth / 2;
-      const innerR = currentRadius - currentLineWidth / 2;
 
       ctx.save();
       ctx.beginPath();
-      // Draw outer arc
-      ctx.arc(cx, cy, outerR, startAngle, endAngle, false);
-      // Connect to inner arc
-      ctx.lineTo(cx + innerR * Math.cos(endAngle), cy + innerR * Math.sin(endAngle));
-      // Draw inner arc counter-clockwise
-      ctx.arc(cx, cy, innerR, endAngle, startAngle, true);
-      ctx.closePath();
-
-      ctx.fillStyle = seg.color;
-      ctx.fill();
+      ctx.arc(cx, cy, r, startAngle, endAngle, false);
+      ctx.strokeStyle = seg.color;
+      ctx.lineWidth = lw;
+      ctx.lineCap = "butt";
+      ctx.stroke();
       ctx.restore();
     });
+
+    // Clear inner hole for clean donut center
+    const innerHoleRadius = baseRadius - (baseLineWidth / 2);
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.beginPath();
+    ctx.arc(cx, cy, innerHoleRadius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
   }
 }

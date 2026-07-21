@@ -65,16 +65,16 @@ export default class ChartModel {
     };
 
     this.issuesOverviewConfig = {
-      size: 250,
-      radius: 88,
-      lineWidth: 32,
-      shiftDist: 9,
+      size: 195,
+      radius: 68,
+      lineWidth: 26,
+      shiftDist: 6,
       segments: [
-        { start: -90, end: 0, color: "#3594ee", explode: true }, // Blue   90°
-        { start: 0, end: 121, color: "#4fce62", explode: false }, // Green 121°
-        { start: 121, end: 211, color: "#ff9f4e", explode: false }, // Orange 90°
-        { start: 211, end: 255, color: "#a37a4c", explode: false }, // Brown  44°
-        { start: 255, end: 270, color: "#ff6370", explode: false }  // Red    15°
+        { start: -90, end: 0, color: "#3594EE", explode: true }, // Blue   90°
+        { start: 0, end: 121, color: "#4FCE62", explode: false }, // Green 121°
+        { start: 121, end: 211, color: "#FF9F4E", explode: false }, // Notice 90°
+        { start: 211, end: 255, color: "#C27733", explode: false }, // Warnings 44°
+        { start: 255, end: 270, color: "#FF6370", explode: false }  // Critical 15°
       ]
     };
   }
