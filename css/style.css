@@ -3080,11 +3080,26 @@ tr:hover td {
   gap: 0;
 }
 
+.action-plan-header {
+  margin-bottom: 32px !important;
+}
+
+.action-plan-title {
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  color: #2B2B2B;
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  line-height: 16px;
+  word-wrap: break-word;
+  margin: 0;
+}
+
 .plan-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 8px;
   width: 100%;
 }
 
@@ -3098,18 +3113,19 @@ tr:hover td {
 .plan-badge {
   width: 24px;
   height: 24px;
-  border-radius: 50%;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
   flex-shrink: 0;
 }
 
 .plan-badge.green {
-  background: #22C55E;
+  background: #4FCE62;
 }
 
 .plan-info {
@@ -3120,19 +3136,34 @@ tr:hover td {
 }
 
 .plan-name {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text);
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  color: #2B2B2B;
+  font-size: 16px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+  word-wrap: break-word;
 }
 
 .plan-gain {
-  font-size: 13px;
-  color: var(--text2);
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  color: #808080;
+  font-size: 16px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+  word-wrap: break-word;
 }
 
 .green-text {
-  color: #22C55E;
-  font-weight: 600;
+  color: #4FCE62;
+  font-size: 16px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+  word-wrap: break-word;
 }
 
 .plan-divider {
