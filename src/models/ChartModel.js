@@ -57,10 +57,10 @@ export default class ChartModel {
     ];
 
     this.pagesCrawledConfig = {
-      size: 290,
+      size: 258,
       segments: [
-        { startDeg: 0, endDeg: 360, color: "#3594ee", radius: 108, lineWidth: 62, type: "progress", progressDeg: 299 },
-        { startDeg: 0, endDeg: 360, color: "#e0e0e0", radius: 100, lineWidth: 44, type: "background" }
+        { startDeg: 0, endDeg: 360, color: "#3594ee", radius: 96, lineWidth: 54, type: "progress", progressDeg: 335 },
+        { startDeg: 0, endDeg: 360, color: "#e0e0e0", radius: 88, lineWidth: 38, type: "background" }
       ]
     };
 

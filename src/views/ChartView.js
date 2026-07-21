@@ -209,7 +209,7 @@ export default class ChartView {
 
     // Transparent Inner Cutout
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.body.getAttribute('data-theme') === 'dark';
-    const innerRadius = 77;
+    const innerRadius = 68;
     ctx.save();
     ctx.globalCompositeOperation = 'destination-out';
     ctx.beginPath();

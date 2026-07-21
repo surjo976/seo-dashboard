@@ -153,6 +153,14 @@ export default class AppController {
         this.sidebarView.setActiveMenuItem(item);
       });
     });
+
+    const submenuItems = document.querySelectorAll(".submenu-item");
+    submenuItems.forEach(subItem => {
+      subItem.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.sidebarView.setActiveSubmenuItem(subItem);
+      });
+    });
   }
 
   bindCheckboxEvents() {
@@ -164,23 +172,23 @@ export default class AppController {
   }
 
   bindDetailNavigationEvents() {
-    const viewDetailsBtn = document.querySelector(".priority-card.pc-red .pc-btn");
+    const viewDetailsBtns = document.querySelectorAll(".priority-card .pc-btn");
     const backBtn = document.getElementById("backToOverview");
     const overviewView = document.getElementById("overview-view");
     const detailsView = document.getElementById("details-view");
     const breadcrumbText = document.querySelector(".breadcrumb span");
 
-    if (viewDetailsBtn && overviewView && detailsView) {
-      // Click View Details on first card
-      viewDetailsBtn.addEventListener("click", () => {
-        this.transitionViews(overviewView, detailsView, true, () => {
-          if (breadcrumbText) {
-            breadcrumbText.textContent = "Dashboard / Audit suite / Internal linking";
-          }
-          // Re-create icons if Lucide is loaded (since details contains new data-lucide tags)
-          if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-          }
+    if (viewDetailsBtns.length > 0 && overviewView && detailsView) {
+      viewDetailsBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          this.transitionViews(overviewView, detailsView, true, () => {
+            if (breadcrumbText) {
+              breadcrumbText.textContent = "Dashboard / Audit suite / Internal linking";
+            }
+            if (typeof lucide !== 'undefined') {
+              lucide.createIcons();
+            }
+          });
         });
       });
 

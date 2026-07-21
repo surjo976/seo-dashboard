@@ -38,6 +38,20 @@ export default class SidebarView {
     }
   }
 
+  setActiveSubmenuItem(clickedItem) {
+    const allSubmenuItems = document.querySelectorAll(".submenu-item");
+    allSubmenuItems.forEach(item => {
+      item.classList.remove("active");
+      const dot = item.querySelector(".submenu-dot");
+      if (dot) dot.classList.remove("filled");
+    });
+    if (clickedItem) {
+      clickedItem.classList.add("active");
+      const dot = clickedItem.querySelector(".submenu-dot");
+      if (dot) dot.classList.add("filled");
+    }
+  }
+
   updateCheckboxStyle(checkbox) {
     const label = checkbox.nextElementSibling;
     if (label) {
