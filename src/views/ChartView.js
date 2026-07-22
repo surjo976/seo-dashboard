@@ -26,8 +26,10 @@ export default class ChartView {
     const width = container ? container.clientWidth || 909 : 909;
     const height = container ? (container.clientHeight || 280) : 280;
 
-    this.seoCanvas.width = width;
-    this.seoCanvas.height = height;
+    if (this.seoCanvas.width !== width || this.seoCanvas.height !== height) {
+      this.seoCanvas.width = width;
+      this.seoCanvas.height = height;
+    }
 
     ctx.clearRect(0, 0, width, height);
 
@@ -182,8 +184,10 @@ export default class ChartView {
     if (!this.crawledCanvas) return;
     const ctx = this.crawledCanvas.getContext("2d");
     const { size, segments } = config;
-    this.crawledCanvas.width = size;
-    this.crawledCanvas.height = size;
+    if (this.crawledCanvas.width !== size || this.crawledCanvas.height !== size) {
+      this.crawledCanvas.width = size;
+      this.crawledCanvas.height = size;
+    }
     const cx = size / 2;
     const cy = size / 2;
 
@@ -243,8 +247,10 @@ export default class ChartView {
     const ctx = this.issuesCanvas.getContext("2d");
     const { size, segments } = config;
 
-    this.issuesCanvas.width = size;
-    this.issuesCanvas.height = size;
+    if (this.issuesCanvas.width !== size || this.issuesCanvas.height !== size) {
+      this.issuesCanvas.width = size;
+      this.issuesCanvas.height = size;
+    }
     const cx = size / 2;
     const cy = size / 2;
 

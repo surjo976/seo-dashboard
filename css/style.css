@@ -1185,7 +1185,7 @@ a:link {
 .score-val {
   display: flex;
   align-items: baseline;
-  gap: 2px;
+  gap: 6px;
 }
 
 .score-num {
@@ -2474,7 +2474,7 @@ a:link {
   display: flex;
   align-items: stretch;
   justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
   flex-grow: 1;
   margin-bottom: 17px;
 }
@@ -2484,7 +2484,7 @@ a:link {
   flex-direction: column;
   justify-content: flex-start;
   align-self: flex-start;
-  flex: 1.2;
+  flex-shrink: 0;
 }
 
 .vis-legend-list {
@@ -2496,24 +2496,25 @@ a:link {
 .vis-legend-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .vis-legend-item span {
   text-box-trim: trim-both;
   text-box-edge: cap alphabetic;
   color: #808080;
-  font-size: 12px;
+  font-size: 13px;
   font-family: 'Outfit', sans-serif;
   font-weight: 400;
   line-height: 16px;
   word-wrap: break-word;
+  white-space: nowrap;
 }
 
 .vis-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2521,8 +2522,8 @@ a:link {
 }
 
 .vis-icon svg {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   display: block;
 }
 
@@ -2531,7 +2532,7 @@ a:link {
   align-items: flex-end;
   align-self: flex-end;
   height: 180px;
-  gap: 16px;
+  gap: 10px;
   flex: 1;
   justify-content: flex-end;
 }
@@ -2576,8 +2577,8 @@ a:link {
 }
 
 .vis-bar-column {
-  width: 32px;
-  border-radius: 12px;
+  width: 22px;
+  border-radius: 6px;
   transform: scaleY(0);
   transform-origin: bottom;
   animation: growUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -2634,19 +2635,19 @@ a:link {
 }
 
 .bg-light-orange {
-  background: rgba(255, 159, 78, 0.2);
+  background: #FCD8B4;
 }
 
 .bg-light-purple {
-  background: rgba(102, 69, 199, 0.2);
+  background: #D8CEF6;
 }
 
 .bg-light-blue {
-  background: rgba(53, 148, 238, 0.2);
+  background: #BCE0FF;
 }
 
 .bg-light-gray {
-  background: rgba(43, 43, 43, 0.2);
+  background: #D0D0D0;
 }
 
 .vis-gain-left {
@@ -3885,6 +3886,11 @@ tr:hover td {
     width: 100%;
     justify-content: center;
     height: 250px;
+  }
+
+  .vis-bar-column {
+    width: 32px;
+    border-radius: 12px;
   }
 
   .roadmap-card {
