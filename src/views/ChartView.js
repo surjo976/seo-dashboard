@@ -101,8 +101,13 @@ export default class ChartView {
         ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2.x, p2.y);
       }
 
+      const isMobile = width < 600;
+      const strokeWidth = isMobile ? 1.8 : 3.5;
+      const baseDotRadius = isMobile ? 3.0 : 5;
+      const activeDotRadius = isMobile ? 4.5 : 6.5;
+
       ctx.strokeStyle = color;
-      ctx.lineWidth = 3.5;
+      ctx.lineWidth = strokeWidth;
       ctx.stroke();
 
       // Draw Dots
@@ -110,18 +115,18 @@ export default class ChartView {
         if (pt.origX >= 0 && pt.origX <= 909) {
           const isActive = activePoint && activePoint.x === pt.origX && Math.abs(activePoint.y - (pt.y / scaleY)) < 0.5;
           ctx.beginPath();
-          ctx.arc(pt.x, pt.y, isActive ? 6.5 : 5, 0, Math.PI * 2);
+          ctx.arc(pt.x, pt.y, isActive ? activeDotRadius : baseDotRadius, 0, Math.PI * 2);
           ctx.fillStyle = color;
           ctx.fill();
           ctx.strokeStyle = "#ffffff";
-          ctx.lineWidth = isActive ? 2.5 : 2;
+          ctx.lineWidth = isActive ? (isMobile ? 1.8 : 2.5) : (isMobile ? 1.2 : 2);
           ctx.stroke();
 
           if (isActive) {
             ctx.beginPath();
-            ctx.arc(pt.x, pt.y, 11, 0, Math.PI * 2);
+            ctx.arc(pt.x, pt.y, isMobile ? 7.5 : 11, 0, Math.PI * 2);
             ctx.strokeStyle = this.hexToRgbA(color, 0.4);
-            ctx.lineWidth = 2;
+            ctx.lineWidth = isMobile ? 1.4 : 2;
             ctx.stroke();
           }
         }
@@ -135,19 +140,23 @@ export default class ChartView {
   bindChartHover(lines, onHover) {
     if (!this.seoCanvas) return;
 
-    this.seoCanvas.addEventListener("mousemove", (e) => {
+    const handlePointer = (e) => {
       const rect = this.seoCanvas.getBoundingClientRect();
-      const mouseX = (e.clientX - rect.left) * (909 / rect.width);
-      const mouseY = (e.clientY - rect.top) * (375 / rect.height);
+      const clientX = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY;
+
+      if (clientX === undefined || clientY === undefined) return;
+
+      const mouseX = (clientX - rect.left) * (909 / rect.width);
+      const mouseY = (clientY - rect.top) * (375 / rect.height);
 
       let closestPt = null;
       let closestLine = null;
-      let minDistance = 60; // max threshold radius
+      let minDistance = rect.width < 600 ? 110 : 60; // larger hit radius for mobile touch
 
       lines.forEach(line => {
         line.points.forEach(pt => {
           if (pt.x >= 0 && pt.x <= 909) {
-            // Weighted distance: prioritize X axis distance so it is easy to hover
             const dist = Math.hypot(mouseX - pt.x, (mouseY - pt.y) * 0.4);
             if (dist < minDistance) {
               minDistance = dist;
@@ -159,8 +168,8 @@ export default class ChartView {
       });
 
       if (closestPt && closestLine) {
-        const percentX = (closestPt.x / this.seoCanvas.width) * 100;
-        const percentY = (closestPt.y / this.seoCanvas.height) * 100;
+        const percentX = (closestPt.x / 909) * 100;
+        const percentY = (closestPt.y / 375) * 100;
         onHover({
           name: closestLine.name,
           value: closestPt.value,
@@ -173,11 +182,18 @@ export default class ChartView {
       } else {
         onHover(null);
       }
-    });
+    };
 
-    this.seoCanvas.addEventListener("mouseleave", () => {
-      onHover(null);
-    });
+    this.seoCanvas.addEventListener("mousemove", handlePointer);
+    this.seoCanvas.addEventListener("mouseleave", () => onHover(null));
+
+    this.seoCanvas.addEventListener("touchstart", (e) => {
+      handlePointer(e);
+    }, { passive: true });
+
+    this.seoCanvas.addEventListener("touchmove", (e) => {
+      handlePointer(e);
+    }, { passive: true });
   }
 
   renderPagesCrawledDonut(config, progressGrey = 1.0, progressBlue = 1.0) {

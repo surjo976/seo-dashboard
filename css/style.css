@@ -1268,7 +1268,7 @@ a:link {
   width: 100%;
   flex: 1 1 auto;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
   box-sizing: border-box;
 }
 
@@ -1283,14 +1283,15 @@ a:link {
   background: var(--card);
   padding: 6px 12px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
+  white-space: nowrap;
   pointer-events: none;
-  z-index: 10;
-  transition: all 0.15s ease;
+  z-index: 50;
+  transition: opacity 0.15s ease;
 }
 
 .chart-tooltip .tt-label {
@@ -3773,6 +3774,15 @@ tr:hover td {
   .organic-growth-card {
     width: 100% !important;
     padding: 20px !important;
+  }
+
+  .organic-header,
+  .issues-overview-card .card-header,
+  .opportunity-header,
+  .ai-vis-header {
+    width: 100% !important;
+    justify-content: center !important;
+    margin-bottom: 20px !important;
   }
 
   .organic-layout {
@@ -6577,7 +6587,15 @@ tr:hover td {
     gap: 20px !important;
   }
 
-  .issues-legend,
+  .issues-legend {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: 220px !important;
+    margin: 0 auto !important;
+  }
+
   .vis-left-col {
     width: 100% !important;
   }

@@ -98,9 +98,17 @@ export default class ChartController {
       this.ttLabelEl.textContent = info.name;
       this.ttValEl.textContent = `${info.value}%`;
       this.ttValEl.style.color = info.color;
-      this.tooltipEl.style.left = `${info.percentX}%`;
-      this.tooltipEl.style.top = `${info.percentY}%`;
-      this.tooltipEl.style.transform = "translate(-50%, -100%) translateY(-10px)";
+      const clampedX = Math.max(15, Math.min(85, info.percentX));
+      const clampedY = Math.max(10, Math.min(90, info.percentY));
+      this.tooltipEl.style.left = `${clampedX}%`;
+      this.tooltipEl.style.top = `${clampedY}%`;
+
+      if (info.percentY < 35) {
+        this.tooltipEl.style.transform = "translate(-50%, 14px)";
+      } else {
+        this.tooltipEl.style.transform = "translate(-50%, -100%) translateY(-10px)";
+      }
+
       this.tooltipEl.style.display = "flex";
     }
 
