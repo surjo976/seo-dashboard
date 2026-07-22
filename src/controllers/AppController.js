@@ -134,6 +134,12 @@ export default class AppController {
         this.sidebarView.toggleSidebar();
       });
 
+      if (this.sidebarView.backdrop) {
+        this.sidebarView.backdrop.addEventListener("click", () => {
+          this.sidebarView.closeSidebar();
+        });
+      }
+
       document.addEventListener("click", (e) => {
         if (!this.sidebarView.sidebar.contains(e.target) && e.target !== this.sidebarView.mobileToggle) {
           this.sidebarView.closeSidebar();

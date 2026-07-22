@@ -2,15 +2,19 @@ export default class SidebarView {
   constructor() {
     this.mobileToggle = document.getElementById("mobileToggle");
     this.sidebar = document.getElementById("sidebar");
+    this.backdrop = document.getElementById("sidebarBackdrop");
     this.planCheckboxes = document.querySelectorAll(".checkbox-container input[type='checkbox']");
     this.menuItems = document.querySelectorAll(".sidebar-menu .menu-item");
   }
 
   toggleSidebar() {
     const dashboardContainer = document.querySelector(".dashboard-container");
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 1024) {
       if (this.sidebar) {
-        this.sidebar.classList.toggle("active");
+        const isActive = this.sidebar.classList.toggle("active");
+        if (this.backdrop) {
+          this.backdrop.classList.toggle("active", isActive);
+        }
       }
     } else {
       if (dashboardContainer) {
@@ -20,8 +24,11 @@ export default class SidebarView {
   }
 
   closeSidebar() {
-    if (window.innerWidth <= 768 && this.sidebar && this.sidebar.classList.contains("active")) {
+    if (window.innerWidth <= 1024 && this.sidebar && this.sidebar.classList.contains("active")) {
       this.sidebar.classList.remove("active");
+      if (this.backdrop) {
+        this.backdrop.classList.remove("active");
+      }
     }
   }
 
