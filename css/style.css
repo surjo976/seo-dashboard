@@ -2182,7 +2182,7 @@ a:link {
   flex: 0 0 366px;
   max-width: 100%;
   height: 396px;
-  padding: 23px;
+  padding: 24px;
   background: #ffffff;
   border-radius: 20px;
   display: flex;
@@ -2221,7 +2221,7 @@ a:link {
 
 .matrix-wrapper {
   position: relative;
-  margin-left: 26px;
+  margin-left: 24px;
 }
 
 .matrix {
@@ -2415,7 +2415,7 @@ a:link {
   position: relative;
   width: 294px;
   margin-top: 8px;
-  margin-left: 26px;
+  margin-left: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -3125,7 +3125,11 @@ tr:hover td {
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 100%;
+  width: calc(100% + 24px);
+  margin-left: -12px;
+  margin-right: -12px;
+  padding: 6px 12px;
+  box-sizing: border-box;
 }
 
 .plan-badge {
@@ -3905,6 +3909,52 @@ tr:hover td {
     width: 100%;
     justify-content: center;
   }
+
+  /* Weekly Action Plan Mobile Alignment Fix */
+  .action-plan-card {
+    padding: 20px 16px !important;
+  }
+
+  .plan-item {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 6px 0 !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+
+  .plan-badge {
+    margin-top: 1px !important;
+  }
+
+  .plan-info {
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+
+  .plan-name {
+    font-size: 13.5px !important;
+    line-height: 18px !important;
+  }
+
+  .plan-gain {
+    font-size: 12.5px !important;
+    line-height: 18px !important;
+    text-align: right !important;
+    flex-shrink: 0 !important;
+  }
+
+  .green-text {
+    font-size: 12.5px !important;
+  }
+
+  .plan-total-label {
+    font-size: 13.5px !important;
+  }
+
+  .plan-total-val {
+    font-size: 16px !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -4646,8 +4696,6 @@ tr:hover td {
 
 /* 5. Weekly Action Plan Items Hover & Highlight */
 .plan-item {
-  padding: 8px 12px;
-  margin: 0 -12px;
   border-radius: 8px;
   transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
