@@ -1788,19 +1788,27 @@ a:link {
 }
 
 .circle-red {
-  background: #FF6370;
+  background: rgba(255, 99, 112, 0.08);
+  color: var(--red);
+  border: 1px solid rgba(255, 99, 112, 0.15);
 }
 
 .circle-orange {
-  background: #FF9F4E;
+  background: rgba(255, 159, 78, 0.08);
+  color: var(--orange);
+  border: 1px solid rgba(255, 159, 78, 0.15);
 }
 
 .circle-brown {
-  background: #C27733;
+  background: rgba(194, 119, 51, 0.08);
+  color: var(--brown);
+  border: 1px solid rgba(194, 119, 51, 0.15);
 }
 
 .circle-green {
-  background: #4FCE62;
+  background: rgba(79, 206, 98, 0.08);
+  color: var(--green);
+  border: 1px solid rgba(79, 206, 98, 0.15);
 }
 
 /* Header inside card */
@@ -4951,6 +4959,18 @@ tr:hover td {
   background: rgba(255, 99, 112, 0.08);
   color: var(--red);
   border: 1px solid rgba(255, 99, 112, 0.15);
+}
+
+.circle-orange {
+  background: rgba(255, 159, 78, 0.08);
+  color: var(--orange);
+  border: 1px solid rgba(255, 159, 78, 0.15);
+}
+
+.circle-brown {
+  background: rgba(194, 119, 51, 0.08);
+  color: var(--brown);
+  border: 1px solid rgba(194, 119, 51, 0.15);
 }
 
 .circle-green {
