@@ -4987,16 +4987,16 @@ tr:hover td {
 
 .details-metrics-row {
   display: grid;
-  grid-template-columns: repeat(4, 157px) 1fr;
+  grid-template-columns: repeat(4, minmax(130px, 157px)) minmax(320px, 1fr);
   gap: 16px !important;
   width: 100%;
-  align-items: center;
+  align-items: stretch;
 }
 
 .metric-circle-card {
   background: #FFFFFF !important;
   border-radius: 100px !important;
-  padding: 24px !important;
+  padding: 24px 12px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -5004,9 +5004,11 @@ tr:hover td {
   justify-content: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  width: 157px !important;
+  width: 100% !important;
+  max-width: 157px !important;
   height: 234px !important;
   box-sizing: border-box !important;
+  margin: 0 auto !important;
 }
 
 .mcc-card-red {
@@ -5096,10 +5098,13 @@ tr:hover td {
   font-size: 14px !important;
   font-weight: 400 !important;
   color: #2B2B2B !important;
-  line-height: 16px !important;
+  line-height: 1.25 !important;
   font-family: 'Outfit', sans-serif !important;
+  text-align: center !important;
   word-wrap: break-word !important;
-  margin: 0 !important;
+  max-width: 110px !important;
+  margin: 0 auto !important;
+  display: block !important;
 }
 
 /* 4. Why It Matters Card */
@@ -5112,11 +5117,13 @@ tr:hover td {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
   background: #D3FBFB !important;
   border: 1px solid #6645C7 !important;
-  border-radius: 100px !important;
-  padding: 24px 36px 24px 52px !important;
-  height: 234px !important;
+  border-radius: 36px !important;
+  padding: 24px 32px !important;
+  min-height: 234px !important;
+  height: auto !important;
   width: 100% !important;
   box-sizing: border-box !important;
+  overflow: hidden !important;
 }
 
 .wmc-content {
@@ -5124,20 +5131,21 @@ tr:hover td {
   flex-direction: column;
   gap: 0;
   flex: 1;
+  min-width: 0;
 }
 
 .wmc-header {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 30px !important;
+  margin-bottom: 12px !important;
 }
 
 .wmc-header h4 {
   font-size: 14px !important;
   font-weight: 400 !important;
   color: #6645C7 !important;
-  line-height: 16px !important;
+  line-height: 1.4 !important;
   font-family: 'Outfit', sans-serif !important;
   margin: 0 !important;
 }
@@ -5159,9 +5167,10 @@ tr:hover td {
   font-size: 14px !important;
   font-weight: 400 !important;
   color: #2B2B2B !important;
-  line-height: 16px !important;
+  line-height: 1.45 !important;
   font-family: 'Outfit', sans-serif !important;
   word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
   margin: 0 !important;
 }
 
@@ -5176,7 +5185,8 @@ tr:hover td {
 }
 
 .wmc-illustration img {
-  height: 186px;
+  max-height: 168px;
+  height: auto;
   width: auto;
   max-width: 100%;
   object-fit: contain;
@@ -5872,13 +5882,28 @@ tr:hover td {
 }
 
 /* 9. Responsive Layout Support */
-@media (max-width: 1100px) {
+@media (max-width: 1400px) {
   .details-metrics-row {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .why-matters-card {
-    grid-column: span 2;
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 1100px) {
+  .details-metrics-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px !important;
+  }
+
+  .metric-circle-card {
+    max-width: 100% !important;
+  }
+
+  .why-matters-card {
+    grid-column: 1 / -1;
   }
 
   .details-split-grid {
@@ -5888,11 +5913,18 @@ tr:hover td {
 
 @media (max-width: 768px) {
   .details-metrics-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .why-matters-card {
-    grid-column: span 1;
+    grid-column: 1 / -1;
+    padding: 20px 24px !important;
+    border-radius: 24px !important;
+    min-height: auto !important;
+  }
+
+  .wmc-illustration img {
+    max-height: 120px;
   }
 
   .dtc-title-row {
@@ -5929,6 +5961,26 @@ tr:hover td {
 
   .filter-select {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .details-metrics-row {
+    grid-template-columns: 1fr;
+  }
+
+  .why-matters-card {
+    flex-direction: column-reverse !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+
+  .wmc-illustration {
+    align-self: center;
+  }
+
+  .wmc-illustration img {
+    max-height: 100px;
   }
 }
 
@@ -5998,7 +6050,8 @@ tr:hover td {
   border-radius: 20px !important;
   padding: 20px 20px 24px 20px !important;
   box-shadow: 0px 15px 10px -16px rgba(33, 33, 33, 0.50) !important;
-  width: 420px !important;
+  width: 100% !important;
+  max-width: 420px !important;
   height: auto !important;
   min-height: 215px !important;
   box-sizing: border-box !important;
@@ -6028,10 +6081,11 @@ tr:hover td {
 .sidebar-impact-row {
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important;
-  gap: 41px !important;
+  justify-content: space-around !important;
+  gap: 16px !important;
   width: 100% !important;
   margin-top: 0 !important;
+  flex-wrap: wrap !important;
 }
 
 .sidebar-impact-circle-card {
