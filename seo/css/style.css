@@ -5557,12 +5557,13 @@ tr:hover td {
 .details-sidebar-card {
   display: flex !important;
   flex-direction: column !important;
-  gap: 16px !important;
+  gap: 10px !important;
   padding: 20px !important;
   border-radius: 20px !important;
   background: #FFFFFF !important;
   box-shadow: 0px 15px 10px -16px rgba(33, 33, 33, 0.50) !important;
-  width: 100% !important;
+  width: 420px !important;
+  height: auto !important;
   box-sizing: border-box !important;
 }
 
@@ -5595,7 +5596,8 @@ tr:hover td {
 
 .dsb-section.border-top {
   border-top: 1px solid #EEEEEE !important;
-  padding-top: 16px !important;
+  padding-top: 10px !important;
+  margin-top: 2px !important;
 }
 
 .dsb-section-title {
@@ -5606,7 +5608,7 @@ tr:hover td {
   font-family: 'Outfit', sans-serif !important;
   text-transform: none !important;
   letter-spacing: normal !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 4px !important;
 }
 
 .dsb-url-link {
@@ -5617,7 +5619,7 @@ tr:hover td {
   font-family: 'Outfit', sans-serif !important;
   text-decoration: none !important;
   word-break: break-all !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 6px !important;
   display: block !important;
 }
 
@@ -5629,7 +5631,7 @@ tr:hover td {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 4px !important;
 }
 
 .dsb-section-header .dsb-section-title {
@@ -5662,19 +5664,18 @@ tr:hover td {
   line-height: 16px !important;
   font-family: 'Outfit', sans-serif !important;
   word-wrap: break-word !important;
-  margin: 0 0 16px 0 !important;
+  margin: 0 0 8px 0 !important;
 }
 
 .dsb-examples-box {
   background: #F3FBFF !important;
   border-radius: 10px !important;
   padding: 10px !important;
-  min-height: 116px !important;
   width: 100% !important;
   box-sizing: border-box !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 8px !important;
+  gap: 6px !important;
 }
 
 .examples-title {
@@ -5683,7 +5684,7 @@ tr:hover td {
   color: #2B2B2B !important;
   line-height: 16px !important;
   font-family: 'Outfit', sans-serif !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 4px !important;
   display: block !important;
 }
 
@@ -5732,7 +5733,7 @@ tr:hover td {
   text-decoration: underline !important;
   line-height: 16px !important;
   font-family: 'Outfit', sans-serif !important;
-  margin-top: 18px !important;
+  margin-top: 8px !important;
   display: inline-block !important;
 }
 
@@ -5744,7 +5745,6 @@ tr:hover td {
   background: rgba(79, 206, 98, 0.10) !important;
   border-radius: 10px !important;
   padding: 10px !important;
-  min-height: 160px !important;
   width: 100% !important;
   box-sizing: border-box !important;
   display: flex !important;
@@ -5758,7 +5758,7 @@ tr:hover td {
   color: #4FCE62 !important;
   line-height: 16px !important;
   font-family: 'Outfit', sans-serif !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 4px !important;
   display: block !important;
 }
 
@@ -5768,13 +5768,13 @@ tr:hover td {
   color: #808080 !important;
   line-height: 16px !important;
   font-family: 'Outfit', sans-serif !important;
-  margin: 0 0 16px 0 !important;
+  margin: 0 0 8px 0 !important;
 }
 
 .dsb-suggested-box {
   display: flex !important;
   flex-direction: column !important;
-  gap: 8px !important;
+  gap: 6px !important;
   padding: 0 !important;
   background: transparent !important;
 }
@@ -5993,104 +5993,283 @@ tr:hover td {
 }
 
 /* Sidebar Expected Impact Circular Layout styling */
+.expected-impact-card {
+  background: #FFFFFF !important;
+  border-radius: 20px !important;
+  padding: 20px 20px 24px 20px !important;
+  box-shadow: 0px 15px 10px -16px rgba(33, 33, 33, 0.50) !important;
+  width: 420px !important;
+  height: auto !important;
+  min-height: 215px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+.eic-header {
+  border-bottom: 1px solid #EEEEEE !important;
+  padding-bottom: 8px !important;
+  margin-bottom: 12px !important;
+  width: 100% !important;
+}
+
+.eic-title,
+.eic-header .dsb-section-title {
+  color: #2B2B2B !important;
+  font-size: 14px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 16px !important;
+  display: block !important;
+  margin: 0 !important;
+}
+
 .sidebar-impact-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  width: 100%;
-  margin-top: 12px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 41px !important;
+  width: 100% !important;
+  margin-top: 0 !important;
 }
 
 .sidebar-impact-circle-card {
-  background: var(--card);
-  border-radius: 12px;
-  padding: 12px 6px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+  width: 99px !important;
+  height: 132px !important;
+  min-width: 99px !important;
+  min-height: 132px !important;
+  background: white !important;
+  border-radius: 60px !important;
+  border: 1px solid #D3D3D3 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding: 8px 0 !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+  box-shadow: none !important;
 }
 
 .sidebar-impact-circle-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
-  border-color: rgba(53, 148, 238, 0.1);
+  border-color: #3594EE !important;
 }
 
 .sic-circle {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 6px;
-  flex-shrink: 0;
-  border-width: 1.5px;
-  border-style: solid;
+  width: 74px !important;
+  height: 74px !important;
+  min-width: 74px !important;
+  min-height: 74px !important;
+  border-radius: 9999px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 3px !important;
+  flex-shrink: 0 !important;
+  border: none !important;
 }
 
 .sic-circle.circle-green {
-  border-color: rgba(40, 167, 69, 0.25);
-  background: rgba(40, 167, 69, 0.04);
-  color: #28a745;
+  background: rgba(79, 206, 98, 0.20) !important;
+  color: #4FCE62 !important;
 }
 
 .sic-circle.circle-red {
-  border-color: rgba(220, 53, 69, 0.25);
-  background: rgba(220, 53, 69, 0.04);
-  color: #dc3545;
+  background: rgba(255, 99, 112, 0.20) !important;
+  color: #FF6370 !important;
 }
 
 .sic-circle.circle-orange {
-  border-color: rgba(253, 126, 20, 0.25);
-  background: rgba(253, 126, 20, 0.04);
-  color: #fd7e14;
+  background: rgba(255, 159, 78, 0.20) !important;
+  color: #FF9F4E !important;
 }
 
-.sic-circle.circle-blue-time {
-  border-color: rgba(53, 148, 238, 0.25);
-  background: rgba(53, 148, 238, 0.04);
-  color: var(--blue);
+.sic-circle.circle-blue-time,
+.sic-circle.circle-blue {
+  background: rgba(53, 148, 238, 0.20) !important;
+  color: #3594EE !important;
 }
 
-.sic-circle i {
-  width: 16px;
-  height: 16px;
+.sic-circle i,
+.sic-circle svg {
+  width: 34px !important;
+  height: 34px !important;
 }
 
 .sic-num {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 2px;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  font-family: 'Outfit', sans-serif !important;
+  line-height: 14px !important;
+  margin-bottom: 2px !important;
+  text-align: center !important;
+  display: block !important;
 }
 
 .sic-num.text-green {
-  color: #28a745 !important;
+  color: #4FCE62 !important;
 }
 
 .sic-num.text-red {
-  color: #dc3545 !important;
+  color: #FF6370 !important;
 }
 
 .sic-num.text-orange {
-  color: #fd7e14 !important;
+  color: #FF9F4E !important;
 }
 
 .sic-num.text-blue {
-  color: var(--blue) !important;
+  color: #3594EE !important;
 }
 
 .sic-label {
-  font-size: 9.5px;
-  font-weight: 600;
-  color: var(--text2);
-  white-space: nowrap;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  color: #808080 !important;
+  line-height: 13px !important;
+  font-family: 'Outfit', sans-serif !important;
+  text-align: center !important;
+  display: block !important;
+}
+
+/* ==========================================================================
+   8. Smooth UI Animations & Micro-Interactions
+   ========================================================================== */
+
+/* Keyframe Entrance Animations */
+@keyframes fadeInUpSpring {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Card Entrance Staggered Effects */
+.details-title-card {
+  animation: fadeInUpSpring 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+.details-metrics-row .metric-card {
+  animation: fadeInUpSpring 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease !important;
+}
+
+.details-metrics-row .metric-card:hover {
+  transform: translateY(-4px) scale(1.02) !important;
+  box-shadow: 0 12px 24px rgba(53, 148, 238, 0.12) !important;
+}
+
+.details-sidebar-card {
+  animation: fadeInUpSpring 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease !important;
+}
+
+.details-sidebar-card:hover {
+  box-shadow: 0px 20px 25px -12px rgba(33, 33, 33, 0.20) !important;
+}
+
+.expected-impact-card {
+  animation: fadeInUpSpring 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease !important;
+}
+
+.expected-impact-card:hover {
+  box-shadow: 0px 20px 25px -12px rgba(33, 33, 33, 0.20) !important;
+}
+
+/* Pill Cards Micro-Animations */
+.sidebar-impact-circle-card {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, box-shadow 0.35s ease !important;
+  cursor: pointer !important;
+}
+
+.sidebar-impact-circle-card:hover {
+  transform: translateY(-5px) scale(1.04) !important;
+  border-color: #3594EE !important;
+  box-shadow: 0 10px 20px rgba(53, 148, 238, 0.18) !important;
+}
+
+.sidebar-impact-circle-card .sic-circle svg,
+.sidebar-impact-circle-card .sic-circle i {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease !important;
+}
+
+.sidebar-impact-circle-card:hover .sic-circle svg,
+.sidebar-impact-circle-card:hover .sic-circle i {
+  transform: scale(1.18) rotate(6deg) !important;
+}
+
+/* Example Item Arrow Slide & Highlight */
+.example-item {
+  transition: background-color 0.25s ease, transform 0.25s ease, padding 0.25s ease !important;
+  border-radius: 6px !important;
+  padding: 2px 4px !important;
+}
+
+.example-item:hover {
+  background: rgba(53, 148, 238, 0.06) !important;
+}
+
+.example-item .ex-arrow {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease !important;
+}
+
+.example-item:hover .ex-arrow {
+  transform: translateX(4px) !important;
+  color: #3594EE !important;
+}
+
+.example-item .bullet-dot {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.25s ease !important;
+}
+
+.example-item:hover .bullet-dot {
+  transform: scale(1.35) !important;
+}
+
+/* AI Recommendation Box Pulse & Hover Glow */
+.dsb-ai-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.dsb-ai-box:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(79, 206, 98, 0.18) !important;
+}
+
+/* Back Button Micro-Interaction */
+#backToOverview {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+#backToOverview:hover {
+  transform: translateY(-2px) scale(1.03) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+#backToOverview i,
+#backToOverview svg {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+#backToOverview:hover i,
+#backToOverview:hover svg {
+  transform: translateX(-3px) !important;
+}
+
+/* Table Row Smooth Hover */
+.audit-table tbody tr {
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.audit-table tbody tr:hover {
+  background-color: #F8FBFE !important;
 }
 
 /* Bullet styling */
