@@ -5961,13 +5961,16 @@ tr:hover td {
 }
 
 [data-theme="dark"] .filter-select,
-[data-theme="dark"] select.filter-select {
+[data-theme="dark"] select.filter-select,
+[data-theme="dark"] #issueTypeFilter,
+[data-theme="dark"] #priorityFilter {
   background: #1e2430 !important;
   background-color: #1e2430 !important;
-  color: var(--text) !important;
-  border-color: rgba(255, 255, 255, 0.12) !important;
-  -webkit-appearance: auto;
-  appearance: auto;
+  color: #f5f6f8 !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  color-scheme: dark;
 }
 
 [data-theme="dark"] .filter-select option,
