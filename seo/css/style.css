@@ -5939,64 +5939,350 @@ tr:hover td {
 }
 
 /* 8. Dark Mode Overrides */
+
+/* --- Base Dark Filter Controls --- */
 [data-theme="dark"] .table-search-box {
-  background: #191e26 !important;
+  background: #1e2430 !important;
+  border-color: rgba(255, 255, 255, 0.10) !important;
 }
 
 [data-theme="dark"] .table-search-box input {
   color: var(--text) !important;
+  background: transparent !important;
+}
+
+[data-theme="dark"] .table-search-box input::placeholder {
+  color: #5a6375 !important;
+}
+
+[data-theme="dark"] .table-search-box .search-icon,
+[data-theme="dark"] .table-search-box svg {
+  color: #5a6375 !important;
 }
 
 [data-theme="dark"] .filter-select {
-  background: #191e26;
-  color: var(--text);
+  background: #1e2430 !important;
+  color: var(--text) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
 [data-theme="dark"] .filter-select:focus {
-  background: #232933;
+  background: #252d3e !important;
+}
+
+[data-theme="dark"] .btn-advance {
+  background: rgba(53, 148, 238, 0.15) !important;
+  color: #3594EE !important;
+  border: none !important;
+}
+
+[data-theme="dark"] .btn-advance:hover {
+  background: rgba(53, 148, 238, 0.25) !important;
 }
 
 [data-theme="dark"] .btn-export-csv {
-  border-color: rgba(255, 255, 255, 0.08) !important;
+  background: #1e2430 !important;
+  border-color: rgba(255, 255, 255, 0.10) !important;
+  color: #9aa2b1 !important;
 }
 
 [data-theme="dark"] .btn-export-csv:hover {
-  background: #191e26 !important;
+  background: #252d3e !important;
 }
 
-[data-theme="dark"] .dsb-examples-box,
-[data-theme="dark"] .dsb-suggested-box {
-  background: rgba(255, 255, 255, 0.02);
+/* --- Details Title Card --- */
+[data-theme="dark"] .details-title-card {
+  background: #161a22 !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
+[data-theme="dark"] .dtc-subtitle {
+  color: #5a6375 !important;
+}
+
+[data-theme="dark"] .dtc-title-row h2 {
+  color: #f5f6f8 !important;
+}
+
+[data-theme="dark"] .dtc-meta-row,
+[data-theme="dark"] .dtc-meta-item {
+  color: #9aa2b1 !important;
+}
+
+[data-theme="dark"] .dtc-badge {
+  background: rgba(255, 159, 78, 0.15) !important;
+  color: #FF9F4E !important;
+}
+
+/* --- Metric Circle Cards --- */
+[data-theme="dark"] .metric-circle-card {
+  background: #161a22 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .mcc-label {
+  color: #9aa2b1 !important;
+}
+
+[data-theme="dark"] .circle-red {
+  background: rgba(255, 99, 112, 0.15) !important;
+}
+
+[data-theme="dark"] .circle-green {
+  background: rgba(79, 206, 98, 0.15) !important;
+}
+
+[data-theme="dark"] .circle-red-impact {
+  background: rgba(255, 99, 112, 0.15) !important;
+}
+
+[data-theme="dark"] .circle-blue-time {
+  background: rgba(53, 148, 238, 0.15) !important;
+}
+
+/* --- Why It Matters Card --- */
 [data-theme="dark"] .why-matters-card {
-  background: linear-gradient(135deg, var(--card) 0%, rgba(53, 148, 238, 0.08) 100%) !important;
-  border-color: rgba(53, 148, 238, 0.1);
+  background: linear-gradient(135deg, #1a1d2e 0%, #1e2438 100%) !important;
+  border-color: rgba(102, 69, 199, 0.25) !important;
 }
 
-[data-theme="dark"] .wmc-ellipse-1 {
-  background: rgba(53, 148, 238, 0.1);
+[data-theme="dark"] .wmc-header h4 {
+  color: #a78bf8 !important;
 }
 
-[data-theme="dark"] .wmc-ellipse-2 {
-  background: rgba(53, 148, 238, 0.15);
+[data-theme="dark"] .wmc-header .help-dot {
+  background: rgba(167, 139, 248, 0.15) !important;
+  color: #a78bf8 !important;
 }
 
+[data-theme="dark"] .wmc-content p {
+  color: #9aa2b1 !important;
+}
+
+/* --- Details Tabs Row --- */
+[data-theme="dark"] .details-tabs-row .audit-tabs {
+  background: #161a22 !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+[data-theme="dark"] .details-tabs-row .audit-tabs .tab {
+  color: #5a6375 !important;
+}
+
+[data-theme="dark"] .details-tabs-row .audit-tabs .tab:hover {
+  color: #9aa2b1 !important;
+}
+
+[data-theme="dark"] .details-tabs-row .audit-tabs .tab.active {
+  color: #3594EE !important;
+}
+
+/* --- Details Table Container --- */
+[data-theme="dark"] .details-table-container {
+  background: #161a22 !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: none !important;
+}
+
+/* --- Table Header --- */
 [data-theme="dark"] .details-table th {
-  border-bottom-color: rgba(255, 255, 255, 0.08);
+  background: #1e2430 !important;
+  color: #5a6375 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.06) !important;
 }
 
+/* --- Table Cells --- */
 [data-theme="dark"] .details-table td {
-  border-bottom-color: rgba(255, 255, 255, 0.04);
+  border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+  color: #9aa2b1 !important;
 }
 
-[data-theme="dark"] .details-table tr.clickable-row:hover {
-  background: rgba(53, 148, 238, 0.04);
+[data-theme="dark"] .details-table tr.clickable-row:hover td {
+  background: rgba(53, 148, 238, 0.05) !important;
 }
 
-[data-theme="dark"] .details-table tr.clickable-row.active {
-  background: rgba(53, 148, 238, 0.08);
+[data-theme="dark"] .details-table tr.clickable-row.active td {
+  background: rgba(53, 148, 238, 0.10) !important;
 }
+
+[data-theme="dark"] .url-link {
+  color: #9aa2b1 !important;
+}
+
+[data-theme="dark"] .details-table tr.clickable-row.active .url-link {
+  color: #3594EE !important;
+}
+
+[data-theme="dark"] .url-date {
+  color: #5a6375 !important;
+}
+
+[data-theme="dark"] .example-link {
+  color: #3594EE !important;
+}
+
+[data-theme="dark"] .example-link.text-gray {
+  color: #5a6375 !important;
+}
+
+/* --- Badge Dark Mode --- */
+[data-theme="dark"] .badge.b-red {
+  background: rgba(255, 99, 112, 0.15) !important;
+  color: #FF6370 !important;
+}
+
+[data-theme="dark"] .badge.b-orange {
+  background: rgba(255, 159, 78, 0.15) !important;
+  color: #FF9F4E !important;
+}
+
+[data-theme="dark"] .badge.b-green {
+  background: rgba(79, 206, 98, 0.15) !important;
+  color: #4FCE62 !important;
+}
+
+/* --- Table Action Buttons --- */
+[data-theme="dark"] .tbl-act-btn {
+  background: transparent !important;
+  border: none !important;
+}
+
+[data-theme="dark"] .btn-view i,
+[data-theme="dark"] .btn-view svg {
+  color: #3594EE !important;
+}
+
+[data-theme="dark"] .btn-delete i,
+[data-theme="dark"] .btn-delete svg,
+[data-theme="dark"] .btn-more i,
+[data-theme="dark"] .btn-more svg {
+  color: #5a6375 !important;
+}
+
+[data-theme="dark"] .tbl-act-btn:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* --- Table Footer & Pagination --- */
+[data-theme="dark"] #tableProgressText {
+  color: #5a6375 !important;
+}
+
+[data-theme="dark"] .pg-btn {
+  background: #1e2430 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #9aa2b1 !important;
+}
+
+[data-theme="dark"] .pg-btn.active {
+  background: #3594EE !important;
+  color: #ffffff !important;
+  border-color: #3594EE !important;
+}
+
+[data-theme="dark"] .pg-btn:hover:not(.active) {
+  background: #252d3e !important;
+}
+
+[data-theme="dark"] .pg-dots {
+  color: #5a6375 !important;
+}
+
+/* --- Details Sidebar Card --- */
+[data-theme="dark"] .details-sidebar-card {
+  background: #161a22 !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+[data-theme="dark"] .dsb-section-title {
+  color: #5a6375 !important;
+}
+
+[data-theme="dark"] .dsb-url-link {
+  color: #3594EE !important;
+}
+
+[data-theme="dark"] .dsb-issue-title {
+  color: #f5f6f8 !important;
+}
+
+[data-theme="dark"] .dsb-desc {
+  color: #9aa2b1 !important;
+}
+
+[data-theme="dark"] .dsb-examples-box {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+[data-theme="dark"] .dsb-example-item {
+  color: #9aa2b1 !important;
+}
+
+[data-theme="dark"] .dsb-arrow {
+  color: #5a6375 !important;
+}
+
+[data-theme="dark"] .dsb-example-link {
+  color: #3594EE !important;
+}
+
+[data-theme="dark"] .dsb-view-all {
+  color: #3594EE !important;
+}
+
+[data-theme="dark"] .dsb-ai-box {
+  background: rgba(79, 206, 98, 0.08) !important;
+  border: 1px solid rgba(79, 206, 98, 0.15) !important;
+}
+
+[data-theme="dark"] .dsb-suggested-box {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+[data-theme="dark"] .dsb-badge {
+  background: rgba(255, 99, 112, 0.15) !important;
+  color: #FF6370 !important;
+}
+
+[data-theme="dark"] .dsb-badge.badge-orange {
+  background: rgba(255, 159, 78, 0.15) !important;
+  color: #FF9F4E !important;
+}
+
+/* --- Expected Impact Card --- */
+[data-theme="dark"] .expected-impact-card {
+  background: #161a22 !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+[data-theme="dark"] .expected-impact-card h4,
+[data-theme="dark"] .eic-title {
+  color: #f5f6f8 !important;
+}
+
+[data-theme="dark"] .sidebar-impact-circle-card {
+  background: #1e2430 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .sic-label {
+  color: #9aa2b1 !important;
+}
+
+[data-theme="dark"] .sic-circle.circle-green {
+  background: rgba(79, 206, 98, 0.15) !important;
+}
+
+[data-theme="dark"] .sic-circle.circle-red-impact {
+  background: rgba(255, 99, 112, 0.15) !important;
+}
+
+[data-theme="dark"] .sic-circle.circle-blue-time {
+  background: rgba(53, 148, 238, 0.15) !important;
+}
+
 
 /* 9. Responsive Layout Support for Details View & Tables */
 @media (max-width: 1400px) {
