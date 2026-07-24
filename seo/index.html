@@ -292,9 +292,14 @@
 
         <!-- Action Buttons -->
         <div class="header-actions">
-          <button class="btn btn-title-white"><i data-lucide="printer"></i> Export PDF</button>
-          <button class="btn btn-title-white"><i data-lucide="share-2"></i> Share Report</button>
-          <button class="btn btn-title-white"><i data-lucide="share-2"></i> Schedule Audit</button>
+          <button class="back-btn-overview" id="backToOverview" title="Back to Overview" style="display: none;">
+            <img src="assets/back.svg" alt="Back" width="18" height="18">
+          </button>
+          <div class="header-right-actions">
+            <button class="btn btn-title-white"><i data-lucide="printer"></i> Export PDF</button>
+            <button class="btn btn-title-white"><i data-lucide="share-2"></i> Share Report</button>
+            <button class="btn btn-title-white"><i data-lucide="share-2"></i> Schedule Audit</button>
+          </div>
         </div>
       </div>
 
@@ -1558,84 +1563,88 @@
               </div>
             </div>
 
-            <!-- Right: Details Sidebar Panel -->
-            <div class="card details-sidebar-card" id="detailsSidebar">
-              <!-- Selected URL -->
-              <div class="dsb-section">
-                <span class="dsb-section-title">Selected URL</span>
-                <a href="#" class="dsb-url-link" id="selectedUrlText">www.example.com/blog/seo-audit-guide</a>
+            <!-- Right Column: Sidebar Card + Expected Impact Card -->
+            <div class="details-right-column">
+              <!-- Top Card: Details Sidebar Panel -->
+              <div class="card details-sidebar-card" id="detailsSidebar">
+                <!-- Selected URL -->
+                <div class="dsb-section">
+                  <span class="dsb-section-title">Selected URL</span>
+                  <a href="#" class="dsb-url-link" id="selectedUrlText">www.example.com/blog/seo-audit-guide</a>
+                </div>
+
+                <!-- Issue Details -->
+                <div class="dsb-section border-top">
+                  <div class="dsb-section-header">
+                    <span class="dsb-section-title">Issues Details</span>
+                    <span class="badge badge-orange-bg" id="sidebarIssueBadge">Generic Anchor Text</span>
+                  </div>
+                  <p class="dsb-desc" id="sidebarIssueDesc">This page has 12 internal links using generic anchor texts
+                    like "Click here" or "Read more".</p>
+
+                  <div class="dsb-examples-box" id="sidebarExamplesContainer">
+                    <span class="examples-title">Examples on this page</span>
+                    <div class="example-item">
+                      <span class="bullet-dot bg-gray-bullet"></span>
+                      <span class="ex-anchor">"Click here"</span>
+                      <span class="ex-arrow">→</span>
+                      <span class="ex-dest">www.example.com/seo-tools</span>
+                    </div>
+                    <div class="example-item">
+                      <span class="bullet-dot bg-gray-bullet"></span>
+                      <span class="ex-anchor">"Read more"</span>
+                      <span class="ex-arrow">→</span>
+                      <span class="ex-dest">www.example.com/seo-checker</span>
+                    </div>
+                    <div class="example-item">
+                      <span class="bullet-dot bg-gray-bullet"></span>
+                      <span class="ex-anchor">"Learn more"</span>
+                      <span class="ex-arrow">→</span>
+                      <span class="ex-dest">www.example.com/backlink-guide</span>
+                    </div>
+                    <a href="#" class="view-all-links">View all 12 links</a>
+                  </div>
+                </div>
+
+                <!-- AI Recommendation -->
+                <div class="dsb-section border-top">
+                  <div class="dsb-ai-box">
+                    <span class="ai-box-title">AI Recommendation</span>
+                    <div class="ai-box-desc" id="sidebarAiRec">
+                      <p>Replace generic anchor texts with descriptive, keyword-rich anchors to improve relevance and
+                        help search engines understand context.</p>
+                    </div>
+
+                    <div class="dsb-suggested-box" id="sidebarSuggestedContainer">
+                      <span class="examples-title">Suggested Anchors</span>
+                      <div class="example-item">
+                        <span class="bullet-dot bg-green"></span>
+                        <span class="ex-anchor">"SEO Audit Tools"</span>
+                        <span class="ex-arrow">→</span>
+                        <span class="ex-dest">www.example.com/seo-tools</span>
+                      </div>
+                      <div class="example-item">
+                        <span class="bullet-dot bg-green"></span>
+                        <span class="ex-anchor">"SEO Checker"</span>
+                        <span class="ex-arrow">→</span>
+                        <span class="ex-dest">www.example.com/seo-checker</span>
+                      </div>
+                      <div class="example-item">
+                        <span class="bullet-dot bg-green"></span>
+                        <span class="ex-anchor">"Learn more"</span>
+                        <span class="ex-arrow">→</span>
+                        <span class="ex-dest">www.example.com/backlink-guide</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <!-- Issue Details -->
-              <div class="dsb-section border-top">
-                <div class="dsb-section-header">
-                  <span class="dsb-section-title">Issue Details</span>
-                  <span class="badge badge-orange-bg" id="sidebarIssueBadge">Generic Anchor Text</span>
+              <!-- Bottom Card: Expected Impact Separate Card -->
+              <div class="card expected-impact-card">
+                <div class="eic-header">
+                  <span class="dsb-section-title">Expected Impact</span>
                 </div>
-                <p class="dsb-desc" id="sidebarIssueDesc">This page has 12 internal links using generic anchor texts
-                  like "Click here" or "Read more".</p>
-
-                <div class="dsb-examples-box" id="sidebarExamplesContainer">
-                  <span class="examples-title">Examples on this page</span>
-                  <div class="example-item">
-                    <span class="bullet-dot bg-red"></span>
-                    <span class="ex-anchor">"Click here"</span>
-                    <span class="ex-arrow">→</span>
-                    <span class="ex-dest">www.example.com/seo-tools</span>
-                  </div>
-                  <div class="example-item">
-                    <span class="bullet-dot bg-red"></span>
-                    <span class="ex-anchor">"Read more"</span>
-                    <span class="ex-arrow">→</span>
-                    <span class="ex-dest">www.example.com/seo-checker</span>
-                  </div>
-                  <div class="example-item">
-                    <span class="bullet-dot bg-red"></span>
-                    <span class="ex-anchor">"Learn more"</span>
-                    <span class="ex-arrow">→</span>
-                    <span class="ex-dest">www.example.com/backlink-guide</span>
-                  </div>
-                  <a href="#" class="view-all-links">View all 12 links</a>
-                </div>
-              </div>
-
-              <!-- AI Recommendation -->
-              <div class="dsb-section border-top">
-                <div class="recommendation-header">
-                  <i data-lucide="sparkles" class="rec-spark-icon text-green"></i>
-                  <span class="dsb-section-title text-green">AI Recommendation</span>
-                </div>
-                <div class="recommendation-bubble bg-light-green" id="sidebarAiRec">
-                  <p>Replace generic anchor texts with descriptive, keyword-rich anchors to improve relevance and help
-                    search engines understand context.</p>
-                </div>
-
-                <div class="dsb-suggested-box" id="sidebarSuggestedContainer">
-                  <span class="examples-title">Suggested Anchors</span>
-                  <div class="example-item">
-                    <span class="bullet-dot bg-green"></span>
-                    <span class="ex-anchor">"SEO Audit Tools"</span>
-                    <span class="ex-arrow">→</span>
-                    <span class="ex-dest">www.example.com/seo-tools</span>
-                  </div>
-                  <div class="example-item">
-                    <span class="bullet-dot bg-green"></span>
-                    <span class="ex-anchor">"SEO Checker"</span>
-                    <span class="ex-arrow">→</span>
-                    <span class="ex-dest">www.example.com/seo-checker</span>
-                  </div>
-                  <div class="example-item">
-                    <span class="bullet-dot bg-green"></span>
-                    <span class="ex-anchor">"Learn more"</span>
-                    <span class="ex-arrow">→</span>
-                    <span class="ex-dest">www.example.com/backlink-guide</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Expected Impact -->
-              <div class="dsb-section border-top">
-                <span class="dsb-section-title">Expected Impact</span>
                 <div class="sidebar-impact-row">
                   <div class="sidebar-impact-circle-card">
                     <div class="sic-circle circle-green">
