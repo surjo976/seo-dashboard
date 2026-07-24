@@ -5941,6 +5941,14 @@ tr:hover td {
 /* 8. Dark Mode Overrides */
 
 /* --- Base Dark Filter Controls --- */
+/* --- Filter Row Container --- */
+[data-theme="dark"] .table-card .table-filter-row,
+[data-theme="dark"] .details-table-container .table-filter-row {
+  background: #1e2430 !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
 [data-theme="dark"] .table-search-box {
   background: #1e2430 !important;
   border-color: rgba(255, 255, 255, 0.10) !important;
