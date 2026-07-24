@@ -5998,7 +5998,7 @@ tr:hover td {
   background: rgba(53, 148, 238, 0.08);
 }
 
-/* 9. Responsive Layout Support */
+/* 9. Responsive Layout Support for Details View & Tables */
 @media (max-width: 1400px) {
   .details-metrics-row {
     grid-template-columns: repeat(4, 1fr);
@@ -6017,6 +6017,8 @@ tr:hover td {
 
   .metric-circle-card {
     max-width: 100% !important;
+    height: auto !important;
+    min-height: 200px !important;
   }
 
   .why-matters-card {
@@ -6024,80 +6026,305 @@ tr:hover td {
   }
 
   .details-split-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    align-items: start !important;
+  }
+
+  .details-right-column,
+  .details-sidebar-card,
+  .expected-impact-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .details-table-container {
+    height: auto !important;
   }
 }
 
 @media (max-width: 768px) {
-  .details-metrics-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .why-matters-card {
-    grid-column: 1 / -1;
-    padding: 20px 24px !important;
-    border-radius: 24px !important;
-    min-height: auto !important;
-  }
-
-  .wmc-illustration img {
-    max-height: 120px;
+  /* Title Card */
+  .details-title-card {
+    padding: 16px !important;
+    border-radius: 12px !important;
   }
 
   .dtc-title-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .dtc-title-row h2 {
+    font-size: 15px !important;
+    line-height: 20px !important;
   }
 
   .dtc-meta-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    font-size: 13px !important;
   }
 
-  .dtc-meta-item:not(:last-child)::after {
-    display: none;
+  .dtc-meta-item {
+    font-size: 13px !important;
+    line-height: 18px !important;
   }
 
-  .table-filter-row {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
+  /* Metrics Row */
+  .details-metrics-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px !important;
   }
 
-  .filter-inputs {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+  .metric-circle-card {
+    height: auto !important;
+    min-height: 160px !important;
+    max-width: 100% !important;
+    padding: 16px 10px !important;
+    border-radius: 60px !important;
+  }
+
+  .mcc-circle {
+    width: 70px !important;
+    height: 70px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .mcc-circle i,
+  .mcc-circle svg {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .mcc-num {
+    font-size: 18px !important;
+    line-height: 22px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .mcc-label {
+    font-size: 11px !important;
+    max-width: 90px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Why It Matters */
+  .why-matters-card {
+    grid-column: 1 / -1;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 18px 20px !important;
+    border-radius: 20px !important;
+    min-height: auto !important;
+    gap: 12px !important;
+  }
+
+  .wmc-illustration {
+    display: none !important;
+  }
+
+  .wmc-content p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Table Container */
+  .details-table-container {
+    padding: 14px !important;
+    border-radius: 16px !important;
+    height: auto !important;
+  }
+
+  .details-table-container .table-filter-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .filter-controls-right {
+    width: 100% !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-left: 0 !important;
   }
 
   .table-search-box {
     width: 100% !important;
+    min-width: unset !important;
   }
 
-  .filter-select {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .details-metrics-row {
-    grid-template-columns: 1fr;
+  #issueTypeFilter,
+  #priorityFilter {
+    flex: 1 1 120px !important;
+    width: auto !important;
+    min-width: 100px !important;
   }
 
-  .why-matters-card {
-    flex-direction: column-reverse !important;
-    align-items: flex-start !important;
+  .btn-advance {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 100px !important;
+  }
+
+  .btn-export-csv {
+    width: 36px !important;
+    height: 32px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .table-wrap {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+  }
+
+  .details-table {
+    min-width: 550px !important;
+    table-layout: auto !important;
+  }
+
+  .table-footer {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+    text-align: center !important;
+    font-size: 12px !important;
+  }
+
+  .pagination {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 4px !important;
+  }
+
+  /* Sidebar / Impact */
+  .details-right-column {
+    display: flex !important;
+    flex-direction: column !important;
     gap: 16px !important;
   }
 
-  .wmc-illustration {
-    align-self: center;
+  .details-sidebar-card {
+    padding: 16px !important;
+    border-radius: 16px !important;
   }
 
-  .wmc-illustration img {
-    max-height: 100px;
+  .expected-impact-card {
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .sidebar-impact-row {
+    justify-content: space-around !important;
+    gap: 8px !important;
+  }
+
+  .sidebar-impact-circle-card {
+    width: 90px !important;
+    min-width: 80px !important;
+    padding: 12px 6px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  /* Title Card */
+  .details-title-card {
+    padding: 14px !important;
+  }
+
+  .dtc-title-row h2 {
+    font-size: 14px !important;
+  }
+
+  /* Metrics Row — keep 2 cols */
+  .details-metrics-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px !important;
+  }
+
+  .metric-circle-card {
+    min-height: 140px !important;
+    padding: 12px 8px !important;
+    border-radius: 48px !important;
+  }
+
+  .mcc-circle {
+    width: 58px !important;
+    height: 58px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .mcc-circle i,
+  .mcc-circle svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .mcc-num {
+    font-size: 16px !important;
+    line-height: 20px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .mcc-label {
+    font-size: 10px !important;
+    max-width: 80px !important;
+  }
+
+  /* Why It Matters */
+  .why-matters-card {
+    padding: 14px 16px !important;
+    border-radius: 16px !important;
+    gap: 10px !important;
+  }
+
+  .wmc-header h4 {
+    font-size: 13px !important;
+  }
+
+  .wmc-content p {
+    font-size: 12px !important;
+  }
+
+  /* Tabs */
+  .details-tabs-row .audit-tabs {
+    padding: 12px 14px !important;
+    height: auto !important;
+    min-height: 52px !important;
+    gap: 20px !important;
+  }
+
+  .details-tabs-row .audit-tabs .tab {
+    font-size: 12px !important;
+  }
+
+  /* Table */
+  .details-table-container {
+    padding: 12px !important;
+    border-radius: 14px !important;
+  }
+
+  /* Expected Impact circles */
+  .sidebar-impact-circle-card {
+    width: 80px !important;
+    min-width: 70px !important;
+  }
+
+  .sidebar-impact-circle-card .sic-circle {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .sidebar-impact-circle-card .sic-num {
+    font-size: 11px !important;
+  }
+
+  .sidebar-impact-circle-card .sic-label {
+    font-size: 10px !important;
   }
 }
 
