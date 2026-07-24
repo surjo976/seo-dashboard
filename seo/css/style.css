@@ -5960,14 +5960,32 @@ tr:hover td {
   color: #5a6375 !important;
 }
 
-[data-theme="dark"] .filter-select {
+[data-theme="dark"] .filter-select,
+[data-theme="dark"] select.filter-select {
   background: #1e2430 !important;
+  background-color: #1e2430 !important;
   color: var(--text) !important;
   border-color: rgba(255, 255, 255, 0.12) !important;
+  -webkit-appearance: auto;
+  appearance: auto;
+}
+
+[data-theme="dark"] .filter-select option,
+[data-theme="dark"] select.filter-select option {
+  background: #1e2430 !important;
+  color: var(--text) !important;
 }
 
 [data-theme="dark"] .filter-select:focus {
   background: #252d3e !important;
+}
+
+[data-theme="dark"] .filter-dropdown-wrap {
+  background: transparent !important;
+}
+
+[data-theme="dark"] .filter-dropdown-wrap::after {
+  border-top-color: #5a6375 !important;
 }
 
 [data-theme="dark"] .btn-advance {
@@ -5988,6 +6006,11 @@ tr:hover td {
 
 [data-theme="dark"] .btn-export-csv:hover {
   background: #252d3e !important;
+}
+
+[data-theme="dark"] .btn-export-csv i,
+[data-theme="dark"] .btn-export-csv svg {
+  color: #9aa2b1 !important;
 }
 
 /* --- Details Title Card --- */
@@ -6091,14 +6114,24 @@ tr:hover td {
   border-bottom-color: rgba(255, 255, 255, 0.06) !important;
 }
 
+/* --- Table Wrap & Rows --- */
+[data-theme="dark"] .details-table-container .table-wrap {
+  background: #161a22 !important;
+}
+
+[data-theme="dark"] .details-table tbody tr td {
+  background: #161a22 !important;
+}
+
 /* --- Table Cells --- */
 [data-theme="dark"] .details-table td {
   border-bottom-color: rgba(255, 255, 255, 0.05) !important;
   color: #9aa2b1 !important;
+  background: #161a22 !important;
 }
 
 [data-theme="dark"] .details-table tr.clickable-row:hover td {
-  background: rgba(53, 148, 238, 0.05) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
 }
 
 [data-theme="dark"] .details-table tr.clickable-row.active td {
