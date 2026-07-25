@@ -4937,6 +4937,25 @@ tr:hover td {
   font-family: 'Outfit', sans-serif !important;
 }
 
+.dtc-badge-high {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 79px !important;
+  min-width: 79px !important;
+  height: 20px !important;
+  border-radius: 6px !important;
+  background: rgba(255, 99, 112, 0.20) !important;
+  color: #FF6370 !important;
+  font-size: 12px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 16px !important;
+  border: none !important;
+  box-sizing: border-box !important;
+  white-space: nowrap !important;
+}
+
 .dtc-meta-row {
   display: flex;
   align-items: center;
@@ -6374,6 +6393,7 @@ tr:hover td {
 }
 
 @media (max-width: 768px) {
+
   /* Title Card */
   .details-title-card {
     padding: 16px !important;
@@ -6561,6 +6581,7 @@ tr:hover td {
 }
 
 @media (max-width: 520px) {
+
   /* Title Card */
   .details-title-card {
     padding: 14px !important;
@@ -6872,6 +6893,7 @@ tr:hover td {
     opacity: 0;
     transform: translateY(18px) scale(0.98);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);

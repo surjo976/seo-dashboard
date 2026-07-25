@@ -181,15 +181,29 @@ export default class AppController {
     const viewDetailsBtns = document.querySelectorAll(".priority-card .pc-btn");
     const backBtn = document.getElementById("backToOverview");
     const overviewView = document.getElementById("overview-view");
-    const detailsView = document.getElementById("details-view");
+    const detailsViewInternal = document.getElementById("details-view");
+    const detailsViewCannibalization = document.getElementById("details-view-cannibalization");
     const breadcrumbText = document.querySelector(".breadcrumb span");
 
-    if (viewDetailsBtns.length > 0 && overviewView && detailsView) {
+    let currentActiveDetailsView = null;
+
+    if (viewDetailsBtns.length > 0 && overviewView) {
       viewDetailsBtns.forEach(btn => {
         btn.addEventListener("click", () => {
-          this.transitionViews(overviewView, detailsView, true, () => {
+          const cardType = btn.getAttribute("data-card");
+          let targetView = detailsViewInternal;
+          let breadcrumbTitle = "Dashboard / Audit suite / Internal linking";
+
+          if (cardType === "cannibalization" && detailsViewCannibalization) {
+            targetView = detailsViewCannibalization;
+            breadcrumbTitle = "Dashboard / Audit suite / Fix Keyword Cannibalization";
+          }
+
+          currentActiveDetailsView = targetView;
+
+          this.transitionViews(overviewView, targetView, true, () => {
             if (breadcrumbText) {
-              breadcrumbText.textContent = "Dashboard / Audit suite / Internal linking";
+              breadcrumbText.textContent = breadcrumbTitle;
             }
             if (typeof lucide !== 'undefined') {
               lucide.createIcons();
@@ -201,11 +215,14 @@ export default class AppController {
       // Click Back Button if exists
       if (backBtn) {
         backBtn.addEventListener("click", () => {
-          this.transitionViews(detailsView, overviewView, false, () => {
-            if (breadcrumbText) {
-              breadcrumbText.textContent = "Dashboard / Audit suite";
-            }
-          });
+          const activeView = currentActiveDetailsView || detailsViewInternal || detailsViewCannibalization;
+          if (activeView) {
+            this.transitionViews(activeView, overviewView, false, () => {
+              if (breadcrumbText) {
+                breadcrumbText.textContent = "Dashboard / Audit suite";
+              }
+            });
+          }
         });
       }
     }

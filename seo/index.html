@@ -491,7 +491,7 @@
                     <span class="pc-time-val">- 2 Hours</span>
                   </div>
                 </div>
-                <button class="pc-btn btn-red">View Details</button>
+                <button class="pc-btn btn-red" data-card="internal-linking">View Details</button>
               </div>
 
               <!-- Card 2: Orange -->
@@ -518,7 +518,7 @@
                     <span class="pc-time-val">- 45 Min</span>
                   </div>
                 </div>
-                <button class="pc-btn btn-orange">View Details</button>
+                <button class="pc-btn btn-orange" data-card="cannibalization">View Details</button>
               </div>
 
               <!-- Card 3: Brown -->
@@ -1748,6 +1748,237 @@
 
           </div>
         </div> <!-- End of #details-view -->
+
+        <!-- Details View: Fix Keyword Cannibalization -->
+        <div id="details-view-cannibalization" class="view-container">
+          <!-- Top Title Card -->
+          <div class="card details-title-card">
+            <div class="dtc-left">
+              <span class="dtc-subtitle">Audit suite</span>
+              <div class="dtc-title-row">
+                <h2>Fix Keyword Cannibalization</h2>
+                <span class="dtc-badge dtc-badge-high">High Priority</span>
+              </div>
+              <div class="dtc-meta-row">
+                <span class="dtc-meta-item">7 pages affected</span>
+                <span class="dtc-meta-item">Potential Gain: +9% Traffic</span>
+                <span class="dtc-meta-item">Fix Time: ~45 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metrics Circles Row -->
+          <div class="details-metrics-row">
+            <div class="metric-circle-card mcc-card-red">
+              <div class="mcc-circle circle-red">
+                <i data-lucide="file-text"></i>
+              </div>
+              <span class="mcc-num text-red">07</span>
+              <span class="mcc-label">Pages<br>Affected</span>
+            </div>
+
+            <div class="metric-circle-card mcc-card-grey">
+              <div class="mcc-circle circle-green">
+                <i data-lucide="trending-up"></i>
+              </div>
+              <span class="mcc-num text-green">+9%</span>
+              <span class="mcc-label">Potential<br>Traffic Gain</span>
+            </div>
+
+            <div class="metric-circle-card mcc-card-grey">
+              <div class="mcc-circle circle-red-impact">
+                <i data-lucide="bar-chart-2"></i>
+              </div>
+              <span class="mcc-num text-red">High</span>
+              <span class="mcc-label">Impact</span>
+            </div>
+
+            <div class="metric-circle-card mcc-card-grey">
+              <div class="mcc-circle circle-blue-time">
+                <i data-lucide="clock"></i>
+              </div>
+              <span class="mcc-num text-blue">~45 min</span>
+              <span class="mcc-label">Estimated<br>Fix Time</span>
+            </div>
+
+            <!-- Why It Matters -->
+            <div class="card why-matters-card why-matters-cannibalization">
+              <div class="wmc-content">
+                <div class="wmc-header">
+                  <h4>Why It Matters</h4>
+                  <span class="help-dot">?</span>
+                </div>
+                <p>When multiple pages target the same keyword, search engines get confused about which page to rank. This can split rankings and reduce your visibility.</p>
+              </div>
+              <div class="wmc-illustration">
+                <img src="assets/second.svg" alt="Why It Matters - Keyword Cannibalization" width="160" height="152" style="display: block;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="details-tabs-row">
+            <nav class="audit-tabs">
+              <button class="tab active">Cannibalization Groups (7)</button>
+              <button class="tab">Affected Pages (7)</button>
+              <button class="tab">Keywords (7)</button>
+              <button class="tab">Opportunities</button>
+              <button class="tab">How to Fix</button>
+              <button class="tab">History</button>
+            </nav>
+          </div>
+
+          <!-- Table + Sidebar Split Section -->
+          <div class="details-split-grid">
+            <!-- Left: Table Card -->
+            <div class="card table-card details-table-container">
+              <!-- Filter Row -->
+              <div class="table-filter-row">
+                <div class="search-box table-search-box">
+                  <input type="text" placeholder="Search URL ...." id="cannibalizationDetailsSearch">
+                  <i data-lucide="search" class="search-icon"></i>
+                </div>
+
+                <div class="filter-controls-right">
+                  <div class="filter-dropdown-wrap">
+                    <select class="filter-select" id="cannibalizationIssueTypeFilter">
+                      <option value="all">All Issue Type</option>
+                      <option value="missing">Missing Internal Links</option>
+                      <option value="generic">Generic Anchor Text</option>
+                    </select>
+                  </div>
+
+                  <div class="filter-dropdown-wrap">
+                    <select class="filter-select" id="cannibalizationPriorityFilter">
+                      <option value="all">All Priority</option>
+                      <option value="high">High</option>
+                      <option value="medium">Medium</option>
+                    </select>
+                  </div>
+
+                  <button class="btn btn-filter btn-advance"><i data-lucide="sliders"></i> Advance Filter</button>
+                  <button class="btn btn-export-csv" title="Export CSV"><i data-lucide="download"></i></button>
+                </div>
+              </div>
+
+              <!-- Table -->
+              <div class="table-wrap">
+                <table class="details-table">
+                  <thead>
+                    <tr>
+                      <th>URL</th>
+                      <th>Issues Type</th>
+                      <th>Example</th>
+                      <th>Impact</th>
+                      <th>Priority</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cannibalizationDetailsTableBody">
+                    <tr class="clickable-row active" data-url="www.example.com/blog/keyword-cannibalization" data-issue-type="missing" data-priority="high">
+                      <td>
+                        <div class="url-cell">
+                          <a href="#" class="url-link">www.example.com/blog/keyword-cannibalization</a>
+                          <span class="url-date">Crawled: May 10, 2025</span>
+                        </div>
+                      </td>
+                      <td><span class="issue-type text-orange">Missing Internal Links</span></td>
+                      <td><span class="example-link text-gray">No links</span></td>
+                      <td>
+                        <div class="dots-impact">
+                          <span class="dot-fill bg-red"></span>
+                          <span class="dot-fill bg-red"></span>
+                          <span class="dot-fill bg-red"></span>
+                        </div>
+                      </td>
+                      <td><span class="badge b-red">High</span></td>
+                      <td>
+                        <div class="tbl-actions">
+                          <button class="tbl-act-btn btn-view" title="View"><i data-lucide="eye"></i></button>
+                          <button class="tbl-act-btn btn-delete" title="Delete"><i data-lucide="trash-2"></i></button>
+                          <button class="tbl-act-btn btn-more" title="More"><i data-lucide="more-vertical"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Table Pagination -->
+              <div class="details-pagination">
+                <span class="page-info">Showing 1 to 1 of 7 entries</span>
+                <div class="pagination-btns">
+                  <button class="pg-btn disabled"><i data-lucide="chevron-left"></i> Previous</button>
+                  <button class="pg-num active">1</button>
+                  <button class="pg-btn">Next <i data-lucide="chevron-right"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Details Sidebar Card -->
+            <div class="details-right-column">
+              <div class="card details-sidebar-card">
+                <div class="dsb-header">
+                  <div class="dsb-title-wrap">
+                    <h3 id="cannibalizationSelectedUrlText">www.example.com/blog/keyword-cannibalization</h3>
+                    <span class="url-sub-date">Crawled: May 10, 2025, 10:30 am</span>
+                  </div>
+                </div>
+
+                <div class="dsb-section">
+                  <span class="dsb-section-title">Issue Detected</span>
+                  <div class="dsb-issue-box">
+                    <span class="badge badge-orange-bg" id="cannibalizationSidebarIssueBadge">Missing Internal Links</span>
+                    <p id="cannibalizationSidebarIssueDesc">This page contains high-value content but has 0 incoming internal links from other blog posts.</p>
+                  </div>
+                </div>
+
+                <div class="dsb-section" id="cannibalizationSidebarExamplesContainer">
+                  <span class="examples-title">Examples on this page</span>
+                  <div class="example-item text-gray">No links to display</div>
+                </div>
+
+                <div class="dsb-section">
+                  <span class="dsb-section-title">AI Recommendation</span>
+                  <div class="dsb-ai-rec">
+                    <i data-lucide="sparkles" class="ai-icon"></i>
+                    <p id="cannibalizationSidebarAiRec">Add at least 3 incoming internal links from topically relevant pages using descriptive anchor texts to pass link authority.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Card: Expected Impact Separate Card -->
+              <div class="card expected-impact-card">
+                <div class="eic-header">
+                  <span class="dsb-section-title">Expected Impact</span>
+                </div>
+                <div class="sidebar-impact-row">
+                  <div class="sidebar-impact-circle-card">
+                    <div class="sic-circle circle-green">
+                      <i data-lucide="trending-up"></i>
+                    </div>
+                    <span class="sic-num text-green">+12%</span>
+                    <span class="sic-label">Traffic Gain</span>
+                  </div>
+                  <div class="sidebar-impact-circle-card">
+                    <div class="sic-circle circle-red">
+                      <i data-lucide="bar-chart-2"></i>
+                    </div>
+                    <span class="sic-num text-red">High</span>
+                    <span class="sic-label">Impact</span>
+                  </div>
+                  <div class="sidebar-impact-circle-card">
+                    <div class="sic-circle circle-blue-time">
+                      <i data-lucide="clock"></i>
+                    </div>
+                    <span class="sic-num text-blue">~15 Min</span>
+                    <span class="sic-label">Fix Time</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- End of #details-view-cannibalization -->
 
     </main>
   </div>
