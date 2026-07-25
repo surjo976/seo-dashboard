@@ -1716,31 +1716,39 @@
               </div>
 
               <!-- Bottom Card: Expected Impact Separate Card -->
-              <div class="card expected-impact-card">
-                <div class="eic-header">
-                  <span class="dsb-section-title">Expected Impact</span>
-                </div>
-                <div class="sidebar-impact-row">
-                  <div class="sidebar-impact-circle-card">
-                    <div class="sic-circle circle-green">
-                      <i data-lucide="trending-up"></i>
+              <div class="eic-card-wrap">
+                <div class="eic-card-title">Expected Impact</div>
+                <div class="eic-card-divider"></div>
+                <div class="eic-card-row">
+                  <!-- Metric 1 -->
+                  <div class="eic-card-item">
+                    <div class="eic-circ eic-circ-green">
+                      <i data-lucide="trending-up" style="width:18px;height:18px;stroke:#4FCE62;"></i>
                     </div>
-                    <span class="sic-num text-green" id="sidebarImpactGain">+14%</span>
-                    <span class="sic-label">Traffic Gain</span>
+                    <div class="eic-card-text">
+                      <span class="eic-card-val eic-val-c-green" id="sidebarImpactGain">+14%</span>
+                      <span class="eic-card-lbl">Traffic Gain</span>
+                    </div>
                   </div>
-                  <div class="sidebar-impact-circle-card">
-                    <div class="sic-circle circle-red">
-                      <i data-lucide="bar-chart-2"></i>
+                  <!-- Metric 2 -->
+                  <div class="eic-card-item">
+                    <div class="eic-circ eic-circ-red">
+                      <i data-lucide="bar-chart-2" style="width:18px;height:18px;stroke:#FF6370;"></i>
                     </div>
-                    <span class="sic-num text-red" id="sidebarImpactLevel">High</span>
-                    <span class="sic-label">Impact</span>
+                    <div class="eic-card-text">
+                      <span class="eic-card-val eic-val-c-red" id="sidebarImpactLevel">High</span>
+                      <span class="eic-card-lbl">Impact</span>
+                    </div>
                   </div>
-                  <div class="sidebar-impact-circle-card">
-                    <div class="sic-circle circle-blue-time">
-                      <i data-lucide="clock"></i>
+                  <!-- Metric 3 -->
+                  <div class="eic-card-item">
+                    <div class="eic-circ eic-circ-blue">
+                      <i data-lucide="clock" style="width:18px;height:18px;stroke:#3594EE;"></i>
                     </div>
-                    <span class="sic-num text-blue" id="sidebarImpactTime">~20 Min</span>
-                    <span class="sic-label">Fix Time</span>
+                    <div class="eic-card-text">
+                      <span class="eic-card-val eic-val-c-blue" id="sidebarImpactTime">~20 Min</span>
+                      <span class="eic-card-lbl">Fix Time</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1861,6 +1869,8 @@
                     </select>
                   </div>
 
+                  <button class="btn btn-filter btn-advance"><i data-lucide="sliders"></i> Advance Filter</button>
+                  <button class="btn btn-export-csv" title="Export CSV"><i data-lucide="download"></i></button>
                 </div>
               </div>
 

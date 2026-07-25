@@ -39,5 +39,64 @@ document.addEventListener("DOMContentLoaded", () => {
   themeView.applyTheme(themeModel.getTheme());
   chartController.init();
   tableController.init();
-  appController.init();
+  // Global Event Delegation for Interactive UI Elements
+  document.addEventListener('click', (e) => {
+    // 1. Pagination numbers (.pg-num)
+    const pgNum = e.target.closest('.pg-num');
+    if (pgNum) {
+      const container = pgNum.closest('.pagination-btns');
+      if (container) {
+        container.querySelectorAll('.pg-num').forEach(b => b.classList.remove('active'));
+        pgNum.classList.add('active');
+      }
+      return;
+    }
+
+    // 2. Pagination prev/next (.pg-btn)
+    const pgBtn = e.target.closest('.pg-btn');
+    if (pgBtn && !pgBtn.classList.contains('disabled')) {
+      const container = pgBtn.closest('.pagination-btns');
+      if (container) {
+        const activeNum = container.querySelector('.pg-num.active');
+        const allNums = Array.from(container.querySelectorAll('.pg-num'));
+        if (activeNum && allNums.length > 0) {
+          let idx = allNums.indexOf(activeNum);
+          if (pgBtn.innerHTML.includes('chevron-left') || pgBtn.querySelector('[data-lucide="chevron-left"]')) {
+            if (idx > 0) {
+              activeNum.classList.remove('active');
+              allNums[idx - 1].classList.add('active');
+            }
+          } else if (pgBtn.innerHTML.includes('chevron-right') || pgBtn.querySelector('[data-lucide="chevron-right"]')) {
+            if (idx < allNums.length - 1) {
+              activeNum.classList.remove('active');
+              allNums[idx + 1].classList.add('active');
+            }
+          }
+        }
+      }
+      return;
+    }
+
+    // 3. Tab switching (.audit-tabs .tab)
+    const tab = e.target.closest('.audit-tabs .tab');
+    if (tab) {
+      const tabNav = tab.closest('.audit-tabs');
+      if (tabNav) {
+        tabNav.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      }
+      return;
+    }
+
+    // 4. View Details navigation (.pc-btn[data-card])
+    const cardBtn = e.target.closest('.pc-btn[data-card]');
+    if (cardBtn) {
+      const target = cardBtn.getAttribute('data-card');
+      document.querySelectorAll('.view-container').forEach(v => v.classList.remove('active'));
+      const targetView = document.getElementById('details-view-' + target);
+      if (targetView) targetView.classList.add('active');
+      return;
+    }
+  });
 });
+
