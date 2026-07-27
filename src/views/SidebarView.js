@@ -5,6 +5,23 @@ export default class SidebarView {
     this.backdrop = document.getElementById("sidebarBackdrop");
     this.planCheckboxes = document.querySelectorAll(".checkbox-container input[type='checkbox']");
     this.menuItems = document.querySelectorAll(".sidebar-menu .menu-item");
+    this.initPopoverPositioning();
+  }
+
+  initPopoverPositioning() {
+    const menuSections = document.querySelectorAll(".menu-section");
+    menuSections.forEach(section => {
+      section.addEventListener("mouseenter", () => {
+        const container = document.querySelector(".dashboard-container");
+        if (container && container.classList.contains("sidebar-closed")) {
+          const rect = section.getBoundingClientRect();
+          const submenu = section.querySelector(".submenu");
+          if (submenu) {
+            submenu.style.top = `${rect.top + rect.height / 2}px`;
+          }
+        }
+      });
+    });
   }
 
   toggleSidebar() {
@@ -36,6 +53,10 @@ export default class SidebarView {
     this.menuItems.forEach(item => item.classList.remove("active"));
     if (clickedItem) {
       clickedItem.classList.add("active");
+      const section = clickedItem.closest(".menu-section");
+      if (!section) {
+        document.querySelectorAll(".menu-section").forEach(sec => sec.classList.remove("open"));
+      }
     }
   }
 
@@ -56,6 +77,15 @@ export default class SidebarView {
       clickedItem.classList.add("active");
       const dot = clickedItem.querySelector(".submenu-dot");
       if (dot) dot.classList.add("filled");
+
+      const parentSection = clickedItem.closest(".menu-section");
+      if (parentSection) {
+        const parentMenuItem = parentSection.querySelector(".menu-item");
+        if (parentMenuItem) {
+          this.menuItems.forEach(item => item.classList.remove("active"));
+          parentMenuItem.classList.add("active");
+        }
+      }
     }
   }
 
