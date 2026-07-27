@@ -289,7 +289,7 @@ a:link {
     display: flex !important;
     opacity: 1 !important;
     visibility: visible !important;
-    transform: translateY(-50%) translateX(4px) !important;
+    transform: translateX(4px) !important;
   }
 
   /* Dark mode floating popover */

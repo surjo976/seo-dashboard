@@ -14,7 +14,8 @@ export default class SidebarView {
       const updatePos = () => {
         const container = document.querySelector(".dashboard-container");
         if (container && container.classList.contains("sidebar-closed")) {
-          const rect = section.getBoundingClientRect();
+          const menuItem = section.querySelector(".menu-item") || section;
+          const rect = menuItem.getBoundingClientRect();
           const submenu = section.querySelector(".submenu");
           if (submenu) {
             submenu.style.position = "fixed";
