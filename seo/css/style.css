@@ -5513,12 +5513,12 @@ tr:hover td {
 }
 
 .details-table th:first-child {
-  border-top-left-radius: 10px !important;
+  border-top-left-radius: 11px !important;
   border-bottom-left-radius: 0 !important;
 }
 
 .details-table th:last-child {
-  border-top-right-radius: 10px !important;
+  border-top-right-radius: 11px !important;
   border-bottom-right-radius: 0 !important;
 }
 
@@ -7896,6 +7896,11 @@ tr:hover td {
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.02) !important;
 }
 
+#details-view-cannibalization .inner-table-card .table-footer,
+.inner-table-card .table-footer {
+  padding: 16px 20px 20px 20px !important;
+}
+
 #details-view-cannibalization .details-table th {
   height: 52px !important;
   background: #F5F5F5 !important;
@@ -7909,11 +7914,11 @@ tr:hover td {
 }
 
 #details-view-cannibalization .details-table th:first-child {
-  border-top-left-radius: 10px !important;
+  border-top-left-radius: 11px !important;
 }
 
 #details-view-cannibalization .details-table th:last-child {
-  border-top-right-radius: 10px !important;
+  border-top-right-radius: 11px !important;
   white-space: nowrap !important;
 }
 
@@ -7930,7 +7935,7 @@ tr:hover td {
 #details-view-cannibalization .details-table td:nth-child(1) {
   padding-left: 16px !important;
   text-align: left !important;
-  width: 25% !important;
+  width: 22% !important;
 }
 
 #details-view-cannibalization .details-table th:nth-child(2),
@@ -7967,8 +7972,8 @@ tr:hover td {
 #details-view-cannibalization .details-table td:nth-child(7) {
   text-align: center !important;
   padding-right: 12px !important;
-  width: auto !important;
-  min-width: 70px !important;
+  width: 7% !important;
+  min-width: 60px !important;
 }
 
 /* Stat cell details layout */
