@@ -5513,12 +5513,12 @@ tr:hover td {
 }
 
 .details-table th:first-child {
-  border-top-left-radius: 10px !important;
+  border-top-left-radius: 11px !important;
   border-bottom-left-radius: 0 !important;
 }
 
 .details-table th:last-child {
-  border-top-right-radius: 10px !important;
+  border-top-right-radius: 11px !important;
   border-bottom-right-radius: 0 !important;
 }
 
@@ -7904,83 +7904,9 @@ tr:hover td {
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.02) !important;
 }
 
-/* Ensure table takes full width, no collapse issues with border-radius */
-#details-view-cannibalization .details-table {
-  width: 100% !important;
-  border-collapse: separate !important;
-  border-spacing: 0 !important;
-}
-
-/* Pagination Row */
-#details-view-cannibalization .details-pagination {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding: 14px 16px !important;
-}
-
-#details-view-cannibalization .page-info {
-  font-size: 13px !important;
-  color: #808080 !important;
-  font-family: 'Outfit', sans-serif !important;
-}
-
-#details-view-cannibalization .pagination-btns {
-  display: flex !important;
-  align-items: center !important;
-  gap: 4px !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-}
-
-#details-view-cannibalization .pg-num {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 32px !important;
-  height: 32px !important;
-  border-radius: 8px !important;
-  border: 1px solid #EEEEEE !important;
-  background: #FFFFFF !important;
-  font-size: 13px !important;
-  font-family: 'Outfit', sans-serif !important;
-  color: #808080 !important;
-  cursor: pointer !important;
-}
-
-#details-view-cannibalization .pg-num.active {
-  background: rgba(53, 148, 238, 0.20) !important;
-  color: #0562BA !important;
-  border: 1px solid #0562BA !important;
-  font-weight: 600 !important;
-}
-
-#details-view-cannibalization .pg-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 32px !important;
-  height: 32px !important;
-  border-radius: 8px !important;
-  border: 1px solid #EEEEEE !important;
-  background: #FFFFFF !important;
-  color: #808080 !important;
-  cursor: pointer !important;
-}
-
-#details-view-cannibalization .pg-btn.disabled {
-  opacity: 0.4 !important;
-  cursor: not-allowed !important;
-}
-
-#details-view-cannibalization .pg-dots {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  color: #808080 !important;
-  font-size: 13px !important;
-  padding: 0 4px !important;
-  letter-spacing: 2px !important;
+#details-view-cannibalization .inner-table-card .table-footer,
+.inner-table-card .table-footer {
+  padding: 16px 20px 20px 20px !important;
 }
 
 #details-view-cannibalization .details-table th {
@@ -7999,11 +7925,12 @@ tr:hover td {
 }
 
 #details-view-cannibalization .details-table th:first-child {
-  border-top-left-radius: 12px !important;
+  border-top-left-radius: 11px !important;
 }
 
 #details-view-cannibalization .details-table th:last-child {
-  border-top-right-radius: 12px !important;
+  border-top-right-radius: 11px !important;
+  white-space: nowrap !important;
 }
 
 #details-view-cannibalization .details-table tr.clickable-row.active td {
@@ -8019,7 +7946,6 @@ tr:hover td {
 #details-view-cannibalization .details-table td:nth-child(1) {
   padding-left: 16px !important;
   text-align: left !important;
-  min-width: 100px !important;
   width: 22% !important;
 }
 
@@ -8065,6 +7991,7 @@ tr:hover td {
   text-align: center !important;
   padding-right: 12px !important;
   width: 7% !important;
+  min-width: 60px !important;
 }
 
 /* Stat cell details layout */
