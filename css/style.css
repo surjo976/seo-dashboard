@@ -146,10 +146,10 @@ a:link {
   .dashboard-container.sidebar-closed .sidebar .logo-img.short-logo {
     display: block !important;
     opacity: 1 !important;
-    width: 91px !important;
-    height: 68px !important;
-    max-width: 91px !important;
-    max-height: 68px !important;
+    width: 44px !important;
+    height: 44px !important;
+    max-width: 44px !important;
+    max-height: 44px !important;
     object-fit: contain !important;
     margin: 0 auto !important;
     transition: opacity 0.3s ease 0.05s, max-height 0.35s ease;
@@ -175,7 +175,8 @@ a:link {
     max-width: 48px !important;
     height: 48px !important;
     padding: 0 !important;
-    margin: 2px 0 !important;
+    margin: 2px auto !important;
+    gap: 0 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -187,14 +188,7 @@ a:link {
   /* Smoothly hide text and chevron when collapsed */
   .dashboard-container.sidebar-closed .sidebar .menu-item span,
   .dashboard-container.sidebar-closed .sidebar .menu-item .menu-chevron {
-    opacity: 0 !important;
-    max-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    pointer-events: none !important;
-    white-space: nowrap !important;
-    transition: opacity 0.2s ease, max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: none !important;
   }
 
   /* Icon box styling when collapsed */
@@ -202,12 +196,24 @@ a:link {
     width: 40px !important;
     height: 40px !important;
     border-radius: 12px !important;
-    margin: 0 !important;
+    margin: 0 auto !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     flex-shrink: 0 !important;
     transition: all 0.2s ease;
+  }
+
+  .dashboard-container.sidebar-closed .sidebar .menu-icon-img,
+  .dashboard-container.sidebar-closed .sidebar .menu-icon-box img,
+  .dashboard-container.sidebar-closed .sidebar .menu-icon-box svg {
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    margin: 0 auto !important;
+    display: block !important;
+    object-fit: contain !important;
   }
 
   /* Active menu item in collapsed state */
@@ -224,6 +230,10 @@ a:link {
     height: 44px !important;
     background: var(--blue, #3594EE) !important;
     border-radius: 14px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     box-shadow: 0 8px 20px rgba(53, 148, 238, 0.35) !important;
   }
 
@@ -232,6 +242,8 @@ a:link {
     filter: brightness(0) invert(1);
     width: 20px !important;
     height: 20px !important;
+    margin: 0 auto !important;
+    display: block !important;
   }
 
   /* Hover state for inactive menu items */
