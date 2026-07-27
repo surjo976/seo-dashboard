@@ -271,6 +271,9 @@ export default class AppController {
     this.bindDetailNavigationEvents();
     this.bindTableSelectionEvents();
     this.bindCannibalizationTableSelectionEvents();
+    this.bindCannibalizationFilterEvents();
+    this.bindInternalLinkingFilterEvents();
+    this.bindPaginationEvents();
   }
 
   bindSidebarEvents() {
@@ -612,19 +615,95 @@ export default class AppController {
       }
     }
 
-    // Update bottom Expected Impact Card
-    const expectedImpactCard = document.querySelector("#details-view-cannibalization .expected-impact-card");
+    // Update bottom Expected Impact Card (supports both eic-card-wrap and expected-impact-card structures)
+    const expectedImpactCard =
+      document.querySelector("#details-view-cannibalization .expected-impact-card") ||
+      document.querySelector("#details-view-cannibalization .eic-card-wrap");
     if (expectedImpactCard) {
-      const nums = expectedImpactCard.querySelectorAll(".sic-num");
-      if (nums.length >= 3) {
-        nums[0].textContent = data.impactGain;
-        nums[1].textContent = data.impactLevel;
-        nums[2].textContent = data.impactTime;
+      const vals = expectedImpactCard.querySelectorAll(".sic-num, .eic-card-val");
+      if (vals.length >= 3) {
+        vals[0].textContent = data.impactGain;
+        vals[1].textContent = data.impactLevel;
+        vals[2].textContent = data.impactTime;
       }
     }
 
     if (typeof lucide !== 'undefined') {
       lucide.createIcons();
     }
+  }
+
+  bindCannibalizationFilterEvents() {
+    const searchInput = document.getElementById('cannibalizationDetailsSearch');
+    const intentFilter = document.getElementById('cannibalizationIntentFilter');
+    const priorityFilter = document.getElementById('cannibalizationPriorityFilter');
+
+    if (!searchInput && !intentFilter && !priorityFilter) return;
+
+    const applyFilters = () => {
+      const tableRows = document.querySelectorAll('#cannibalizationDetailsTableBody tr.clickable-row');
+      const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+      const intentVal = intentFilter ? intentFilter.value : 'all';
+      const priorityVal = priorityFilter ? priorityFilter.value : 'all';
+
+      tableRows.forEach(row => {
+        const keyword = (row.getAttribute('data-keyword') || '').toLowerCase();
+        const intent = (row.getAttribute('data-intent') || '').toLowerCase();
+        const priority = (row.getAttribute('data-priority') || '').toLowerCase();
+
+        const matchSearch = !searchTerm || keyword.includes(searchTerm);
+        const matchIntent = intentVal === 'all' || intent === intentVal;
+        const matchPriority = priorityVal === 'all' || priority === priorityVal;
+
+        row.style.display = (matchSearch && matchIntent && matchPriority) ? '' : 'none';
+      });
+    };
+
+    if (searchInput) searchInput.addEventListener('input', applyFilters);
+    if (intentFilter) intentFilter.addEventListener('change', applyFilters);
+    if (priorityFilter) priorityFilter.addEventListener('change', applyFilters);
+  }
+
+  bindInternalLinkingFilterEvents() {
+    const searchInput = document.getElementById('detailsSearch');
+    const issueTypeFilter = document.getElementById('issueTypeFilter');
+    const priorityFilter = document.getElementById('priorityFilter');
+
+    if (!searchInput && !issueTypeFilter && !priorityFilter) return;
+
+    const applyFilters = () => {
+      const tableRows = document.querySelectorAll('#detailsTableBody tr.clickable-row');
+      const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+      const issueVal = issueTypeFilter ? issueTypeFilter.value : 'all';
+      const priorityVal = priorityFilter ? priorityFilter.value : 'all';
+
+      tableRows.forEach(row => {
+        const url = (row.getAttribute('data-url') || '').toLowerCase();
+        const issueType = (row.getAttribute('data-issue-type') || '').toLowerCase();
+        const priority = (row.getAttribute('data-priority') || '').toLowerCase();
+
+        const matchSearch = !searchTerm || url.includes(searchTerm);
+        const matchIssue = issueVal === 'all' || issueType === issueVal;
+        const matchPriority = priorityVal === 'all' || priority === priorityVal;
+
+        row.style.display = (matchSearch && matchIssue && matchPriority) ? '' : 'none';
+      });
+    };
+
+    if (searchInput) searchInput.addEventListener('input', applyFilters);
+    if (issueTypeFilter) issueTypeFilter.addEventListener('change', applyFilters);
+    if (priorityFilter) priorityFilter.addEventListener('change', applyFilters);
+  }
+
+  bindPaginationEvents() {
+    document.querySelectorAll('.pagination').forEach(container => {
+      const pageBtns = container.querySelectorAll('.pg-btn:not(.pg-arrow)');
+      pageBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          pageBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    });
   }
 }

@@ -7914,6 +7914,7 @@ tr:hover td {
 
 #details-view-cannibalization .details-table th:last-child {
   border-top-right-radius: 10px !important;
+  white-space: nowrap !important;
 }
 
 #details-view-cannibalization .details-table tr.clickable-row.active td {
@@ -7966,7 +7967,8 @@ tr:hover td {
 #details-view-cannibalization .details-table td:nth-child(7) {
   text-align: center !important;
   padding-right: 12px !important;
-  width: 4% !important;
+  width: auto !important;
+  min-width: 70px !important;
 }
 
 /* Stat cell details layout */

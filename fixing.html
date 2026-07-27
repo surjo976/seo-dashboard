@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="src/fixing-page.js"></script>
   <style>
     /* AI Parts Animation Overrides */
     @keyframes floatRobot {
@@ -390,6 +391,8 @@
                     </select>
                   </div>
 
+                  <button class="btn btn-filter btn-advance"><i data-lucide="sliders"></i> Advance Filter</button>
+                  <button class="btn btn-export-csv" title="Export CSV"><i data-lucide="download"></i></button>
                 </div>
               </div>
 
@@ -406,7 +409,7 @@
                         <th>Current<br>Position</th>
                         <th>Potential<br>Gain</th>
                         <th>Priority</th>
-                        <th>Action</th>
+                        <th style="white-space: nowrap;">Action</th>
                       </tr>
                     </thead>
                     <tbody id="cannibalizationDetailsTableBody">
@@ -736,16 +739,16 @@
                 </div>
 
                 <!-- Table Pagination -->
-                <div class="details-pagination">
-                  <span class="page-info">Showing 1 to 8 of 345 issues</span>
-                  <div class="pagination-btns">
-                    <button class="pg-btn disabled"><i data-lucide="chevron-left"></i></button>
-                    <button class="pg-num active">1</button>
-                    <button class="pg-num">2</button>
-                    <button class="pg-num">3</button>
-                    <span class="pg-dots">...</span>
-                    <button class="pg-num">43</button>
-                    <button class="pg-btn"><i data-lucide="chevron-right"></i></button>
+                <div class="table-footer">
+                  <span id="tableProgressText">Showing 1 to 8 of 345 issues</span>
+                  <div class="pagination">
+                    <button class="pg-btn pg-arrow"><i data-lucide="chevron-left"></i></button>
+                    <button class="pg-btn active">1</button>
+                    <button class="pg-btn">2</button>
+                    <button class="pg-btn">3</button>
+                    <span class="pg-dots">•••</span>
+                    <button class="pg-btn">43</button>
+                    <button class="pg-btn pg-arrow"><i data-lucide="chevron-right"></i></button>
                   </div>
                 </div>
               </div> <!-- End of .inner-table-card -->
