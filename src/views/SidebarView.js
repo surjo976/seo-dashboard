@@ -11,16 +11,21 @@ export default class SidebarView {
   initPopoverPositioning() {
     const menuSections = document.querySelectorAll(".menu-section");
     menuSections.forEach(section => {
-      section.addEventListener("mouseenter", () => {
+      const updatePos = () => {
         const container = document.querySelector(".dashboard-container");
         if (container && container.classList.contains("sidebar-closed")) {
           const rect = section.getBoundingClientRect();
           const submenu = section.querySelector(".submenu");
           if (submenu) {
-            submenu.style.top = `${rect.top + rect.height / 2}px`;
+            submenu.style.position = "fixed";
+            submenu.style.top = `${rect.top}px`;
+            submenu.style.left = `${rect.right + 8}px`;
+            submenu.style.transform = "none";
           }
         }
-      });
+      };
+      section.addEventListener("mouseenter", updatePos);
+      section.addEventListener("focusin", updatePos);
     });
   }
 

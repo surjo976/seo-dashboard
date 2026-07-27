@@ -5,6 +5,28 @@ export default class SidebarView {
     this.backdrop = document.getElementById("sidebarBackdrop");
     this.planCheckboxes = document.querySelectorAll(".checkbox-container input[type='checkbox']");
     this.menuItems = document.querySelectorAll(".sidebar-menu .menu-item");
+    this.initPopoverPositioning();
+  }
+
+  initPopoverPositioning() {
+    const menuSections = document.querySelectorAll(".menu-section");
+    menuSections.forEach(section => {
+      const updatePos = () => {
+        const container = document.querySelector(".dashboard-container");
+        if (container && container.classList.contains("sidebar-closed")) {
+          const rect = section.getBoundingClientRect();
+          const submenu = section.querySelector(".submenu");
+          if (submenu) {
+            submenu.style.position = "fixed";
+            submenu.style.top = `${rect.top}px`;
+            submenu.style.left = `${rect.right + 8}px`;
+            submenu.style.transform = "none";
+          }
+        }
+      };
+      section.addEventListener("mouseenter", updatePos);
+      section.addEventListener("focusin", updatePos);
+    });
   }
 
   toggleSidebar() {

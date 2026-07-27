@@ -255,7 +255,7 @@ a:link {
     display: none;
     position: fixed;
     left: 104px;
-    transform: translateY(-50%);
+    transform: none;
     z-index: 2000;
     background: var(--card, #ffffff);
     border-radius: 20px;
