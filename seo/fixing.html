@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fix Keyword Cannibalization - AI-Powered SEO Audit Report</title>
+  <meta name="description" content="Fix Keyword Cannibalization Audit Details Page.">
+  <link rel="stylesheet" href="css/style.css?v=11.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* AI Parts Animation Overrides */
+    @keyframes floatRobot {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .robot-img {
+      animation: floatRobot 4s ease-in-out infinite !important;
+      transition: transform 0.3s ease-in-out !important;
+    }
+
+    .ai-insight-card:hover .robot-img {
+      transform: translateY(-8px) scale(1.05) !important;
+    }
+
+    .help-avatar-wrap img {
+      transition: transform 0.3s ease-in-out !important;
+    }
+
+    .help-card:hover .help-avatar-wrap img {
+      transform: translateY(-6px) scale(1.08) rotate(3deg) !important;
+    }
+
+    .vis-bar-column {
+      transition: transform 0.2s ease, filter 0.2s ease !important;
+    }
+
+    .vis-bar-column:hover {
+      transform: scaleY(1.05) !important;
+      filter: brightness(0.95) !important;
+      cursor: pointer !important;
+    }
+
+    .help-card {
+      height: 200px !important;
+      background: #d9ebff !important;
+      border-radius: 20px !important;
+      position: relative !important;
+      overflow: hidden !important;
+      padding: 24px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      align-items: flex-start !important;
+    }
+
+    .help-content {
+      position: relative !important;
+      z-index: 2 !important;
+      max-width: 65% !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    .help-content h3 {
+      color: #3594EE !important;
+      font-size: 24px !important;
+      font-weight: 700 !important;
+      margin-top: 0 !important;
+      margin-bottom: 6px !important;
+      line-height: 28px !important;
+    }
+
+    .help-content p {
+      color: #3594EE !important;
+      font-size: 15px !important;
+      font-weight: 400 !important;
+      margin-top: 0 !important;
+      margin-bottom: 20px !important;
+      line-height: 22px !important;
+    }
+
+    .btn-white-sm {
+      width: 110px !important;
+      height: 40px !important;
+      border: none !important;
+      border-radius: 10px !important;
+      background: #fff !important;
+      color: #3594EE !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .04) !important;
+      transition: all 0.3s !important;
+      display: inline-flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 0 !important;
+    }
+
+    .btn-white-sm:hover {
+      background: #3594EE !important;
+      color: #fff !important;
+      transform: none !important;
+      box-shadow: 0 6px 16px rgba(53, 148, 238, .25) !important;
+    }
+
+    .help-avatar-wrap {
+      position: absolute !important;
+      right: 12px !important;
+      bottom: 6px !important;
+      width: 110px !important;
+      height: 110px !important;
+      z-index: 2 !important;
+      pointer-events: none !important;
+      overflow: visible !important;
+    }
+
+    .help-avatar-wrap img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
+    }
+
+    .help-avatar-wrap::before {
+      content: '' !important;
+      position: absolute !important;
+      right: -25px !important;
+      bottom: -35px !important;
+      width: 160px !important;
+      height: 160px !important;
+      background: rgba(120, 160, 210, 0.22) !important;
+      border-radius: 50% !important;
+      z-index: -1 !important;
+      left: auto !important;
+      top: auto !important;
+      transform: none !important;
+    }
+
+    [data-theme="dark"] .help-card {
+      background: #16222f !important;
+    }
+
+    [data-theme="dark"] .help-avatar-wrap::before {
+      background: rgba(120, 160, 210, 0.1) !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dashboard-container">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo-container">
+        <img src="assets/logo.png" alt="ASEMFY Logo" class="logo-img full-logo">
+        <img src="assets/short.png" alt="ASEMFY Logo" class="logo-img short-logo">
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="index.html" class="menu-item" data-tooltip="Dashboard">
+          <div class="menu-icon-box"><img src="assets/dashboard.svg" alt="Dashboard" class="menu-icon-img"></div>
+          <span>Dashboard</span>
+        </a>
+
+        <div class="menu-section open">
+          <a href="#" class="menu-item projects-item active" data-tooltip="Projects">
+            <div class="menu-icon-box"><img src="assets/project.svg" alt="Projects" class="menu-icon-img"></div>
+            <span>Projects</span>
+            <i data-lucide="chevron-right" class="menu-chevron"></i>
+          </a>
+          <div class="submenu">
+            <a href="#" class="submenu-item"><span class="submenu-dot"></span>All Projects</a>
+            <a href="#" class="submenu-item"><span class="submenu-dot"></span>Create Project</a>
+            <a href="fixing.html" class="submenu-item active"><span class="submenu-dot filled"></span>Site Audit</a>
+            <a href="#" class="submenu-item"><span class="submenu-dot"></span>SEO Health</a>
+            <a href="#" class="submenu-item"><span class="submenu-dot"></span>Rankings</a>
+            <a href="#" class="submenu-item"><span class="submenu-dot"></span>Competitors</a>
+          </div>
+        </div>
+
+        <a href="#" class="menu-item" data-tooltip="Keywords">
+          <div class="menu-icon-box"><img src="assets/keyward.svg" alt="Keywords" class="menu-icon-img"></div>
+          <span>Keywords</span>
+          <i data-lucide="chevron-right" class="menu-chevron"></i>
+        </a>
+        <a href="#" class="menu-item" data-tooltip="Backlinks">
+          <div class="menu-icon-box"><img src="assets/Group.svg" alt="Backlinks" class="menu-icon-img"></div>
+          <span>Backlinks</span>
+          <i data-lucide="chevron-right" class="menu-chevron"></i>
+        </a>
+        <a href="#" class="menu-item" data-tooltip="Content">
+          <div class="menu-icon-box"><img src="assets/content.svg" alt="Content" class="menu-icon-img"></div>
+          <span>Content</span>
+          <i data-lucide="chevron-right" class="menu-chevron"></i>
+        </a>
+        <a href="#" class="menu-item" data-tooltip="AI Visibility">
+          <div class="menu-icon-box"><img src="assets/visibility.svg" alt="AI Visibility" class="menu-icon-img"></div>
+          <span>AI Visibility</span>
+          <i data-lucide="chevron-right" class="menu-chevron"></i>
+        </a>
+        <a href="#" class="menu-item" data-tooltip="AI SEO Assistant">
+          <div class="menu-icon-box"><img src="assets/Ai.svg" alt="AI SEO Assistant" class="menu-icon-img"></div>
+          <span>AI SEO Assistant</span>
+          <i data-lucide="chevron-right" class="menu-chevron"></i>
+        </a>
+        <a href="#" class="menu-item" data-tooltip="Reports">
+          <div class="menu-icon-box"><img src="assets/report.svg" alt="Reports" class="menu-icon-img"></div>
+          <span>Reports</span>
+          <i data-lucide="chevron-right" class="menu-chevron"></i>
+        </a>
+        <a href="#" class="menu-item" data-tooltip="Integrations">
+          <div class="menu-icon-box"><img src="assets/intigrations.svg" alt="Integrations" class="menu-icon-img"></div>
+          <span>Integrations</span>
+          <i data-lucide="chevron-right" class="menu-chevron"></i>
+        </a>
+        <a href="#" class="menu-item" data-tooltip="Tools">
+          <div class="menu-icon-box"><img src="assets/tools.svg" alt="Tools" class="menu-icon-img"></div>
+          <span>Tools</span>
+          <i data-lucide="chevron-right" class="menu-chevron"></i>
+        </a>
+        <a href="#" class="menu-item" data-tooltip="Administration">
+          <div class="menu-icon-box"><img src="assets/admin.svg" alt="Administration" class="menu-icon-img"></div>
+          <span>Administration</span>
+          <i data-lucide="chevron-right" class="menu-chevron"></i>
+        </a>
+        <a href="#" class="menu-item" data-tooltip="Settings">
+          <div class="menu-icon-box"><img src="assets/seting.svg" alt="Settings" class="menu-icon-img"></div>
+          <span>Settings</span>
+          <i data-lucide="chevron-right" class="menu-chevron"></i>
+        </a>
+      </nav>
+
+      <div class="user-profile">
+        <div class="avatar">TA</div>
+        <div class="profile-info">
+          <span class="profile-name">Taleb A.</span>
+          <span class="profile-role">Growth operator</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Sidebar Mobile Backdrop Overlay -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+
+      <!-- Header Banner -->
+      <div class="header-banner">
+        <!-- Top Bar -->
+        <header class="top-bar">
+          <div class="top-left">
+            <div class="top-left-row">
+              <button class="header-menu-btn" id="mobileToggle"><i data-lucide="menu"></i></button>
+              <h2 class="welcome-text">Hello, Admin</h2>
+            </div>
+            <div class="breadcrumb">
+              <i data-lucide="home" class="home-icon-filled"></i>
+              <span>Dashboard / Audit suite / Fix Keyword Cannibalization</span>
+            </div>
+          </div>
+          <div class="top-right">
+            <div class="search-box">
+              <input type="text" placeholder="">
+              <i data-lucide="search" class="search-icon"></i>
+            </div>
+            <button class="btn btn-white-round btn-ask-ai">Ask AI</button>
+            <button class="btn btn-white-round btn-start">Start <i data-lucide="chevron-down"
+                class="btn-sm-icon"></i></button>
+            <button class="icon-btn" id="themeToggle"><i data-lucide="sun"></i></button>
+            <button class="icon-btn notif-btn"><i data-lucide="bell"></i><span class="notif-badge">2</span></button>
+            <div class="user-avatar"><img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"
+                alt="Admin"></div>
+          </div>
+        </header>
+
+        <!-- Action Buttons -->
+        <div class="header-actions">
+          <a href="index.html" class="back-btn-overview" id="backToOverview" title="Back to Overview"
+            style="display: inline-flex;">
+            <img src="assets/back.svg" alt="Back" width="18" height="18">
+          </a>
+          <div class="header-right-actions">
+            <button class="btn btn-title-white"><i data-lucide="printer"></i> Export PDF</button>
+            <button class="btn btn-title-white"><i data-lucide="share-2"></i> Share Report</button>
+            <button class="btn btn-title-white"><i data-lucide="share-2"></i> Schedule Audit</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Body -->
+      <div class="content-body">
+
+        <!-- Details View: Fix Keyword Cannibalization -->
+        <div id="details-view-cannibalization" class="view-container active">
+          <!-- Top Title Card -->
+          <div class="card details-title-card">
+            <div class="dtc-left">
+              <span class="dtc-subtitle">Audit suite</span>
+              <div class="dtc-title-row">
+                <h2>Fix Keyword Cannibalization</h2>
+                <span class="dtc-badge dtc-badge-high">High Priority</span>
+              </div>
+              <div class="dtc-meta-row">
+                <span class="dtc-meta-item">7 pages affected</span>
+                <span class="dtc-meta-item">Potential Gain: +9% Traffic</span>
+                <span class="dtc-meta-item">Fix Time: ~45 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metrics Circles Row -->
+          <div class="details-metrics-row">
+            <div class="metric-circle-card mcc-card-red">
+              <div class="mcc-circle circle-red">
+                <i data-lucide="file-text"></i>
+              </div>
+              <span class="mcc-num text-red">07</span>
+              <span class="mcc-label">Pages<br>Affected</span>
+            </div>
+
+            <div class="metric-circle-card mcc-card-grey">
+              <div class="mcc-circle circle-green">
+                <i data-lucide="trending-up"></i>
+              </div>
+              <span class="mcc-num text-green">+9%</span>
+              <span class="mcc-label">Potential<br>Traffic Gain</span>
+            </div>
+
+            <div class="metric-circle-card mcc-card-grey">
+              <div class="mcc-circle circle-red-impact">
+                <i data-lucide="bar-chart-2"></i>
+              </div>
+              <span class="mcc-num text-red">High</span>
+              <span class="mcc-label">Impact</span>
+            </div>
+
+            <div class="metric-circle-card mcc-card-grey">
+              <div class="mcc-circle circle-blue-time">
+                <i data-lucide="clock"></i>
+              </div>
+              <span class="mcc-num text-blue">~45 min</span>
+              <span class="mcc-label">Estimated<br>Fix Time</span>
+            </div>
+
+            <!-- Why It Matters -->
+            <div class="card why-matters-card why-matters-cannibalization">
+              <div class="wmc-content">
+                <div class="wmc-header">
+                  <h4>Why It Matters</h4>
+                  <span class="help-dot">?</span>
+                </div>
+                <p>When multiple pages target the same keyword, search engines get confused about which page to rank.
+                  This can split rankings and reduce your visibility.</p>
+              </div>
+              <div class="wmc-illustration">
+                <img src="assets/second.svg" alt="Why It Matters - Keyword Cannibalization" width="160" height="152"
+                  style="display: block;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="details-tabs-row">
+            <nav class="audit-tabs">
+              <button class="tab active">Cannibalization Groups (7)</button>
+              <button class="tab">Affected Pages (7)</button>
+              <button class="tab">Keywords (7)</button>
+              <button class="tab">Opportunities</button>
+              <button class="tab">How to Fix</button>
+              <button class="tab">History</button>
+            </nav>
+          </div>
+
+          <!-- Table + Sidebar Split Section -->
+          <div class="details-split-grid">
+            <!-- Left: Table Card -->
+            <div class="card table-card details-table-container">
+              <!-- Header Description -->
+              <span class="header-desc">These keywords are targeted by multiple pages on your website. Consolidate and
+                optimize to improve rankings.</span>
+
+              <!-- Filter Row -->
+              <div class="table-filter-row">
+                <div class="search-box table-search-box">
+                  <input type="text" placeholder="Search URL ...." id="cannibalizationDetailsSearch">
+                  <i data-lucide="search" class="search-icon"></i>
+                </div>
+
+                <div class="filter-controls-right">
+                  <div class="filter-dropdown-wrap">
+                    <select class="filter-select" id="cannibalizationIntentFilter">
+                      <option value="all">All Intent</option>
+                      <option value="informational">Informational</option>
+                      <option value="commercial">Commercial</option>
+                      <option value="navigational">Navigational</option>
+                    </select>
+                  </div>
+
+                  <div class="filter-dropdown-wrap">
+                    <select class="filter-select" id="cannibalizationPriorityFilter">
+                      <option value="all">All Priority</option>
+                      <option value="high">High</option>
+                      <option value="medium">Medium</option>
+                      <option value="low">Low</option>
+                    </select>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Inner Table Card -->
+              <div class="inner-table-card">
+                <!-- Table -->
+                <div class="table-wrap">
+                  <table class="details-table">
+                    <thead>
+                      <tr>
+                        <th>Keyword</th>
+                        <th>Cannibalization<br>Score</th>
+                        <th>Affected<br>pages</th>
+                        <th>Current<br>Position</th>
+                        <th>Potential<br>Gain</th>
+                        <th>Priority</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="cannibalizationDetailsTableBody">
+                      <!-- Row 1 -->
+                      <tr class="clickable-row active" data-keyword="seo audit tool" data-intent="informational"
+                        data-priority="high">
+                        <td>
+                          <div class="cannibalization-keyword-cell">
+                            <span class="keyword-text">seo audit tool</span>
+                            <span class="intent-tag informational">Informational</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="score-circle-container">
+                            <div class="score-circle-wrapper">
+                              <svg viewBox="0 0 36 36">
+                                <path class="circle-bg"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke="#E5E7EB" stroke-width="3" />
+                                <path class="circle" stroke-dasharray="85, 100" stroke="#FF6370"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke-width="3" stroke-linecap="round" />
+                              </svg>
+                              <span class="score-value" style="color: #FF6370;">85</span>
+                            </div>
+                            <span class="score-label high">High</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">3</span>
+                            <span class="view-pages-link">View Pages</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">8.7</span>
+                            <span class="label-text">Average Position</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text" style="color: #4FCE62;">+520</span>
+                            <span class="label-text">Visits/month</span>
+                          </div>
+                        </td>
+                        <td><span class="badge b-red">High</span></td>
+                        <td>
+                          <div class="tbl-actions">
+                            <button class="tbl-act-btn btn-more" title="More"><i
+                                data-lucide="more-vertical"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <!-- Row 2 -->
+                      <tr class="clickable-row" data-keyword="keyword research tool" data-intent="informational"
+                        data-priority="high">
+                        <td>
+                          <div class="cannibalization-keyword-cell">
+                            <span class="keyword-text keyword-text-orange" style="color: #C07D33;">keyword research
+                              tool</span>
+                            <span class="intent-tag informational">Informational</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="score-circle-container">
+                            <div class="score-circle-wrapper">
+                              <svg viewBox="0 0 36 36">
+                                <path class="circle-bg"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke="#E5E7EB" stroke-width="3" />
+                                <path class="circle" stroke-dasharray="75, 100" stroke="#C07D33"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke-width="3" stroke-linecap="round" />
+                              </svg>
+                              <span class="score-value" style="color: #C07D33;">75</span>
+                            </div>
+                            <span class="score-label high-brown">High</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">2</span>
+                            <span class="view-pages-link">View Pages</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">11.3</span>
+                            <span class="label-text">Average Position</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text" style="color: #4FCE62;">+320</span>
+                            <span class="label-text">Visits/month</span>
+                          </div>
+                        </td>
+                        <td><span class="badge b-red">High</span></td>
+                        <td>
+                          <div class="tbl-actions">
+                            <button class="tbl-act-btn btn-more" title="More"><i
+                                data-lucide="more-vertical"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <!-- Row 3 -->
+                      <tr class="clickable-row" data-keyword="backlink checker" data-intent="commercial"
+                        data-priority="medium">
+                        <td>
+                          <div class="cannibalization-keyword-cell">
+                            <span class="keyword-text keyword-text-dark">backlink checker</span>
+                            <span class="intent-tag commercial">Commercial</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="score-circle-container">
+                            <div class="score-circle-wrapper">
+                              <svg viewBox="0 0 36 36">
+                                <path class="circle-bg"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke="#E5E7EB" stroke-width="3" />
+                                <path class="circle" stroke-dasharray="65, 100" stroke="#FF9F4E"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke-width="3" stroke-linecap="round" />
+                              </svg>
+                              <span class="score-value" style="color: #FF9F4E;">65</span>
+                            </div>
+                            <span class="score-label medium">Medium</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">2</span>
+                            <span class="view-pages-link">View Pages</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">13.1</span>
+                            <span class="label-text">Average Position</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text" style="color: #4FCE62;">+180</span>
+                            <span class="label-text">Visits/month</span>
+                          </div>
+                        </td>
+                        <td><span class="badge b-orange">Medium</span></td>
+                        <td>
+                          <div class="tbl-actions">
+                            <button class="tbl-act-btn btn-more" title="More"><i
+                                data-lucide="more-vertical"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <!-- Row 4 -->
+                      <tr class="clickable-row" data-keyword="on page seo" data-intent="informational"
+                        data-priority="medium">
+                        <td>
+                          <div class="cannibalization-keyword-cell">
+                            <span class="keyword-text keyword-text-dark">on page seo</span>
+                            <span class="intent-tag informational">Informational</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="score-circle-container">
+                            <div class="score-circle-wrapper">
+                              <svg viewBox="0 0 36 36">
+                                <path class="circle-bg"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke="#E5E7EB" stroke-width="3" />
+                                <path class="circle" stroke-dasharray="55, 100" stroke="#FF9F4E"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke-width="3" stroke-linecap="round" />
+                              </svg>
+                              <span class="score-value" style="color: #FF9F4E;">55</span>
+                            </div>
+                            <span class="score-label medium">Medium</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">2</span>
+                            <span class="view-pages-link">View Pages</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">15.4</span>
+                            <span class="label-text">Average Position</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text" style="color: #4FCE62;">+150</span>
+                            <span class="label-text">Visits/month</span>
+                          </div>
+                        </td>
+                        <td><span class="badge b-orange">Medium</span></td>
+                        <td>
+                          <div class="tbl-actions">
+                            <button class="tbl-act-btn btn-more" title="More"><i
+                                data-lucide="more-vertical"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <!-- Row 5 -->
+                      <tr class="clickable-row" data-keyword="technical seo checklist" data-intent="informational"
+                        data-priority="low">
+                        <td>
+                          <div class="cannibalization-keyword-cell">
+                            <span class="keyword-text keyword-text-dark">technical seo checklist</span>
+                            <span class="intent-tag informational">Informational</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="score-circle-container">
+                            <div class="score-circle-wrapper">
+                              <svg viewBox="0 0 36 36">
+                                <path class="circle-bg"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke="#E5E7EB" stroke-width="3" />
+                                <path class="circle" stroke-dasharray="45, 100" stroke="#FF9F4E"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke-width="3" stroke-linecap="round" />
+                              </svg>
+                              <span class="score-value" style="color: #FF9F4E;">45</span>
+                            </div>
+                            <span class="score-label medium">Medium</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">2</span>
+                            <span class="view-pages-link">View Pages</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">17.2</span>
+                            <span class="label-text">Average Position</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text" style="color: #4FCE62;">+90</span>
+                            <span class="label-text">Visits/month</span>
+                          </div>
+                        </td>
+                        <td><span class="badge b-green">Low</span></td>
+                        <td>
+                          <div class="tbl-actions">
+                            <button class="tbl-act-btn btn-more" title="More"><i
+                                data-lucide="more-vertical"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <!-- Row 6 -->
+                      <tr class="clickable-row" data-keyword="increase website traffic" data-intent="navigational"
+                        data-priority="low">
+                        <td>
+                          <div class="cannibalization-keyword-cell">
+                            <span class="keyword-text keyword-text-dark">increase website traffic</span>
+                            <span class="intent-tag navigational">Navigational</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="score-circle-container">
+                            <div class="score-circle-wrapper">
+                              <svg viewBox="0 0 36 36">
+                                <path class="circle-bg"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke="#E5E7EB" stroke-width="3" />
+                                <path class="circle" stroke-dasharray="35, 100" stroke="#4FCE62"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke-width="3" stroke-linecap="round" />
+                              </svg>
+                              <span class="score-value" style="color: #4FCE62;">35</span>
+                            </div>
+                            <span class="score-label low">Low</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">2</span>
+                            <span class="view-pages-link">View Pages</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">21.6</span>
+                            <span class="label-text">Average Position</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text" style="color: #4FCE62;">+60</span>
+                            <span class="label-text">Visits/month</span>
+                          </div>
+                        </td>
+                        <td><span class="badge b-green">Low</span></td>
+                        <td>
+                          <div class="tbl-actions">
+                            <button class="tbl-act-btn btn-more" title="More"><i
+                                data-lucide="more-vertical"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <!-- Row 7 -->
+                      <tr class="clickable-row" data-keyword="seo tips" data-intent="navigational" data-priority="low">
+                        <td>
+                          <div class="cannibalization-keyword-cell">
+                            <span class="keyword-text keyword-text-dark">seo tips</span>
+                            <span class="intent-tag navigational">Navigational</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="score-circle-container">
+                            <div class="score-circle-wrapper">
+                              <svg viewBox="0 0 36 36">
+                                <path class="circle-bg"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke="#E5E7EB" stroke-width="3" />
+                                <path class="circle" stroke-dasharray="30, 100" stroke="#4FCE62"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  fill="none" stroke-width="3" stroke-linecap="round" />
+                              </svg>
+                              <span class="score-value" style="color: #4FCE62;">30</span>
+                            </div>
+                            <span class="score-label low">Low</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">2</span>
+                            <span class="view-pages-link">View Pages</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text">24.3</span>
+                            <span class="label-text">Average Position</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="stat-cell-wrap">
+                            <span class="val-text" style="color: #4FCE62;">+40</span>
+                            <span class="label-text">Visits/month</span>
+                          </div>
+                        </td>
+                        <td><span class="badge b-green">Low</span></td>
+                        <td>
+                          <div class="tbl-actions">
+                            <button class="tbl-act-btn btn-more" title="More"><i
+                                data-lucide="more-vertical"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Table Pagination -->
+                <div class="details-pagination">
+                  <span class="page-info">Showing 1 to 8 of 345 issues</span>
+                  <div class="pagination-btns">
+                    <button class="pg-btn disabled"><i data-lucide="chevron-left"></i></button>
+                    <button class="pg-num active">1</button>
+                    <button class="pg-num">2</button>
+                    <button class="pg-num">3</button>
+                    <span class="pg-dots">...</span>
+                    <button class="pg-num">43</button>
+                    <button class="pg-btn"><i data-lucide="chevron-right"></i></button>
+                  </div>
+                </div>
+              </div> <!-- End of .inner-table-card -->
+            </div>
+
+            <!-- Right: Details Sidebar Card -->
+            <div class="details-right-column">
+              <div class="card details-sidebar-card">
+                <!-- Title & Keyword & Intent -->
+                <div class="sidebar-header-title">Selected Keyword Group</div>
+                <div class="sidebar-keyword-name" id="cannibalizationSelectedKeywordText">seo audit tool</div>
+                <div class="sidebar-intent-name" id="cannibalizationSelectedIntentText">Intent: Informational</div>
+
+                <!-- Divider -->
+                <div class="sidebar-divider-line"></div>
+
+                <!-- Overview -->
+                <div class="sidebar-overview-title">Overview</div>
+                <div class="sidebar-overview-body" id="cannibalizationSidebarOverviewDesc">This keyword is targeted by 3
+                  pages. Consolidate to a single best page and redirect or update the others.</div>
+
+                <!-- 3-Column Panel -->
+                <div class="sidebar-stat-panel-row">
+                  <div class="sidebar-stat-col">
+                    <div class="lbl">Cannibalization Score</div>
+                    <div class="val-red"><span id="cannibalizationScoreNum">85</span> <span class="val-sub">/ 100</span>
+                    </div>
+                  </div>
+                  <div class="sidebar-v-divider"></div>
+                  <div class="sidebar-stat-col">
+                    <div class="lbl">Impact</div>
+                    <div class="val-red" id="cannibalizationImpactValue">High</div>
+                  </div>
+                  <div class="sidebar-v-divider"></div>
+                  <div class="sidebar-stat-col">
+                    <div class="lbl">Potential Gain</div>
+                    <div class="val-red"><span id="cannibalizationGainNum">+520</span> <span class="val-sub">Visits /
+                        month</span></div>
+                  </div>
+                </div>
+
+                <!-- Affected Pages Box -->
+                <div class="affected-pages-box">
+                  <div class="ap-header-row">
+                    <div><span class="ap-title">Affected Pages </span><span class="ap-title-num">(3)</span></div>
+                    <span class="ap-pos-label">Current Pos.</span>
+                  </div>
+
+                  <div id="cannibalizationAffectedPagesList">
+                    <!-- Item 1 -->
+                    <div class="ap-item-row">
+                      <div class="ap-item-left">
+                        <i data-lucide="crown"
+                          style="width: 12px; height: 12px; color: #F5C527; flex-shrink: 0; margin-top: 2px;"></i>
+                        <div>
+                          <a href="#" class="ap-link">www.example.com/blog/seo-audit-tool</a>
+                          <span class="ap-meta">Word Count 2,450 Updated: May 8,2025</span>
+                        </div>
+                      </div>
+                      <span class="ap-pos-val">5</span>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="ap-item-row">
+                      <div class="ap-item-left">
+                        <span
+                          style="font-size: 12px; color: #808080; width: 12px; text-align: center; display: inline-block;">2</span>
+                        <div>
+                          <a href="#" class="ap-link">www.example.com/tools/seo-audit</a>
+                          <span class="ap-meta">Word Count 1,890 Updated: Apr 20,2025</span>
+                        </div>
+                      </div>
+                      <span class="ap-pos-val">11</span>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="ap-item-row">
+                      <div class="ap-item-left">
+                        <span
+                          style="font-size: 12px; color: #808080; width: 12px; text-align: center; display: inline-block;">3</span>
+                        <div>
+                          <a href="#" class="ap-link">www.example.com/blog/website-audit-guide</a>
+                          <span class="ap-meta">Word Count 1,520 Updated: Mar 15,2025</span>
+                        </div>
+                      </div>
+                      <span class="ap-pos-val">19</span>
+                    </div>
+                  </div>
+
+                  <a href="#" class="view-all-pages-link">View all 3 Pages</a>
+                </div>
+
+                <!-- AI Recommendation Box -->
+                <div class="ai-rec-box">
+                  <div class="ai-rec-header">
+                    <i data-lucide="bot" style="width: 14px; height: 14px; color: #4FCE62;"></i>
+                    <span>AI Recommendation</span>
+                  </div>
+
+                  <div class="ai-rec-desc">Keep the best ranking page as the page and redirect or update the other 2
+                    pages with unique content and internal linking.</div>
+
+                  <div class="ai-rec-action-title">Recommended Action</div>
+
+                  <ul class="ai-rec-action-list">
+                    <li>
+                      <span class="bullet-dot"></span>
+                      <span class="lbl-dark">Keep:</span>
+                      <span class="lbl-gray">/blog/seo-audit-tool (Best ranking)</span>
+                    </li>
+                    <li>
+                      <span class="bullet-dot"></span>
+                      <span class="lbl-dark">Redirect:</span>
+                      <span class="lbl-gray">/tools/seo-audit → /blog/seo-audit-tool</span>
+                    </li>
+                    <li>
+                      <span class="bullet-dot"></span>
+                      <span class="lbl-dark">Update:</span>
+                      <span class="lbl-gray">/blog/website-audit-guide (Different angle)</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Bottom Card: Expected Impact Separate Card -->
+              <div class="eic-card-wrap">
+                <div class="eic-card-title">Expected Impact</div>
+                <div class="eic-card-divider"></div>
+                <div class="eic-card-row">
+                  <!-- Metric 1 -->
+                  <div class="eic-card-item">
+                    <div class="eic-circ eic-circ-green">
+                      <i data-lucide="trending-up" style="width:18px;height:18px;stroke:#4FCE62;"></i>
+                    </div>
+                    <div class="eic-card-text">
+                      <span class="eic-card-val eic-val-c-green">+520</span>
+                      <span class="eic-card-lbl">Visits / month</span>
+                    </div>
+                  </div>
+                  <!-- Metric 2 -->
+                  <div class="eic-card-item">
+                    <div class="eic-circ eic-circ-red">
+                      <i data-lucide="bar-chart-2" style="width:18px;height:18px;stroke:#FF6370;"></i>
+                    </div>
+                    <div class="eic-card-text">
+                      <span class="eic-card-val eic-val-c-red">High</span>
+                      <span class="eic-card-lbl">Impact</span>
+                    </div>
+                  </div>
+                  <!-- Metric 3 -->
+                  <div class="eic-card-item">
+                    <div class="eic-circ eic-circ-blue">
+                      <i data-lucide="clock" style="width:18px;height:18px;stroke:#3594EE;"></i>
+                    </div>
+                    <div class="eic-card-text">
+                      <span class="eic-card-val eic-val-c-blue">~48 Min.</span>
+                      <span class="eic-card-lbl">Fix Time</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- End of #details-view-cannibalization -->
+
+      </div>
+    </main>
+  </div>
+  <script type="module" src="src/main.js?v=6.4"></script>
+</body>
+
+</html>
